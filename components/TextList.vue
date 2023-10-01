@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const supabase = useSupabaseClient()
+import { Database } from '~/supabase'
+
+const supabase = useSupabaseClient<Database>()
 
 const { data } = await supabase.from('texts').select('en, tl')
 </script>
