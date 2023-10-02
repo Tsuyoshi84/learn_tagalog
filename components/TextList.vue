@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { Database } from '~/supabase'
+const props = defineProps<{
+  searchText: string
+}>()
 
-const supabase = useSupabaseClient<Database>()
-
-const { data } = await supabase.from('texts').select('en, tl')
+const { texts } = useTextSearch(() => props.searchText)
 </script>
 
 <template>
-  <div>{{ data }}</div>
+  <TextListItem :text="text" v-for="text in texts" :key="text.id" />
 </template>
 
 <style scoped></style>
