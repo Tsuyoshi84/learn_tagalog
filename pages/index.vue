@@ -1,7 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const text = {
+  id: '1',
+  en: 'Perhaps Armany can solve this problem.',
+  tl: 'Siguro malulutas ni Armany ang problemang ito.',
+}
+</script>
 
 <template>
-  <div>Hello</div>
+  <TextListItem :text="text" />
 </template>
 
 <style scoped></style>
