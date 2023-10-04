@@ -4,7 +4,7 @@ const searchText = ref('')
 
 <template>
   <div>
-    <input type="text" v-model.trim="searchText" />
+    <input type="search" v-model.trim="searchText" />
     <TextList :search-text="searchText" />
   </div>
 </template>

@@ -8,7 +8,7 @@ export default defineNuxtConfig({
         wght: [400],
       },
       Gabarito: {
-        wght: [400, 700],
+        wght: [400, 500, 700],
       },
     },
   },
@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     vue: {
       script: {
         defineModel: true,
+        propsDestructure: true,
       },
     },
   },
