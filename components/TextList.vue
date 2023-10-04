@@ -8,7 +8,7 @@ const { texts, searchWords } = useTextSearch(() => props.searchText)
 
 <template>
   <div class="wrapper">
-    <TextListItem :text="text" :high-light-words="searchWords" v-for="text in texts" :key="text.id" />
+    <TextListItem v-for="text in texts" :key="text.id" :text="text" :high-light-words="searchWords" />
   </div>
 </template>
 

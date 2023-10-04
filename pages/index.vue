@@ -2,7 +2,7 @@
 const text = {
   id: '1',
   en: 'Perhaps Armany can solve this problem.',
-  tl: 'Siguro malulutas ni Armany ang problemang ito.',
+  tl: 'Siguro malulutas ni Armany ang problemang ito.'
 }
 
 const highLightWords = ['ni', 'problemang']

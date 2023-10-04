@@ -8,28 +8,28 @@ const { text, highLightWords = [] } = defineProps<{
   highLightWords?: string[]
 }>()
 
-function highLight(word: string): string {
+function highLight (word: string): string {
   const match = word.match(/^(.*?)([,.!?])?$/)
   const [, wordWithoutPunctuation = word, punctuation = ''] = match ?? []
 
   return `<span class="high-light">${wordWithoutPunctuation}</span>${punctuation}`
 }
 
-function sanitize(text: string): string {
+function sanitize (text: string): string {
   return text.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-function removePunctuation(word: string): string {
+function removePunctuation (word: string): string {
   return word.replace(/[,.!?]/g, '')
 }
 
 const styledText = computed<string>(() => {
-  if (highLightWords.length === 0) return sanitize(text.tl)
+  if (highLightWords.length === 0) { return sanitize(text.tl) }
 
   const words = sanitize(text.tl).split(' ')
-  const highLightWordSet = new Set(highLightWords.map((word) => word.toLowerCase()))
+  const highLightWordSet = new Set(highLightWords.map(word => word.toLowerCase()))
 
-  return words.map((word) => (highLightWordSet.has(removePunctuation(word).toLowerCase()) ? highLight(word) : word)).join(' ')
+  return words.map(word => (highLightWordSet.has(removePunctuation(word).toLowerCase()) ? highLight(word) : word)).join(' ')
 })
 </script>
 
