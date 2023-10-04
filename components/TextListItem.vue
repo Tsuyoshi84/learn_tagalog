@@ -41,6 +41,7 @@ const styledText = computed<string>(() => {
 
 <template>
 	<div class="container">
+		<!-- eslint-disable-next-line vue/no-v-html -->
 		<div class="tl" v-html="styledText" />
 		<div class="en">
 			{{ text.en }}
@@ -58,8 +59,8 @@ const styledText = computed<string>(() => {
 }
 
 .tl {
-	font-family: 'Gabarito', cursive;
-	color: oklch(0.53 0.16 276.05);
+	font-family: var(--font-family-main);
+	color: var(--font-color-accent);
 	font-size: 2rem;
 	font-weight: 500;
 	text-wrap: balance;
@@ -67,16 +68,16 @@ const styledText = computed<string>(() => {
 }
 
 .en {
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--font-family-sub);
 	font-style: italic;
 	font-size: 1.5rem;
-	color: oklch(0.63 0 0);
+	color: var(--font-color-subtle);
 	text-wrap: balance;
 	text-align: center;
 }
 
 :deep(.high-light) {
 	font-weight: 700;
-	color: oklch(0.58 0.21 24.34);
+	color: var(--font-color-accent-sub);
 }
 </style>
