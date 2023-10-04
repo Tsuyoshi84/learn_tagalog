@@ -1,13 +1,13 @@
 <script lang="ts" setup></script>
 
 <template>
-  <NuxtErrorBoundary>
-    <slot />
+	<NuxtErrorBoundary>
+		<slot />
 
-    <template #error="{ error }">
-      <p>An error occurred: {{ error }}</p>
-    </template>
-  </NuxtErrorBoundary>
+		<template #error="{ error }">
+			<p>An error occurred: {{ error }}</p>
+		</template>
+	</NuxtErrorBoundary>
 </template>
 
 <style scoped></style>

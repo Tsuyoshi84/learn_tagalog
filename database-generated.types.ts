@@ -4,41 +4,41 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
 
 export interface Database {
-  public: {
-    Tables: {
-      texts: {
-        Row: {
-          en: string
-          id: string
-          tl: string
-          youtube_id: string | null
-        }
-        Insert: {
-          en: string
-          id?: string
-          tl: string
-          youtube_id?: string | null
-        }
-        Update: {
-          en?: string
-          id?: string
-          tl?: string
-          youtube_id?: string | null
-        }
-        Relationships: []
-      }
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      [_ in never]: never
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
+	public: {
+		Tables: {
+			texts: {
+				Row: {
+					en: string
+					id: string
+					tl: string
+					youtube_id: string | null
+				}
+				Insert: {
+					en: string
+					id?: string
+					tl: string
+					youtube_id?: string | null
+				}
+				Update: {
+					en?: string
+					id?: string
+					tl?: string
+					youtube_id?: string | null
+				}
+				Relationships: []
+			}
+		}
+		Views: {
+			[_ in never]: never
+		}
+		Functions: {
+			[_ in never]: never
+		}
+		Enums: {
+			[_ in never]: never
+		}
+		CompositeTypes: {
+			[_ in never]: never
+		}
+	}
 }
