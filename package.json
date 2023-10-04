@@ -27,7 +27,8 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-		"format": "prettier --write --ignore-path .gitignore \"**/*.{js,vue,ts,tsx,json,md}\""
+		"format": "prettier --write --ignore-path .gitignore \"**/*.{js,vue,ts,tsx,json,md}\"",
+		"typecheck": "nuxi typecheck"
 	},
 	"type": "module"
 }
