@@ -1,3 +1,12 @@
 {
-	"extends": ["@nuxtjs/eslint-config-typescript", "prettier"]
+	"extends": ["@nuxtjs/eslint-config-typescript", "prettier"],
+	"rules": {
+		// vue plugin
+		"vue/component-tags-order": ["error", { "order": ["script", "template", "style"] }],
+		"vue/html-button-has-type": "error",
+		"vue/no-required-prop-with-default": "error",
+
+		// Disabled rules
+		"vue/no-multiple-template-root": "off"
+	}
 }
