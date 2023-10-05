@@ -8,5 +8,3 @@ const searchText = ref('')
 		<TextList :search-text="searchText" />
 	</div>
 </template>
-
-<style scoped></style>

@@ -25,6 +25,9 @@ jobs:
       - name: Lint
         run: bun lint
 
+      - name: Style Lint
+        run: bun lint:style
+
       - name: TypeCheck
         run: bun typecheck
 

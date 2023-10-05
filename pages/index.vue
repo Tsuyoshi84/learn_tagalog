@@ -12,5 +12,3 @@ const highLightWords = ['ni', 'problemang']
 	<p style="font-size: 2rem">Hello</p>
 	<TextListItem :text="text" :high-light-words="highLightWords" />
 </template>
-
-<style scoped></style>

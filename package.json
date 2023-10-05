@@ -10,7 +10,12 @@
 		"eslint": "^8.50.0",
 		"eslint-config-prettier": "^9.0.0",
 		"nuxt": "^3.7.4",
+		"postcss-html": "^1.5.0",
 		"prettier": "^3.0.3",
+		"stylelint": "^15.10.3",
+		"stylelint-config-recommended-vue": "^1.5.0",
+		"stylelint-config-standard": "^34.0.0",
+		"stylelint-use-logical-spec": "^5.0.0",
 		"typescript": "^5.2.2",
 		"vue": "^3.3.4",
 		"vue-router": "^4.2.5"
@@ -26,8 +31,9 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-		"format": "prettier --write --ignore-path .gitignore \"**/*.{js,vue,ts,tsx,json,md}\"",
+		"lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+		"lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
+		"format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,vue,css,json}\"",
 		"typecheck": "nuxi typecheck"
 	},
 	"type": "module"

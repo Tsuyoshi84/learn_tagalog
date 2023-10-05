@@ -9,5 +9,3 @@
 		</template>
 	</NuxtErrorBoundary>
 </template>
-
-<style scoped></style>

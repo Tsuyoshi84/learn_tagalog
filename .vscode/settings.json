@@ -11,7 +11,7 @@
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"cSpell.words": ["Nuxt", "nuxtjs", "supabase", "vueuse"],
+	"cSpell.words": ["nuxi", "Nuxt", "nuxtjs", "stylelint", "supabase", "typecheck", "vueuse"],
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
 	},
