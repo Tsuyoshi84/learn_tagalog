@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { Text } from '~/database.types'
 
-const { text } = defineProps<{ text: Text }>()
+const { text } = defineProps<{
+	/** An object that includes English and Tagalog sentences that are used for quiz  */
+	text: Text
+}>()
 
 const { english, words, selectedWords, status, selectWord, deselectWord } = useSentenceQuiz(text)
 </script>

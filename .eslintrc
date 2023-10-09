@@ -1,12 +1,116 @@
 {
-	"extends": ["@nuxtjs/eslint-config-typescript", "prettier"],
+	"extends": [
+		"@nuxtjs/eslint-config-typescript",
+		"plugin:@typescript-eslint/strict-type-checked",
+		"plugin:@typescript-eslint/stylistic-type-checked",
+		"plugin:eslint-comments/recommended",
+		"plugin:vue/vue3-recommended",
+		"prettier"
+	],
+	"plugins": ["jsdoc"],
+	"parserOptions": {
+		"parser": "@typescript-eslint/parser",
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"modules": true
+		},
+		"project": "./tsconfig.json",
+		"extraFileExtensions": [".vue"]
+	},
 	"rules": {
+		"padding-line-between-statements": [
+			"warn",
+			{ "blankLine": "always", "prev": "import", "next": "*" },
+			{ "blankLine": "any", "prev": "import", "next": "import" }
+		],
+		"sort-imports": ["error", { "ignoreDeclarationSort": true }],
+
+		// jsdoc plugin
+		"jsdoc/check-param-names": "error",
+		"jsdoc/check-property-names": "error",
+		"jsdoc/check-tag-names": "error",
+		"jsdoc/check-types": "error",
+		"jsdoc/check-values": "error",
+
+		// @typescript-eslint plugin
+		"@typescript-eslint/explicit-function-return-type": [
+			"error",
+			{ "allowExpressions": true, "allowTypedFunctionExpressions": true }
+		],
+		"@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
+		"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
 		// vue plugin
+		"vue/component-api-style": ["error", ["script-setup", "composition"]],
+		"vue/component-name-in-template-casing": [
+			"error",
+			"PascalCase",
+			{
+				"registeredComponentsOnly": true,
+				"ignores": []
+			}
+		],
+		"vue/component-options-name-casing": ["error", "PascalCase"],
 		"vue/component-tags-order": ["error", { "order": ["script", "template", "style"] }],
+		"vue/custom-event-name-casing": ["error", "camelCase"],
+		"vue/define-emits-declaration": ["error", "type-based"],
+		"vue/define-macros-order": [
+			"error",
+			{ "order": ["defineOptions", "defineProps", "defineEmits", "defineSlots"] }
+		],
+		"vue/define-props-declaration": ["error", "type-based"],
 		"vue/html-button-has-type": "error",
+		"vue/html-comment-content-spacing": ["error", "always"],
 		"vue/no-required-prop-with-default": "error",
+		"vue/no-unused-properties": ["error", { "groups": ["setup"] }],
+		"vue/no-unused-refs": "error",
+		"vue/padding-line-between-blocks": "error",
+		"vue/require-prop-comment": ["warn", { "type": "JSDoc" }],
+		"vue/require-macro-variable-name": [
+			"error",
+			{
+				"defineProps": "props",
+				"defineEmits": "emit",
+				"defineSlots": "slots",
+				"useSlots": "slots",
+				"useAttrs": "attrs"
+			}
+		],
 
 		// Disabled rules
-		"vue/no-multiple-template-root": "off"
-	}
+		"no-unused-vars": "off"
+	},
+	"overrides": [
+		{
+			"files": ["*.spec.ts", "src/test/**/*.ts"],
+			"rules": {
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/no-empty-function": "off",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+				"@typescript-eslint/no-non-null-assertion": "off",
+				"@typescript-eslint/no-unsafe-argument": "off",
+				"@typescript-eslint/no-unsafe-assignment": "off",
+				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/no-unsafe-member-access": "off",
+				"@typescript-eslint/no-unsafe-return": "off"
+			}
+		},
+		{
+			"files": [
+				// These pages are not used directly by users so they can have one-word names.
+				"**/pages/**/*.{js,ts,jsx,tsx,vue}",
+				"**/layouts/**/*.{js,ts,jsx,tsx,vue}",
+				"**/app.{js,ts,jsx,tsx,vue}",
+				"**/error.{js,ts,jsx,tsx,vue}"
+			],
+			"rules": { "vue/multi-word-component-names": "off" }
+		},
+		{
+			// Pages and layouts are required to have a single root element if transitions are enabled.
+			"files": ["**/pages/**/*.{js,ts,jsx,tsx,vue}", "**/layouts/**/*.{js,ts,jsx,tsx,vue}"],
+			"rules": { "vue/no-multiple-template-root": "error" }
+		}
+	]
 }

@@ -53,14 +53,14 @@ export function useSentenceQuiz(text: Text): ReturnType {
 		return 'correct'
 	})
 
-	function selectWord(word: WordInfo) {
+	function selectWord(word: WordInfo): void {
 		if (!wordSet.value.has(word)) return
 
 		wordSet.value.delete(word)
 		selectedWordSet.value.add(word)
 	}
 
-	function deselectWord(word: WordInfo) {
+	function deselectWord(word: WordInfo): void {
 		if (!selectedWordSet.value.has(word)) return
 
 		selectedWordSet.value.delete(word)

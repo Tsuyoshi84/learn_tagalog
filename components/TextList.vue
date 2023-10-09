@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
+	/** Text that is used as a search word */
 	searchText: string
 }>()
 

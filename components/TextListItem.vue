@@ -4,7 +4,9 @@ import type { Text } from '~/database.types'
 type FetchedText = Pick<Text, 'id' | 'en' | 'tl'>
 
 const { text, highLightWords = [] } = defineProps<{
+	/** Fetched text */
 	text: FetchedText
+	/** Words should be high-lighted */
 	highLightWords?: string[]
 }>()
 

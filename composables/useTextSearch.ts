@@ -3,7 +3,7 @@ import type { Text } from '~/database.types'
 
 type FetchedText = Pick<Text, 'id' | 'en' | 'tl'>
 
-interface ReturnType {
+type ReturnType = {
 	loading: Ref<boolean>
 	texts: Ref<FetchedText[]>
 	searchWords: Ref<string[]>

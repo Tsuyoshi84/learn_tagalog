@@ -1,41 +1,43 @@
 {
-	"name": "nuxt-app",
-	"devDependencies": {
-		"@nuxt/devtools": "latest",
-		"@nuxtjs/eslint-config-typescript": "^12.1.0",
-		"@nuxtjs/google-fonts": "^3.0.2",
-		"@nuxtjs/supabase": "^1.1.2",
-		"@vueuse/core": "^10.4.1",
-		"@vueuse/nuxt": "^10.4.1",
-		"bun-types": "^1.0.5-canary.20231006T140143",
-		"eslint": "^8.50.0",
-		"eslint-config-prettier": "^9.0.0",
-		"nuxt": "^3.7.4",
-		"postcss-html": "^1.5.0",
-		"prettier": "^3.0.3",
-		"stylelint": "^15.10.3",
-		"stylelint-config-recommended-vue": "^1.5.0",
-		"stylelint-config-standard": "^34.0.0",
-		"stylelint-use-logical-spec": "^5.0.0",
-		"typescript": "^5.2.2",
-		"vue": "^3.3.4",
-		"vue-router": "^4.2.5"
-	},
-	"engines": {
-		"pnpm": "please-use-bun",
-		"yarn": "please-use-bun"
-	},
-	"private": true,
-	"scripts": {
-		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare",
-		"lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
-		"lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
-		"format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,vue,css,json}\"",
-		"typecheck": "nuxi typecheck"
-	},
-	"type": "module"
+  "name": "nuxt-app",
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/supabase": "^1.1.2",
+    "@vueuse/core": "^10.4.1",
+    "@vueuse/nuxt": "^10.4.1",
+    "bun-types": "^1.0.5-canary.20231006T140143",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jsdoc": "^46.8.2",
+    "nuxt": "^3.7.4",
+    "postcss-html": "^1.5.0",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-use-logical-spec": "^5.0.0",
+    "typescript": "^5.2.2",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
+  },
+  "engines": {
+    "pnpm": "please-use-bun",
+    "yarn": "please-use-bun"
+  },
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+    "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,vue,css,json}\"",
+    "typecheck": "nuxi typecheck"
+  },
+  "type": "module"
 }
