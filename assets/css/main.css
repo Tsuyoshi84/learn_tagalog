@@ -28,6 +28,18 @@
 	initial-value: oklch(0.94 0.02 107.92);
 }
 
+@property --bg-color-accent {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: oklch(0.94 0.02 107.92);
+}
+
+@property --bg-color-sub {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: oklch(0.94 0.02 107.92);
+}
+
 :root {
 	--font-family-main: 'Gabarito', cursive;
 	--font-family-sub: 'Roboto', sans-serif;
@@ -38,6 +50,8 @@
 		--font-color-accent-sub: oklch(0.68 0.31 24.34);
 		--font-color-subtle: oklch(0.73 0 0);
 		--bg-color-main: oklch(0.25 0 0);
+		--bg-color-accent: oklch(0.53 0.23 275.35);
+		--bg-color-accent-sub: oklch(0.54 0 0);
 	}
 }
 

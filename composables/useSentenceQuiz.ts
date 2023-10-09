@@ -35,8 +35,8 @@ export function useSentenceQuiz(text: Text): ReturnType {
 	const english = text.en
 	const correctWords = shuffle(makeWords(text.tl))
 
-	const wordSet = shallowRef(new Set(correctWords))
-	const selectedWordSet = shallowRef(new Set<WordInfo>())
+	const wordSet = ref(new Set(correctWords))
+	const selectedWordSet = ref(new Set<WordInfo>())
 
 	const words = computed(() => Array.from(wordSet.value))
 	const selectedWords = computed(() => Array.from(selectedWordSet.value))

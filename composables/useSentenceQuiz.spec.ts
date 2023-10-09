@@ -28,7 +28,7 @@ describe('useSentenceQuiz', () => {
 		expect(status.value).toBe('selecting')
 	})
 
-	it('should select a word', () => {
+	it('should store selected words after selecting', () => {
 		const { selectWord, words, selectedWords, status } = useSentenceQuiz(text)
 		const word1 = words.value[0]!
 		const word2 = words.value[2]!
@@ -40,7 +40,7 @@ describe('useSentenceQuiz', () => {
 		expect(status.value).toBe('selecting')
 	})
 
-	it('should deselect a word', () => {
+	it('should lose selected words after deselecting', () => {
 		const { selectWord, deselectWord, words, selectedWords, status } = useSentenceQuiz(text)
 		const word1 = words.value[0]!
 		const word2 = words.value[2]!
