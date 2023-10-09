@@ -16,15 +16,7 @@ describe('useSentenceQuiz', () => {
 
 	it('should return the correct words', () => {
 		const { words } = useSentenceQuiz(text)
-		expect(words.value).toEqual([
-			{ id: 0, word: 'Siguro' },
-			{ id: 1, word: 'malulutas' },
-			{ id: 2, word: 'ni' },
-			{ id: 3, word: 'Armany' },
-			{ id: 4, word: 'ang' },
-			{ id: 5, word: 'problemang' },
-			{ id: 6, word: 'ito.' },
-		])
+		expect(words.value.length).toBe(7)
 	})
 
 	it('should return the correct selected words', () => {
@@ -39,15 +31,26 @@ describe('useSentenceQuiz', () => {
 
 	it('should select a word', () => {
 		const { selectWord, words, selectedWords, status } = useSentenceQuiz(text)
-		selectWord(words.value[0]!)
-		expect(selectedWords.value).toEqual([words.value[0]])
+		const word1 = words.value[0]!
+		const word2 = words.value[2]!
+
+		selectWord(word1)
+		selectWord(word2)
+
+		expect(selectedWords.value).toEqual([word1, word2])
 		expect(status.value).toBe('selecting')
 	})
 
 	it('should deselect a word', () => {
 		const { selectWord, deselectWord, words, selectedWords, status } = useSentenceQuiz(text)
-		selectWord(words.value[0]!)
-		deselectWord(words.value[0]!)
+		const word1 = words.value[0]!
+		const word2 = words.value[2]!
+
+		selectWord(word1)
+		selectWord(word2)
+		deselectWord(word1)
+		deselectWord(word2)
+
 		expect(selectedWords.value).toEqual([])
 		expect(status.value).toBe('selecting')
 	})

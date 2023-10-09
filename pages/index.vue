@@ -3,12 +3,10 @@ const text = {
 	id: '1',
 	en: 'Perhaps Armany can solve this problem.',
 	tl: 'Siguro malulutas ni Armany ang problemang ito.',
+	youtube_id: '1',
 }
-
-const highLightWords = ['ni', 'problemang']
 </script>
 
 <template>
-	<p style="font-size: 2rem">Hello</p>
-	<TextListItem :text="text" :high-light-words="highLightWords" />
+	<SentenceQuiz :text="text" />
 </template>

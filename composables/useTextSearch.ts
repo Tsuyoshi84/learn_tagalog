@@ -10,9 +10,9 @@ interface ReturnType {
 }
 
 export function useTextSearch(searchText: MaybeRefOrGetter<string>): ReturnType {
-	const loading = ref(false)
-	const texts = ref<FetchedText[]>([])
-	const searchWords = ref<string[]>([])
+	const loading = shallowRef(false)
+	const texts = shallowRef<FetchedText[]>([])
+	const searchWords = shallowRef<string[]>([])
 
 	const _searchWords = computed(() => {
 		return toValue(searchText)

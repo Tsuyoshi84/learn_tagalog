@@ -1,5 +1,6 @@
-import { computed } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { Text } from '~/database.types'
+import { shuffle } from '~/utils/shuffle'
 
 type WordInfo = {
 	id: number
@@ -17,9 +18,16 @@ type ReturnType = {
 	deselectWord: (word: WordInfo) => void
 }
 
+const END_WITH_PUNCTUATION_REGEX = /[.?!]$/
+
 function makeWords(text: string): WordInfo[] {
-	return text
-		.trim()
+	let normalizedText = text.trim()
+
+	if (END_WITH_PUNCTUATION_REGEX.test(normalizedText)) {
+		normalizedText = normalizedText.slice(0, -1)
+	}
+
+	return normalizedText
 		.split(' ')
 		.filter((word) => word.length > 0)
 		.map((word, index) => ({ id: index, word }))
@@ -27,16 +35,16 @@ function makeWords(text: string): WordInfo[] {
 
 export function useSentenceQuiz(text: Text): ReturnType {
 	const english = text.en
-	const correctWords = makeWords(text.tl)
+	const correctWords = shuffle(makeWords(text.tl))
 
-	const wordSet = new Set(correctWords)
-	const selectedWordSet = new Set<WordInfo>()
+	const wordSet = shallowRef(new Set(correctWords))
+	const selectedWordSet = shallowRef(new Set<WordInfo>())
 
-	const words = computed(() => Array.from(wordSet))
-	const selectedWords = computed(() => Array.from(selectedWordSet))
+	const words = computed(() => Array.from(wordSet.value))
+	const selectedWords = computed(() => Array.from(selectedWordSet.value))
 
 	const status = computed(() => {
-		if (wordSet.size > 0) return 'selecting'
+		if (wordSet.value.size > 0) return 'selecting'
 
 		for (let i = 0; i < correctWords.length; i++) {
 			if (correctWords[i]?.word !== selectedWords.value[i]?.word) return 'incorrect'
@@ -46,17 +54,17 @@ export function useSentenceQuiz(text: Text): ReturnType {
 	})
 
 	function selectWord(word: WordInfo) {
-		if (!wordSet.has(word)) return
+		if (!wordSet.value.has(word)) return
 
-		wordSet.delete(word)
-		selectedWordSet.add(word)
+		wordSet.value.delete(word)
+		selectedWordSet.value.add(word)
 	}
 
 	function deselectWord(word: WordInfo) {
-		if (!selectedWordSet.has(word)) return
+		if (!selectedWordSet.value.has(word)) return
 
-		selectedWordSet.delete(word)
-		wordSet.add(word)
+		selectedWordSet.value.delete(word)
+		wordSet.value.add(word)
 	}
 
 	return {

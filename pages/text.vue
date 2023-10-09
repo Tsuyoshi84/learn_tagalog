@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const searchText = ref('')
+const searchText = shallowRef('')
 </script>
 
 <template>
