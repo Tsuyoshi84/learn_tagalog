@@ -5,6 +5,7 @@
 		"plugin:@typescript-eslint/stylistic-type-checked",
 		"plugin:eslint-comments/recommended",
 		"plugin:vue/vue3-recommended",
+		"plugin:vitest/recommended",
 		"prettier"
 	],
 	"plugins": ["jsdoc"],
@@ -40,6 +41,10 @@
 		],
 		"@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
 		"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
+		// vitest
+		"vitest/no-conditional-in-test": "error",
+		"vitest/consistent-test-it": ["error", { "fn": "it" }],
 
 		// vue plugin
 		"vue/component-api-style": ["error", ["script-setup", "composition"]],

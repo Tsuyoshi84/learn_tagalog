@@ -18,6 +18,6 @@
 		"noUnusedParameters": true,
 		"strict": true,
 		"useUnknownInCatchVariables": true,
-		"types": ["bun-types"]
+		"types": ["vitest/globals"]
 	}
 }

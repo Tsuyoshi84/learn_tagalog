@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'bun:test'
 import { useSentenceQuiz } from './useSentenceQuiz'
 
 describe('useSentenceQuiz', () => {

@@ -1,6 +1,4 @@
-import { computed, shallowRef } from 'vue'
 import { Text } from '~/database.types'
-import { shuffle } from '~/utils/shuffle'
 
 type WordInfo = {
 	id: number
