@@ -40,19 +40,18 @@ const { english, words, selectedWords, selectWord, deselectWord } = useSentenceQ
 </template>
 
 <style scoped>
-.container {
-}
-
 .word-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	font-size: 2rem;
-	padding: 0.4rem 0.5rem;
+	padding-block: 0.4rem;
+	padding-inline: 0.5rem;
 }
 
 .word {
-	padding: 0.4rem 0.5rem;
+	padding-block: 0.4rem;
+	padding-inline: 0.5rem;
 	border: 1px solid var(--color-primary);
 	border-radius: 1rem;
 	cursor: pointer;
