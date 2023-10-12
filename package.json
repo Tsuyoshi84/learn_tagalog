@@ -39,7 +39,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
-    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+    "lint": "eslint ./src/**/*.{ts,vue}",
     "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
     "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,vue,css,json}\"",
     "typecheck": "nuxi typecheck"

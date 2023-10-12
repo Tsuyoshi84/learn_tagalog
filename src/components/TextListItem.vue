@@ -43,7 +43,6 @@ const styledText = computed<string>(() => {
 
 <template>
 	<div class="container">
-		<!-- eslint-disable-next-line vue/no-v-html -->
 		<div class="tl" v-html="styledText" />
 		<div class="en">
 			{{ text.en }}
