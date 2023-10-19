@@ -18,5 +18,20 @@
 	"eslint.experimental.useFlatConfig": true,
 	"editor.formatOnSave": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"files.autoSave": "onFocusChange"
+	"files.autoSave": "onFocusChange",
+	"nuxtr.vueFiles.firstTag": "script",
+	"nuxtr.vueFiles.pages.defaultTemplate": "default.page-template",
+	"nuxtr.vueFiles.layouts.defaultTemplate": "default.layout-template",
+	"nuxtr.vueFiles.script.type": "setup",
+	"nuxtr.vueFiles.script.defaultLanguage": "ts",
+	"nuxtr.vueFiles.style.addStyleTag": true,
+	"nuxtr.vueFiles.style.alwaysScoped": true,
+	"nuxtr.vueFiles.style.defaultLanguage": "css",
+	"nuxtr.piniaFiles.defaultTemplate": "setup",
+	"nuxtr.openItemsAfterCreation": true,
+	"nuxtr.defaultPackageManager": "Bun",
+	"nuxtr.intellisense.nuxtrc": true,
+	"nuxtr.intellisense.vueFiles": true,
+	"nuxtr.intellisense.nuxtignore": true,
+	"nuxtr.snippets.nuxt": true
 }
