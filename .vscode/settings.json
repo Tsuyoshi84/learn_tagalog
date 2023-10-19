@@ -11,14 +11,29 @@
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"cSpell.words": ["nuxi", "Nuxt", "nuxtjs", "stylelint", "supabase", "typecheck", "vueuse"],
+	"cSpell.words": [
+		"nuxi",
+		"Nuxt",
+		"nuxtjs",
+		"stylelint",
+		"supabase",
+		"tailwindcss",
+		"typecheck",
+		"vueuse"
+	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
 	},
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
 	"eslint.experimental.useFlatConfig": true,
 	"editor.formatOnSave": true,
-	"typescript.tsdk": "node_modules/typescript/lib",
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
 	"files.autoSave": "onFocusChange",
+
 	"nuxtr.vueFiles.firstTag": "script",
 	"nuxtr.vueFiles.pages.defaultTemplate": "default.page-template",
 	"nuxtr.vueFiles.layouts.defaultTemplate": "default.layout-template",
@@ -33,5 +48,9 @@
 	"nuxtr.intellisense.nuxtrc": true,
 	"nuxtr.intellisense.vueFiles": true,
 	"nuxtr.intellisense.nuxtignore": true,
-	"nuxtr.snippets.nuxt": true
+	"nuxtr.snippets.nuxt": true,
+
+	"tailwindCSS.emmetCompletions": true,
+
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

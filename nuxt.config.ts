@@ -14,7 +14,13 @@ export default defineNuxtConfig({
 	},
 	css: ['~/assets/css/reset.css', '~/assets/css/main.css'],
 	devtools: { enabled: true },
-	modules: ['@nuxtjs/google-fonts', '@nuxtjs/supabase', '@vueuse/nuxt', 'nuxt-vitest'],
+	modules: [
+		'@nuxtjs/google-fonts',
+		'@nuxtjs/supabase',
+		'@nuxtjs/tailwindcss',
+		'@vueuse/nuxt',
+		'nuxt-vitest',
+	],
 	googleFonts: {
 		families: {
 			Roboto: {

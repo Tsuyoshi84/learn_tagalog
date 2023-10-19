@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"antfu.goto-alias",
+		"bradlc.vscode-tailwindcss",
 		"christian-kohler.path-intellisense",
 		"esbenp.prettier-vscode",
 		"formulahendry.auto-rename-tag",
