@@ -11,6 +11,7 @@
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+
 	"cSpell.words": [
 		"nuxi",
 		"Nuxt",
@@ -21,17 +22,14 @@
 		"typecheck",
 		"vueuse"
 	],
-	"editor.codeActionsOnSave": {
-		"source.fixAll": true
-	},
-	"editor.quickSuggestions": {
-		"strings": "on"
-	},
-	"eslint.experimental.useFlatConfig": true,
+
+	"editor.codeActionsOnSave": { "source.fixAll": true },
 	"editor.formatOnSave": true,
-	"files.associations": {
-		"*.css": "tailwindcss"
-	},
+	"editor.quickSuggestions": { "strings": "on" },
+
+	"eslint.experimental.useFlatConfig": true,
+
+	"files.associations": { "*.css": "tailwindcss" },
 	"files.autoSave": "onFocusChange",
 
 	"nuxtr.vueFiles.firstTag": "script",
@@ -52,5 +50,6 @@
 
 	"tailwindCSS.emmetCompletions": true,
 
+	"typescript.preferGoToSourceDefinition": true,
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
