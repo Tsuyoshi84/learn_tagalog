@@ -47,6 +47,7 @@ export default [
 			],
 			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
 			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+			'@typescript-eslint/strict-boolean-expressions': 'error',
 
 			// Disabled rules
 			'no-undef': 'off',
