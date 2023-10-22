@@ -43,16 +43,17 @@ const styledText = computed<string>(() => {
 
 <template>
 	<div class="flex flex-col items-center justify-center gap-4">
-		<div class="text-4xl font-medium text-center font-main text-primary text-balance" v-html="styledText" />
-		<div class="font-sans text-2xl italic text-center text-accent text-balance">
+		<div
+			class="font-main text-primary text-balance text-center text-4xl font-medium"
+			v-html="styledText"
+		/>
+		<div class="text-accent text-balance text-center font-sans text-2xl italic">
 			{{ text.en }}
 		</div>
 	</div>
 </template>
 
 <style scoped>
-
-
 :deep(.high-light) {
 	font-weight: 700;
 	color: var(--font-color-accent-sub);
