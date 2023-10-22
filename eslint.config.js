@@ -2,6 +2,7 @@ import tsParser from '@typescript-eslint/parser'
 import vueParser from 'vue-eslint-parser'
 import jsdoc from 'eslint-plugin-jsdoc'
 import vue from 'eslint-plugin-vue'
+import unicorn from 'eslint-plugin-unicorn'
 import vitest from 'eslint-plugin-vitest'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import ts from '@typescript-eslint/eslint-plugin'
@@ -14,6 +15,7 @@ export default [
 		plugins: {
 			'@typescript-eslint': ts,
 			jsdoc,
+			unicorn,
 		},
 		languageOptions: {
 			parser: tsParser,
@@ -41,13 +43,31 @@ export default [
 			'jsdoc/check-values': 'error',
 
 			// @typescript-eslint plugin
+			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
 			'@typescript-eslint/explicit-function-return-type': [
 				'error',
 				{ allowExpressions: true, allowTypedFunctionExpressions: true },
 			],
 			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 			'@typescript-eslint/strict-boolean-expressions': 'error',
+
+			// unicorn plugin
+			'unicorn/better-regex': 'error',
+			'unicorn/catch-error-name': 'error',
+			'unicorn/explicit-length-check': 'error',
+			'unicorn/no-null': 'warn',
+			'unicorn/prefer-array-flat-map': 'error',
+			'unicorn/prefer-array-index-of': 'error',
+			'unicorn/prefer-array-some': 'error',
+			'unicorn/prefer-number-properties': 'error',
+			'unicorn/prefer-optional-catch-binding': 'error',
+			'unicorn/prefer-set-has': 'error',
+			'unicorn/prefer-switch': 'error',
+			'unicorn/prefer-ternary': 'error',
+			'unicorn/no-object-as-default-parameter': 'warn',
+			'unicorn/no-useless-promise-resolve-reject': 'error',
+			'unicorn/no-useless-spread': 'error',
 
 			// Disabled rules
 			'no-undef': 'off',
@@ -120,6 +140,27 @@ export default [
 					useAttrs: 'attrs',
 				},
 			],
+
+			'vue/multi-word-component-names': 0,
+			'vue/html-indent': ['error', 'tab'],
+			'vue/script-indent': ['error', 'tab', { baseIndent: 0 }],
+			'vue/keyword-spacing': ['error', { before: true, after: true }],
+			'vue/object-curly-spacing': ['error', 'always'],
+			'vue/key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'strict' }],
+			'vue/arrow-spacing': ['error', { before: true, after: true }],
+			'vue/array-bracket-spacing': ['error', 'never'],
+			'vue/block-spacing': ['error', 'always'],
+			'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+			'vue/space-infix-ops': ['error', { int32Hint: false }],
+			'vue/max-attributes-per-line': [
+				'error',
+				{
+					singleline: {
+						max: 5,
+					},
+				},
+			],
+			'vue/padding-line-between-blocks': ['error', 'always'],
 
 			// Disabled rules
 			'vue/no-v-html': 'off',
