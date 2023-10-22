@@ -37,7 +37,7 @@ export default defineNuxtConfig({
 		redirect: false,
 	},
 	tailwindcss: {
-		configPath: '~/tailwind.config.js',
+		configPath: '~/tailwind.config.ts',
 	},
 	vite: {
 		vue: {
