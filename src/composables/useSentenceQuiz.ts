@@ -1,4 +1,4 @@
-import { Text } from '~/database.types'
+import { type Text } from '~/database.types'
 
 type WordInfo = {
 	id: number
@@ -16,7 +16,7 @@ type ReturnType = {
 	deselectWord: (word: WordInfo) => void
 }
 
-const END_WITH_PUNCTUATION_REGEX = /[.?!]$/
+const END_WITH_PUNCTUATION_REGEX = /[!.?]$/
 
 function makeWords(text: string): WordInfo[] {
 	let normalizedText = text.trim()

@@ -1,4 +1,4 @@
-import { Database } from '~/database-generated.types'
+import type { Database } from '~/database-generated.types'
 import type { Text } from '~/database.types'
 
 type FetchedText = Pick<Text, 'id' | 'en' | 'tl'>
@@ -14,15 +14,15 @@ export function useTextSearch(searchText: MaybeRefOrGetter<string>): ReturnType 
 	const texts = shallowRef<FetchedText[]>([])
 	const searchWords = shallowRef<string[]>([])
 
-	const _searchWords = computed(() => {
+	const _searchWords = computed<string[]>(() => {
 		return toValue(searchText)
 			.trim()
 			.split(' ')
 			.filter((word) => word !== '')
 	})
 
-	const searchQuery = computed(() => {
-		if (_searchWords.value.length === 0) return null
+	const searchQuery = computed<string | undefined>(() => {
+		if (_searchWords.value.length === 0) return undefined
 
 		return _searchWords.value.map((word) => `${word}`).join(' & ')
 	})
@@ -31,15 +31,14 @@ export function useTextSearch(searchText: MaybeRefOrGetter<string>): ReturnType 
 
 	watchDebounced(
 		searchQuery,
-		async (searchQuery) => {
+		async () => {
 			if (loading.value) return
-
 			loading.value = true
 
 			let query = supabase.from('texts').select('id, en, tl')
 
-			if (searchQuery !== null) {
-				query = query.textSearch('tl', searchQuery, {
+			if (searchQuery.value !== undefined) {
+				query = query.textSearch('tl', searchQuery.value, {
 					type: 'websearch',
 				})
 			}
