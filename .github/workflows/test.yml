@@ -28,7 +28,10 @@ jobs:
       - name: Style Lint
         run: bun lint:style
 
-      - name: TypeCheck
+      - name: Format Check
+        run: bun format:check 
+
+      - name: Type Check
         run: bun typecheck
 
       - name: Test
