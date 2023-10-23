@@ -14,7 +14,7 @@ function highLight(word: string): string {
 	const match = word.match(/^(.*?)([,.!?])?$/)
 	const [, wordWithoutPunctuation = word, punctuation = ''] = match ?? []
 
-	return `<span class="high-light">${wordWithoutPunctuation}</span>${punctuation}`
+	return `<span class="font-bold text-accent-2">${wordWithoutPunctuation}</span>${punctuation}`
 }
 
 function sanitize(text: string): string {
@@ -52,10 +52,3 @@ const styledText = computed<string>(() => {
 		</div>
 	</div>
 </template>
-
-<style scoped>
-:deep(.high-light) {
-	font-weight: 700;
-	color: var(--font-color-accent-sub);
-}
-</style>
