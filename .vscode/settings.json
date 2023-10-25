@@ -14,8 +14,9 @@
 
 	"cSpell.words": [
 		"nuxi",
-		"Nuxt",
+		"nuxt",
 		"nuxtjs",
+		"pinia",
 		"stylelint",
 		"supabase",
 		"tailwindcss",
@@ -28,6 +29,16 @@
 	"editor.quickSuggestions": { "strings": "on" },
 
 	"eslint.experimental.useFlatConfig": true,
+
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.fileNesting.patterns": {
+		"*.js": "$(capture).js.map, $(capture).*.js, $(capture)_*.js",
+		"*.jsx": "$(capture).js, $(capture).*.jsx, $(capture)_*.js, $(capture)_*.jsx",
+		"*.ts": "$(capture).js, $(capture).d.ts.map, $(capture).*.ts, $(capture)_*.js, $(capture)_*.ts",
+		"*.tsx": "$(capture).ts, $(capture).*.tsx, $(capture)_*.ts, $(capture)_*.tsx",
+		"*.vue": "$(capture).*.ts, $(capture).*.js, $(capture).story.vue"
+	},
 
 	"files.associations": { "*.css": "tailwindcss" },
 	"files.autoSave": "onFocusChange",
@@ -51,5 +62,9 @@
 	"tailwindCSS.emmetCompletions": true,
 
 	"typescript.preferGoToSourceDefinition": true,
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+
+	"vue.inlayHints.inlineHandlerLeading": true,
+	"vue.inlayHints.missingProps": true,
+	"vue.inlayHints.optionsWrapper": true
 }
