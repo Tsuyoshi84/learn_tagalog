@@ -28,6 +28,8 @@ export default [
 			...ts.configs['recommended-requiring-type-checking'].rules,
 			...ts.configs['stylistic-type-checked'].rules,
 
+			'func-style': ['error', 'declaration'],
+			'no-irregular-whitespace': ['error', { skipRegExps: true }],
 			'padding-line-between-statements': [
 				'warn',
 				{ blankLine: 'always', prev: 'import', next: '*' },
