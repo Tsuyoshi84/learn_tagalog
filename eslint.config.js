@@ -127,10 +127,16 @@ export default [
 			'vue/define-props-declaration': ['error', 'type-based'],
 			'vue/html-button-has-type': 'error',
 			'vue/html-comment-content-spacing': ['error', 'always'],
+			'vue/no-boolean-default': 'error',
 			'vue/no-required-prop-with-default': 'error',
 			'vue/no-unused-properties': ['error', { groups: ['setup'] }],
 			'vue/no-unused-refs': 'error',
+			'vue/no-useless-mustaches': [
+				'error',
+				{ ignoreIncludesComment: true, ignoreStringEscape: true },
+			],
 			'vue/padding-line-between-blocks': 'error',
+			'vue/prefer-true-attribute-shorthand': 'error',
 			'vue/require-prop-comment': ['warn', { type: 'JSDoc' }],
 			'vue/require-macro-variable-name': [
 				'error',
@@ -142,27 +148,6 @@ export default [
 					useAttrs: 'attrs',
 				},
 			],
-
-			'vue/multi-word-component-names': 0,
-			'vue/html-indent': ['error', 'tab'],
-			'vue/script-indent': ['error', 'tab', { baseIndent: 0 }],
-			'vue/keyword-spacing': ['error', { before: true, after: true }],
-			'vue/object-curly-spacing': ['error', 'always'],
-			'vue/key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'strict' }],
-			'vue/arrow-spacing': ['error', { before: true, after: true }],
-			'vue/array-bracket-spacing': ['error', 'never'],
-			'vue/block-spacing': ['error', 'always'],
-			'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-			'vue/space-infix-ops': ['error', { int32Hint: false }],
-			'vue/max-attributes-per-line': [
-				'error',
-				{
-					singleline: {
-						max: 5,
-					},
-				},
-			],
-			'vue/padding-line-between-blocks': ['error', 'always'],
 
 			// Disabled rules
 			'vue/no-v-html': 'off',
