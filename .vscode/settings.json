@@ -48,7 +48,7 @@
 	"nuxtr.vueFiles.layouts.defaultTemplate": "default.layout-template",
 	"nuxtr.vueFiles.script.type": "setup",
 	"nuxtr.vueFiles.script.defaultLanguage": "ts",
-	"nuxtr.vueFiles.style.addStyleTag": true,
+	"nuxtr.vueFiles.style.addStyleTag": false,
 	"nuxtr.vueFiles.style.alwaysScoped": true,
 	"nuxtr.vueFiles.style.defaultLanguage": "css",
 	"nuxtr.piniaFiles.defaultTemplate": "setup",
