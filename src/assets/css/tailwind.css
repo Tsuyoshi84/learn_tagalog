@@ -1,3 +1,10 @@
 @tailwind base;
+
+@layer base {
+	body {
+		@apply font-main;
+	}
+}
+
 @tailwind components;
 @tailwind utilities;
