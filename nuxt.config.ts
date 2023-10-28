@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 			],
 		},
 	},
-	css: ['~/assets/css/reset.css', '~/assets/css/main.css'],
+	css: [],
 	devtools: { enabled: true },
 	modules: [
 		'@nuxtjs/google-fonts',
