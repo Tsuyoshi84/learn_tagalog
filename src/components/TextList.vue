@@ -8,7 +8,7 @@ const { texts, searchWords } = useTextSearch(() => props.searchText)
 </script>
 
 <template>
-	<div class="wrapper">
+	<div class="flex flex-col items-center gap-8">
 		<TextListItem
 			v-for="text in texts"
 			:key="text.id"
@@ -17,12 +17,3 @@ const { texts, searchWords } = useTextSearch(() => props.searchText)
 		/>
 	</div>
 </template>
-
-<style scoped>
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2rem;
-}
-</style>

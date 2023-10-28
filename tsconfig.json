@@ -4,7 +4,7 @@
 	"compilerOptions": {
 		"allowUnreachableCode": false,
 		"allowSyntheticDefaultImports": true,
-		"exactOptionalPropertyTypes": false,
+		"exactOptionalPropertyTypes": true,
 		"forceConsistentCasingInFileNames": true,
 		"noErrorTruncation": true,
 		"noFallthroughCasesInSwitch": false,

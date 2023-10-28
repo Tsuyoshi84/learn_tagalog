@@ -14,7 +14,7 @@ function highLight(word: string): string {
 	const match = word.match(/^(.*?)([,.!?])?$/)
 	const [, wordWithoutPunctuation = word, punctuation = ''] = match ?? []
 
-	return `<span class="high-light">${wordWithoutPunctuation}</span>${punctuation}`
+	return `<span class="font-bold text-accent-2">${wordWithoutPunctuation}</span>${punctuation}`
 }
 
 function sanitize(text: string): string {
@@ -42,43 +42,13 @@ const styledText = computed<string>(() => {
 </script>
 
 <template>
-	<div class="container">
-		<div class="tl" v-html="styledText" />
-		<div class="en">
+	<div class="flex flex-col items-center justify-center gap-4">
+		<div
+			class="font-main text-primary text-balance text-center text-4xl font-medium"
+			v-html="styledText"
+		/>
+		<div class="text-accent text-balance text-center font-sans text-2xl italic">
 			{{ text.en }}
 		</div>
 	</div>
 </template>
-
-<style scoped>
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-}
-
-.tl {
-	font-family: var(--font-family-main);
-	color: var(--font-color-accent);
-	font-size: 2rem;
-	font-weight: 500;
-	text-wrap: balance;
-	text-align: center;
-}
-
-.en {
-	font-family: var(--font-family-sub);
-	font-style: italic;
-	font-size: 1.5rem;
-	color: var(--font-color-subtle);
-	text-wrap: balance;
-	text-align: center;
-}
-
-:deep(.high-light) {
-	font-weight: 700;
-	color: var(--font-color-accent-sub);
-}
-</style>

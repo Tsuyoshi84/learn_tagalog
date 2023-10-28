@@ -36,6 +36,9 @@ export default defineNuxtConfig({
 	supabase: {
 		redirect: false,
 	},
+	tailwindcss: {
+		configPath: '~/tailwind.config.ts',
+	},
 	vite: {
 		vue: {
 			script: {
