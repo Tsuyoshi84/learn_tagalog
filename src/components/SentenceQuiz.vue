@@ -10,27 +10,27 @@ const { english, words, selectedWords, selectWord, deselectWord } = useSentenceQ
 </script>
 
 <template>
-	<div class="container">
-		<div class="english-sentence"> {{ english }} </div>
+	<div>
+		<div class="font-sans text-3xl italic"> {{ english }} </div>
 
-		<div class="word-container selected">
+		<div class="flex flex-wrap gap-2 px-2 py-2 text-4xl">
 			<div
 				v-for="word in selectedWords"
 				:key="word.id"
 				type="button"
-				class="word selected"
+				class="cursor-pointer rounded-xl bg-green-300 px-2 py-1 text-2xl"
 				@click="deselectWord(word)"
 			>
 				{{ word.word }}
 			</div>
 		</div>
 
-		<div class="word-container">
+		<div class="flex flex-wrap gap-2 px-2 py-2 text-4xl">
 			<div
 				v-for="word in words"
 				:key="word.id"
 				type="button"
-				class="word"
+				class="cursor-pointer rounded-xl bg-blue-200 px-2 py-1 text-2xl"
 				@click="selectWord(word)"
 			>
 				{{ word.word }}
@@ -38,39 +38,3 @@ const { english, words, selectedWords, selectWord, deselectWord } = useSentenceQ
 		</div>
 	</div>
 </template>
-
-<style scoped>
-.word-container {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	font-size: 2rem;
-	padding-block: 0.4rem;
-	padding-inline: 0.5rem;
-}
-
-.word {
-	padding-block: 0.4rem;
-	padding-inline: 0.5rem;
-	border: 1px solid var(--color-primary);
-	border-radius: 1rem;
-	cursor: pointer;
-	user-select: none;
-	line-height: 100%;
-
-	&:not(.selected) {
-		background-color: var(--bg-color-accent-sub);
-	}
-
-	&.selected {
-		background-color: var(--bg-color-accent);
-		color: var(--color-primary-text);
-	}
-}
-
-.english-sentence {
-	font-family: var(--font-family-sub);
-	font-size: 2rem;
-	font-style: italic;
-}
-</style>
