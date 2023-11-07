@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
 		'@nuxtjs/tailwindcss',
+		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'nuxt-vitest',
 	],
