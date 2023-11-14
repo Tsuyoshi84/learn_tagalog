@@ -11,7 +11,6 @@
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-
 	"cSpell.words": [
 		"nuxi",
 		"nuxt",
@@ -23,13 +22,14 @@
 		"typecheck",
 		"vueuse"
 	],
-
-	"editor.codeActionsOnSave": { "source.fixAll": true },
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
 	"editor.formatOnSave": true,
-	"editor.quickSuggestions": { "strings": "on" },
-
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
 	"eslint.experimental.useFlatConfig": true,
-
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.expand": false,
 	"explorer.fileNesting.patterns": {
@@ -39,31 +39,28 @@
 		"*.tsx": "$(capture).ts, $(capture).*.tsx, $(capture)_*.ts, $(capture)_*.tsx",
 		"*.vue": "$(capture).*.ts, $(capture).*.js, $(capture).story.vue"
 	},
-
-	"files.associations": { "*.css": "tailwindcss" },
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
 	"files.autoSave": "onFocusChange",
-
+	"nuxtr.defaultPackageManager": "Bun",
+	"nuxtr.intellisense.nuxtignore": true,
+	"nuxtr.intellisense.nuxtrc": true,
+	"nuxtr.intellisense.vueFiles": true,
+	"nuxtr.openItemsAfterCreation": true,
+	"nuxtr.piniaFiles.defaultTemplate": "setup",
+	"nuxtr.snippets.nuxt": true,
 	"nuxtr.vueFiles.firstTag": "script",
-	"nuxtr.vueFiles.pages.defaultTemplate": "default.page-template",
 	"nuxtr.vueFiles.layouts.defaultTemplate": "default.layout-template",
-	"nuxtr.vueFiles.script.type": "setup",
+	"nuxtr.vueFiles.pages.defaultTemplate": "default.page-template",
 	"nuxtr.vueFiles.script.defaultLanguage": "ts",
+	"nuxtr.vueFiles.script.type": "setup",
 	"nuxtr.vueFiles.style.addStyleTag": false,
 	"nuxtr.vueFiles.style.alwaysScoped": true,
 	"nuxtr.vueFiles.style.defaultLanguage": "css",
-	"nuxtr.piniaFiles.defaultTemplate": "setup",
-	"nuxtr.openItemsAfterCreation": true,
-	"nuxtr.defaultPackageManager": "Bun",
-	"nuxtr.intellisense.nuxtrc": true,
-	"nuxtr.intellisense.vueFiles": true,
-	"nuxtr.intellisense.nuxtignore": true,
-	"nuxtr.snippets.nuxt": true,
-
 	"tailwindCSS.emmetCompletions": true,
-
 	"typescript.preferGoToSourceDefinition": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
-
 	"vue.inlayHints.inlineHandlerLeading": true,
 	"vue.inlayHints.missingProps": true,
 	"vue.inlayHints.optionsWrapper": true
