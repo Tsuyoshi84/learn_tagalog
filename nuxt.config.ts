@@ -15,6 +15,9 @@ export default defineNuxtConfig({
 	},
 	css: [],
 	devtools: { enabled: true },
+	experimental: {
+		typedPages: true,
+	},
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
