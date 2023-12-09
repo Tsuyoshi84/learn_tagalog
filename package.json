@@ -42,7 +42,9 @@
     "postinstall": "nuxt prepare",
     "test": "vitest",
     "lint": "eslint ./src/**/*.{ts,vue}",
-    "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
+    "lint:fix": "eslint --fix ./src/**/*.{ts,vue}",
+    "lint-css": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
+    "lint-css:fix": "stylelint --fix --ignore-path .gitignore \"**/*.{css,vue}\"",
     "format": "prettier --write \"**/*.{js,ts,vue,css,json}\"",
     "format:check": "prettier --check \"**/*.{js,ts,vue,css,json}\"",
     "typecheck": "nuxi typecheck"
