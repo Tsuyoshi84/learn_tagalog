@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Text } from '~/database.types'
+import type { Text } from '~/database.types'
 
 const { text } = defineProps<{
 	/** An object that includes English and Tagalog sentences that are used for quiz  */
