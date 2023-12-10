@@ -5,7 +5,6 @@ describe('useSentenceQuiz', () => {
 		id: '1',
 		en: 'Perhaps Armany can solve this problem.',
 		tl: 'Siguro malulutas ni Armany ang problemang ito.',
-		youtube_id: '1',
 	}
 
 	it('should return the correct english', () => {
