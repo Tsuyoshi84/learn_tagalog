@@ -16,7 +16,9 @@ const translatedText = computed(() => (props.target === 'en' ? props.en : props.
 
 <template>
 	<div>
-		<div class="min-h-[4rem] text-center text-xl">{{ originalText }}</div>
+		<div class="min-h-[4rem] text-center text-xl">
+			{{ originalText }}
+		</div>
 		<div class="my-4 rounded-lg bg-gray-200 p-2 text-center text-2xl" @click="showAnswer = true">
 			<span :class="{ invisible: !showAnswer }">
 				{{ translatedText }}

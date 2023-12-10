@@ -34,11 +34,12 @@ export function useFlashCard(): ReturnType {
 	})
 
 	async function fetch(): Promise<void> {
+		if (texts.value.length > 0) return
 		if (loading.value) return
 		loading.value = true
 
 		const { data } = await supabase.from('texts').select('id, en, tl')
-		texts.value = data ?? []
+		texts.value = shuffle(data ?? [])
 
 		loading.value = false
 	}
