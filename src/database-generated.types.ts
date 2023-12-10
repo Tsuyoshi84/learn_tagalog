@@ -11,19 +11,16 @@ export type Database = {
 					en: string
 					id: string
 					tl: string
-					youtube_id: string | null
 				}
 				Insert: {
 					en: string
 					id?: string
 					tl: string
-					youtube_id?: string | null
 				}
 				Update: {
 					en?: string
 					id?: string
 					tl?: string
-					youtube_id?: string | null
 				}
 				Relationships: []
 			}
