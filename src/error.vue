@@ -1,19 +1,25 @@
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
 	/** An error object */
 	error: Object
 }>()
 
-const handleError = () => clearError({ redirect: '/' })
+function handleError() {
+	clearError({ redirect: '/' })
+}
 
-definePageMeta({
-	title: 'Not Found',
-})
+const error = useError()
 </script>
 
 <template>
-	<div class="grid place-items-center">
-		<h1>Not Found</h1>
-		<button type="button" class="btn btn-primary" @click="handleError">Go Home</button>
-	</div>
+	<NuxtLayout>
+		<div class="grid place-items-center">
+			<h1 class="text-4xl">Error</h1>
+			<p>{{ error?.message }}</p>
+			<p>It looks like something broke.</p>
+			<p>Sorry about that.</p>
+
+			<a @click="handleError">Go to top</a>
+		</div>
+	</NuxtLayout>
 </template>

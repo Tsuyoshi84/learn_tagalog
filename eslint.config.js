@@ -67,6 +67,7 @@ export default [
 			'unicorn/prefer-set-has': 'error',
 			'unicorn/prefer-switch': 'error',
 			'unicorn/prefer-ternary': 'error',
+			'unicorn/no-array-for-each': 'error',
 			'unicorn/no-object-as-default-parameter': 'warn',
 			'unicorn/no-useless-promise-resolve-reject': 'error',
 			'unicorn/no-useless-spread': 'error',
@@ -112,7 +113,7 @@ export default [
 				'error',
 				'PascalCase',
 				{
-					registeredComponentsOnly: true,
+					registeredComponentsOnly: false,
 					ignores: [],
 				},
 			],
