@@ -11,7 +11,7 @@ import js from '@eslint/js'
 export default [
 	eslintConfigPrettier,
 	{
-		files: ['src/**/*.ts'],
+		files: ['src/**/*.ts', 'src/**/*.vue'],
 		plugins: {
 			'@typescript-eslint': ts,
 			jsdoc,
@@ -20,6 +20,7 @@ export default [
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
+				extraFileExtensions: ['.vue'],
 				project: ['tsconfig.json'],
 			},
 		},
@@ -29,6 +30,7 @@ export default [
 			...ts.configs['stylistic-type-checked'].rules,
 
 			'func-style': ['error', 'declaration'],
+			'no-console': 'warn',
 			'no-irregular-whitespace': ['error', { skipRegExps: true }],
 			'padding-line-between-statements': [
 				'warn',
@@ -99,7 +101,9 @@ export default [
 					jsx: true,
 				},
 				extraFileExtensions: ['.vue'],
-				parser: tsParser,
+				parser: {
+					ts: tsParser,
+				},
 				sourceType: 'module',
 			},
 		},
