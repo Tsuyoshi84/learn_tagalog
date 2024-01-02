@@ -42,7 +42,8 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"files.autoSave": "onFocusChange",
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 500,
 	"nuxtr.defaultPackageManager": "Bun",
 	"nuxtr.intellisense.nuxtignore": true,
 	"nuxtr.intellisense.nuxtrc": true,
