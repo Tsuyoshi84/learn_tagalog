@@ -43,9 +43,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
 		'@nuxtjs/tailwindcss',
+		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
-		'nuxt-vitest',
 	],
 	googleFonts: {
 		families: {
@@ -61,6 +61,7 @@ export default defineNuxtConfig({
 	supabase: {
 		redirect: false,
 	},
+	testUtils: {},
 	tailwindcss: {
 		configPath: '~/tailwind.config.ts',
 	},
