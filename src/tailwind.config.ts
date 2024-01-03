@@ -13,6 +13,7 @@ export default {
 			colors: {},
 			backgroundColor: {
 				primary: 'oklch(1 0 0)',
+				card: '#fef08a',
 			},
 		},
 	},
