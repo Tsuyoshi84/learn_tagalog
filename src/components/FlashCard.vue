@@ -43,6 +43,7 @@ const bottomHalfStyle = computed<CSSProperties>(() => {
 <style scoped>
 .card-container {
 	perspective: 1000px;
+
 	--card-width: 100%;
 	--card-height: 20rem;
 	--card-half-height: calc(var(--card-height) / 2);
