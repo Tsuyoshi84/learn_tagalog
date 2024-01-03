@@ -10,10 +10,10 @@ export default {
 			sans: ['Roboto', ...defaultTheme.fontFamily.sans],
 		},
 		extend: {
-			colors: {
-				primary: 'oklch(0.32 0 0)',
-				accent: 'oklch(0.53 0.16 276.05)',
-				'accent-2': 'oklch(0.58 0.21 24.34)',
+			colors: {},
+			backgroundColor: {
+				primary: 'oklch(1 0 0)',
+				card: '#fef08a',
 			},
 		},
 	},

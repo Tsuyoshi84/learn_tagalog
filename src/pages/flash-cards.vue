@@ -6,18 +6,18 @@ useHead({
 })
 
 await fetch()
-const showAnswer = ref(false)
+const showAnswer = shallowRef(false)
 
 function showNext(): void {
 	showAnswer.value = false
 	next()
 }
 
-const target = ref<'tl' | 'en'>('tl')
+const target = shallowRef<'tl' | 'en'>('tl')
 function toggleTarget(): void {
 	target.value = target.value === 'tl' ? 'en' : 'tl'
 }
-const currentTarget = computed(() => (target.value === 'tl' ? 'Tagalog' : 'English'))
+const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' : 'English'))
 </script>
 
 <template>

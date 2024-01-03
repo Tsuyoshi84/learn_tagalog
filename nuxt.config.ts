@@ -14,6 +14,26 @@ export default defineNuxtConfig({
 		},
 	},
 	css: [],
+	imports: {
+		presets: [
+			{
+				from: 'vue',
+				imports: ['CSSProperties', 'WritableComputedRef'],
+				type: true,
+			},
+			{
+				from: 'vue-component-type-helpers',
+				imports: [
+					'ComponentType',
+					'ComponentProps',
+					'ComponentSlots',
+					'ComponentEmit',
+					'ComponentExposed',
+				],
+				type: true,
+			},
+		],
+	},
 	devtools: { enabled: true },
 	experimental: {
 		typedPages: true,
