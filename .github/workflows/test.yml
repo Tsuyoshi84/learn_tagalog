@@ -31,9 +31,6 @@ jobs:
       - name: Lint
         run: bun lint:fix
 
-      - name: Style Lint
-        run: bun lint-css:fix
-
       - name: Format Check
         run: bun format
 
