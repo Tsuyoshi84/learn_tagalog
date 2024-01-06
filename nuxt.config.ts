@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 	},
 	css: [],
 	imports: {
+		dirs: ['composables/*', 'utils/*'],
 		presets: [
 			{
 				from: 'vue',
