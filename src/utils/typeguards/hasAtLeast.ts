@@ -1,4 +1,4 @@
-import type { NumberRange } from "#imports"
+import type { NumberRange } from '#imports'
 
 /**
  * Checks if an array has at least a certain number of elements.
