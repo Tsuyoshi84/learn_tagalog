@@ -73,4 +73,21 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	typescript: {
+		tsConfig: {
+			compilerOptions: {
+				allowUnreachableCode: false,
+				exactOptionalPropertyTypes: true,
+				forceConsistentCasingInFileNames: true,
+				noErrorTruncation: true,
+				noFallthroughCasesInSwitch: true,
+				noImplicitOverride: true,
+				noImplicitReturns: true,
+				noPropertyAccessFromIndexSignature: true,
+				noUncheckedIndexedAccess: true,
+				noUnusedLocals: false,
+				noUnusedParameters: false,
+			},
+		},
+	},
 })
