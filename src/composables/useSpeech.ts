@@ -23,6 +23,7 @@ export function useSpeech(options: Options = {}): ReturnType {
 
 	const available = computed(() => {
 		if (process.server) return false
+		if (window.speechSynthesis === undefined) return false
 
 		return getVoices().length > 0
 	})
