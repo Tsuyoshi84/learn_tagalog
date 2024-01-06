@@ -17,6 +17,8 @@ const translatedText = computed<string>(() => (props.target === 'en' ? props.en 
 const bottomHalfStyle = computed<CSSProperties>(() => {
 	return showAnswer.value ? { transform: 'rotateX(0)' } : { transform: 'rotateX(-90deg)' }
 })
+
+const { speak } = useSpeech()
 </script>
 
 <template>
@@ -32,8 +34,9 @@ const bottomHalfStyle = computed<CSSProperties>(() => {
 			{{ originalText }}
 		</div>
 		<div
-			class="bg-card z-10 grid h-[--card-half-height] origin-top translate-y-14 items-center text-balance p-2 text-center text-2xl font-bold text-red-400 shadow-xl transition-all duration-300 ease-in-out"
+			class="bg-card pointer-events-auto z-10 grid h-[--card-half-height] origin-top translate-y-14 items-center text-balance p-2 text-center text-2xl font-bold text-red-400 shadow-xl transition-all duration-300 ease-in-out"
 			:style="bottomHalfStyle"
+			@click="speak(translatedText)"
 		>
 			<span v-show="showAnswer">{{ translatedText }}</span>
 		</div>
