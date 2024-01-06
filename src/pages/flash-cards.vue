@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-const { loading, text, fetch, next } = useFlashCard()
+const { loading, text, next } = useFlashCard()
 
 useHead({
 	title: 'Flash Cards',
 })
 
-await fetch()
 const showAnswer = shallowRef(false)
 
 function showNext(): void {
