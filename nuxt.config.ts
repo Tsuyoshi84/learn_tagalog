@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 	},
 	css: [],
 	imports: {
+		dirs: ['composables/*', 'utils/*'],
 		presets: [
 			{
 				from: 'vue',
@@ -45,6 +46,7 @@ export default defineNuxtConfig({
 		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
+		'nuxt-icon',
 	],
 	googleFonts: {
 		families: {
@@ -83,7 +85,8 @@ export default defineNuxtConfig({
 				noImplicitOverride: true,
 				noImplicitReturns: true,
 				noPropertyAccessFromIndexSignature: true,
-				noUncheckedIndexedAccess: true,
+				// TODO: Disable because of NuxtIcon bug. Enable this when NuxtIcon is fixed.
+				noUncheckedIndexedAccess: false,
 				noUnusedLocals: false,
 				noUnusedParameters: false,
 			},

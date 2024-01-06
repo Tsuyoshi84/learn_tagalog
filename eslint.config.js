@@ -52,7 +52,12 @@ export default [
 				{ allowExpressions: true, allowTypedFunctionExpressions: true },
 			],
 			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-			'@typescript-eslint/strict-boolean-expressions': 'error',
+			'@typescript-eslint/strict-boolean-expressions': [
+				'error',
+				{
+					allowNullableBoolean: true,
+				},
+			],
 
 			// unicorn plugin
 			'unicorn/better-regex': 'error',

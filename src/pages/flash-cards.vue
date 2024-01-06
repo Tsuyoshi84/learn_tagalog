@@ -25,8 +25,6 @@ const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' 
 			currentTarget
 		}}</button>
 		<FlashCard v-model:show-answer="showAnswer" :en="text.en" :tl="text.tl" :target="target" />
-		<button type="button" class="rounded-2xl bg-green-200 p-4 text-3xl" @click="showNext"
-			>Next</button
-		>
+		<FlashCardControl :tl="text.tl" :show-answer="showAnswer" @next="showNext" />
 	</div>
 </template>
