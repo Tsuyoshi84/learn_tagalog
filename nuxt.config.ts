@@ -85,7 +85,8 @@ export default defineNuxtConfig({
 				noImplicitOverride: true,
 				noImplicitReturns: true,
 				noPropertyAccessFromIndexSignature: true,
-				noUncheckedIndexedAccess: true,
+				// TODO: Disable because of NuxtIcon bug. Enable this when NuxtIcon is fixed.
+				noUncheckedIndexedAccess: false,
 				noUnusedLocals: false,
 				noUnusedParameters: false,
 			},
