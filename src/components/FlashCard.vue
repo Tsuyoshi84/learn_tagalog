@@ -21,11 +21,11 @@ const bottomHalfStyle = computed<CSSProperties>(() => {
 
 <template>
 	<div
-		class="card-container flex h-[--card-height] w-[--card-width] flex-col justify-evenly gap-0 transition-all duration-300 ease-in-out"
+		class="card-container pointer-events-none flex h-[--card-height] w-[--card-width] flex-col justify-evenly gap-0 transition-all duration-300 ease-in-out"
 		:class="{ 'translate-y-0': showAnswer, 'translate-y-[--card-quarter-height]': !showAnswer }"
 	>
 		<div
-			class="bg-card grid h-[--card-half-height] items-center text-balance border-b p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out"
+			class="bg-card pointer-events-auto grid h-[--card-half-height] items-center text-balance border-b p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out"
 			:class="{ 'border-transparent': showAnswer, 'border-gray-300': !showAnswer }"
 			@click="showAnswer = !showAnswer"
 		>

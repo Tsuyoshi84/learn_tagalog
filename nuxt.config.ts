@@ -38,7 +38,6 @@ export default defineNuxtConfig({
 	experimental: {
 		typedPages: true,
 	},
-	ignore: [import.meta.env.VITE_ENV === 'dev' ? '' : 'src/pages/__samples__/**/*'],
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
@@ -70,6 +69,23 @@ export default defineNuxtConfig({
 			script: {
 				defineModel: true,
 				propsDestructure: true,
+			},
+		},
+	},
+	typescript: {
+		tsConfig: {
+			compilerOptions: {
+				allowUnreachableCode: false,
+				exactOptionalPropertyTypes: true,
+				forceConsistentCasingInFileNames: true,
+				noErrorTruncation: true,
+				noFallthroughCasesInSwitch: true,
+				noImplicitOverride: true,
+				noImplicitReturns: true,
+				noPropertyAccessFromIndexSignature: true,
+				noUncheckedIndexedAccess: true,
+				noUnusedLocals: false,
+				noUnusedParameters: false,
 			},
 		},
 	},
