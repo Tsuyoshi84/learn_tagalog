@@ -38,7 +38,6 @@ export default defineNuxtConfig({
 	experimental: {
 		typedPages: true,
 	},
-	ignore: [import.meta.env.VITE_ENV === 'dev' ? '' : 'src/pages/__samples__/**/*'],
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
