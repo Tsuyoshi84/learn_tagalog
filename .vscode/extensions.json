@@ -1,14 +1,14 @@
 {
 	"recommendations": [
-		"antfu.goto-alias",
+		"antfu.iconify",
 		"bradlc.vscode-tailwindcss",
 		"christian-kohler.path-intellisense",
+		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
 		"formulahendry.auto-rename-tag",
-		"dbaeumer.vscode-eslint",
 		"nuxtr.nuxtr-vscode",
-		"stylelint.vscode-stylelint",
 		"streetsidesoftware.code-spell-checker",
+		"stylelint.vscode-stylelint",
 		"usernamehw.errorlens",
 		"vue.volar"
 	]
