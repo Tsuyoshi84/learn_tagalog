@@ -40,7 +40,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
-    "lint": "eslint ./src/**/*.{ts,vue}",
+    "lint": "eslint ./src/**/*.{ts,vue} && oxlint",
     "lint:fix": "eslint --fix ./src/**/*.{ts,vue}",
     "lint-css": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
     "lint-css:fix": "stylelint --fix --ignore-path .gitignore \"**/*.{css,vue}\"",
