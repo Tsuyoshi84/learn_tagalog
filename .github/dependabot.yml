@@ -1,0 +1,35 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+      day: 'sunday'
+    assignees:
+      - "Tsuyoshi84"
+    open-pull-requests-limit: 10
+    groups:
+      lint-and-format:
+        patterns:
+          - "*eslint*"
+          - "*stylelint*"
+          - "*prettier*"
+      test:
+        patterns:
+          - "*test*"
+      nuxt:
+        patterns:
+          - "*nuxt*"
+          - "*vue*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "github_actions"
+    commit-message:
+      prefix: "github-actions"
+    open-pull-requests-limit: 30
