@@ -7,6 +7,7 @@ import vitest from 'eslint-plugin-vitest'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import ts from '@typescript-eslint/eslint-plugin'
 import js from '@eslint/js'
+import oxlint from 'eslint-plugin-oxlint'
 
 export default [
 	eslintConfigPrettier,
@@ -159,4 +160,5 @@ export default [
 			'vue/no-v-html': 'off',
 		},
 	},
+	oxlint,
 ]
