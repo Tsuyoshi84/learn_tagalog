@@ -62,6 +62,7 @@
 	"nuxtr.vueFiles.style.alwaysScoped": true,
 	"nuxtr.vueFiles.style.defaultLanguage": "css",
 	"tailwindCSS.emmetCompletions": true,
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.preferGoToSourceDefinition": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"vue.inlayHints.inlineHandlerLeading": true,
