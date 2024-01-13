@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="tsx" setup>
 type Props = {
 	/** English text */
 	en: string
@@ -17,6 +17,12 @@ const translatedText = computed<string>(() => (props.target === 'en' ? props.en 
 const bottomHalfStyle = computed<CSSProperties>(() => {
 	return showAnswer.value ? { transform: 'rotateX(0)' } : { transform: 'rotateX(-90deg)' }
 })
+
+const FoldedCard = (_: unknown, { slots }: { slots: any }) => (
+	<div class="bg-card pointer-events-auto grid items-center text-balance p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out">
+		{slots.default()}
+	</div>
+)
 </script>
 
 <template>
@@ -24,19 +30,19 @@ const bottomHalfStyle = computed<CSSProperties>(() => {
 		class="card-container pointer-events-none flex h-[--card-height] w-[--card-width] flex-col justify-evenly gap-0 transition-all duration-300 ease-in-out"
 		:class="{ 'translate-y-0': showAnswer, 'translate-y-[--card-quarter-height]': !showAnswer }"
 	>
-		<div
-			class="bg-card pointer-events-auto grid h-[--card-half-height] items-center text-balance border-b p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out"
+		<FoldedCard
+			class="h-[--card-half-height] border-b"
 			:class="{ 'border-transparent': showAnswer, 'border-gray-300': !showAnswer }"
 			@click="showAnswer = !showAnswer"
 		>
 			{{ originalText }}
-		</div>
-		<div
-			class="bg-card align-center pointer-events-auto z-10 grid h-[--card-half-height] origin-top translate-y-14 flex-col items-center text-balance p-2 text-center text-xl font-bold text-red-400 shadow-xl transition-all duration-300 ease-in-out"
+		</FoldedCard>
+		<FoldedCard
+			class="align-center z-10 h-[--card-half-height] origin-top translate-y-14 flex-col font-bold text-red-400"
 			:style="bottomHalfStyle"
 		>
 			<span v-show="showAnswer">{{ translatedText }}</span>
-		</div>
+		</FoldedCard>
 	</div>
 </template>
 
