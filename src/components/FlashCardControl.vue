@@ -2,8 +2,8 @@
 type Props = {
 	/** Tagalog text */
 	tl: string
-	/** Whether or not the answer is showing */
-	showAnswer: boolean
+	/** Whether user can play the text or not */
+	canPlay: boolean
 }
 const props = defineProps<Props>()
 
@@ -35,8 +35,8 @@ watch(isPlaying, () => {
 			:aria-label="playing ? 'Stop' : 'Play'"
 			type="button"
 			class="grid h-12 w-12 place-items-center rounded-full"
-			:class="{ 'text-blue-200': !showAnswer }"
-			:disabled="!showAnswer"
+			:class="{ 'text-blue-200': !canPlay }"
+			:disabled="!canPlay"
 			@click="playing ? stop() : speak()"
 		>
 			<Icon size="3rem" :name="isPlaying ? 'carbon:stop-outline' : 'carbon:play-outline'" />

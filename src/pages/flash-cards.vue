@@ -17,6 +17,10 @@ function toggleTarget(): void {
 	target.value = target.value === 'tl' ? 'en' : 'tl'
 }
 const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' : 'English'))
+
+const canPlay = computed<boolean>(() => { 
+	return target.value === 'tl' ? showAnswer.value : true
+})
 </script>
 
 <template>
@@ -25,6 +29,6 @@ const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' 
 			currentTarget
 		}}</button>
 		<FlashCard v-model:show-answer="showAnswer" :en="text.en" :tl="text.tl" :target="target" />
-		<FlashCardControl :tl="text.tl" :show-answer="showAnswer" @next="showNext" />
+		<FlashCardControl :tl="text.tl" :can-play="canPlay" @next="showNext" />
 	</div>
 </template>
