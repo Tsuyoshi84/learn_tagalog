@@ -13,7 +13,7 @@ const props = defineProps<Props>()
 const showAnswer = defineModel<boolean>('showAnswer')
 
 const originalText = computed<string>(() => (props.target === 'en' ? props.tl : props.en))
-const translatedText = computed<string>(() => (props.target === 'en' ? props.en : props.tl))
+const translatedText = computed<string>(() => props[props.target])
 const bottomHalfStyle = computed<CSSProperties>(() => {
 	return showAnswer.value ? { transform: 'rotateX(0)' } : { transform: 'rotateX(-90deg)' }
 })
