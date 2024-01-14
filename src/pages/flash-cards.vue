@@ -18,7 +18,7 @@ function toggleTarget(): void {
 }
 const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' : 'English'))
 
-const canPlay = computed<boolean>(() => { 
+const canPlay = computed<boolean>(() => {
 	return target.value === 'tl' ? showAnswer.value : true
 })
 </script>
