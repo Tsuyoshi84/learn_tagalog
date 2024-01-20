@@ -16,7 +16,7 @@ const target = shallowRef<'tl' | 'en'>('tl')
 function toggleTarget(): void {
 	target.value = target.value === 'tl' ? 'en' : 'tl'
 }
-const currentTarget = computed<string>(() => (target.value === 'tl' ? 'Tagalog' : 'English'))
+const currentTarget = computed<string>(() => (target.value === 'tl' ? 'En -> Tl' : 'Tl -> En'))
 
 const canPlay = computed<boolean>(() => {
 	return target.value === 'tl' ? showAnswer.value : true
