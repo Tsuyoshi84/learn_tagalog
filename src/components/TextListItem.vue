@@ -41,14 +41,8 @@ const styledText = computed<string>(() => {
 })
 </script>
 
-<template>
-	<div class="flex flex-col items-center justify-center gap-4">
-		<div
-			class="font-main text-primary text-balance text-center text-4xl font-medium"
-			v-html="styledText"
-		/>
-		<div class="text-accent text-balance text-center font-sans text-2xl italic">
-			{{ text.en }}
-		</div>
-	</div>
+<template lang="pug">
+.flex.flex-col.items-center.justify-center.gap-4
+	.font-main.text-primary.text-balance.text-center.text-4xl.font-medium(v-html='styledText')
+	.text-accent.text-balance.text-center.font-sans.text-2xl.italic {{ text.en }}
 </template>
