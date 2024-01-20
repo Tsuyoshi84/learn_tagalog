@@ -2,9 +2,9 @@
 	// https://nuxt.com/docs/guide/concepts/typescript
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
-		"types": ["@types/node", "vitest/globals"]
+		"types": ["@types/node", "vitest/globals"],
 	},
 	"vueCompilerOptions": {
-		"plugins": ["@vue/language-plugin-pug"]
-	}
+		"plugins": ["@vue/language-plugin-pug"],
+	},
 }
