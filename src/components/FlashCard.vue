@@ -25,25 +25,22 @@ const FoldedCard = (_: unknown, { slots }: { slots: any }) => (
 )
 </script>
 
-<template>
-	<div
-		class="card-container pointer-events-none flex h-[--card-height] w-[--card-width] flex-col justify-evenly gap-0 transition-all duration-300 ease-in-out"
-		:class="{ 'translate-y-0': showAnswer, 'translate-y-[--card-quarter-height]': !showAnswer }"
-	>
-		<FoldedCard
-			class="h-[--card-half-height] border-b"
-			:class="{ 'border-transparent': showAnswer, 'border-gray-300': !showAnswer }"
-			@click="showAnswer = !showAnswer"
-		>
-			{{ originalText }}
-		</FoldedCard>
-		<FoldedCard
-			class="align-center z-10 h-[--card-half-height] origin-top translate-y-14 flex-col font-bold text-red-400"
-			:style="bottomHalfStyle"
-		>
-			<span v-show="showAnswer">{{ translatedText }}</span>
-		</FoldedCard>
-	</div>
+<template lang="pug">
+.card-container.pointer-events-none.flex.flex-col.justify-evenly.gap-0.transition-all.duration-300.ease-in-out(
+	class='h-[--card-height] w-[--card-width]',
+	:class='{ "translate-y-0": showAnswer, "translate-y-[--card-quarter-height]": !showAnswer }'
+)
+	FoldedCard.border-b(
+		class='h-[--card-half-height]',
+		:class='{ "border-transparent": showAnswer, "border-gray-300": !showAnswer }',
+		@click='showAnswer = !showAnswer'
+	)
+		| {{ originalText }}
+	FoldedCard.align-center.z-10.origin-top.translate-y-14.flex-col.font-bold.text-red-400(
+		:style='bottomHalfStyle',
+		class='h-[--card-half-height]'
+	)
+		span(v-show='showAnswer') {{ translatedText }}
 </template>
 
 <style scoped>

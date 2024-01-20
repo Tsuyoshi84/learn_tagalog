@@ -3,5 +3,8 @@
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
 		"types": ["@types/node", "vitest/globals"]
+	},
+	"vueCompilerOptions": {
+		"plugins": ["@vue/language-plugin-pug"]
 	}
 }
