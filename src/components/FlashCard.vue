@@ -10,7 +10,7 @@ type Props = {
 const props = defineProps<Props>()
 
 /** Whether or not the answer is showing */
-const showAnswer = defineModel<boolean>('showAnswer')
+const showAnswer = defineModel<boolean>('showAnswer', { required: true })
 
 const originalText = computed<string>(() => (props.target === 'en' ? props.tl : props.en))
 const translatedText = computed<string>(() => props[props.target])
@@ -32,10 +32,14 @@ const FoldedCard = (_: unknown, { slots }: { slots: any }) => (
 )
 	FoldedCard.border-b(
 		class='h-[--card-half-height]',
-		:class='{ "border-transparent": showAnswer, "border-gray-300": !showAnswer }',
-		@click='showAnswer = !showAnswer'
+		:class='{ "border-transparent": showAnswer, "border-gray-300": !showAnswer }'
 	)
-		| {{ originalText }}
+		button.h-full.w-full(
+			type='button',
+			:disabled='showAnswer',
+			aria-label='Show answer',
+			@click='showAnswer = !showAnswer'
+		) {{ originalText }}
 	FoldedCard.align-center.z-10.origin-top.translate-y-14.flex-col.font-bold.text-red-400(
 		:style='bottomHalfStyle',
 		class='h-[--card-half-height]'
