@@ -22,7 +22,7 @@
     "happy-dom": "^12.9.0",
     "nuxt": "^3.9.3",
     "nuxt-icon": "^0.6.8",
-    "oxlint": "^0.2.1",
+    "oxlint": "^0.2.2",
     "postcss-html": "^1.6.0",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.6",
