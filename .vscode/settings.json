@@ -22,6 +22,7 @@
 		"supabase",
 		"tailwindcss",
 		"typecheck",
+		"vitest",
 		"vueuse"
 	],
 	"editor.codeActionsOnSave": {

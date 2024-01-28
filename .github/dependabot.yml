@@ -19,7 +19,8 @@ updates:
           - "*prettier*"
       test:
         patterns:
-          - "*test*"
+          - "*vitest*"
+          - "happy-dom"
       nuxt:
         patterns:
           - "*nuxt*"
