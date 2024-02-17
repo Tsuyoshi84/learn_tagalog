@@ -15,7 +15,7 @@ devDependencies:
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.56.0)(typescript@5.3.3)
   '@nuxtjs/google-fonts':
-    specifier: ^3.0.2
+    specifier: ^3.1.3
     version: 3.1.3
   '@nuxtjs/supabase':
     specifier: ^1.1.6
@@ -1679,9 +1679,9 @@ packages:
   /@nuxtjs/google-fonts@3.1.3:
     resolution: {integrity: sha512-gHwstHXQKd/r9O2WnQR4UJbi7Rfb9No1/gF4gqP+y18h1DAAZUOYPBF5EAPGjZKgDOW2XbZHP8Rw3oSDTpIT1A==}
     dependencies:
-      '@nuxt/kit': 3.9.1
+      '@nuxt/kit': 3.10.0
       google-fonts-helper: 3.4.1
-      pathe: 1.1.1
+      pathe: 1.1.2
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -5230,7 +5230,7 @@ packages:
       deepmerge: 4.3.1
       hookable: 5.5.3
       ofetch: 1.3.3
-      ufo: 1.3.2
+      ufo: 1.4.0
     dev: true
 
   /gopd@1.0.1:
