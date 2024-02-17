@@ -13,7 +13,7 @@
     "@vue/language-plugin-pug": "^1.8.27",
     "@vueuse/core": "^10.7.2",
     "@vueuse/nuxt": "^10.7.2",
-    "eslint": "^8.53.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jsdoc": "^48.1.0",
