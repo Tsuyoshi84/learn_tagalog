@@ -1,21 +1,21 @@
 <script lang="ts" setup>
+import type { NuxtError } from '#app'
+
 defineProps<{
 	/** An error object */
-	error: Object
+	error: NuxtError
 }>()
 
 function handleError() {
 	clearError({ redirect: '/' })
 }
-
-const error = useError()
 </script>
 
 <template>
 	<NuxtLayout>
 		<div class="grid place-items-center">
 			<h1 class="text-4xl">Error</h1>
-			<p>{{ error?.message }}</p>
+			<p>{{ error.message }}</p>
 			<p>It looks like something broke.</p>
 			<p>Sorry about that.</p>
 
