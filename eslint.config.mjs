@@ -16,6 +16,15 @@ export default withNuxt([
 			},
 		},
 		rules: {
+			'func-style': ['error', 'declaration'],
+			'no-irregular-whitespace': ['error', { skipRegExps: true }],
+			'padding-line-between-statements': [
+				'warn',
+				{ blankLine: 'always', prev: 'import', next: '*' },
+				{ blankLine: 'any', prev: 'import', next: 'import' },
+			],
+			'sort-imports': ['error', { ignoreDeclarationSort: true }],
+
 			// jsdoc plugin
 			'jsdoc/check-param-names': 'error',
 			'jsdoc/check-property-names': 'error',
