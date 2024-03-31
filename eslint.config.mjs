@@ -1,10 +1,14 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import tsParser from '@typescript-eslint/parser'
+import jsdoc from 'eslint-plugin-jsdoc'
 
 export default withNuxt([
 	{
 		files: ['src/**/*.ts'],
+		plugins: {
+			jsdoc,
+		},
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
@@ -12,6 +16,13 @@ export default withNuxt([
 			},
 		},
 		rules: {
+			// jsdoc plugin
+			'jsdoc/check-param-names': 'error',
+			'jsdoc/check-property-names': 'error',
+			'jsdoc/check-tag-names': 'error',
+			'jsdoc/check-types': 'error',
+			'jsdoc/check-values': 'error',
+
 			// @typescript-eslint plugin
 			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
