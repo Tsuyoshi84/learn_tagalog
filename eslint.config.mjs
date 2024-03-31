@@ -1,7 +1,33 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import tsParser from '@typescript-eslint/parser'
 
 export default withNuxt([
+	{
+		files: ['src/**/*.ts'],
+		languageOptions: {
+			parser: tsParser,
+			parserOptions: {
+				project: ['tsconfig.json'],
+			},
+		},
+		rules: {
+			// @typescript-eslint plugin
+			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
+			'@typescript-eslint/explicit-function-return-type': [
+				'error',
+				{ allowExpressions: true, allowTypedFunctionExpressions: true },
+			],
+			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+			'@typescript-eslint/strict-boolean-expressions': [
+				'error',
+				{
+					allowNullableBoolean: true,
+				},
+			],
+		},
+	},
 	{
 		files: ['src/**/*.vue'],
 		rules: {
