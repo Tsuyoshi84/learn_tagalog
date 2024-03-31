@@ -7,12 +7,13 @@ const props = defineProps<{
 const { texts, searchWords } = useTextSearch(() => props.searchText)
 </script>
 
-<template lang="pug">
-.div.flex.flex-col.items-center.gap-8
-	TextListItem(
-		v-for='text in texts',
-		:key='text.id',
-		:text='text',
-		:high-light-words='searchWords'
-	)
+<template>
+	<div class="flex flex-col items-center gap-8">
+		<TextListItem
+			v-for="text in texts"
+			:key="text.id"
+			:text="text"
+			:high-light-words="searchWords"
+		/>
+	</div>
 </template>

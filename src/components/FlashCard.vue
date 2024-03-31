@@ -18,33 +18,51 @@ const bottomHalfStyle = computed<CSSProperties>(() => {
 	return showAnswer.value ? { transform: 'rotateX(0)' } : { transform: 'rotateX(-90deg)' }
 })
 
-const FoldedCard = (_: unknown, { slots }: { slots: any }) => (
+const FoldedCard = (_: unknown, { slots }: { slots: { default: () => void } }) => (
 	<div class="bg-card pointer-events-auto grid items-center text-balance p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out">
 		{slots.default()}
 	</div>
 )
 </script>
 
-<template lang="pug">
-.card-container.pointer-events-none.flex.flex-col.justify-evenly.gap-0.transition-all.duration-300.ease-in-out(
-	class='h-[--card-height] w-[--card-width]',
-	:class='{ "translate-y-0": showAnswer, "translate-y-[--card-quarter-height]": !showAnswer }'
-)
-	FoldedCard.border-b(
-		class='h-[--card-half-height]',
-		:class='{ "border-transparent": showAnswer, "border-gray-300": !showAnswer }'
-	)
-		button.h-full.w-full(
-			type='button',
-			:disabled='showAnswer',
-			aria-label='Show answer',
-			@click='showAnswer = !showAnswer'
-		) {{ originalText }}
-	FoldedCard.align-center.z-10.origin-top.translate-y-14.flex-col.font-bold.text-red-400(
-		:style='bottomHalfStyle',
-		class='h-[--card-half-height]'
-	)
-		span(v-show='showAnswer') {{ translatedText }}
+<template>
+	<div
+		class="card-container pointer-events-none flex flex-col justify-evenly gap-0 transition-all duration-300 ease-in-out"
+		:class="{
+			'h-[--card-height]': true,
+			'w-[--card-width]': true,
+			'translate-y-0': showAnswer,
+			'translate-y-[--card-quarter-height]': !showAnswer,
+		}"
+	>
+		<FoldedCard
+			class="border-b"
+			:class="{
+				'h-[--card-half-height]': true,
+				'border-transparent': showAnswer,
+				'border-gray-300': !showAnswer,
+			}"
+		>
+			<button
+				class="h-full w-full"
+				type="button"
+				:disabled="showAnswer"
+				aria-label="Show answer"
+				@click="showAnswer = !showAnswer"
+			>
+				{{ originalText }}
+			</button>
+		</FoldedCard>
+		<FoldedCard
+			class="align-center z-10 origin-top translate-y-14 flex-col font-bold text-red-400"
+			:style="bottomHalfStyle"
+			:class="{
+				'h-[--card-half-height]': true,
+			}"
+		>
+			<span v-show="showAnswer">{{ translatedText }}</span>
+		</FoldedCard>
+	</div>
 </template>
 
 <style scoped>
