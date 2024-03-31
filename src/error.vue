@@ -6,7 +6,7 @@ defineProps<{
 	error: NuxtError
 }>()
 
-function handleError() {
+function handleError(): void {
 	clearError({ redirect: '/' })
 }
 </script>

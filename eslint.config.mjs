@@ -1,9 +1,7 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigPrettier from 'eslint-config-prettier'
-
 import * as parserVue from 'vue-eslint-parser'
 import * as parserTs from '@typescript-eslint/parser'
-
 import jsdoc from 'eslint-plugin-jsdoc'
 
 const baseRules = {
