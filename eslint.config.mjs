@@ -1,7 +1,43 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import tsParser from '@typescript-eslint/parser'
+
+import * as parserVue from 'vue-eslint-parser'
+import * as parserTs from '@typescript-eslint/parser'
+
 import jsdoc from 'eslint-plugin-jsdoc'
+
+const baseRules = {
+	'func-style': ['error', 'declaration'],
+	'no-irregular-whitespace': ['error', { skipRegExps: true }],
+	'padding-line-between-statements': [
+		'warn',
+		{ blankLine: 'always', prev: 'import', next: '*' },
+		{ blankLine: 'any', prev: 'import', next: 'import' },
+	],
+	'sort-imports': ['error', { ignoreDeclarationSort: true }],
+
+	// jsdoc plugin
+	'jsdoc/check-param-names': 'error',
+	'jsdoc/check-property-names': 'error',
+	'jsdoc/check-tag-names': 'error',
+	'jsdoc/check-types': 'error',
+	'jsdoc/check-values': 'error',
+
+	// @typescript-eslint plugin
+	'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+	'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
+	'@typescript-eslint/explicit-function-return-type': [
+		'error',
+		{ allowExpressions: true, allowTypedFunctionExpressions: true },
+	],
+	'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+	'@typescript-eslint/strict-boolean-expressions': [
+		'error',
+		{
+			allowNullableBoolean: true,
+		},
+	],
+}
 
 export default withNuxt([
 	{
@@ -10,47 +46,36 @@ export default withNuxt([
 			jsdoc,
 		},
 		languageOptions: {
-			parser: tsParser,
+			parser: parserTs,
 			parserOptions: {
 				project: ['tsconfig.json'],
 			},
 		},
 		rules: {
-			'func-style': ['error', 'declaration'],
-			'no-irregular-whitespace': ['error', { skipRegExps: true }],
-			'padding-line-between-statements': [
-				'warn',
-				{ blankLine: 'always', prev: 'import', next: '*' },
-				{ blankLine: 'any', prev: 'import', next: 'import' },
-			],
-			'sort-imports': ['error', { ignoreDeclarationSort: true }],
-
-			// jsdoc plugin
-			'jsdoc/check-param-names': 'error',
-			'jsdoc/check-property-names': 'error',
-			'jsdoc/check-tag-names': 'error',
-			'jsdoc/check-types': 'error',
-			'jsdoc/check-values': 'error',
-
-			// @typescript-eslint plugin
-			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
-			'@typescript-eslint/explicit-function-return-type': [
-				'error',
-				{ allowExpressions: true, allowTypedFunctionExpressions: true },
-			],
-			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-			'@typescript-eslint/strict-boolean-expressions': [
-				'error',
-				{
-					allowNullableBoolean: true,
-				},
-			],
+			...baseRules,
 		},
 	},
-	{
-		files: ['src/**/*.vue'],
+])
+	.prepend(eslintConfigPrettier)
+	.override('nuxt:vue', {
+		plugins: {
+			jsdoc,
+		},
+		languageOptions: {
+			parser: parserVue,
+			parserOptions: {
+				parserOptions: {
+					ecmaFeatures: { jsx: true },
+					extraFileExtensions: ['.vue'],
+					parser: parserTs,
+					sourceType: 'module',
+				},
+				project: ['tsconfig.json'],
+			},
+		},
 		rules: {
+			...baseRules,
+
 			// vue plugin
 			'vue/component-api-style': ['error', ['script-setup', 'composition']],
 			'vue/component-name-in-template-casing': [
@@ -107,15 +132,4 @@ export default withNuxt([
 			// Disabled rules
 			'vue/no-v-html': 'off',
 		},
-	},
-]).prepend(eslintConfigPrettier)
-// your custom flat configs go here, for example:
-// {
-//   files: ['**/*.ts', '**/*.tsx'],
-//   rules: {
-//     'no-console': 'off' // allow console.log in TypeScript files
-//   }
-// },
-// {
-//   ...
-// }
+	})

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-type Props = {
+const props = defineProps<{
 	/** Tagalog text */
 	tl: string
 	/** Whether user can play the text or not */
 	canPlay: boolean
-}
-const props = defineProps<Props>()
+}>()
 
 defineEmits<{
 	next: []

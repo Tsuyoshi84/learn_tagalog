@@ -1,13 +1,12 @@
 <script lang="tsx" setup>
-type Props = {
+const props = defineProps<{
 	/** English text */
 	en: string
 	/** Tagalog text */
 	tl: string
 	/** Target language */
 	target: 'en' | 'tl'
-}
-const props = defineProps<Props>()
+}>()
 
 /** Whether or not the answer is showing */
 const showAnswer = defineModel<boolean>('showAnswer', { required: true })
@@ -17,12 +16,6 @@ const translatedText = computed<string>(() => props[props.target])
 const bottomHalfStyle = computed<CSSProperties>(() => {
 	return showAnswer.value ? { transform: 'rotateX(0)' } : { transform: 'rotateX(-90deg)' }
 })
-
-const FoldedCard = (_: unknown, { slots }: { slots: { default: () => void } }) => (
-	<div class="bg-card pointer-events-auto grid items-center text-balance p-2 text-center text-xl shadow-xl transition-all duration-300 ease-in-out">
-		{slots.default()}
-	</div>
-)
 </script>
 
 <template>
