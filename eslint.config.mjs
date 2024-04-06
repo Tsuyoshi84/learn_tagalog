@@ -3,48 +3,36 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 import * as parserVue from 'vue-eslint-parser'
 import * as parserTs from '@typescript-eslint/parser'
 import jsdoc from 'eslint-plugin-jsdoc'
+import stylisticJs from '@stylistic/eslint-plugin-js'
 
-const jsRules = {
-	'func-style': ['error', 'declaration'],
-	'no-irregular-whitespace': ['error', { skipRegExps: true }],
-	'padding-line-between-statements': [
-		'warn',
-		{ blankLine: 'always', prev: 'import', next: '*' },
-		{ blankLine: 'any', prev: 'import', next: 'import' },
-	],
-	'sort-imports': ['error', { ignoreDeclarationSort: true }],
-}
-
-const tsRules = {
-	'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-	'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
-	'@typescript-eslint/explicit-function-return-type': [
-		'error',
-		{ allowExpressions: true, allowTypedFunctionExpressions: true },
-	],
-	'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-	'@typescript-eslint/strict-boolean-expressions': [
-		'error',
-		{
-			allowNullableBoolean: true,
-		},
-	],
-}
-
-const jsdocRules = {
-	'jsdoc/check-param-names': 'error',
-	'jsdoc/check-property-names': 'error',
-	'jsdoc/check-tag-names': 'error',
-	'jsdoc/check-types': 'error',
-	'jsdoc/check-values': 'error',
-}
-
-export default withNuxt([
-	{
-		files: ['src/**/*.ts'],
+export default withNuxt([])
+	.prepend(eslintConfigPrettier)
+	.override('nuxt/javascript', {
 		plugins: {
 			jsdoc,
+			'@stylistic/js': stylisticJs,
 		},
+		rules: {
+			'func-style': ['error', 'declaration'],
+			'no-irregular-whitespace': ['error', { skipRegExps: true }],
+			'sort-imports': ['error', { ignoreDeclarationSort: true }],
+
+			// jsdoc
+			'jsdoc/check-param-names': 'error',
+			'jsdoc/check-property-names': 'error',
+			'jsdoc/check-tag-names': 'error',
+			'jsdoc/check-types': 'error',
+			'jsdoc/check-values': 'error',
+
+			// stylistic/js
+			'@stylistic/js/padding-line-between-statements': [
+				'warn',
+				{ blankLine: 'always', prev: 'import', next: '*' },
+				{ blankLine: 'any', prev: 'import', next: 'import' },
+			],
+		},
+	})
+	.override('nuxt/typescript/rules', {
 		languageOptions: {
 			parser: parserTs,
 			parserOptions: {
@@ -52,14 +40,22 @@ export default withNuxt([
 			},
 		},
 		rules: {
-			...jsRules,
-			...tsRules,
-			...jsdocRules,
+			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
+			'@typescript-eslint/explicit-function-return-type': [
+				'error',
+				{ allowExpressions: true, allowTypedFunctionExpressions: true },
+			],
+			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+			'@typescript-eslint/strict-boolean-expressions': [
+				'error',
+				{
+					allowNullableBoolean: true,
+				},
+			],
 		},
-	},
-])
-	.prepend(eslintConfigPrettier)
-	.override('nuxt/typescript/setup', {
+	})
+	.override('nuxt/vue/rules', {
 		plugins: {
 			jsdoc,
 		},
@@ -76,10 +72,6 @@ export default withNuxt([
 			},
 		},
 		rules: {
-			...jsRules,
-			...tsRules,
-			...jsdocRules,
-
 			// vue plugin
 			'vue/component-api-style': ['error', ['script-setup', 'composition']],
 			'vue/component-name-in-template-casing': [
@@ -91,7 +83,7 @@ export default withNuxt([
 				},
 			],
 			'vue/component-options-name-casing': ['error', 'PascalCase'],
-			'vue/component-tags-order': ['error', { order: ['script', 'template', 'style'] }],
+			'vue/block-order': ['error', { order: ['docs', 'script', 'template', 'style'] }],
 			'vue/custom-event-name-casing': ['error', 'camelCase'],
 			'vue/define-emits-declaration': ['error', 'type-based'],
 			'vue/define-macros-order': [
