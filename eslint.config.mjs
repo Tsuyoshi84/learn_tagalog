@@ -4,7 +4,7 @@ import * as parserVue from 'vue-eslint-parser'
 import * as parserTs from '@typescript-eslint/parser'
 import jsdoc from 'eslint-plugin-jsdoc'
 
-const baseRules = {
+const jsRules = {
 	'func-style': ['error', 'declaration'],
 	'no-irregular-whitespace': ['error', { skipRegExps: true }],
 	'padding-line-between-statements': [
@@ -13,15 +13,9 @@ const baseRules = {
 		{ blankLine: 'any', prev: 'import', next: 'import' },
 	],
 	'sort-imports': ['error', { ignoreDeclarationSort: true }],
+}
 
-	// jsdoc plugin
-	'jsdoc/check-param-names': 'error',
-	'jsdoc/check-property-names': 'error',
-	'jsdoc/check-tag-names': 'error',
-	'jsdoc/check-types': 'error',
-	'jsdoc/check-values': 'error',
-
-	// @typescript-eslint plugin
+const tsRules = {
 	'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 	'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
 	'@typescript-eslint/explicit-function-return-type': [
@@ -37,6 +31,14 @@ const baseRules = {
 	],
 }
 
+const jsdocRules = {
+	'jsdoc/check-param-names': 'error',
+	'jsdoc/check-property-names': 'error',
+	'jsdoc/check-tag-names': 'error',
+	'jsdoc/check-types': 'error',
+	'jsdoc/check-values': 'error',
+}
+
 export default withNuxt([
 	{
 		files: ['src/**/*.ts'],
@@ -50,12 +52,14 @@ export default withNuxt([
 			},
 		},
 		rules: {
-			...baseRules,
+			...jsRules,
+			...tsRules,
+			...jsdocRules,
 		},
 	},
 ])
 	.prepend(eslintConfigPrettier)
-	.override('nuxt:vue', {
+	.override('nuxt/typescript/setup', {
 		plugins: {
 			jsdoc,
 		},
@@ -72,7 +76,9 @@ export default withNuxt([
 			},
 		},
 		rules: {
-			...baseRules,
+			...jsRules,
+			...tsRules,
+			...jsdocRules,
 
 			// vue plugin
 			'vue/component-api-style': ['error', ['script-setup', 'composition']],
