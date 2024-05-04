@@ -6,7 +6,8 @@ useHead({
 })
 </script>
 
-<template lang="pug">
-NuxtLayout
-	NuxtPage
+<template>
+	<NuxtLayout>
+		<NuxtPage />
+	</NuxtLayout>
 </template>
