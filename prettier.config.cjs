@@ -4,5 +4,5 @@ module.exports = {
 	htmlWhitespaceSensitivity: 'strict',
 	printWidth: 100,
 	useTabs: true,
-	plugins: ['@prettier/plugin-pug', 'prettier-plugin-tailwindcss'],
+	plugins: ['prettier-plugin-tailwindcss'],
 }
