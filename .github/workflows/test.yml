@@ -68,6 +68,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Merge PR
         if: ${{ steps.wait-for-checks.outputs.conclusion == 'success' }}
-        run: gh pr merge --auto --merge ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --squash ${{ github.event.pull_request.html_url }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
