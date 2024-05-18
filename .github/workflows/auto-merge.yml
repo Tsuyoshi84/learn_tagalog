@@ -1,0 +1,26 @@
+name: Auto Merge Dependabot PRs
+
+on:
+  workflow_run:
+    workflows: ["Test"] # replace with the name of your test workflow
+    types:
+      - completed
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' && github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Merge PR
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo, number } = context.issue;
+            const { data: pullRequest } = await github.pulls.get({ owner, repo, pull_number: number });
+            if (pullRequest.mergeable) {
+              await github.pulls.merge({ owner, repo, pull_number: number });
+            }
