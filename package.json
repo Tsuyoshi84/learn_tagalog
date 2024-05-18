@@ -19,7 +19,7 @@
     "eslint-plugin-jsdoc": "^48.2.5",
     "eslint-plugin-oxlint": "^0.2.9",
     "eslint-plugin-vitest": "^0.5.4",
-    "happy-dom": "^14.10.1",
+    "happy-dom": "^14.11.0",
     "nuxt": "^3.11.2",
     "nuxt-icon": "^0.6.10",
     "oxlint": "^0.3.5",
