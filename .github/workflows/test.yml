@@ -53,6 +53,8 @@ jobs:
 
   auto-merge:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
     steps:
       - name: Checkout repository
