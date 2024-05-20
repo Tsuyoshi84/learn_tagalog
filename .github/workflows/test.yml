@@ -60,7 +60,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Wait for checks to pass
-        uses: fountainhead/action-wait-for-check@v1.0.0
+        uses: fountainhead/action-wait-for-check@v1.2.0
         id: wait-for-checks
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
