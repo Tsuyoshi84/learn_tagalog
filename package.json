@@ -3,7 +3,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "0.3.13",
-    "@nuxt/test-utils": "^3.13.0",
+    "@nuxt/test-utils": "^3.13.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/supabase": "^1.2.2",
