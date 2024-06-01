@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	srcDir: 'src/',
+	srcDir: 'app/',
 	supabase: {
 		redirect: false,
 	},
