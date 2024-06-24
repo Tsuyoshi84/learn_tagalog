@@ -60,21 +60,18 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	runtimeConfig: {
+		public: {
+			baseUrl: '',
+		},
+	},
 	srcDir: 'app/',
 	supabase: {
-		redirect: false,
+		redirect: true,
 	},
 	testUtils: {},
 	tailwindcss: {
 		configPath: '~/tailwind.config.ts',
-	},
-	vite: {
-		vue: {
-			script: {
-				defineModel: true,
-				propsDestructure: true,
-			},
-		},
 	},
 	typescript: {
 		tsConfig: {
@@ -90,6 +87,14 @@ export default defineNuxtConfig({
 				noUncheckedIndexedAccess: true,
 				noUnusedLocals: false,
 				noUnusedParameters: false,
+			},
+		},
+	},
+	vite: {
+		vue: {
+			script: {
+				defineModel: true,
+				propsDestructure: true,
 			},
 		},
 	},
