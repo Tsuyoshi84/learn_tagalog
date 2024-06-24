@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	extends: [
-		'github:Tsuyoshi84/nuxt-layer-core',
-	],
+	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
 	app: {
 		head: {
 			htmlAttrs: {
