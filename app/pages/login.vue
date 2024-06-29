@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-const user = useSupabaseUser()
-const { auth } = useSupabaseClient()
+const authStore = useAuthStore()
+const { loggedIn } = storeToRefs(authStore)
+const { signIn } = authStore
 
 definePageMeta({ layout: false })
 
 useHead({ title: 'Login' })
-const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`
 
 watchEffect(() => {
-	if (isDefined(user)) {
+	if (loggedIn.value) {
 		navigateTo({ name: 'index' })
 	}
 })
@@ -20,7 +20,7 @@ watchEffect(() => {
 		<button
 			class="flex h-10 max-w-[272px] items-center gap-2.5 rounded-full border px-3"
 			type="button"
-			@click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })"
+			@click="signIn('google')"
 		>
 			<div class="size-5">
 				<svg

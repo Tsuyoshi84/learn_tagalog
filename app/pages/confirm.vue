@@ -1,16 +1,8 @@
 <script setup lang="ts">
-const user = useSupabaseUser()
+const { loggedIn } = storeToRefs(useAuthStore())
 
-watch(
-	user,
-	() => {
-		if (user.value) {
-			// Redirect to protected page
-			return navigateTo('/')
-		}
-	},
-	{ immediate: true },
-)
+// If a user is logged in, redirect to protected page
+whenever(loggedIn, () => navigateTo('/'), { immediate: true })
 </script>
 
 <template>
