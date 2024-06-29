@@ -32,7 +32,7 @@
 	"editor.quickSuggestions": {
 		"strings": "on"
 	},
-	"eslint.experimental.useFlatConfig": true,
+	"eslint.useFlatConfig": true,
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.expand": false,
 	"explorer.fileNesting.patterns": {
@@ -46,8 +46,8 @@
 		"*.css": "tailwindcss"
 	},
 	"files.autoSave": "afterDelay",
-	"files.autoSaveDelay": 500,
-	"nuxtr.defaultPackageManager": "Bun",
+	"files.autoSaveDelay": 1000,
+	"nuxtr.defaultPackageManager": "pnpm",
 	"nuxtr.intellisense.nuxtignore": true,
 	"nuxtr.intellisense.nuxtrc": true,
 	"nuxtr.intellisense.vueFiles": true,
