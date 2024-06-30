@@ -1,8 +1,15 @@
 @tailwind base;
 
 @layer base {
+	html {
+		@apply h-full;
+	}
 	body {
-		@apply font-main;
+		@apply font-main h-full;
+	}
+
+	#__nuxt {
+		@apply h-full;
 	}
 }
 

@@ -1,16 +1,17 @@
 <script lang="ts" setup>
 const authStore = useAuthStore()
-const { signOut } = authStore
 const { userName } = storeToRefs(authStore)
 </script>
 
 <template>
-	<div>
-		<h1>{{ userName }}</h1>
-		<button type="button" @click="signOut()">Sign out</button>
+	<div class="flex h-[calc(100%-4rem)] flex-col justify-center gap-4 text-center">
+		<div>
+			<p class="w-full text-center text-3xl font-bold">Hey {{ userName }}</p>
+			<p>Let's learn Tagalog 💪</p>
+		</div>
 		<nav class="flex items-center">
 			<ul class="w-full">
-				<li class="w-full bg-blue-400 p-4 text-center text-white">
+				<li class="w-full rounded-md bg-blue-200 p-4 text-center">
 					<NuxtLink class="block h-full w-full font-sans text-2xl" to="/flash-cards"
 						>Flash Cards</NuxtLink
 					>
