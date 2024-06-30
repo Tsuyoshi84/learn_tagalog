@@ -15,7 +15,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center justify-center">
+	<div class="flex h-full flex-col items-center justify-center">
 		<h2 class="u-text-white my-6 text-center text-3xl font-bold">Sign in to your account</h2>
 		<button
 			class="flex h-10 max-w-[272px] items-center gap-2.5 rounded-full border px-3"

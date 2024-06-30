@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-const { loading, text, next } = useFlashCard()
-
 useHead({
 	title: 'Flash Cards',
 })
 
+const { loading, text, next } = useFlashCard()
 const showAnswer = shallowRef(false)
 
 function showNext(): void {
@@ -24,7 +23,7 @@ const canPlay = computed<boolean>(() => {
 </script>
 
 <template>
-	<div v-show="!loading" class="flex h-[100dvh] flex-col items-center justify-center gap-4 p-4">
+	<div v-show="!loading" class="flex h-full flex-col items-center justify-center gap-4">
 		<button type="button" class="rounded-lg bg-red-100 p-2 text-xl" @click="toggleTarget">{{
 			currentTarget
 		}}</button>

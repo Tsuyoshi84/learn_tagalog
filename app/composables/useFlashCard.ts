@@ -22,9 +22,6 @@ export function useFlashCard(): ReturnType {
 		return texts.value[index.value] ?? { id: '', en: '', tl: '' }
 	})
 
-	const a = [1, 2, 3]
-	assertHasAtLeast(a, 3)
-
 	function next(): void {
 		if (loading.value) return
 

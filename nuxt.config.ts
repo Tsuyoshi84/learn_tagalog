@@ -16,6 +16,13 @@ export default defineNuxtConfig({
 		},
 	},
 	css: [],
+	devtools: { enabled: true },
+	experimental: {
+		typedPages: true,
+	},
+	future: {
+		compatibilityVersion: 4,
+	},
 	imports: {
 		dirs: ['composables/*', 'utils/*'],
 		presets: [
@@ -36,10 +43,6 @@ export default defineNuxtConfig({
 				type: true,
 			},
 		],
-	},
-	devtools: { enabled: true },
-	experimental: {
-		typedPages: true,
 	},
 	modules: [
 		'@nuxtjs/google-fonts',
