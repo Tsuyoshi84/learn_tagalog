@@ -1,0 +1,31 @@
+{
+	"name": "Node.js & pnpm",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"antfu.iconify",
+				"bradlc.vscode-tailwindcss",
+				"christian-kohler.path-intellisense",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"formulahendry.auto-rename-tag",
+				"nuxtr.nuxtr-vscode",
+				"streetsidesoftware.code-spell-checker",
+				"stylelint.vscode-stylelint",
+				"usernamehw.errorlens",
+				"vue.volar"
+			]
+		}
+	},
+	"postCreateCommand": "pnpm install",
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+		"source=${localEnv:SSH_AUTH_SOCK},target=/tmp/ssh-agent.sock,type=bind"
+	],
+	"remoteEnv": {
+		"SSH_AUTH_SOCK": "/tmp/ssh-agent.sock"
+	}
+}
