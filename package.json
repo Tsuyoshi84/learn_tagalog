@@ -23,7 +23,7 @@
     "postcss-html": "^1.7.0",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "typescript": "^5.5.2",
+    "typescript": "^5.5.3",
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.22"
   },
