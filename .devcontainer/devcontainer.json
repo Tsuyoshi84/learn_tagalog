@@ -27,5 +27,8 @@
 	],
 	"remoteEnv": {
 		"SSH_AUTH_SOCK": "/tmp/ssh-agent.sock"
+	},
+	"features": {
+		"ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {}
 	}
 }
