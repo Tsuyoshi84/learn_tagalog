@@ -4,6 +4,8 @@ const props = defineProps<{
 	tl: string
 	/** Whether user can play the text or not */
 	canPlay: boolean
+	/** Whether user can go to the next text or not */
+	canGoNext: boolean
 }>()
 
 defineEmits<{
@@ -42,7 +44,8 @@ watch(isPlaying, () => {
 		<button
 			aria-label="Next"
 			type="button"
-			class="grid h-12 w-12 place-items-center rounded-full"
+			class="grid h-12 w-12 place-items-center rounded-full disabled:text-blue-200"
+			:disabled="!canGoNext"
 			@click="$emit('next')"
 		>
 			<Icon size="3rem" name="carbon:next-outline" />
