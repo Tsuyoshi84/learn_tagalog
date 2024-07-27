@@ -2,7 +2,7 @@
 FROM node:20
 
 # Install pnpm
-RUN npm install -g pnpm@9.5.0
+RUN npm install -g pnpm@9.6.0
 
 # Set the working directory
 WORKDIR /workspace
