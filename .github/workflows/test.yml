@@ -16,38 +16,28 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.x.x
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-          cache-dependency-path: pnpm-lock.yaml
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Test
-        run: pnpm run test
+        run: bun run test
 
       - name: Lint
-        run: pnpm lint:fix
+        run: bun run lint:fix
 
       - name: Format Check
-        run: pnpm format
+        run: bun run format
 
       - name: Type Check
-        run: pnpm typecheck
+        run: bun run typecheck
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
 
       - name: Build
-        run: pnpm run build
+        run: bun run build
 
   auto-merge:
     runs-on: ubuntu-latest
