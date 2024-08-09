@@ -1,4 +1,4 @@
-import { type Text } from '~/database.types'
+import type { Text } from '~/database.types'
 
 type WordInfo = {
 	id: number
