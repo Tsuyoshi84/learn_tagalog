@@ -1,5 +1,5 @@
 # Use the official Node.js image as a base
-FROM node:20
+FROM node:22
 
 # Install pnpm
 RUN npm install -g pnpm@9.5.0
