@@ -10,6 +10,8 @@ updates:
     assignees:
       - "Tsuyoshi84"
     open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps)"
     groups:
       lint-and-format:
         patterns:
@@ -35,3 +37,22 @@ updates:
     commit-message:
       prefix: "github-actions"
     open-pull-requests-limit: 30
+
+  - package-ecosystem: "docker"
+    directory: ".devcontainer"
+    schedule:
+      interval: "weekly"
+      time: "07:00"
+      timezone: "Asia/Tokyo"
+      day: 'saturday'
+    open-pull-requests-limit: 10
+    target-branch: "main"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+    assignees:
+      - "Tsuyoshi84"
