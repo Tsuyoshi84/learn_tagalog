@@ -31,6 +31,6 @@ async function submit(): Promise<void> {
 			<input id="tl" v-model="tl" type="text" label="Tagalog" name="tl" class="w-full" />
 		</label>
 
-    <button type="submit" class="btn">Submit</button>
+		<button type="submit" class="btn">Submit</button>
 	</form>
 </template>
