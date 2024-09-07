@@ -27,6 +27,8 @@ updates:
         patterns:
           - "*nuxt*"
           - "*vue*"
+        exclude:
+          - "@nuxt/eslint"
 
   - package-ecosystem: "github-actions"
     directory: "/"
