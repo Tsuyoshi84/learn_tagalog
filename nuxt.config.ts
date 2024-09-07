@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
 		},
 	},
+	compatibilityDate: '2024-04-03',
 	css: [],
 	devtools: { enabled: true },
 	experimental: {
@@ -52,7 +53,7 @@ export default defineNuxtConfig({
 		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
-		'nuxt-icon',
+		'@nuxt/icon',
 	],
 	googleFonts: {
 		families: {
