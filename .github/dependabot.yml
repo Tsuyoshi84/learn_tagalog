@@ -19,6 +19,7 @@ updates:
           - "oxlint"
           - "*stylelint*"
           - "*prettier*"
+          - "@nuxt/eslint"
       test:
         patterns:
           - "*vitest*"
@@ -27,7 +28,7 @@ updates:
         patterns:
           - "*nuxt*"
           - "*vue*"
-        exclude:
+        exclude-patterns:
           - "@nuxt/eslint"
 
   - package-ecosystem: "github-actions"
