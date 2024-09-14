@@ -1,0 +1,9 @@
+- Use TypeScript
+- Use `<script setup>` for Vue components
+- Use `unknown` instead of `any`
+- Use `undefined` instead of `null` whenever possible
+- Prefer `for of` over `Array.prototype.forEach`
+- Avoid using non-null assertion. Check the variable validity
+- Prefer the guard clause (early return)
+- Use `shallowRef` instead of `ref` unless the deep-watch is necessary
+- Pass an object to `navigateTo` instead of just string. For example, write `navigateTo({ name: 'login' })` rather than `navigateTo('/login')`

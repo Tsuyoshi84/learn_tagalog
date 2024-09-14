@@ -11,6 +11,15 @@
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		".git/objects",
+		".vscode",
+		".vscode-insiders",
+		".devcontainer"
+	],
 	"cSpell.words": [
 		"composables",
 		"nuxi",
@@ -24,15 +33,6 @@
 		"typecheck",
 		"vitest",
 		"vueuse"
-	],
-	"cSpell.ignorePaths": [
-		"package-lock.json",
-		"node_modules",
-		"vscode-extension",
-		".git/objects",
-		".vscode",
-		".vscode-insiders",
-		".devcontainer"
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
@@ -56,6 +56,11 @@
 	},
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
+	"github.copilot.chat.experimental.codeGeneration.instructions": [
+		{
+			"file": "coding-guidelines.md"
+		}
+	],
 	"nuxtr.defaultPackageManager": "pnpm",
 	"nuxtr.intellisense.nuxtignore": true,
 	"nuxtr.intellisense.nuxtrc": true,
@@ -72,8 +77,8 @@
 	"nuxtr.vueFiles.style.alwaysScoped": true,
 	"nuxtr.vueFiles.style.defaultLanguage": "css",
 	"tailwindCSS.emmetCompletions": true,
-	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.preferGoToSourceDefinition": true,
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"vue.inlayHints.inlineHandlerLeading": true,
 	"vue.inlayHints.missingProps": true,
