@@ -2,8 +2,8 @@
   "name": "learn_tagalog",
   "packageManager": "pnpm@9.11.0",
   "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/eslint": "0.5.7",
+    "@nuxt/devtools": "^1.6.0",
+    "@nuxt/eslint": "^0.5.7",
     "@nuxt/icon": "^1.5.6",
     "@nuxt/test-utils": "^3.14.3",
     "@nuxtjs/google-fonts": "^3.2.0",
