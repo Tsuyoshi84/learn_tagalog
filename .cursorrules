@@ -6,6 +6,10 @@ Code Style and Structure
 - Emphasize iteration and modularization to follow DRY principles and minimize code duplication.
 - Prefer Composition API <script setup> style.
 - Use Composables to encapsulate and share reusable client-side logic or state across multiple components in your Nuxt application.
+- Write JSDoc comments for all exported functions, variables, and types for better readability and understanding.
+
+HTML
+- Specify `type` attribute for `<button>` elements.
 
 Vue 3 Specifics
 - Prefer `shallowRef` over `ref` when deep watching is not needed.
@@ -13,6 +17,7 @@ Vue 3 Specifics
 - Avoid using index for `key` attribute when using `v-for`.
 - Prefer `v-show` over `v-if` for conditional visibility.
 - Use `useTemplateRef` introduced in Vue 3.5 when you need a template reference.
+- Define `computed` type for better type safety. For example, `const nextLevel = computed<number>(() => currentLevel.value + 1)`.
 
 Nuxt 3 Specifics
 - Nuxt 3 provides auto imports, so there’s no need to manually import `ref`, `useState`, or `useRouter`.
@@ -35,6 +40,8 @@ Naming Conventions
 - Favor named exports for functions to maintain consistency and readability.
 
 TypeScript Usage
+- Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
+- Define function return types for better readability and type safety.
 - Use type over interface when possible.
 - Use literal union types over enums.
 - Use `unknown` over `any`.
