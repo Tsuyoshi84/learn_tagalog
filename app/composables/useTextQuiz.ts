@@ -53,7 +53,7 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		const { data: untriedTexts, error: untriedTextsError } = await supabase
 			.from('texts')
 			.select('id, en, tl, user_progress (id, user_id)')
-			.is('user_progress.id', null)
+			.filter('user_progress.id', 'is', null)
 			.eq('user_progress.user_id', userId)
 			.limit(NUMBER_OF_SESSION)
 
