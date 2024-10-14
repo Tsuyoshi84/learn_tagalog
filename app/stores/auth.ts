@@ -4,10 +4,16 @@ export const useAuthStore = defineStore('auth', () => {
 	/** Whether the user is logged in or not. */
 	const loggedIn = computed<boolean>(() => isDefined(user.value))
 
-	const userName = computed<string>(() => {
-		if (!isDefined(user)) return ''
+	const userName = computed<string | undefined>(() => {
+		if (!isDefined(user)) return undefined
 
 		return user.value.user_metadata['name']
+	})
+
+	const userId = computed<string | undefined>(() => {
+		if (!isDefined(user)) return undefined
+
+		return user.value.id
 	})
 
 	const { auth } = useSupabaseClient()
@@ -44,6 +50,7 @@ export const useAuthStore = defineStore('auth', () => {
 	return {
 		user,
 		loggedIn,
+		userId,
 		userName,
 		signIn,
 		signOut,

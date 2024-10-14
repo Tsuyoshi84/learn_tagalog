@@ -18,7 +18,8 @@
 		".git/objects",
 		".vscode",
 		".vscode-insiders",
-		".devcontainer"
+		".devcontainer",
+		"app/database-generated.types.ts"
 	],
 	"cSpell.words": [
 		"composables",
