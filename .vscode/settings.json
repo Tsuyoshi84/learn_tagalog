@@ -57,6 +57,7 @@
 	},
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
+	"files.autoSaveWhenNoErrors": true,
 	"github.copilot.chat.experimental.codeGeneration.instructions": [
 		{
 			"file": "coding-guidelines.md"
