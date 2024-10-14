@@ -34,7 +34,7 @@ function dayToMs(days: number): number {
 }
 
 export function useTextQuiz(): UseTextQuizReturnType {
-	const NUMBER_OF_SESSION = 10
+	const NUMBER_OF_SESSION = 5
 	const supabase = useSupabaseClient<Database>()
 
 	const loading = shallowRef(false)
@@ -53,7 +53,7 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		const { data: untriedTexts, error: untriedTextsError } = await supabase
 			.from('texts')
 			.select('id, en, tl, user_progress (id, user_id)')
-			.not('user_progress.id', 'is', null)
+			.is('user_progress.id', null)
 			.eq('user_progress.user_id', userId)
 			.limit(NUMBER_OF_SESSION)
 
@@ -134,17 +134,17 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		const span = dayToMs(MEMORY_LEVEL_TO_NEXT_DUE_DATE[nextMemoryLevel])
 
 		const now = new Date().toISOString()
-		const { error } = await supabase
-			.from('user_progress')
-			.upsert({
+		const { error } = await supabase.from('user_progress').upsert(
+			{
 				text_id: textId,
 				user_id: userId,
 				memory_level: nextMemoryLevel,
 				last_answered_at: now,
 				next_due_date: new Date(new Date().getTime() + span).toISOString(),
-			})
-			.eq('text_id', textId)
-			.eq('user_id', userId)
+			},
+			{ onConflict: 'text_id,user_id' },
+		)
+
 		if (error) {
 			throw new Error('Failed to answer', { cause: error })
 		}
