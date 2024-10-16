@@ -49,12 +49,23 @@ export function useTextQuiz(): UseTextQuizReturnType {
 
 		loading.value = true
 
+		const { data: userProgress, error: userProgressError } = await supabase
+			.from('user_progress')
+			.select('text_id')
+			.eq('user_id', userId)
+
+		if (userProgressError) {
+			loading.value = false
+			throw new Error('Failed to fetch user progress', { cause: userProgressError })
+		}
+
+		const triedTextIds = userProgress?.map(({ text_id }) => text_id) ?? []
+
 		// Fetch untried texts up to 10. When there are no related `user_progress` records, that means the user has not tried it.
 		const { data: untriedTexts, error: untriedTextsError } = await supabase
 			.from('texts')
-			.select('id, en, tl, user_progress (id, user_id)')
-			.filter('user_progress.id', 'is', null)
-			.eq('user_progress.user_id', userId)
+			.select('id, en, tl')
+			.not('id', 'in', `(${triedTextIds.join(',')})`)
 			.limit(NUMBER_OF_SESSION)
 
 		if (untriedTextsError) {
