@@ -4,7 +4,7 @@
   "devDependencies": {
     "@nuxt/devtools": "^1.6.0",
     "@nuxt/eslint": "^0.6.1",
-    "@nuxt/icon": "^1.7.0",
+    "@nuxt/icon": "^1.7.5",
     "@nuxt/test-utils": "^3.14.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/supabase": "^1.4.2",
