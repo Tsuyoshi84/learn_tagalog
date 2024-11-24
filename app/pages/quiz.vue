@@ -1,14 +1,17 @@
 <script lang="ts" setup>
 const { texts, loading, fetchTexts, answer } = useTextQuiz()
 
-const index = shallowRef(0)
-
 onMounted(async () => {
 	await fetchTexts()
 })
 
+/** The index of the current text */
+const index = shallowRef(0)
+
+/** The text that the user is currently answering */
 const currentText = computed(() => texts.value[index.value])
 
+/** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
 
 async function answerText(textId: string, remembered: boolean): Promise<void> {
@@ -22,12 +25,15 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 	}
 }
 
+/** Whether the session is ended or not */
 const isSessionEnded = shallowRef(false)
 
+/** Start a new session */
 async function startNewSession(): Promise<void> {
 	await fetchTexts()
 	index.value = 0
 	showsAnswer.value = false
+	isSessionEnded.value = false
 }
 </script>
 

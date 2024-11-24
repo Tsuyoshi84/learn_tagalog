@@ -10,22 +10,33 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 	3: 7,
 	4: 14,
 	5: 30,
-}
+} as const
 
-const MIN_MEMORY_LEVEL = 1
-const MAX_MEMORY_LEVEL = 5
+const MIN_MEMORY_LEVEL = 1 as const
+const MAX_MEMORY_LEVEL = 5 as const
+const NUMBER_OF_SESSION = 5 as const
 
+/**
+ * Type representing a text with quiz-specific properties
+ */
 type QuizText = Text & {
-	/** Whether the user remembered the text or not. If the user has not answered the text, the value is undefined. */
+	/**
+	 * Whether the user remembered the text or not.
+	 * If the user has not answered the text, the value is undefined.
+	 */
 	remembered: boolean | undefined
 	/** The memory level of the text */
 	memory_level: number
 }
 
 type UseTextQuizReturnType = {
+	/** Whether the texts are loading or not */
 	loading: Ref<boolean>
+	/** The texts that the user is answering */
 	texts: Ref<QuizText[]>
+	/** Fetch the texts */
 	fetchTexts: () => Promise<void>
+	/** Answer the text */
 	answer: (textId: string, remembered: boolean) => Promise<void>
 }
 
@@ -33,8 +44,11 @@ function dayToMs(days: number): number {
 	return days * 24 * 60 * 60 * 1000
 }
 
+/**
+ * Composable for managing text-based quiz functionality
+ * @returns {UseTextQuizReturnType} Object containing quiz state and methods
+ */
 export function useTextQuiz(): UseTextQuizReturnType {
-	const NUMBER_OF_SESSION = 5
 	const supabase = useSupabaseClient<Database>()
 
 	const loading = shallowRef(false)
@@ -131,7 +145,12 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		const userId = authStore.userId
 		if (userId === undefined) return
 
-		const currentMemoryLevel = texts.value.find((text) => text.id === textId)?.memory_level
+		const text = texts.value.find((text) => text.id === textId)
+		if (!text) {
+			throw new Error(`Text with id ${textId} not found`)
+		}
+
+		const currentMemoryLevel = text.memory_level
 		if (currentMemoryLevel === undefined) {
 			throw new Error('Current memory level is undefined')
 		}
