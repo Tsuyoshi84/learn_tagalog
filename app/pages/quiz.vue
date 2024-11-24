@@ -7,12 +7,12 @@ onMounted(async () => {
 
 /** The index of the current text */
 const index = shallowRef(0)
-
 /** The text that the user is currently answering */
 const currentText = computed(() => texts.value[index.value])
-
 /** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
+/** Whether the session is ended or not */
+const isSessionEnded = shallowRef(false)
 
 async function answerText(textId: string, remembered: boolean): Promise<void> {
 	await answer(textId, remembered)
@@ -25,9 +25,6 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 	}
 }
 
-/** Whether the session is ended or not */
-const isSessionEnded = shallowRef(false)
-
 /** Start a new session */
 async function startNewSession(): Promise<void> {
 	await fetchTexts()
@@ -39,7 +36,7 @@ async function startNewSession(): Promise<void> {
 
 <template>
 	<div v-if="!loading && currentText !== undefined" class="flex flex-col items-center gap-4">
-		<div class="flex gap-8"> {{ index + 1 }} / {{ texts.length }} </div>
+		<QuizProgress :quiz-texts="texts" />
 		<article class="flex flex-col gap-4">
 			<p class="text-pretty text-center text-2xl">{{ currentText.en }}</p>
 			<p

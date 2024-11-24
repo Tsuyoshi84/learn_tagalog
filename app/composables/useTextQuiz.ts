@@ -1,5 +1,5 @@
 import type { Database } from '~/database-generated.types'
-import type { Text } from '~/database.types'
+import type { QuizText } from '~/types/quiz'
 
 /**
  * The number of days after which the next_due_date is updated based on the memory_level
@@ -15,19 +15,6 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 const MIN_MEMORY_LEVEL = 1 as const
 const MAX_MEMORY_LEVEL = 5 as const
 const NUMBER_OF_SESSION = 5 as const
-
-/**
- * Type representing a text with quiz-specific properties
- */
-type QuizText = Text & {
-	/**
-	 * Whether the user remembered the text or not.
-	 * If the user has not answered the text, the value is undefined.
-	 */
-	remembered: boolean | undefined
-	/** The memory level of the text */
-	memory_level: number
-}
 
 type UseTextQuizReturnType = {
 	/** Whether the texts are loading or not */
@@ -145,6 +132,7 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		const userId = authStore.userId
 		if (userId === undefined) return
 
+		const index = texts.value.findIndex((text) => text.id === textId)
 		const text = texts.value.find((text) => text.id === textId)
 		if (!text) {
 			throw new Error(`Text with id ${textId} not found`)
@@ -178,6 +166,10 @@ export function useTextQuiz(): UseTextQuizReturnType {
 		if (error) {
 			throw new Error('Failed to answer', { cause: error })
 		}
+
+		text.memory_level = nextMemoryLevel
+		text.remembered = remembered
+		texts.value = texts.value.with(index, text)
 	}
 
 	return {
