@@ -30,6 +30,11 @@ updates:
           - "*vue*"
         exclude-patterns:
           - "@nuxt/eslint"
+          - "vue-tsc"
+      typescript:
+        patterns:
+          - "*typescript*"
+          - "vue-tsc"
 
   - package-ecosystem: "github-actions"
     directory: "/"
