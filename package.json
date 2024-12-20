@@ -3,7 +3,7 @@
   "packageManager": "pnpm@9.15.0",
   "devDependencies": {
     "@nuxt/devtools": "^1.6.4",
-    "@nuxt/eslint": "^0.7.3",
+    "@nuxt/eslint": "^0.7.4",
     "@nuxt/icon": "^1.10.1",
     "@nuxt/test-utils": "^3.15.1",
     "@nuxtjs/google-fonts": "^3.2.0",
@@ -21,7 +21,7 @@
     "eslint-plugin-vitest": "^0.5.4",
     "happy-dom": "^15.11.7",
     "nuxt": "^3.14.1592",
-    "oxlint": "^0.15.2",
+    "oxlint": "^0.15.3",
     "postcss-html": "^1.7.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
