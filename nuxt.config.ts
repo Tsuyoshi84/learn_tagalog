@@ -1,29 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
-	app: {
-		head: {
-			htmlAttrs: {
-				lang: 'en',
-			},
-			title: 'Learn Tagalog',
-			meta: [
-				{ charset: 'utf-8' },
-				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-				{ hid: 'description', name: 'description', content: `Let's learn Tagalog!` },
-			],
-			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
-		},
-	},
-	compatibilityDate: '2024-04-03',
-	css: [],
-	devtools: { enabled: true },
-	experimental: {
-		typedPages: true,
-	},
-	future: {
-		compatibilityVersion: 4,
-	},
+	modules: [
+		'@nuxtjs/google-fonts',
+		'@nuxtjs/supabase',
+		'@nuxtjs/tailwindcss',
+		'@nuxt/eslint',
+		'@nuxt/test-utils/module',
+		'@pinia/nuxt',
+		'@vueuse/nuxt',
+		'@nuxt/icon',
+	],
 	imports: {
 		dirs: ['composables/*', 'utils/*'],
 		presets: [
@@ -45,38 +32,42 @@ export default defineNuxtConfig({
 			},
 		],
 	},
-	modules: [
-		'@nuxtjs/google-fonts',
-		'@nuxtjs/supabase',
-		'@nuxtjs/tailwindcss',
-		'@nuxt/eslint',
-		'@nuxt/test-utils/module',
-		'@pinia/nuxt',
-		'@vueuse/nuxt',
-		'@nuxt/icon',
-	],
-	googleFonts: {
-		families: {
-			Roboto: {
-				wght: [400],
+	devtools: { enabled: true },
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: 'en',
 			},
-			Gabarito: {
-				wght: [400, 500, 700],
-			},
+			title: 'Learn Tagalog',
+			meta: [
+				{ charset: 'utf-8' },
+				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{ hid: 'description', name: 'description', content: `Let's learn Tagalog!` },
+			],
+			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
 		},
 	},
+	css: [],
 	runtimeConfig: {
 		public: {
 			baseUrl: '',
 		},
 	},
 	srcDir: 'app/',
-	supabase: {
-		redirect: true,
+	future: {
+		compatibilityVersion: 4,
 	},
-	testUtils: {},
-	tailwindcss: {
-		configPath: '~/tailwind.config.ts',
+	experimental: {
+		typedPages: true,
+	},
+	compatibilityDate: '2024-04-03',
+	vite: {
+		vue: {
+			script: {
+				defineModel: true,
+				propsDestructure: true,
+			},
+		},
 	},
 	typescript: {
 		tsConfig: {
@@ -95,12 +86,28 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	vite: {
-		vue: {
-			script: {
-				defineModel: true,
-				propsDestructure: true,
+	eslint: {
+		config: {
+			nuxt: {
+				sortConfigKeys: true,
 			},
 		},
 	},
+	googleFonts: {
+		families: {
+			Roboto: {
+				wght: [400],
+			},
+			Gabarito: {
+				wght: [400, 500, 700],
+			},
+		},
+	},
+	supabase: {
+		redirect: true,
+	},
+	tailwindcss: {
+		configPath: '~/tailwind.config.ts',
+	},
+	testUtils: {},
 })
