@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import QuizProgress from '~/components/QuizProgress.vue'
+import { useTextQuiz } from '~/composables/useTextQuiz'
+
 const { texts, loading, fetchTexts, answer } = useTextQuiz()
 
 onMounted(async () => {

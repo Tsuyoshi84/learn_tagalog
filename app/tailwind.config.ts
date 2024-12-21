@@ -74,7 +74,7 @@ export default {
 	theme: {
 		colors,
 		fontFamily: {
-			main: ['Gabarito', 'cursive'],
+			main: ['Comfortaa'],
 			sans: ['Roboto', ...defaultTheme.fontFamily.sans],
 		},
 		extend: {

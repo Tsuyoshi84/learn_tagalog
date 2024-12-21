@@ -22,10 +22,13 @@
 		"app/database-generated.types.ts"
 	],
 	"cSpell.words": [
+		"Comfortaa",
 		"composables",
+		"Gabarito",
 		"nuxi",
 		"nuxt",
 		"nuxtjs",
+		"oklch",
 		"oxlint",
 		"pinia",
 		"stylelint",

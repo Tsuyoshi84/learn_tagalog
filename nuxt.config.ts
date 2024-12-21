@@ -11,27 +11,6 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		'@nuxt/icon',
 	],
-	imports: {
-		dirs: ['composables/*', 'utils/*'],
-		presets: [
-			{
-				from: 'vue',
-				imports: ['CSSProperties', 'WritableComputedRef'],
-				type: true,
-			},
-			{
-				from: 'vue-component-type-helpers',
-				imports: [
-					'ComponentType',
-					'ComponentProps',
-					'ComponentSlots',
-					'ComponentEmit',
-					'ComponentExposed',
-				],
-				type: true,
-			},
-		],
-	},
 	devtools: { enabled: true },
 	app: {
 		head: {
@@ -95,6 +74,9 @@ export default defineNuxtConfig({
 	},
 	googleFonts: {
 		families: {
+			Comfortaa: {
+				wght: [400, 500, 700],
+			},
 			Roboto: {
 				wght: [400],
 			},
