@@ -47,6 +47,6 @@ jobs:
             Automated PR to update Nuxt dependencies using `npx nuxt@latest upgrade --force`
             
             This PR was created automatically by the Update Nuxt Dependencies workflow.
-          branch: chore/update-nuxt-deps-${{ format(github.event.repository.updated_at, 'yyyy-MM-dd-HH-mm') }}
+          branch: chore/update-nuxt-deps-${{ github.run_number }}
           delete-branch: true
           base: main
