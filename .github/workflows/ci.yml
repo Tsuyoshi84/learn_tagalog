@@ -37,7 +37,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
 
       - name: Build
-        run: bun build
+        run: bun run build
 
   auto-merge:
     runs-on: ubuntu-latest
