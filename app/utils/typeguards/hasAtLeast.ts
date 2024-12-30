@@ -1,4 +1,5 @@
-import type { NumberRange } from '#imports'
+import type { ArrayAtLeast } from '~~/shared/types/ArrayAtLeast'
+import type { NumberRange } from '~~/shared/types/NumberRange'
 
 /**
  * Checks if an array has at least a certain number of elements.
