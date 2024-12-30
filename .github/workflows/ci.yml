@@ -22,22 +22,22 @@ jobs:
         run: bun install --no-save
 
       - name: Type Check
-        run: bun run typecheck
+        run: bun typecheck
 
       - name: Test
         run: bun run test
 
       - name: Lint
-        run: bun run lint:fix
+        run: bun lint:fix
 
       - name: Format Check
-        run: bun run format
+        run: bun format
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
 
       - name: Build
-        run: bun run build
+        run: bun build
 
   auto-merge:
     runs-on: ubuntu-latest
