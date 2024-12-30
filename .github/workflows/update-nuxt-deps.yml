@@ -1,7 +1,6 @@
 name: Update Nuxt Dependencies
 
 on:
-  # Allow manual trigger
   workflow_dispatch:
 
 jobs:
@@ -15,22 +14,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 22
-          cache: 'pnpm'
-          cache-dependency-path: pnpm-lock.yaml
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install --ignore-scripts
+        run: bun install --no-save
 
       - name: Update Nuxt dependencies
         run: |
-          npx nuxt@latest upgrade --force
+          bunx nuxt@latest upgrade --force
           
       - name: Check for changes
         id: git-check
@@ -45,7 +39,7 @@ jobs:
           commit-message: 'chore: update nuxt dependencies'
           title: 'chore: Update Nuxt dependencies ${{ format(github.event.repository.updated_at, ''yyyy-MM-dd HH:mm'') }}'
           body: |
-            Automated PR to update Nuxt dependencies using `npx nuxt@latest upgrade --force`
+            Automated PR to update Nuxt dependencies using `bunx nuxt@latest upgrade --force`
             
             This PR was created automatically by the Update Nuxt Dependencies workflow.
           branch: chore/update-nuxt-deps-${{ github.run_number }}

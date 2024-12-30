@@ -1,5 +1,5 @@
 {
-	"name": "Node.js & pnpm",
+	"name": "Bun",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
@@ -21,7 +21,7 @@
 			]
 		}
 	},
-	"postCreateCommand": "pnpm install",
+	"postCreateCommand": "bun install",
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:SSH_AUTH_SOCK},target=/tmp/ssh-agent.sock,type=bind"

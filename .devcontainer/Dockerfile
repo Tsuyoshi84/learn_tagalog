@@ -1,8 +1,5 @@
-# Use the official Node.js image as a base
-FROM node:23
-
-# Install pnpm
-RUN npm install -g pnpm@9.15.0
+# Use the official Bun image as a base
+FROM oven/bun:latest
 
 # Set the working directory
 WORKDIR /workspace
