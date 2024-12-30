@@ -41,6 +41,7 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.PAT_FOR_ACTIONS }}
           commit-message: 'chore: update nuxt dependencies'
           title: 'chore: Update Nuxt dependencies ${{ format(github.event.repository.updated_at, ''yyyy-MM-dd HH:mm'') }}'
           body: |
