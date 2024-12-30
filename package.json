@@ -1,6 +1,6 @@
 {
   "name": "learn_tagalog",
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "bun@1.0.35",
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",
     "@nuxt/eslint": "^0.7.4",
@@ -32,7 +32,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --no-fork",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
