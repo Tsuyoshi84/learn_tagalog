@@ -1,6 +1,9 @@
 {
-  "name": "learn_tagalog",
-  "packageManager": "bun@1.0.35",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.3",
+    "postgres": "^3.4.5"
+  },
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",
     "@nuxt/eslint": "^0.7.4",
@@ -13,6 +16,7 @@
     "@stylistic/eslint-plugin-js": "^2.12.1",
     "@tailwindcss/forms": "^0.5.9",
     "@vueuse/nuxt": "^12.0.0",
+    "drizzle-kit": "^0.30.1",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -29,22 +33,25 @@
     "vitest": "^2.1.8",
     "vue-tsc": "^2.2.0"
   },
+  "name": "learn_tagalog",
+  "packageManager": "bun@1.0.35",
   "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "test": "vitest",
-    "lint": "eslint . && oxlint",
-    "lint:inspect": "eslint --inspect-config",
-    "lint:fix": "eslint . --fix",
-    "lint-css": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
-    "lint-css:fix": "stylelint --fix --ignore-path .gitignore \"**/*.{css,vue}\"",
     "format": "prettier --write \"**/*.{js,ts,vue,css,json}\"",
     "format:check": "prettier --check \"**/*.{js,ts,vue,css,json}\"",
-    "typecheck": "nuxi typecheck"
+    "generate": "nuxt generate",
+    "lint": "eslint . && oxlint",
+    "lint-css": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
+    "lint-css:fix": "stylelint --fix --ignore-path .gitignore \"**/*.{css,vue}\"",
+    "lint:fix": "eslint . --fix",
+    "lint:inspect": "eslint --inspect-config",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview",
+    "test": "vitest",
+    "typecheck": "nuxi typecheck",
+    "schema": "bunx drizzle-kit pull"
   },
   "type": "module"
 }
