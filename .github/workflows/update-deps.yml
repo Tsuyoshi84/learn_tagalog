@@ -1,4 +1,4 @@
-name: Update Nuxt Dependencies
+name: Update Dependencies
 
 on:
   workflow_dispatch:
@@ -22,9 +22,9 @@ jobs:
       - name: Install dependencies
         run: bun install --no-save
 
-      - name: Update Nuxt dependencies
+      - name: Update dependencies
         run: |
-          bunx nuxt@latest upgrade --force
+          bun update --latest
           
       - name: Check for changes
         id: git-check
@@ -36,12 +36,12 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.PAT_FOR_ACTIONS }}
-          commit-message: 'chore: update nuxt dependencies'
-          title: 'chore: Update Nuxt dependencies'
+          commit-message: 'chore: update dependencies'
+          title: 'chore: Update dependencies'
           body: |
-            Automated PR to update Nuxt dependencies using `bunx nuxt@latest upgrade --force`
+            Automated PR to update dependencies using `bun update --latest`
             
-            This PR was created automatically by the Update Nuxt Dependencies workflow.
-          branch: chore/update-nuxt-deps-${{ github.run_number }}
+            This PR was created automatically by the Update Dependencies workflow.
+          branch: chore/update-deps-${{ github.run_number }}
           delete-branch: true
           base: main
