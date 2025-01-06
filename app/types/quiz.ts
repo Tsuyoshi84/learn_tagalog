@@ -9,6 +9,4 @@ export type QuizText = Text & {
 	 * If the user has not answered the text, the value is undefined.
 	 */
 	remembered: boolean | undefined
-	/** The memory level of the text */
-	memory_level: number
 }
