@@ -24,7 +24,7 @@
     "eslint-plugin-oxlint": "^0.15.5",
     "eslint-plugin-vitest": "^0.5.4",
     "happy-dom": "^16.5.3",
-    "nuxt": "^3.15.1",
+    "nuxt": "^3.15.2",
     "oxlint": "^0.15.5",
     "postcss-html": "^1.7.0",
     "prettier": "^3.4.2",
