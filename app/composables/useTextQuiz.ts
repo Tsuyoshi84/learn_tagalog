@@ -1,4 +1,5 @@
 import type { QuizText } from '~/types/quiz'
+import { useAuthStore } from '~/stores/auth'
 
 type UseTextQuizReturnType = {
 	/** Whether the texts are loading or not */

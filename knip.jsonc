@@ -1,0 +1,33 @@
+{
+	"entry": [
+		"nuxt.config.ts",
+		"app/tailwind.config.ts",
+		"app/app.vue",
+		"app/error.vue",
+		"app/pages/**/*.vue",
+		"app/layouts/**/*.vue",
+		"app/middleware/**/*.ts",
+		"app/plugins/**/*.ts",
+		"app/database-generated.types.ts",
+		"server/api/**/*.ts",
+		"server/middleware/**/*.ts",
+		"server/plugins/**/*.ts",
+		"tsconfig.json",
+	],
+	"ignore": ["eslint.config.mjs", "vitest.config.mjs"],
+	"ignoreDependencies": [
+		"h3",
+		"vue-tsc",
+		"tailwindcss",
+		"@supabase/supabase-js",
+		"vite",
+		"@nuxt/devtools",
+		"@nuxt/eslint",
+		"@nuxtjs/google-fonts",
+		"@nuxtjs/tailwindcss",
+		"@vueuse/nuxt",
+	],
+	"lefthook": {
+		"config": [],
+	},
+}

@@ -1,4 +1,5 @@
 import type { Text } from '~/database.types'
+import { useFetchTexts } from '~/composables/useFetchTexts'
 
 type ReturnType = {
 	/** Whether loading data or not */

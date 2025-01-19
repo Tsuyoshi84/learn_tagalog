@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import TextList from '~/components/TextList.vue'
+
 const searchText = shallowRef('')
 </script>
 

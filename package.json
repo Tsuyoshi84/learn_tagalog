@@ -24,6 +24,7 @@
     "eslint-plugin-oxlint": "^0.15.6",
     "eslint-plugin-vitest": "^0.5.4",
     "happy-dom": "^16.6.0",
+    "knip": "^5.42.2",
     "nuxt": "^3.15.2",
     "oxlint": "^0.15.6",
     "postcss-html": "^1.8.0",
@@ -51,7 +52,8 @@
     "preview": "nuxt preview",
     "test": "vitest",
     "typecheck": "nuxi typecheck",
-    "schema": "bunx drizzle-kit pull"
+    "schema": "bunx drizzle-kit pull",
+    "knip": "knip"
   },
   "type": "module"
 }
