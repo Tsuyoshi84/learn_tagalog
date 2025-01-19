@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: bun install --no-save
 
+      - name: Knip
+        run: bun run knip
+
       - name: Type Check
         run: bun typecheck
 

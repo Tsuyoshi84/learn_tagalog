@@ -19,14 +19,11 @@
     "drizzle-kit": "^0.30.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jsdoc": "^50.6.2",
-    "eslint-plugin-oxlint": "^0.15.6",
-    "eslint-plugin-vitest": "^0.5.4",
     "happy-dom": "^16.6.0",
+    "knip": "^5.42.2",
     "nuxt": "^3.15.2",
     "oxlint": "^0.15.6",
-    "postcss-html": "^1.8.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.10",
     "typescript": "5.7.3",
@@ -43,15 +40,14 @@
     "format:check": "prettier --check \"**/*.{js,ts,vue,css,json}\"",
     "generate": "nuxt generate",
     "lint": "eslint . && oxlint",
-    "lint-css": "stylelint --ignore-path .gitignore \"**/*.{css,vue}\"",
-    "lint-css:fix": "stylelint --fix --ignore-path .gitignore \"**/*.{css,vue}\"",
     "lint:fix": "eslint . --fix",
     "lint:inspect": "eslint --inspect-config",
     "postinstall": "nuxt prepare",
     "preview": "nuxt preview",
     "test": "vitest",
     "typecheck": "nuxi typecheck",
-    "schema": "bunx drizzle-kit pull"
+    "schema": "bunx drizzle-kit pull",
+    "knip": "knip"
   },
   "type": "module"
 }

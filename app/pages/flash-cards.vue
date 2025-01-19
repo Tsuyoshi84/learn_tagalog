@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import FlashCard from '~/components/FlashCard.vue'
+import FlashCardControl from '~/components/FlashCardControl.vue'
+import { useFlashCard } from '~/composables/useFlashCard'
+
 useHead({
 	title: 'Flash Cards',
 })
