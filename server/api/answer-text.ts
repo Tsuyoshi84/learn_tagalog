@@ -10,9 +10,13 @@ type RequestBody = {
 	remembered: boolean
 }
 
+/** Minimum memory level */
 const MIN_MEMORY_LEVEL = 1 as const
+
+/** Maximum memory level */
 const MAX_MEMORY_LEVEL = 5 as const
 
+/** Maps memory levels to the number of days until the next review is due  */
 const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 	1: 1,
 	2: 3,
@@ -21,6 +25,9 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 	5: 30,
 } as const
 
+/**
+ * API endpoint to handle user's text memory response and update their progress
+ */
 export default defineEventHandler(async (event) => {
 	// Get and validate request body
 	const body = await readBody<RequestBody>(event)

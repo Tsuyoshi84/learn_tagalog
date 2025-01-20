@@ -22,7 +22,12 @@ export function useTextQuiz(): UseTextQuizReturnType {
 	const authStore = useAuthStore()
 
 	async function fetchText(): Promise<void> {
-		const result = await $fetch('/api/next-quiz')
+		const result = await $fetch<QuizText>('/api/next-quiz', {
+			method: 'POST',
+			body: {
+				level: 1,
+			},
+		})
 
 		text.value = {
 			...result,

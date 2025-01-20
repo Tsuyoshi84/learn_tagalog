@@ -3,8 +3,23 @@ import { texts, userProgress } from '../db/schema'
 import { and, asc, eq } from 'drizzle-orm'
 import { getUser } from '~~/server/utils/getUser'
 
+type RequestBody = {
+	level: number
+}
+
+/**
+ * API endpoint to get the next quiz for a user
+ */
 export default defineEventHandler(async (event) => {
 	const user = await getUser(event)
+
+	const body = await readBody<RequestBody>(event)
+	if (!body?.level) {
+		throw createError({
+			statusCode: 400,
+			message: 'Invalid request body. Required: level (number)',
+		})
+	}
 
 	const result = await db
 		.select({
@@ -19,11 +34,9 @@ export default defineEventHandler(async (event) => {
 		.from(texts)
 		.leftJoin(userProgress, eq(userProgress.textId, texts.id))
 		.orderBy(asc(userProgress.nextDueDate))
-		.where(and(eq(userProgress.userId, user.id), eq(texts.level, 1)))
+		.where(and(eq(userProgress.userId, user.id), eq(texts.level, body.level)))
 		.limit(1)
 	const text = result[0]
-
-	console.log(text)
 
 	if (!text) {
 		throw createError({
