@@ -1,14 +1,17 @@
-import { readBody } from 'h3'
 import { getUser } from '~~/server/utils/getUser'
 import { db } from '~~/server/db'
 import { userProgress } from '~~/server/db/schema'
 import { and, eq } from 'drizzle-orm'
 import { clamp } from '~~/shared/utils/clamp'
+import { boolean, object, pipe, string, uuid } from 'valibot'
+import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 
-type RequestBody = {
-	textId: string
-	remembered: boolean
-}
+const requestBodySchema = object({
+	/** The ID of the text being answered */
+	textId: pipe(string(), uuid()),
+	/** Whether the user remembered the text or not */
+	remembered: boolean(),
+})
 
 /** Minimum memory level */
 const MIN_MEMORY_LEVEL = 1 as const
@@ -29,16 +32,7 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
  * API endpoint to handle user's text memory response and update their progress
  */
 export default defineEventHandler(async (event) => {
-	// Get and validate request body
-	const body = await readBody<RequestBody>(event)
-	if (!body?.textId || typeof body.remembered !== 'boolean') {
-		throw createError({
-			statusCode: 400,
-			message: 'Invalid request body. Required: textId (string) and remembered (boolean)',
-		})
-	}
-
-	const { textId, remembered } = body
+	const { textId, remembered } = await parseRequestBody(event, requestBodySchema)
 
 	const user = await getUser(event)
 

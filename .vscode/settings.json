@@ -35,6 +35,8 @@
 		"supabase",
 		"tailwindcss",
 		"typecheck",
+		"Vali",
+		"Valibot",
 		"vitest",
 		"vueuse"
 	],

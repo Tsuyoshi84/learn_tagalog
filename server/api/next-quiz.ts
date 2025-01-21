@@ -1,25 +1,21 @@
 import { db } from '~~/server/db'
-import { texts, userProgress } from '../db/schema'
+import { texts, userProgress } from '~~/server/db/schema'
 import { and, asc, eq } from 'drizzle-orm'
 import { getUser } from '~~/server/utils/getUser'
+import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
+import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 
-type RequestBody = {
-	level: number
-}
+const requestBodySchema = object({
+	/** The level of the text to get */
+	level: pipe(number(), integer(), minValue(1), maxValue(5)),
+})
 
 /**
  * API endpoint to get the next quiz for a user
  */
 export default defineEventHandler(async (event) => {
 	const user = await getUser(event)
-
-	const body = await readBody<RequestBody>(event)
-	if (!body?.level) {
-		throw createError({
-			statusCode: 400,
-			message: 'Invalid request body. Required: level (number)',
-		})
-	}
+	const { level } = await parseRequestBody(event, requestBodySchema)
 
 	const result = await db
 		.select({
@@ -34,7 +30,7 @@ export default defineEventHandler(async (event) => {
 		.from(texts)
 		.leftJoin(userProgress, eq(userProgress.textId, texts.id))
 		.orderBy(asc(userProgress.nextDueDate))
-		.where(and(eq(userProgress.userId, user.id), eq(texts.level, body.level)))
+		.where(and(eq(userProgress.userId, user.id), eq(texts.level, level)))
 		.limit(1)
 	const text = result[0]
 
