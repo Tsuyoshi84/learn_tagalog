@@ -1,7 +1,22 @@
 <script lang="ts" setup>
 import { useTextQuiz } from '~/composables/useTextQuiz'
+import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+import { useQueryParamsWithSchema } from '~/composables/useQueryParamsWithSchema'
 
-const { loading, text, fetchText, answer } = useTextQuiz()
+const queryParamsSchema = object({
+	/** The level of quiz */
+	level: pipe(
+		string(),
+		transform((value) => parseInt(value, 10)),
+		integer(),
+		minValue(1),
+		maxValue(5),
+	),
+})
+
+const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
+
+const { loading, text, fetchText, answer } = useTextQuiz(parsedQueryParams.value.level)
 
 onMounted(async () => {
 	await fetchText()

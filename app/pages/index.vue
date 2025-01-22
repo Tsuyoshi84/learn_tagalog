@@ -19,7 +19,9 @@ const { userName } = storeToRefs(authStore)
 					>
 				</li>
 				<li class="w-full rounded-md bg-blue-200 p-4 text-center">
-					<NuxtLink class="block h-full w-full font-sans text-2xl" to="/quiz">Quiz</NuxtLink>
+					<NuxtLink class="block h-full w-full font-sans text-2xl" to="/quiz?level=1"
+						>Quiz</NuxtLink
+					>
 				</li>
 			</ul>
 		</nav>

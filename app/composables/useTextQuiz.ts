@@ -14,15 +14,22 @@ type UseTextQuizReturnType = {
 
 /**
  * Composable for managing text-based quiz functionality
+ *
+ * @param level - The level of the text to get
  * @returns {UseTextQuizReturnType} Object containing quiz state and methods
  */
-export function useTextQuiz(): UseTextQuizReturnType {
+export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnType {
 	const loading = shallowRef(false)
 	const text = shallowRef<QuizText>()
 	const authStore = useAuthStore()
 
 	async function fetchText(): Promise<void> {
-		const result = await $fetch('/api/next-quiz')
+		const result = await $fetch<QuizText>('/api/next-quiz', {
+			method: 'POST',
+			body: {
+				level: toValue(level),
+			},
+		})
 
 		text.value = {
 			...result,
