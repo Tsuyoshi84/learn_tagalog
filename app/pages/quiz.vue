@@ -16,24 +16,24 @@ const queryParamsSchema = object({
 
 const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
-const { loading, text, fetchText, answer } = useTextQuiz(parsedQueryParams.value.level)
+const { text, loadText, answer } = useTextQuiz(parsedQueryParams.value.level)
 
 onMounted(async () => {
-	await fetchText()
+	await loadText()
 })
 
 /** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
 
 async function answerText(textId: string, remembered: boolean): Promise<void> {
-	await answer(textId, remembered)
-	await fetchText()
+	answer(textId, remembered)
+	await loadText()
 	showsAnswer.value = false
 }
 </script>
 
 <template>
-	<div v-if="!loading && text !== undefined" class="flex flex-col items-center gap-4">
+	<div v-if="text !== undefined" class="flex flex-col items-center gap-4">
 		<article class="flex flex-col gap-4">
 			<p class="text-pretty text-center text-2xl">{{ text.en }}</p>
 			<p

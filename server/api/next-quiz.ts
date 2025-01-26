@@ -8,6 +8,8 @@ import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 const requestBodySchema = object({
 	/** The level of the text to get */
 	level: pipe(number(), integer(), minValue(1), maxValue(5)),
+	/** The index of the text to get */
+	index: pipe(number(), integer(), minValue(0)),
 })
 
 /**
@@ -15,7 +17,7 @@ const requestBodySchema = object({
  */
 export default defineEventHandler(async (event) => {
 	const user = await getUser(event)
-	const { level } = await parseRequestBody(event, requestBodySchema)
+	const { level, index } = await parseRequestBody(event, requestBodySchema)
 
 	const result = await db
 		.select({
@@ -31,6 +33,7 @@ export default defineEventHandler(async (event) => {
 		.leftJoin(userProgress, eq(userProgress.textId, texts.id))
 		.orderBy(asc(userProgress.nextDueDate))
 		.where(and(eq(userProgress.userId, user.id), eq(texts.level, level)))
+		.offset(index)
 		.limit(1)
 	const text = result[0]
 
