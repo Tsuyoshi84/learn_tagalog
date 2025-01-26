@@ -31,6 +31,7 @@
 		"@supabase/supabase-js",
 		"@typescript-eslint/parser",
 		"@vueuse/nuxt",
+		"@vueuse/core",
 	],
 	"paths": {
 		"#supabase/server": ["node_modules/@nuxtjs/supabase/dist/runtime/server/services/index.js"],
