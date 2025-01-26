@@ -1,6 +1,6 @@
 import type { QuizText } from '~/types/quiz'
 import { useAuthStore } from '~/stores/auth'
-import { until, whenever } from '@vueuse/core'
+import { until } from '@vueuse/core'
 
 type UseTextQuizReturnType = {
 	/** The text that the user is currently answering */
@@ -37,36 +37,33 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 		if (text.value === undefined) {
 			const result = await fetchText(0)
 			text.value = { ...result, remembered: undefined }
+			fetchNextText()
 		} else {
 			await until(nextText).not.toBeUndefined()
 			text.value = nextText.value
-			nextText.value = undefined
 		}
 	}
 
-	// Fetch the next text in the background
-	whenever(
-		() => nextText.value === undefined,
-		async () => {
-			const result = await fetchText(1)
-			nextText.value = { ...result, remembered: undefined }
-		},
-		{ immediate: true },
-	)
+	async function fetchNextText(): Promise<void> {
+		const result = await fetchText(1)
+		nextText.value = { ...result, remembered: undefined }
+	}
 
 	const authStore = useAuthStore()
 
-	function answer(textId: string, remembered: boolean): void {
+	async function answer(textId: string, remembered: boolean): Promise<void> {
 		const userId = authStore.userId
 		if (userId === undefined) return
 
-		$fetch('/api/answer-text', {
+		await $fetch('/api/answer-text', {
 			method: 'POST',
 			body: {
 				textId,
 				remembered,
 			},
 		})
+
+		await fetchNextText()
 	}
 
 	return {

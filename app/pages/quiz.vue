@@ -26,9 +26,10 @@ onMounted(async () => {
 const showsAnswer = shallowRef(false)
 
 async function answerText(textId: string, remembered: boolean): Promise<void> {
-	answer(textId, remembered)
 	await loadText()
 	showsAnswer.value = false
+
+	answer(textId, remembered)
 }
 </script>
 
