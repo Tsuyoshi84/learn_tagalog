@@ -1,15 +1,14 @@
 import type { QuizText } from '~/types/quiz'
 import { useAuthStore } from '~/stores/auth'
+import { until, whenever } from '@vueuse/core'
 
 type UseTextQuizReturnType = {
-	/** Whether the texts are loading or not */
-	loading: Ref<boolean>
 	/** The text that the user is currently answering */
 	text: Ref<QuizText | undefined>
-	/** Fetch the text */
-	fetchText: () => Promise<void>
-	/** Answer the text */
-	answer: (textId: string, remembered: boolean) => Promise<void>
+	/** Load the text to show the quiz */
+	loadText: () => Promise<void>
+	/** Send the answer result to the server asynchronously */
+	answer: (textId: string, remembered: boolean) => void
 }
 
 /**
@@ -19,29 +18,49 @@ type UseTextQuizReturnType = {
  * @returns {UseTextQuizReturnType} Object containing quiz state and methods
  */
 export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnType {
-	const loading = shallowRef(false)
 	const text = shallowRef<QuizText>()
-	const authStore = useAuthStore()
+	const nextText = shallowRef<QuizText>()
 
-	async function fetchText(): Promise<void> {
+	async function fetchText(index: number): Promise<QuizText> {
 		const result = await $fetch<QuizText>('/api/next-quiz', {
 			method: 'POST',
 			body: {
 				level: toValue(level),
+				index,
 			},
 		})
 
-		text.value = {
-			...result,
-			remembered: undefined,
+		return result
+	}
+
+	async function loadText(): Promise<void> {
+		if (text.value === undefined) {
+			const result = await fetchText(0)
+			text.value = { ...result, remembered: undefined }
+		} else {
+			await until(nextText).not.toBeUndefined()
+			text.value = nextText.value
+			nextText.value = undefined
 		}
 	}
 
-	async function answer(textId: string, remembered: boolean): Promise<void> {
+	// Fetch the next text in the background
+	whenever(
+		() => nextText.value === undefined,
+		async () => {
+			const result = await fetchText(1)
+			nextText.value = { ...result, remembered: undefined }
+		},
+		{ immediate: true },
+	)
+
+	const authStore = useAuthStore()
+
+	function answer(textId: string, remembered: boolean): void {
 		const userId = authStore.userId
 		if (userId === undefined) return
 
-		await $fetch('/api/answer-text', {
+		$fetch('/api/answer-text', {
 			method: 'POST',
 			body: {
 				textId,
@@ -51,9 +70,8 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 	}
 
 	return {
-		loading,
 		text,
-		fetchText,
+		loadText,
 		answer,
 	}
 }
