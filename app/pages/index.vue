@@ -3,27 +3,97 @@ import { useAuthStore } from '~/stores/auth'
 
 const authStore = useAuthStore()
 const { userName } = storeToRefs(authStore)
+
+const menuItems = [
+	{
+		name: 'Flash Cards',
+		to: { name: 'flash-cards' },
+		icon: '🎴',
+		description: 'Practice with interactive cards',
+		gradient: 'from-blue-300 to-blue-500',
+	},
+	{
+		name: 'Quiz',
+		to: { name: 'quiz', query: { level: '1' } },
+		icon: '✨',
+		description: 'Test your knowledge',
+		gradient: 'from-red-300 to-red-500',
+	},
+] as const
 </script>
 
 <template>
-	<div class="flex h-[calc(100%-4rem)] flex-col justify-center gap-4 text-center">
-		<div>
-			<p class="w-full text-center text-3xl font-bold">Hey {{ userName }}</p>
-			<p>Let's learn Tagalog 💪</p>
+	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-8">
+		<div class="mb-12 space-y-2 text-center">
+			<h1 class="animate-fade-in text-4xl font-bold text-indigo-600 md:text-5xl">
+				Hey {{ userName }}! 👋
+			</h1>
+			<p class="animate-fade-in-delay text-xl text-gray-600">Let's make learning Tagalog fun! 🎉</p>
 		</div>
-		<nav class="flex items-center">
-			<ul class="w-full">
-				<li class="w-full rounded-md bg-blue-200 p-4 text-center">
-					<NuxtLink class="block h-full w-full font-sans text-2xl" to="/flash-cards"
-						>Flash Cards</NuxtLink
+
+		<nav class="w-full max-w-2xl">
+			<ul class="grid gap-6 px-4 sm:grid-cols-2">
+				<li
+					v-for="(item, index) in menuItems"
+					:key="item.name"
+					class="transform transition-all duration-300 hover:scale-105"
+					:class="{ 'animate-slide-in': true, 'animation-delay-200': index === 1 }"
+				>
+					<NuxtLink
+						:to="item.to"
+						class="group flex h-full flex-col items-center justify-center rounded-xl bg-gradient-to-br p-6 text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+						:class="item.gradient"
 					>
-				</li>
-				<li class="w-full rounded-md bg-blue-200 p-4 text-center">
-					<NuxtLink class="block h-full w-full font-sans text-2xl" to="/quiz?level=1"
-						>Quiz</NuxtLink
-					>
+						<span class="mb-2 text-3xl">{{ item.icon }}</span>
+						<span
+							class="text-2xl font-bold text-white transition-transform duration-300 group-hover:scale-105"
+						>
+							{{ item.name }}
+						</span>
+						<span class="mt-2 text-sm text-white/90">{{ item.description }}</span>
+					</NuxtLink>
 				</li>
 			</ul>
 		</nav>
 	</div>
 </template>
+
+<style scoped>
+.animate-fade-in {
+	animation: fadeIn 0.8s ease-out;
+}
+
+.animate-fade-in-delay {
+	animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.animate-slide-in {
+	animation: slideIn 0.8s ease-out both;
+}
+
+.animation-delay-200 {
+	animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+</style>
