@@ -59,3 +59,7 @@ TypeScript Usage
 - Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`.
 - Put `as const` on constant objects.
 - Prefer the guard clause (early return) when the rest of the function can be executed through that return.
+
+Tailwind CSS
+
+- Use colors from the `colors` object in `tailwind.config.ts`.

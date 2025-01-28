@@ -49,9 +49,10 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 						@click="showsAnswer = true"
 					>
 						<p
-							class="text-pretty text-center text-3xl font-bold text-indigo-600 transition-all duration-300"
+							class="text-pretty rounded-lg p-4 text-center text-3xl font-bold transition-all duration-300"
 							:class="{
-								'animate-fade-in': showsAnswer,
+								'animate-fade-in bg-indigo-50 text-gray-800': showsAnswer,
+								'text-gray-400': !showsAnswer,
 							}"
 						>
 							{{ showsAnswer ? text.tl : 'Click to reveal the answer' }}
