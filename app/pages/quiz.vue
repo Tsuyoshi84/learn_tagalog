@@ -43,13 +43,15 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 		<div v-if="text !== undefined" class="animate-fade-in w-full max-w-3xl">
 			<article class="rounded-xl bg-white p-8 shadow-lg">
 				<div class="mb-8 space-y-6">
-					<p class="text-pretty text-center text-3xl text-gray-800">{{ text.en }}</p>
+					<p class="text-pretty text-center text-xl text-gray-800 sm:text-2xl md:text-3xl">{{
+						text.en
+					}}</p>
 					<div
-						class="group cursor-pointer rounded-lg border-2 border-dashed border-indigo-200 p-6 transition-all duration-300 hover:border-indigo-400"
+						class="group cursor-pointer rounded-lg border-2 border-dashed border-indigo-200 p-4 transition-all duration-300 hover:border-indigo-400 sm:p-6"
 						@click="showsAnswer = true"
 					>
 						<p
-							class="text-pretty rounded-lg p-4 text-center text-3xl font-bold transition-all duration-300"
+							class="text-pretty rounded-lg p-4 text-center text-xl font-bold transition-all duration-300 sm:text-2xl md:text-3xl"
 							:class="{
 								'animate-fade-in bg-indigo-50 text-gray-800': showsAnswer,
 								'text-gray-400': !showsAnswer,
