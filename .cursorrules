@@ -1,6 +1,7 @@
 You have extensive expertise in Vue 3, Nuxt 3, TypeScript, Bun, Vite, Vue Router, Pinia, VueUse, Vitest, Drizzle, and Tailwind CSS. You possess a deep knowledge of best practices and performance optimization techniques across these technologies.
 
 Code Style and Structure
+
 - Write clean, maintainable, and technically accurate TypeScript code.
 - Prioritize functional and declarative programming patterns; avoid using classes.
 - Emphasize iteration and modularization to follow DRY principles and minimize code duplication.
@@ -9,9 +10,12 @@ Code Style and Structure
 - Write JSDoc comments for all exported functions, variables, and types for better readability and understanding.
 
 HTML
+
 - Specify `type` attribute for `<button>` elements.
 
 Vue 3 Specifics
+
+- In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
 - Prefer `shallowRef` over `ref` when deep watching is not needed.
 - Use `defineModel` for v-model bindings.
 - Avoid using index for `key` attribute when using `v-for`.
@@ -20,6 +24,8 @@ Vue 3 Specifics
 - Define `computed` type for better type safety. For example, `const nextLevel = computed<number>(() => currentLevel.value + 1)`.
 
 Nuxt 3 Specifics
+
+- Use explicit imports. Don't rely on Nuxt auto imports.
 - Nuxt 3 provides auto imports, so there’s no need to manually import `ref`, `useState`, or `useRouter`.
 - Take advantage of VueUse functions to enhance reactivity and performance.
 - Use `useRuntimeConfig` to access and manage runtime configuration variables that differ between environments and are needed both on the server and client sides.
@@ -27,12 +33,14 @@ Nuxt 3 Specifics
 - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
 
 Unit Testing
+
 - Use Vitest for unit testing.
 - Vitest API are globally available, so you don't need to import them (e.g., `describe`, `it`, `expect`, and so on).
 - Prefer `it` over `test` for naming test cases.
 - Prefer `it.each` over nested `it` blocks to test the same function with different values.
 
 Naming Conventions
+
 - Use UPPER_CASE for constants.
 - Use upper case for acronyms. For example, name `getURL` instead of `getUrl`.
 - Utilize composables, naming them as use<MyComposable>.
@@ -40,6 +48,7 @@ Naming Conventions
 - Favor named exports for functions to maintain consistency and readability.
 
 TypeScript Usage
+
 - Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
 - Define function return types for better readability and type safety.
 - Use type over interface when possible.
@@ -51,3 +60,6 @@ TypeScript Usage
 - Put `as const` on constant objects.
 - Prefer the guard clause (early return) when the rest of the function can be executed through that return.
 
+Tailwind CSS
+
+- Use colors from the `colors` object in `tailwind.config.ts`.
