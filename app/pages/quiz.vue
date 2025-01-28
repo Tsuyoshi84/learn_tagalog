@@ -62,24 +62,34 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 					</div>
 				</div>
 
-				<div class="flex justify-center gap-6">
+				<div class="flex h-16 justify-center gap-6">
 					<button
-						v-show="showsAnswer"
 						aria-label="Forgot"
 						type="button"
-						class="animate-slide-in grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-						:class="buttonGradients.forgot"
+						class="grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+						:class="[
+							buttonGradients.forgot,
+							{
+								'animate-slide-in opacity-100': showsAnswer,
+								'pointer-events-none opacity-0': !showsAnswer,
+							},
+						]"
 						@click="answerText(text.id, false)"
 					>
 						<Icon size="2.5rem" name="fluent:emoji-sad-24-filled" />
 					</button>
 
 					<button
-						v-show="showsAnswer"
 						aria-label="Remembered"
 						type="button"
-						class="animate-slide-in animation-delay-200 grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-						:class="buttonGradients.remembered"
+						class="grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+						:class="[
+							buttonGradients.remembered,
+							{
+								'animate-slide-in animation-delay-200 opacity-100': showsAnswer,
+								'pointer-events-none opacity-0': !showsAnswer,
+							},
+						]"
 						@click="answerText(text.id, true)"
 					>
 						<Icon size="2.5rem" name="fluent:emoji-smile-slight-24-filled" />
