@@ -25,6 +25,7 @@ Vue 3 Specifics
 
 Nuxt 3 Specifics
 
+- Use explicit imports. Don't rely on Nuxt auto imports.
 - Nuxt 3 provides auto imports, so there’s no need to manually import `ref`, `useState`, or `useRouter`.
 - Take advantage of VueUse functions to enhance reactivity and performance.
 - Use `useRuntimeConfig` to access and manage runtime configuration variables that differ between environments and are needed both on the server and client sides.
