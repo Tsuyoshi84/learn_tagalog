@@ -30,9 +30,6 @@ const buttonGradients = {
 	remembered: 'from-green-300 to-green-500',
 } as const
 
-/** Message to show when answer is hidden */
-const HIDDEN_MESSAGE = 'Click to reveal the answer'
-
 async function answerText(textId: string, remembered: boolean): Promise<void> {
 	await loadText()
 	showsAnswer.value = false
@@ -57,7 +54,7 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 								'animate-fade-in': showsAnswer,
 							}"
 						>
-							{{ showsAnswer ? text.tl : HIDDEN_MESSAGE }}
+							{{ showsAnswer ? text.tl : 'Click to reveal the answer' }}
 						</p>
 					</div>
 				</div>
