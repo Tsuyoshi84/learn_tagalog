@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { shuffle } from '~/utils/shuffle'
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+import WordBlock from '~/components/WordBlock.vue'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
@@ -25,46 +26,55 @@ type Word = {
 	selected?: boolean
 }
 
+/** Words to be matched */
 const words = shallowRef<Word[]>([])
-const selectedEnWord = shallowRef<Word>()
-const selectedTlWord = shallowRef<Word>()
-const matchedPairs = shallowRef<Set<string>>(new Set())
-const isCompleted = computed(() => matchedPairs.value.size === words.value.length)
-
+/** Set of matched word IDs */
+const matchedWordIdSet = shallowRef<Set<string>>(new Set())
+/** Whether the game is completed */
+const isCompleted = computed<boolean>(
+	() => words.value.length !== 0 && matchedWordIdSet.value.size === words.value.length,
+)
+/** Shuffled English words */
 const shuffledEnWords = shallowRef<Word[]>([])
+/** Shuffled Tagalog words */
 const shuffledTlWords = shallowRef<Word[]>([])
 
 /**
  * Fetch words from the API
  */
 async function fetchWords(): Promise<void> {
-	const response = await useFetch('/api/words', {
+	const response = await $fetch('/api/words', {
 		query: { level: parsedQueryParams.value.level },
 	})
 
-	if (response.data.value) {
-		words.value = response.data.value
-		shuffledEnWords.value = shuffle(words.value)
-		shuffledTlWords.value = shuffle(words.value)
-		matchedPairs.value = new Set()
-	}
+	if (response === undefined) return
+
+	words.value = response
+	shuffledEnWords.value = shuffle(words.value)
+	shuffledTlWords.value = shuffle(words.value)
+	matchedWordIdSet.value = new Set()
 }
+
+/** Selected English word */
+const selectedEnWord = shallowRef<Word>()
+/** Selected Tagalog word */
+const selectedTlWord = shallowRef<Word>()
 
 /**
  * Handle word selection
  */
-function selectWord(word: Word, isEnglish: boolean): void {
+function selectWord(word: Word, language: 'en' | 'tl'): void {
 	// Skip if word is already matched
-	if (matchedPairs.value.has(word.id)) return
+	if (matchedWordIdSet.value.has(word.id)) return
 
-	if (isEnglish) {
+	if (language === 'en') {
 		selectedEnWord.value = word
 	} else {
 		selectedTlWord.value = word
 	}
 
 	// Check if we have a pair selected
-	if (selectedEnWord.value && selectedTlWord.value) {
+	if (selectedEnWord.value !== undefined && selectedTlWord.value !== undefined) {
 		checkMatch()
 	}
 }
@@ -77,7 +87,8 @@ function checkMatch(): void {
 
 	if (selectedEnWord.value.id === selectedTlWord.value.id) {
 		// Match found
-		matchedPairs.value.add(selectedEnWord.value.id)
+		matchedWordIdSet.value.add(selectedEnWord.value.id)
+		triggerRef(matchedWordIdSet)
 	}
 
 	// Reset selections
@@ -93,65 +104,51 @@ function nextSession(): void {
 }
 
 // Initial fetch
-onMounted(() => {
-	fetchWords()
+onMounted(async () => {
+	await fetchWords()
 })
 </script>
 
 <template>
-	<div class="container mx-auto px-4 py-8">
-		<h1 class="mb-8 text-2xl font-bold">Match the words</h1>
+	<div class="container mx-auto py-8">
+		<h1 class="mb-4 text-center text-2xl font-bold">Match the words</h1>
+		<p class="text-md mb-4 text-center text-gray-600">Level {{ parsedQueryParams.level }}</p>
 
 		<div v-if="isCompleted" class="mb-8 text-center">
-			<p class="mb-4 text-xl">Great job! All words matched correctly!</p>
 			<button
 				type="button"
 				class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
 				@click="nextSession"
 			>
-				Next Session
+				Next
 			</button>
 		</div>
 
-		<div class="mx-auto grid max-w-2xl grid-cols-2 gap-8">
+		<div class="mx-auto grid max-w-2xl grid-cols-2 gap-6">
 			<!-- English words -->
 			<div class="space-y-4">
-				<button
+				<WordBlock
 					v-for="word in shuffledEnWords"
 					:key="`en-${word.id}`"
-					type="button"
-					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
-					:class="{
-						'border-gray-200 hover:border-blue-500':
-							!matchedPairs.has(word.id) && selectedEnWord?.id !== word.id,
-						'border-blue-500': selectedEnWord?.id === word.id,
-						'border-green-500': matchedPairs.has(word.id),
-					}"
-					:disabled="matchedPairs.has(word.id)"
-					@click="selectWord(word, true)"
-				>
-					{{ word.en }}
-				</button>
+					:text="word.en"
+					:selected="selectedEnWord?.id === word.id"
+					:matched="matchedWordIdSet.has(word.id)"
+					:disabled="matchedWordIdSet.has(word.id)"
+					@click="selectWord(word, 'en')"
+				/>
 			</div>
 
 			<!-- Tagalog words -->
 			<div class="space-y-4">
-				<button
+				<WordBlock
 					v-for="word in shuffledTlWords"
 					:key="`tl-${word.id}`"
-					type="button"
-					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
-					:class="{
-						'border-gray-200 hover:border-blue-500':
-							!matchedPairs.has(word.id) && selectedTlWord?.id !== word.id,
-						'border-blue-500': selectedTlWord?.id === word.id,
-						'border-green-500': matchedPairs.has(word.id),
-					}"
-					:disabled="matchedPairs.has(word.id)"
-					@click="selectWord(word, false)"
-				>
-					{{ word.tl }}
-				</button>
+					:text="word.tl"
+					:selected="selectedTlWord?.id === word.id"
+					:matched="matchedWordIdSet.has(word.id)"
+					:disabled="matchedWordIdSet.has(word.id)"
+					@click="selectWord(word, 'tl')"
+				/>
 			</div>
 		</div>
 	</div>
