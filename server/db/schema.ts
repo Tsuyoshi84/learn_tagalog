@@ -1,4 +1,12 @@
-import { pgSchema, pgTable, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+/**
+ * Drizzle schema definition.
+ * It defines the tables and their columns.
+ * See for more information:
+ * - https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase
+ * - https://supabase.com/docs/guides/database/drizzle
+ */
+
+import { pgEnum, pgSchema, pgTable, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 const authSchema = pgSchema('auth')
 
@@ -22,7 +30,7 @@ export const texts = pgTable('texts', {
 	en: text('en').notNull(),
 	/** The Tagalog text */
 	tl: text('tl').notNull(),
-	/** The level of the text */
+	/** The level of the text. 1 is the easiest, 5 is the hardest */
 	level: smallint('level').default(1).notNull(),
 })
 export type InsertText = typeof texts.$inferInsert
@@ -54,3 +62,28 @@ export const userProgress = pgTable('user_progress', {
 })
 export type InsertUserProgress = typeof userProgress.$inferInsert
 export type SelectUserProgress = typeof userProgress.$inferSelect
+
+/**
+ * Word category enum.
+ * It defines the possible categories of the word.
+ */
+export const wordCategoryEnum = pgEnum('word_category', ['verb', 'adjective', 'noun'])
+
+/**
+ * Words table.
+ * It stores the various words both in English and Tagalog.
+ */
+export const words = pgTable('words', {
+	/** The ID of the word */
+	id: uuid('id').defaultRandom().primaryKey(),
+	/** The English word */
+	en: text('en').notNull(),
+	/** The Tagalog word */
+	tl: text('tl').notNull(),
+	/** The category of the word. Can be 'verb', 'adjective', or 'noun' */
+	category: wordCategoryEnum('category').notNull(),
+	/** The level of the word. 1 is the easiest, 5 is the hardest */
+	level: smallint('level').default(1).notNull(),
+})
+export type InsertWord = typeof words.$inferInsert
+export type SelectWord = typeof words.$inferSelect
