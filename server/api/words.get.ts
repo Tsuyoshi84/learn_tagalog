@@ -3,6 +3,7 @@ import { words } from '~~/server/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import type { H3Event } from 'h3'
 import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
+import { parseRequestQuery } from '~~/server/utils/parseRequestQuery'
 
 /** Number of word pairs to return for the matching game */
 const NUMBER_OF_WORDS = 5
