@@ -1,0 +1,298 @@
+en,tl,category,level
+sweet,matamis,adjective,1
+big,malaki,adjective,1
+small,maliit,adjective,1
+good,mabuti,adjective,1
+bad,masama,adjective,1
+beautiful,maganda,adjective,1
+ugly,pangit,adjective,1
+new,bago,adjective,1
+old,luma,adjective,1
+hot,mainit,adjective,1
+cold,malamig,adjective,1
+happy,masaya,adjective,1
+sad,malungkot,adjective,1
+tall,matangkad,adjective,1
+short,maikli,adjective,1
+far,malayo,adjective,1
+near,malapit,adjective,1
+wide,malapad,adjective,1
+narrow,makitid,adjective,1
+thick,makapal,adjective,1
+thin,manipis,adjective,1
+heavy,mabigat,adjective,1
+light,magaan,adjective,1
+red,pula,adjective,1
+blue,asul,adjective,1
+green,berde,adjective,1
+yellow,dilaw,adjective,1
+black,itim,adjective,1
+white,puti,adjective,1
+brown,kayumanggi,adjective,1
+purple,lila,adjective,1
+orange,kahel,adjective,1
+gray,kulay-abo,adjective,1
+pink,rosas,adjective,1
+dark,madilim,adjective,1
+bright,maliwanag,adjective,1
+shiny,makintab,adjective,1
+dull,mapurol,adjective,1
+loud,malakas,adjective,1
+quiet,tahimik,adjective,1
+clean,malinis,adjective,2
+dirty,marumi,adjective,2
+expensive,mahal,adjective,2
+cheap,mura,adjective,2
+easy,madali,adjective,2
+difficult,mahirap,adjective,2
+fast,mabilis,adjective,2
+slow,mabagal,adjective,2
+strong,malakas,adjective,2
+weak,mahina,adjective,2
+young,bata,adjective,2
+tired,pagod,adjective,2
+hungry,gutom,adjective,2
+thirsty,uhaw,adjective,2
+soft,malambot,adjective,2
+hard,matigas,adjective,2
+smooth,makinis,adjective,2
+rough,magaspang,adjective,2
+dry,tuyo,adjective,2
+wet,basa,adjective,2
+sharp,matalas,adjective,2
+blunt,mapurol,adjective,2
+straight,tuwid,adjective,2
+crooked,baluktot,adjective,2
+sour,maasim,adjective,2
+bitter,mapait,adjective,2
+salty,maalat,adjective,2
+spicy,maanghang,adjective,2
+bland,matabang,adjective,2
+tasty,masarap,adjective,2
+delicious,napakasarap,adjective,2
+ripe,hinog,adjective,2
+unripe,hilaw,adjective,2
+fresh,sariwa,adjective,2
+stale,luma,adjective,2
+raw,hilaw,adjective,2
+cooked,luto,adjective,2
+empty,walang laman,adjective,2
+full,puno,adjective,2
+open,bukas,adjective,2
+closed,sarado,adjective,2
+early,maaga,adjective,2
+late,huli,adjective,2
+rich,mayaman,adjective,3
+poor,mahirap,adjective,3
+brave,matapang,adjective,3
+coward,duwag,adjective,3
+wise,matalino,adjective,3
+foolish,tanga,adjective,3
+noisy,maingay,adjective,3
+lazy,tamad,adjective,3
+hardworking,masipag,adjective,3
+friendly,mabait,adjective,3
+unfriendly,masungit,adjective,3
+kind,mabuting-loob,adjective,3
+cruel,malupit,adjective,3
+lucky,maswerte,adjective,3
+unlucky,malas,adjective,3
+healthy,malusog,adjective,3
+sick,may sakit,adjective,3
+busy,abala,adjective,3
+free,libre,adjective,3
+angry,galit,adjective,3
+calm,kalmado,adjective,3
+excited,nasasabik,adjective,3
+bored,nababagot,adjective,3
+worried,nag-aalala,adjective,3
+relaxed,nakarelaks,adjective,3
+surprised,nagulat,adjective,3
+confused,nalilito,adjective,3
+satisfied,nasiyahan,adjective,3
+disappointed,nabigo,adjective,3
+proud,mapagmataas,adjective,3
+ashamed,nahihiya,adjective,3
+jealous,seloso,adjective,3
+grateful,nagpapasalamat,adjective,3
+curious,mausisa,adjective,3
+interested,interesado,adjective,3
+scared,natatakot,adjective,3
+brave,matapang,adjective,3
+nervous,kinakabahan,adjective,3
+confident,kampante,adjective,3
+generous,mapagbigay,adjective,4
+selfish,makasarili,adjective,4
+humble,mapagkumbaba,adjective,4
+arrogant,mayabang,adjective,4
+patient,matiyaga,adjective,4
+impatient,walang pasensya,adjective,4
+careful,maingat,adjective,4
+careless,pabaya,adjective,4
+honest,matapat,adjective,4
+dishonest,sinungaling,adjective,4
+responsible,responsable,adjective,4
+irresponsible,walang pananagutan,adjective,4
+serious,seryoso,adjective,4
+playful,mapagbiro,adjective,4
+shy,mahiyain,adjective,4
+outgoing,palakaibigan,adjective,4
+content,kuntento,adjective,4
+anxious,balisa,adjective,4
+motivated,motivated,adjective,4
+lazy,tamad,adjective,4
+organized,maayos,adjective,4
+messy,magulo,adjective,4
+creative,malikhain,adjective,4
+unimaginative,walang imahinasyon,adjective,4
+flexible,flexible,adjective,4
+stubborn,matigas ang ulo,adjective,4
+forgiving,mapagpatawad,adjective,4
+resentful,mapagtanim,adjective,4
+tolerant,mapagpaumanhin,adjective,4
+prejudiced,may pagkiling,adjective,4
+peaceful,mapayapa,adjective,5
+chaotic,magulo,adjective,5
+graceful,kaaya-aya,adjective,5
+clumsy,magaspang,adjective,5
+determined,determinado,adjective,5
+indecisive,mahina ang loob,adjective,5
+sophisticated,sopistikado,adjective,5
+simple,simple,adjective,5
+ambitious,ambisyoso,adjective,5
+modest,mapagpakumbaba,adjective,5
+optimistic,positibo,adjective,5
+pessimistic,negatibo,adjective,5
+mysterious,misterioso,adjective,5
+obvious,maliwanag,adjective,5
+passionate,masigasig,adjective,5
+indifferent,walang pakialam,adjective,5
+authentic,tunay,adjective,5
+fake,peke,adjective,5
+reliable,maaasahan,adjective,5
+unreliable,hindi maaasahan,adjective,5
+extraordinary,pambihira,adjective,5
+ordinary,karaniwan,adjective,5
+precious,mahalaga,adjective,5
+worthless,walang halaga,adjective,5
+fragile,marupok,adjective,5
+sturdy,matibay,adjective,5
+ancient,sinaunang,adjective,5
+modern,makabago,adjective,5
+traditional,tradisyonal,adjective,5
+progressive,progresibo,adjective,5
+temporary,pansamantala,adjective,5
+permanent,permanente,adjective,5
+rigid,hindi matitinag,adjective,5
+pure,dalisay,adjective,5
+corrupt,tiwali,adjective,5
+vibrant,masigla,adjective,5
+dull,walang sigla,adjective,5
+diverse,iba't-iba,adjective,5
+uniform,magkakapareho,adjective,5
+intellectual,intelektwal,adjective,5
+ignorant,mangmang,adjective,5
+rational,makatwiran,adjective,5
+irrational,hindi makatwiran,adjective,5
+logical,lohikal,adjective,5
+illogical,hindi lohikal,adjective,5
+systematic,sistematiko,adjective,5
+random,random,adjective,5
+consistent,pare-pareho,adjective,5
+inconsistent,hindi pare-pareho,adjective,5
+efficient,episyente,adjective,5
+inefficient,hindi episyente,adjective,5
+practical,praktikal,adjective,5
+impractical,hindi praktikal,adjective,5
+realistic,realistiko,adjective,5
+unrealistic,hindi realistiko,adjective,5
+objective,obhetibo,adjective,5
+subjective,subhetibo,adjective,5
+formal,pormal,adjective,5
+informal,impormal,adjective,5
+professional,propesyonal,adjective,5
+amateur,amateur,adjective,5
+experienced,may karanasan,adjective,5
+inexperienced,walang karanasan,adjective,5
+qualified,kwalipikado,adjective,5
+unqualified,hindi kwalipikado,adjective,5
+competent,mahusay,adjective,5
+incompetent,hindi mahusay,adjective,5
+skilled,bihasa,adjective,5
+unskilled,hindi bihasa,adjective,5
+talented,talentado,adjective,5
+untalented,walang talento,adjective,5
+gifted,may angking galing,adjective,5
+average,karaniwan,adjective,5
+exceptional,bukod-tangi,adjective,5
+mediocre,katamtaman,adjective,5
+outstanding,natatangi,adjective,5
+inferior,mababa,adjective,5
+superior,nakahihigit,adjective,5
+dominant,nangingibabaw,adjective,5
+submissive,masunurin,adjective,5
+aggressive,agresibo,adjective,5
+passive,pasibo,adjective,5
+dynamic,dinamiko,adjective,5
+static,hindi gumagalaw,adjective,5
+energetic,masigla,adjective,5
+lethargic,walang sigla,adjective,5
+enthusiastic,masigasig,adjective,5
+apathetic,walang pakialam,adjective,5
+zealous,masigasig,adjective,5
+indolent,tamad,adjective,5
+diligent,masipag,adjective,5
+negligent,pabaya,adjective,5
+meticulous,detalyado,adjective,5
+sloppy,malabo,adjective,5
+thorough,masusi,adjective,5
+superficial,mababaw,adjective,5
+profound,malalim,adjective,5
+shallow,mababaw,adjective,5
+complex,kumplikado,adjective,5
+elementary,elementarya,adjective,5
+advanced,advanced,adjective,5
+basic,basic,adjective,5
+comprehensive,komprehensibo,adjective,5
+limited,limitado,adjective,5
+extensive,malawak,adjective,5
+restricted,limitado,adjective,5
+abundant,masagana,adjective,5
+scarce,kakaunti,adjective,5
+plentiful,masagana,adjective,5
+insufficient,kulang,adjective,5
+adequate,sapat,adjective,5
+inadequate,hindi sapat,adjective,5
+excessive,labis,adjective,5
+moderate,katamtaman,adjective,5
+balanced,balanse,adjective,5
+unbalanced,hindi balanse,adjective,5
+proportional,proporsyonal,adjective,5
+disproportional,hindi proporsyonal,adjective,5
+symmetrical,simetriko,adjective,5
+asymmetrical,hindi simetriko,adjective,5
+regular,regular,adjective,5
+irregular,irregular,adjective,5
+normal,normal,adjective,5
+abnormal,abnormal,adjective,5
+typical,tipikal,adjective,5
+atypical,hindi tipikal,adjective,5
+conventional,kombensyonal,adjective,5
+unconventional,hindi kombensyonal,adjective,5
+orthodox,ortodoks,adjective,5
+unorthodox,hindi ortodoks,adjective,5
+conservative,konserbatibo,adjective,5
+liberal,liberal,adjective,5
+radical,radikal,adjective,5
+moderate,katamtaman,adjective,5
+extreme,ekstreme,adjective,5
+reasonable,makatwiran,adjective,5
+unreasonable,hindi makatwiran,adjective,5
+sensible,makatwiran,adjective,5
+foolish,hangal,adjective,5
+wise,matalino,adjective,5
+unwise,hindi matalino,adjective,5
+prudent,maingat,adjective,5
+imprudent,hindi maingat,adjective,5
+cautious,maingat,adjective,5
+reckless,walang ingat,adjective,5 

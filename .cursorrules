@@ -13,6 +13,18 @@ Code Style and Structure
 - Use Composables to encapsulate and share reusable client-side logic or state across multiple components in your Nuxt application.
 - Write JSDoc comments for all exported functions, variables, and types for better readability and understanding.
 
+Directory Structure
+
+- Use `app/pages` for page components.
+- Use `app/components` for reusable components.
+- Use `app/layouts` for layout components.
+- Use `app/composables` for composables.
+- Use `app/types` for type definitions.
+- Use `app/utils` for utility functions.
+- Use `server/api` for API endpoints.
+- Use `server/db` for database models and queries.
+- Use `server/utils` for utility functions.
+
 HTML
 
 - Specify `type` attribute for `<button>` elements.
@@ -30,6 +42,7 @@ Vue 3 Specifics
 - Define emit types by specifying `defineEmits` generic rather than `Emits` type. For example, `defineEmits<{ (e: 'close'): void }>()`.
 - Prefer type-only emit declarations introduced in Vue 3.3. For example, `defineEmits<{ change: [id: number] }>()`.
 - Always add JSDoc to component props and emits.
+- For a reactive variable, use `undefined` over `null` if the default value is not known.
 
 Nuxt 3 Specifics
 
