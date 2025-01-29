@@ -16,12 +16,16 @@ HTML
 Vue 3 Specifics
 
 - In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
-- Prefer `shallowRef` over `ref` when deep watching is not needed.
+- In SFC file, add JSDoc at the top of `<script>` section to explain the component.
+- Prefer `shallowRef` over `ref` unless deep watching is needed.
 - Use `defineModel` for v-model bindings.
 - Avoid using index for `key` attribute when using `v-for`.
 - Prefer `v-show` over `v-if` for conditional visibility.
 - Use `useTemplateRef` introduced in Vue 3.5 when you need a template reference.
-- Define `computed` type for better type safety. For example, `const nextLevel = computed<number>(() => currentLevel.value + 1)`.
+- Define prop types by specifying `defineProps` generic rather than `Props` type. For example, `defineProps<{ level: number }>()`.
+- Define emit types by specifying `defineEmits` generic rather than `Emits` type. For example, `defineEmits<{ (e: 'close'): void }>()`.
+- Prefer type-only emit declarations introduced in Vue 3.3. For example, `defineEmits<{ change: [id: number] }>()`.
+- Always add JSDoc to component props and emits.
 
 Nuxt 3 Specifics
 
@@ -45,6 +49,7 @@ Naming Conventions
 - Use upper case for acronyms. For example, name `getURL` instead of `getUrl`.
 - Utilize composables, naming them as use<MyComposable>.
 - Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
+- Use `Modal` prefix for modal components (e.g., `LevelSelectorModal.vue`).
 - Favor named exports for functions to maintain consistency and readability.
 
 TypeScript Usage
@@ -62,4 +67,4 @@ TypeScript Usage
 
 Tailwind CSS
 
-- Use colors from the `colors` object in `tailwind.config.ts`.
+- Use colors from the `colors` object in `app/tailwind.config.ts`.
