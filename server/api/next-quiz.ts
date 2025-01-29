@@ -1,8 +1,8 @@
+import { and, asc, eq } from 'drizzle-orm'
+import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
 import { db } from '~~/server/db'
 import { texts, userProgress } from '~~/server/db/schema'
-import { and, asc, eq } from 'drizzle-orm'
 import { getUser } from '~~/server/utils/getUser'
-import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
 import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 
 const requestBodySchema = object({

@@ -1,8 +1,8 @@
-import { db } from '~~/server/db'
-import { words } from '~~/server/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import type { H3Event } from 'h3'
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+import { db } from '~~/server/db'
+import { words } from '~~/server/db/schema'
 import { parseRequestQuery } from '~~/server/utils/parseRequestQuery'
 
 /** Number of word pairs to return for the matching game */
@@ -12,7 +12,7 @@ const requestQuerySchema = object({
 	/** The difficulty level of the words */
 	level: pipe(
 		string(),
-		transform((value) => parseInt(value, 10)),
+		transform((value) => Number.parseInt(value, 10)),
 		integer(),
 		minValue(1),
 		maxValue(5),

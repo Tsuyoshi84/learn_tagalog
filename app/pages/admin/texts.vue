@@ -8,11 +8,7 @@ const supabase = useSupabaseClient<Database>()
 
 async function submit(): Promise<void> {
 	// Insert a new row
-	try {
-		await supabase.from('texts').insert({ en: en.value, tl: tl.value })
-	} catch (error) {
-		console.error('Error inserting new row:', error)
-	}
+	await supabase.from('texts').insert({ en: en.value, tl: tl.value })
 
 	// Clear the form
 	en.value = ''

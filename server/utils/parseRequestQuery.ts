@@ -1,3 +1,4 @@
+import type { H3Event } from 'h3'
 import {
 	type ErrorMessage,
 	type InferOutput,
@@ -7,7 +8,6 @@ import {
 	ValiError,
 	parse,
 } from 'valibot'
-import type { H3Event } from 'h3'
 
 /**
  * Parses the request query of an event using a Valibot schema and returns the parsed data.
@@ -21,7 +21,6 @@ export async function parseRequestQuery<
 	T extends ObjectSchema<TEntries, TMessage>,
 >(event: H3Event, schema: T): Promise<InferOutput<T>> {
 	const query = getQuery(event)
-	console.log('query', query)
 
 	try {
 		return parse(schema, query)

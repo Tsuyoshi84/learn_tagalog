@@ -1,9 +1,9 @@
-import withNuxt from './.nuxt/eslint.config.mjs'
-import eslintConfigPrettier from 'eslint-config-prettier'
-import * as parserVue from 'vue-eslint-parser'
-import * as parserTs from '@typescript-eslint/parser'
-import jsdoc from 'eslint-plugin-jsdoc'
 import stylisticJs from '@stylistic/eslint-plugin-js'
+import * as parserTs from '@typescript-eslint/parser'
+import eslintConfigPrettier from 'eslint-config-prettier'
+import jsdoc from 'eslint-plugin-jsdoc'
+import * as parserVue from 'vue-eslint-parser'
+import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt([])
 	.prepend(eslintConfigPrettier)
@@ -15,7 +15,6 @@ export default withNuxt([])
 		rules: {
 			'func-style': ['error', 'declaration'],
 			'no-irregular-whitespace': ['error', { skipRegExps: true }],
-			'sort-imports': ['error', { ignoreDeclarationSort: true }],
 
 			// jsdoc
 			'jsdoc/check-param-names': 'error',
@@ -41,7 +40,6 @@ export default withNuxt([])
 		},
 		rules: {
 			'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-			'@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
 			'@typescript-eslint/explicit-function-return-type': [
 				'error',
 				{ allowExpressions: true, allowTypedFunctionExpressions: true },
@@ -88,7 +86,9 @@ export default withNuxt([])
 			'vue/define-emits-declaration': ['error', 'type-based'],
 			'vue/define-macros-order': [
 				'error',
-				{ order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'] },
+				{
+					order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],
+				},
 			],
 			'vue/define-props-declaration': ['error', 'type-based'],
 			'vue/html-button-has-type': 'error',

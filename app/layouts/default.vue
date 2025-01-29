@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/stores/auth'
 import NavigationMenu from '~/components/NavigationMenu.vue'
+import { useAuthStore } from '~/stores/auth'
 
 const { loggedIn } = storeToRefs(useAuthStore())
 </script>

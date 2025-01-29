@@ -1,6 +1,6 @@
-import type { QuizText } from '~/types/quiz'
-import { useAuthStore } from '~/stores/auth'
 import { until } from '@vueuse/core'
+import { useAuthStore } from '~/stores/auth'
+import type { QuizText } from '~/types/quiz'
 
 type UseTextQuizReturnType = {
 	/** The text that the user is currently answering */

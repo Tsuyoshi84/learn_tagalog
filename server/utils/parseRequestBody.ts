@@ -1,3 +1,4 @@
+import type { H3Event } from 'h3'
 import {
 	type ErrorMessage,
 	type InferOutput,
@@ -7,7 +8,6 @@ import {
 	ValiError,
 	parse,
 } from 'valibot'
-import type { H3Event } from 'h3'
 
 /**
  * Parses the request body of an event using a Valibot schema and returns the parsed data.

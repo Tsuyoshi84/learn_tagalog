@@ -33,6 +33,9 @@ jobs:
       - name: Lint
         run: bun lint:fix
 
+      - name: Lint Biome
+        run: bun lint:biome:fix
+
       - name: Format Check
         run: bun format
 

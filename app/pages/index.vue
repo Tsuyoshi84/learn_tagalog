@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/stores/auth'
 import LevelSelectorModal from '~/components/LevelSelectorModal.vue'
+import { useAuthStore } from '~/stores/auth'
 
 const authStore = useAuthStore()
 const { userName } = storeToRefs(authStore)
@@ -26,7 +26,10 @@ function handleQuizClick(pageName: PageName, maxLevelValue: number): void {
 async function handleLevelSelect(level: number): Promise<void> {
 	if (pageNameToNavigate === undefined) return
 
-	await navigateTo({ name: pageNameToNavigate, query: { level: level.toString() } })
+	await navigateTo({
+		name: pageNameToNavigate,
+		query: { level: level.toString() },
+	})
 }
 
 type MenuItem = {
