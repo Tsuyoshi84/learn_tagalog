@@ -25,46 +25,55 @@ type Word = {
 	selected?: boolean
 }
 
+/** Words to be matched */
 const words = shallowRef<Word[]>([])
-const selectedEnWord = shallowRef<Word>()
-const selectedTlWord = shallowRef<Word>()
-const matchedPairs = shallowRef<Set<string>>(new Set())
-const isCompleted = computed(() => matchedPairs.value.size === words.value.length)
-
+/** Set of matched word IDs */
+const matchedWordIdSet = shallowRef<Set<string>>(new Set())
+/** Whether the game is completed */
+const isCompleted = computed<boolean>(
+	() => words.value.length !== 0 && matchedWordIdSet.value.size === words.value.length,
+)
+/** Shuffled English words */
 const shuffledEnWords = shallowRef<Word[]>([])
+/** Shuffled Tagalog words */
 const shuffledTlWords = shallowRef<Word[]>([])
 
 /**
  * Fetch words from the API
  */
 async function fetchWords(): Promise<void> {
-	const response = await useFetch('/api/words', {
+	const response = await $fetch('/api/words', {
 		query: { level: parsedQueryParams.value.level },
 	})
 
-	if (response.data.value) {
-		words.value = response.data.value
-		shuffledEnWords.value = shuffle(words.value)
-		shuffledTlWords.value = shuffle(words.value)
-		matchedPairs.value = new Set()
-	}
+	if (response === undefined) return
+
+	words.value = response
+	shuffledEnWords.value = shuffle(words.value)
+	shuffledTlWords.value = shuffle(words.value)
+	matchedWordIdSet.value = new Set()
 }
+
+/** Selected English word */
+const selectedEnWord = shallowRef<Word>()
+/** Selected Tagalog word */
+const selectedTlWord = shallowRef<Word>()
 
 /**
  * Handle word selection
  */
-function selectWord(word: Word, isEnglish: boolean): void {
+function selectWord(word: Word, language: 'en' | 'tl'): void {
 	// Skip if word is already matched
-	if (matchedPairs.value.has(word.id)) return
+	if (matchedWordIdSet.value.has(word.id)) return
 
-	if (isEnglish) {
+	if (language === 'en') {
 		selectedEnWord.value = word
 	} else {
 		selectedTlWord.value = word
 	}
 
 	// Check if we have a pair selected
-	if (selectedEnWord.value && selectedTlWord.value) {
+	if (selectedEnWord.value !== undefined && selectedTlWord.value !== undefined) {
 		checkMatch()
 	}
 }
@@ -77,7 +86,8 @@ function checkMatch(): void {
 
 	if (selectedEnWord.value.id === selectedTlWord.value.id) {
 		// Match found
-		matchedPairs.value.add(selectedEnWord.value.id)
+		matchedWordIdSet.value.add(selectedEnWord.value.id)
+		triggerRef(matchedWordIdSet)
 	}
 
 	// Reset selections
@@ -93,8 +103,8 @@ function nextSession(): void {
 }
 
 // Initial fetch
-onMounted(() => {
-	fetchWords()
+onMounted(async () => {
+	await fetchWords()
 })
 </script>
 
@@ -123,12 +133,12 @@ onMounted(() => {
 					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
 					:class="{
 						'border-gray-200 hover:border-blue-500':
-							!matchedPairs.has(word.id) && selectedEnWord?.id !== word.id,
+							!matchedWordIdSet.has(word.id) && selectedEnWord?.id !== word.id,
 						'border-blue-500': selectedEnWord?.id === word.id,
-						'border-green-500': matchedPairs.has(word.id),
+						'border-green-500': matchedWordIdSet.has(word.id),
 					}"
-					:disabled="matchedPairs.has(word.id)"
-					@click="selectWord(word, true)"
+					:disabled="matchedWordIdSet.has(word.id)"
+					@click="selectWord(word, 'en')"
 				>
 					{{ word.en }}
 				</button>
@@ -143,12 +153,12 @@ onMounted(() => {
 					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
 					:class="{
 						'border-gray-200 hover:border-blue-500':
-							!matchedPairs.has(word.id) && selectedTlWord?.id !== word.id,
+							!matchedWordIdSet.has(word.id) && selectedTlWord?.id !== word.id,
 						'border-blue-500': selectedTlWord?.id === word.id,
-						'border-green-500': matchedPairs.has(word.id),
+						'border-green-500': matchedWordIdSet.has(word.id),
 					}"
-					:disabled="matchedPairs.has(word.id)"
-					@click="selectWord(word, false)"
+					:disabled="matchedWordIdSet.has(word.id)"
+					@click="selectWord(word, 'tl')"
 				>
 					{{ word.tl }}
 				</button>
