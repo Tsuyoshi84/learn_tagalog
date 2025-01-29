@@ -1,6 +1,6 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
 import tailwindcssForms from '@tailwindcss/forms'
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const colors = {
 	white: '#ffffff',

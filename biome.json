@@ -1,0 +1,71 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"ignore": [
+			"package.json",
+			"pnpm-lock.yaml",
+			".vscode/vue.code-snippets",
+			".output/*.*",
+			".nuxt/*.*"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 100,
+		"ignore": []
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": false,
+			"complexity": {
+				"noForEach": "error",
+				"useFlatMap": "error"
+			},
+			"correctness": {
+				"noUnusedImports": "warn",
+				"noUnusedVariables": "warn"
+			},
+			"nursery": {
+				"useCollapsedIf": "error"
+			},
+			"style": {
+				"noParameterAssign": "error",
+				"useExplicitLengthCheck": "error",
+				"useImportType": "warn",
+				"useNumberNamespace": "error"
+			},
+			"suspicious": {
+				"noConsole": "warn",
+				"noRedeclare": "error"
+			}
+		},
+		"ignore": [
+			"package.json",
+			"pnpm-lock.yaml",
+			"eslint.config.mjs",
+			"nuxt.config.ts",
+			"**/*.test.js"
+		]
+	},
+	"javascript": {
+		"formatter": { "semicolons": "asNeeded", "lineWidth": 100, "quoteStyle": "single" }
+	},
+	"overrides": [
+		{
+			"include": ["*.svelte", "*.astro", "*.vue"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					},
+					"style": { "useConst": "off", "useImportType": "off" }
+				}
+			}
+		}
+	]
+}

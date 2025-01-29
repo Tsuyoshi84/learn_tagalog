@@ -1,10 +1,10 @@
-import { getUser } from '~~/server/utils/getUser'
+import { and, eq } from 'drizzle-orm'
+import { boolean, object, pipe, string, uuid } from 'valibot'
 import { db } from '~~/server/db'
 import { userProgress } from '~~/server/db/schema'
-import { and, eq } from 'drizzle-orm'
-import { clamp } from '~~/shared/utils/clamp'
-import { boolean, object, pipe, string, uuid } from 'valibot'
+import { getUser } from '~~/server/utils/getUser'
 import { parseRequestBody } from '~~/server/utils/parseRequestBody'
+import { clamp } from '~~/shared/utils/clamp'
 
 const requestBodySchema = object({
 	/** The ID of the text being answered */

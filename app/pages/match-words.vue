@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { shuffle } from '~/utils/shuffle'
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
 import WordBlock from '~/components/WordBlock.vue'
+import { shuffle } from '~/utils/shuffle'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
 	level: pipe(
 		string(),
-		transform((value) => parseInt(value, 10)),
+		transform((value) => Number.parseInt(value, 10)),
 		integer(),
 		minValue(1),
 		maxValue(5),
@@ -32,7 +32,7 @@ const words = shallowRef<Word[]>([])
 const matchedWordIdSet = shallowRef<Set<string>>(new Set())
 /** Whether the game is completed */
 const isCompleted = computed<boolean>(
-	() => words.value.length !== 0 && matchedWordIdSet.value.size === words.value.length,
+	() => words.value.length > 0 && matchedWordIdSet.value.size === words.value.length,
 )
 /** Shuffled English words */
 const shuffledEnWords = shallowRef<Word[]>([])
