@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { shuffle } from '~/utils/shuffle'
+
 /**
  * Word type for the matching game
  */
@@ -20,18 +22,6 @@ const shuffledEnWords = shallowRef<Word[]>([])
 const shuffledTlWords = shallowRef<Word[]>([])
 
 /**
- * Shuffle array using Fisher-Yates algorithm
- */
-function shuffleArray<T>(array: T[]): T[] {
-	const shuffled = [...array]
-	for (let i = shuffled.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1))
-		;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-	}
-	return shuffled
-}
-
-/**
  * Fetch words from the API
  */
 async function fetchWords(): Promise<void> {
@@ -41,9 +31,8 @@ async function fetchWords(): Promise<void> {
 
 	if (response.data.value) {
 		words.value = response.data.value
-		// Shuffle words once when fetched
-		shuffledEnWords.value = shuffleArray(words.value)
-		shuffledTlWords.value = shuffleArray(words.value)
+		shuffledEnWords.value = shuffle(words.value)
+		shuffledTlWords.value = shuffle(words.value)
 		matchedPairs.value = new Set()
 	}
 }

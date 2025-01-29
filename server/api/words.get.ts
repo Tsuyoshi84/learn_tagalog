@@ -2,9 +2,15 @@ import { db } from '~~/server/db'
 import { words } from '~~/server/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import type { H3Event } from 'h3'
+import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
 
 /** Number of word pairs to return for the matching game */
 const NUMBER_OF_WORDS = 5
+
+const requestQuerySchema = object({
+	/** The difficulty level of the words */
+	level: pipe(number(), integer(), minValue(1), maxValue(5)),
+})
 
 /**
  * Get random words for the matching game
@@ -12,8 +18,7 @@ const NUMBER_OF_WORDS = 5
  * @returns Array of word pairs in English and Tagalog
  */
 export default defineEventHandler(async (event: H3Event) => {
-	const query = getQuery(event)
-	const level = Number(query.level) || 1
+	const { level } = await parseRequestQuery(event, requestQuerySchema)
 
 	// Validate level
 	if (level < 1 || level > 5 || !Number.isInteger(level)) {
