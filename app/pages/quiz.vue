@@ -57,7 +57,7 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 								'text-gray-400': !showsAnswer,
 							}"
 						>
-							{{ showsAnswer ? text.tl : 'Click to reveal the answer' }}
+							{{ showsAnswer ? text.tl : 'See the answer' }}
 						</p>
 					</div>
 				</div>
