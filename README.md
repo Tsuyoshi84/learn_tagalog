@@ -1,11 +1,6 @@
 # Learn Tagalog
 
-A web application for learning Tagalog language (add a brief description of what the application does).
-
-## Prerequisites
-
-- [Bun](https://bun.sh/) >= 1.0.0
-- [PostgreSQL](https://www.postgresql.org/) >= 15.0
+A web application for learning Tagalog language.
 
 ## Setup
 
@@ -62,7 +57,7 @@ npx drizzle-kit migrate
 Run tests with:
 
 ```sh
-bun test
+bun run test
 ```
 
 ## Build
@@ -72,11 +67,3 @@ Build for production:
 ```sh
 bun run build
 ```
-
-## Contributing
-
-(Add contribution guidelines if it's an open-source project)
-
-## License
-
-(Add license information)
