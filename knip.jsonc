@@ -21,6 +21,7 @@
 		"vue-tsc",
 		"tailwindcss",
 		"vue-eslint-parser",
+		"vue-router",
 		"@pinia/nuxt",
 		"@nuxt/devtools",
 		"@nuxt/eslint",
