@@ -1,5 +1,19 @@
 <script setup lang="ts">
 import { shuffle } from '~/utils/shuffle'
+import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+
+const queryParamsSchema = object({
+	/** The level of quiz */
+	level: pipe(
+		string(),
+		transform((value) => parseInt(value, 10)),
+		integer(),
+		minValue(1),
+		maxValue(5),
+	),
+})
+
+const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
 /**
  * Word type for the matching game
@@ -11,7 +25,6 @@ type Word = {
 	selected?: boolean
 }
 
-const level = shallowRef(1)
 const words = shallowRef<Word[]>([])
 const selectedEnWord = shallowRef<Word>()
 const selectedTlWord = shallowRef<Word>()
@@ -26,7 +39,7 @@ const shuffledTlWords = shallowRef<Word[]>([])
  */
 async function fetchWords(): Promise<void> {
 	const response = await useFetch('/api/words', {
-		query: { level: level.value },
+		query: { level: parsedQueryParams.value.level },
 	})
 
 	if (response.data.value) {
