@@ -1,23 +1,32 @@
 <script lang="ts" setup>
 import { useAuthStore } from '~/stores/auth'
-import type { RouteLocationRaw } from '#vue-router'
 import LevelSelectorModal from '~/components/LevelSelectorModal.vue'
 
 const authStore = useAuthStore()
 const { userName } = storeToRefs(authStore)
 
+/** The maximum level of the quiz */
+const maxLevel = shallowRef(3)
+
+/** Whether the level selector modal is shown */
 const showLevelSelector = shallowRef(false)
 
-function handleQuizClick(event: MouseEvent): void {
-	event.preventDefault()
+type PageName = 'quiz' | 'match-words'
+
+let pageNameToNavigate: undefined | PageName
+
+/** Handle the quiz click event */
+function handleQuizClick(pageName: PageName, maxLevelValue: number): void {
+	maxLevel.value = maxLevelValue
+	pageNameToNavigate = pageName
 	showLevelSelector.value = true
 }
 
-function handleLevelSelect(level: number): void {
-	navigateTo({
-		name: 'quiz',
-		query: { level: level.toString() },
-	})
+/** Handle the level select event */
+async function handleLevelSelect(level: number): Promise<void> {
+	if (pageNameToNavigate === undefined) return
+
+	await navigateTo({ name: pageNameToNavigate, query: { level: level.toString() } })
 }
 
 type MenuItem = {
@@ -25,39 +34,35 @@ type MenuItem = {
 	icon: string
 	description: string
 	gradient: string
-} & (
-	| {
-			type: 'link'
-			to: RouteLocationRaw
-	  }
-	| {
-			type: 'button'
-			onClick: (event: MouseEvent) => void
-	  }
-)
+	pageName: 'quiz' | 'match-words'
+	type: 'button'
+	maxLevel: number
+}
 
-const menuItems: MenuItem[] = [
+const menuItems = [
 	{
-		type: 'link',
-		name: 'Flash Cards',
-		to: { name: 'flash-cards' },
-		icon: '🎴',
-		description: 'Practice with interactive cards',
-		gradient: 'from-blue-300 to-blue-500',
+		type: 'button',
+		name: 'Translation challenge',
+		icon: '✨',
+		description: 'Try translating texts',
+		gradient: 'from-red-300 to-red-500',
+		pageName: 'quiz',
+		maxLevel: 3,
 	},
 	{
 		type: 'button',
-		name: 'Quiz',
-		icon: '✨',
-		description: 'Test your knowledge',
-		gradient: 'from-red-300 to-red-500',
-		onClick: handleQuizClick,
+		name: 'Match words',
+		icon: '🎴',
+		description: 'Practice with interactive cards',
+		gradient: 'from-blue-300 to-blue-500',
+		pageName: 'match-words',
+		maxLevel: 5,
 	},
-] as const
+] as const satisfies MenuItem[]
 </script>
 
 <template>
-	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-8">
+	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-8">
 		<div class="mb-12 space-y-2 text-center">
 			<h1 class="animate-fade-in text-4xl font-bold text-indigo-600 md:text-5xl">
 				Hey {{ userName }}! 👋
@@ -73,27 +78,11 @@ const menuItems: MenuItem[] = [
 					class="transform transition-all duration-300 hover:scale-105"
 					:class="{ 'animate-slide-in': true, 'animation-delay-200': index === 1 }"
 				>
-					<NuxtLink
-						v-if="item.type === 'link'"
-						:to="item.to"
-						class="group flex h-full flex-col items-center justify-center rounded-xl bg-gradient-to-br p-6 text-white shadow-lg transition-all duration-300 hover:shadow-xl"
-						:class="item.gradient"
-					>
-						<span class="mb-2 text-3xl">{{ item.icon }}</span>
-						<span
-							class="text-2xl font-bold text-white transition-transform duration-300 group-hover:scale-105"
-						>
-							{{ item.name }}
-						</span>
-						<span class="mt-2 text-sm text-white/90">{{ item.description }}</span>
-					</NuxtLink>
-
 					<button
-						v-else
 						type="button"
 						class="group flex h-full w-full flex-col items-center justify-center rounded-xl bg-gradient-to-br p-6 text-white shadow-lg transition-all duration-300 hover:shadow-xl"
 						:class="item.gradient"
-						@click="item.onClick"
+						@click.prevent="handleQuizClick(item.pageName, item.maxLevel)"
 					>
 						<span class="mb-2 text-3xl">{{ item.icon }}</span>
 						<span
@@ -109,6 +98,7 @@ const menuItems: MenuItem[] = [
 
 		<LevelSelectorModal
 			:is-open="showLevelSelector"
+			:max-level="maxLevel"
 			@close="showLevelSelector = false"
 			@select="handleLevelSelect"
 		/>
