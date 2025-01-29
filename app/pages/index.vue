@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useAuthStore } from '~/stores/auth'
-import type { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 import LevelSelectorModal from '~/components/LevelSelectorModal.vue'
 
 const authStore = useAuthStore()
