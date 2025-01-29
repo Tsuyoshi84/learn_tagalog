@@ -40,6 +40,8 @@ async function answerText(textId: string, remembered: boolean): Promise<void> {
 
 <template>
 	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-8">
+		<p class="text-md mb-4 text-center text-gray-600">Level {{ parsedQueryParams.level }}</p>
+
 		<div v-if="text !== undefined" class="animate-fade-in w-full max-w-3xl">
 			<article class="rounded-xl bg-white p-8 shadow-lg">
 				<div class="mb-8 space-y-6">

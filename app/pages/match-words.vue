@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { shuffle } from '~/utils/shuffle'
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+import WordBlock from '~/components/WordBlock.vue'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
@@ -109,59 +110,45 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="container mx-auto px-4 py-8">
-		<h1 class="mb-8 text-2xl font-bold">Match the words</h1>
+	<div class="container mx-auto py-8">
+		<h1 class="mb-4 text-center text-2xl font-bold">Match the words</h1>
+		<p class="text-md mb-4 text-center text-gray-600">Level {{ parsedQueryParams.level }}</p>
 
 		<div v-if="isCompleted" class="mb-8 text-center">
-			<p class="mb-4 text-xl">Great job! All words matched correctly!</p>
 			<button
 				type="button"
 				class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
 				@click="nextSession"
 			>
-				Next Session
+				Next
 			</button>
 		</div>
 
-		<div class="mx-auto grid max-w-2xl grid-cols-2 gap-8">
+		<div class="mx-auto grid max-w-2xl grid-cols-2 gap-6">
 			<!-- English words -->
 			<div class="space-y-4">
-				<button
+				<WordBlock
 					v-for="word in shuffledEnWords"
 					:key="`en-${word.id}`"
-					type="button"
-					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
-					:class="{
-						'border-gray-200 hover:border-blue-500':
-							!matchedWordIdSet.has(word.id) && selectedEnWord?.id !== word.id,
-						'border-blue-500': selectedEnWord?.id === word.id,
-						'border-green-500': matchedWordIdSet.has(word.id),
-					}"
+					:text="word.en"
+					:selected="selectedEnWord?.id === word.id"
+					:matched="matchedWordIdSet.has(word.id)"
 					:disabled="matchedWordIdSet.has(word.id)"
 					@click="selectWord(word, 'en')"
-				>
-					{{ word.en }}
-				</button>
+				/>
 			</div>
 
 			<!-- Tagalog words -->
 			<div class="space-y-4">
-				<button
+				<WordBlock
 					v-for="word in shuffledTlWords"
 					:key="`tl-${word.id}`"
-					type="button"
-					class="w-full cursor-pointer rounded-lg border-2 p-4 text-center transition-colors"
-					:class="{
-						'border-gray-200 hover:border-blue-500':
-							!matchedWordIdSet.has(word.id) && selectedTlWord?.id !== word.id,
-						'border-blue-500': selectedTlWord?.id === word.id,
-						'border-green-500': matchedWordIdSet.has(word.id),
-					}"
+					:text="word.tl"
+					:selected="selectedTlWord?.id === word.id"
+					:matched="matchedWordIdSet.has(word.id)"
 					:disabled="matchedWordIdSet.has(word.id)"
 					@click="selectWord(word, 'tl')"
-				>
-					{{ word.tl }}
-				</button>
+				/>
 			</div>
 		</div>
 	</div>
