@@ -1,201 +1,189 @@
 {
-  "id": "f1abd3c3-577a-4f2e-a7db-11899beb218e",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "7",
-  "dialect": "postgresql",
-  "tables": {
-    "public.texts": {
-      "name": "texts",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "en": {
-          "name": "en",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "tl": {
-          "name": "tl",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "level": {
-          "name": "level",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 1
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.user_progress": {
-      "name": "user_progress",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "text_id": {
-          "name": "text_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "memory_level": {
-          "name": "memory_level",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 1
-        },
-        "last_answered_at": {
-          "name": "last_answered_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "next_due_date": {
-          "name": "next_due_date",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "user_progress_text_id_texts_id_fk": {
-          "name": "user_progress_text_id_texts_id_fk",
-          "tableFrom": "user_progress",
-          "tableTo": "texts",
-          "columnsFrom": [
-            "text_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "user_progress_user_id_users_id_fk": {
-          "name": "user_progress_user_id_users_id_fk",
-          "tableFrom": "user_progress",
-          "tableTo": "users",
-          "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.words": {
-      "name": "words",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "en": {
-          "name": "en",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "tl": {
-          "name": "tl",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "category": {
-          "name": "category",
-          "type": "word_category",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "level": {
-          "name": "level",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 1
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    }
-  },
-  "enums": {
-    "public.word_category": {
-      "name": "word_category",
-      "schema": "public",
-      "values": [
-        "verb",
-        "adjective",
-        "noun"
-      ]
-    }
-  },
-  "schemas": {},
-  "sequences": {},
-  "roles": {},
-  "policies": {},
-  "views": {},
-  "_meta": {
-    "columns": {},
-    "schemas": {},
-    "tables": {}
-  }
+	"id": "f1abd3c3-577a-4f2e-a7db-11899beb218e",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"version": "7",
+	"dialect": "postgresql",
+	"tables": {
+		"public.texts": {
+			"name": "texts",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"en": {
+					"name": "en",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"tl": {
+					"name": "tl",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"level": {
+					"name": "level",
+					"type": "smallint",
+					"primaryKey": false,
+					"notNull": true,
+					"default": 1
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.user_progress": {
+			"name": "user_progress",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"text_id": {
+					"name": "text_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"memory_level": {
+					"name": "memory_level",
+					"type": "smallint",
+					"primaryKey": false,
+					"notNull": true,
+					"default": 1
+				},
+				"last_answered_at": {
+					"name": "last_answered_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"next_due_date": {
+					"name": "next_due_date",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"user_progress_text_id_texts_id_fk": {
+					"name": "user_progress_text_id_texts_id_fk",
+					"tableFrom": "user_progress",
+					"tableTo": "texts",
+					"columnsFrom": ["text_id"],
+					"columnsTo": ["id"],
+					"onDelete": "cascade",
+					"onUpdate": "no action"
+				},
+				"user_progress_user_id_users_id_fk": {
+					"name": "user_progress_user_id_users_id_fk",
+					"tableFrom": "user_progress",
+					"tableTo": "users",
+					"schemaTo": "auth",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "cascade",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.words": {
+			"name": "words",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"en": {
+					"name": "en",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"tl": {
+					"name": "tl",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"category": {
+					"name": "category",
+					"type": "word_category",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"level": {
+					"name": "level",
+					"type": "smallint",
+					"primaryKey": false,
+					"notNull": true,
+					"default": 1
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		}
+	},
+	"enums": {
+		"public.word_category": {
+			"name": "word_category",
+			"schema": "public",
+			"values": ["verb", "adjective", "noun"]
+		}
+	},
+	"schemas": {},
+	"sequences": {},
+	"roles": {},
+	"policies": {},
+	"views": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
 }
