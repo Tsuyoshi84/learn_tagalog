@@ -21,6 +21,7 @@ export async function parseRequestQuery<
 	T extends ObjectSchema<TEntries, TMessage>,
 >(event: H3Event, schema: T): Promise<InferOutput<T>> {
 	const query = getQuery(event)
+	console.log('query', query)
 
 	try {
 		return parse(schema, query)
