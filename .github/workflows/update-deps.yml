@@ -27,7 +27,7 @@ jobs:
 
       - name: Update dependencies
         run: |
-          bun update --latest
+          bun update
           
       - name: Check for changes
         id: git-check
