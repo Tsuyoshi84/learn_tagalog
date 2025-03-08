@@ -1,12 +1,10 @@
 import stylisticJs from '@stylistic/eslint-plugin-js'
 import * as parserTs from '@typescript-eslint/parser'
-import eslintConfigPrettier from 'eslint-config-prettier'
 import jsdoc from 'eslint-plugin-jsdoc'
 import * as parserVue from 'vue-eslint-parser'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt([])
-	.prepend(eslintConfigPrettier)
 	.override('nuxt/javascript', {
 		plugins: {
 			jsdoc,
