@@ -1,0 +1,21 @@
+---
+description: General rules
+globs: 
+alwaysApply: true
+---
+# General
+
+- It is a web application for learning Tagalog language.
+
+# Directory Structure
+
+- Use `app/pages` for page components.
+- Use `app/components` for reusable components.
+- Use `app/layouts` for layout components.
+- Use `app/composables` for composables.
+- Use `app/types` for type definitions.
+- Use `app/utils` for utility functions.
+- Use `server/api` for API endpoints.
+- Use `server/db` for database models and queries.
+- Use `server/utils` for utility functions.
+
