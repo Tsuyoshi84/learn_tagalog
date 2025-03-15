@@ -1,0 +1,29 @@
+---
+description: Rules about TypeScript
+globs: app/**/*.{ts,vue}
+alwaysApply: false
+---
+# Naming Conventions
+
+- Use UPPER_CASE for constants.
+- Use upper case for acronyms. For example, name `getURL` instead of `getUrl`.
+- Utilize composables, naming them as use<MyComposable>.
+- Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
+- Use `Modal` prefix for modal components (e.g., `LevelSelectorModal.vue`).
+- Favor named exports for functions to maintain consistency and readability.
+
+# TypeScript Usage
+
+- Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
+- Define function return types for better readability and type safety.
+- Use type over interface when possible.
+- Use literal union types over enums.
+- Use `unknown` over `any`.
+- Use `undefined` over `null` when possible.
+- Prefer `for...of` statement over `forEach`. However, allow use of `forEach` when chaining.
+- Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`.
+- Put `as const` on constant objects.
+- Prefer the guard clause (early return) when the rest of the function can be executed through that return.
+- Use `Set` postfix for Set object variables.
+- Use `Map` postfix for Map object variables.
+
