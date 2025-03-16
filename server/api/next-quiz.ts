@@ -1,9 +1,9 @@
 import { and, asc, eq } from 'drizzle-orm'
-import { integer, maxValue, minValue, number, object, pipe } from 'valibot'
+import { readValidatedBody } from 'h3'
+import { integer, maxValue, minValue, number, object, parse, pipe } from 'valibot'
 import { db } from '~~/server/db'
 import { texts, userProgress } from '~~/server/db/schema'
 import { getUser } from '~~/server/utils/getUser'
-import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 
 const requestBodySchema = object({
 	/** The level of the text to get */
@@ -17,7 +17,9 @@ const requestBodySchema = object({
  */
 export default defineEventHandler(async (event) => {
 	const user = await getUser(event)
-	const { level, index } = await parseRequestBody(event, requestBodySchema)
+	const { level, index } = await readValidatedBody(event, (responseBody) =>
+		parse(requestBodySchema, responseBody),
+	)
 
 	const result = await db
 		.select({
