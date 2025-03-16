@@ -29,14 +29,6 @@ export default defineEventHandler(async (event: H3Event) => {
 		parse(requestQuerySchema, responseQuery),
 	)
 
-	// Validate level
-	if (level < 1 || level > 5 || !Number.isInteger(level)) {
-		throw createError({
-			statusCode: 400,
-			statusMessage: 'Level must be an integer between 1 and 5',
-		})
-	}
-
 	const result = await db
 		.select({
 			id: words.id,
