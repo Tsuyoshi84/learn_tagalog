@@ -1,15 +1,15 @@
 {
-  "recommendations": [
-    "antfu.iconify",
-    "biomejs.biome",
-    "bradlc.vscode-tailwindcss",
-    "christian-kohler.path-intellisense",
-    "dbaeumer.vscode-eslint",
-    "formulahendry.auto-rename-tag",
-    "nuxtr.nuxtr-vscode",
-    "streetsidesoftware.code-spell-checker",
-    "stylelint.vscode-stylelint",
-    "usernamehw.errorlens",
-    "vue.volar"
-  ]
+	"recommendations": [
+		"antfu.iconify",
+		"biomejs.biome",
+		"bradlc.vscode-tailwindcss",
+		"christian-kohler.path-intellisense",
+		"dbaeumer.vscode-eslint",
+		"formulahendry.auto-rename-tag",
+		"nuxtr.nuxtr-vscode",
+		"streetsidesoftware.code-spell-checker",
+		"stylelint.vscode-stylelint",
+		"usernamehw.errorlens",
+		"vue.volar"
+	]
 }
