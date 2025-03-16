@@ -1,11 +1,10 @@
-import type { H3Event } from 'h3'
+import { type H3Event, readValidatedBody } from 'h3'
 import {
 	type ErrorMessage,
 	type InferOutput,
 	type ObjectEntries,
 	type ObjectIssue,
 	type ObjectSchema,
-	ValiError,
 	parse,
 } from 'valibot'
 
@@ -20,16 +19,5 @@ export async function parseRequestBody<
 	TMessage extends ErrorMessage<ObjectIssue> | undefined,
 	T extends ObjectSchema<TEntries, TMessage>,
 >(event: H3Event, schema: T): Promise<InferOutput<T>> {
-	const body = await readBody(event)
-
-	try {
-		return parse(schema, body)
-	} catch (error) {
-		if (!(error instanceof ValiError)) throw error
-
-		throw createError({
-			statusCode: 400,
-			message: `Invalid request body. ${error.message}`,
-		})
-	}
+	return await readValidatedBody(event, (responseBody) => parse(schema, responseBody))
 }

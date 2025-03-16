@@ -1,9 +1,8 @@
 import { and, eq } from 'drizzle-orm'
-import { boolean, object, pipe, string, uuid } from 'valibot'
+import { parse, boolean, object, pipe, string, uuid } from 'valibot'
 import { db } from '~~/server/db'
 import { userProgress } from '~~/server/db/schema'
 import { getUser } from '~~/server/utils/getUser'
-import { parseRequestBody } from '~~/server/utils/parseRequestBody'
 import { clamp } from '~~/shared/utils/clamp'
 
 const requestBodySchema = object({
@@ -32,7 +31,9 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
  * API endpoint to handle user's text memory response and update their progress
  */
 export default defineEventHandler(async (event) => {
-	const { textId, remembered } = await parseRequestBody(event, requestBodySchema)
+	const { textId, remembered } = await readValidatedBody(event, (responseBody) =>
+		parse(requestBodySchema, responseBody),
+	)
 
 	const user = await getUser(event)
 
