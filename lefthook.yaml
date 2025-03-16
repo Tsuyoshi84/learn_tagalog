@@ -8,6 +8,8 @@ pre-commit:
     biome-format:
       glob: "*.{js,ts,jsx,tsx,vue,json}"
       run: bun format --staged --no-errors-on-unmatched
+      stage_fixed: true
     biome-lint:
       glob: "*.{js,ts,jsx,tsx,vue}"
       run: bun lint:biome:fix --staged --no-errors-on-unmatched
+      stage_fixed: true
