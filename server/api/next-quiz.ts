@@ -1,9 +1,9 @@
 import { and, asc, eq } from 'drizzle-orm'
-import { integer, maxValue, minValue, number, object, pipe, parse } from 'valibot'
+import { readValidatedBody } from 'h3'
+import { integer, maxValue, minValue, number, object, parse, pipe } from 'valibot'
 import { db } from '~~/server/db'
 import { texts, userProgress } from '~~/server/db/schema'
 import { getUser } from '~~/server/utils/getUser'
-import { readValidatedBody } from 'h3'
 
 const requestBodySchema = object({
 	/** The level of the text to get */

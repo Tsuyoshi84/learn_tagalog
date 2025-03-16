@@ -1,5 +1,5 @@
 import { and, eq } from 'drizzle-orm'
-import { parse, boolean, object, pipe, string, uuid } from 'valibot'
+import { boolean, object, parse, pipe, string, uuid } from 'valibot'
 import { db } from '~~/server/db'
 import { userProgress } from '~~/server/db/schema'
 import { getUser } from '~~/server/utils/getUser'

@@ -1,9 +1,9 @@
 import { eq, sql } from 'drizzle-orm'
 import type { H3Event } from 'h3'
-import { integer, parse, maxValue, minValue, object, pipe, string, transform } from 'valibot'
+import { getValidatedQuery } from 'h3'
+import { integer, maxValue, minValue, object, parse, pipe, string, transform } from 'valibot'
 import { db } from '~~/server/db'
 import { words } from '~~/server/db/schema'
-import { getValidatedQuery } from 'h3'
 
 /** Number of word pairs to return for the matching game */
 const NUMBER_OF_WORDS = 5
