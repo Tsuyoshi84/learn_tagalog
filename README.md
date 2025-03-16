@@ -67,3 +67,42 @@ Build for production:
 ```sh
 bun run build
 ```
+
+### Git Hooks with Lefthook
+
+This project uses [Lefthook](https://github.com/evilmartians/lefthook) to manage Git hooks. Lefthook automatically runs code quality checks before commits and pushes.
+
+The hooks are installed automatically when you run `bun install` (via the postinstall script).
+
+#### Pre-commit hooks
+
+- Biome format: Automatically formats staged files
+- Biome lint: Checks and fixes linting issues in staged files
+
+### Manual Commands
+
+```bash
+# Format code
+bun format
+
+# Check formatting
+bun format:check
+
+# Lint code
+bun lint
+
+# Fix linting issues
+bun lint:fix
+
+# Run Biome linter
+bun lint:biome
+
+# Fix Biome linting issues
+bun lint:biome:fix
+
+# Run tests
+bun test
+
+# Type check
+bun typecheck
+```

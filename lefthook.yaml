@@ -1,0 +1,13 @@
+# Lefthook configuration file
+# See https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+# Define pre-commit hooks
+pre-commit:
+  parallel: true
+  commands:
+    biome-format:
+      glob: "*.{js,ts,jsx,tsx,vue,json}"
+      run: bun format --staged --no-errors-on-unmatched
+    biome-lint:
+      glob: "*.{js,ts,jsx,tsx,vue}"
+      run: bun lint:biome:fix --staged --no-errors-on-unmatched
