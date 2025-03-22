@@ -24,7 +24,7 @@ jobs:
 
       - name: Update Nuxt dependencies
         run: |
-          bunx nuxt@latest upgrade --force
+          bunx nuxi@latest upgrade --dedupe
           
       - name: Check for changes
         id: git-check
