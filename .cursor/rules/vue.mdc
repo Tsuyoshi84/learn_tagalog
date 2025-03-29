@@ -3,7 +3,6 @@ description: Coding rules about Vue
 globs: app/**/*.vue
 alwaysApply: false
 ---
-
 # Vue 3 Specifics
 
 - In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
