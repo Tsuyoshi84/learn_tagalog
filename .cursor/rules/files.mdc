@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Files and directories
+
+## Test files
+
+- Unit test files should be colocated in the same directory that includes the test target file.
+- Test file name should end with `spec.ts`.

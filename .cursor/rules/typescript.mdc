@@ -1,6 +1,6 @@
 ---
 description: Rules about TypeScript
-globs: app/**/*.{ts,vue}
+globs: *.ts,app/**/*.vue
 alwaysApply: false
 ---
 # Naming Conventions
@@ -26,4 +26,9 @@ alwaysApply: false
 - Prefer the guard clause (early return) when the rest of the function can be executed through that return.
 - Use `Set` postfix for Set object variables.
 - Use `Map` postfix for Map object variables.
+
+# Import
+
+- Do not rely on Nuxt auto-import system. Import files explicitly.
+- Put .ts extension when importing TypeScript file
 
