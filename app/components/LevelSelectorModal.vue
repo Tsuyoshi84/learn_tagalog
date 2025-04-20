@@ -29,7 +29,10 @@ function handleLevelSelect(level: number): void {
 </script>
 
 <template>
-	<BaseModal :is-open="isOpen" @close="emit('close')">
+	<BaseModal
+		:is-open="isOpen"
+		@close="emit('close')"
+	>
 		<div class="min-w-72 max-w-sm p-6">
 			<h2 class="mb-6 text-center text-2xl font-bold text-gray-900">Select Level</h2>
 			<div class="flex flex-col gap-4">

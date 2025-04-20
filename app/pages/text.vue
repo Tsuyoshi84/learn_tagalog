@@ -6,7 +6,10 @@ const searchText = shallowRef('')
 
 <template>
 	<div>
-		<input v-model.trim="searchText" type="search" />
+		<input
+			v-model.trim="searchText"
+			type="search"
+		/>
 		<TextList :search-text="searchText" />
 	</div>
 </template>

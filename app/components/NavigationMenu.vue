@@ -53,12 +53,19 @@ function closeMenu(): void {
 				aria-label="Toggle menu"
 				@click="toggleMenu"
 			>
-				<div v-if="!showMenu" class="flex h-4 w-5 flex-col justify-between">
+				<div
+					v-if="!showMenu"
+					class="flex h-4 w-5 flex-col justify-between"
+				>
 					<div class="h-0.5 w-full bg-current"></div>
 					<div class="h-0.5 w-full bg-current"></div>
 					<div class="h-0.5 w-full bg-current"></div>
 				</div>
-				<Icon v-else name="carbon:close" class="h-6 w-6" />
+				<Icon
+					v-else
+					name="carbon:close"
+					class="h-6 w-6"
+				/>
 			</button>
 		</div>
 
@@ -75,7 +82,10 @@ function closeMenu(): void {
 					class="flex items-center gap-2 rounded-lg px-6 py-3 text-xl text-gray-600 transition-colors hover:bg-gray-100"
 					@click="closeMenu"
 				>
-					<Icon :name="item.icon" class="h-6 w-6" />
+					<Icon
+						:name="item.icon"
+						class="h-6 w-6"
+					/>
 					{{ item.name }}
 				</NuxtLink>
 
@@ -84,7 +94,10 @@ function closeMenu(): void {
 					class="flex items-center gap-2 rounded-lg px-6 py-3 text-xl text-gray-600 transition-colors hover:bg-gray-100"
 					@click="signOut"
 				>
-					<Icon name="carbon:logout" class="h-6 w-6" />
+					<Icon
+						name="carbon:logout"
+						class="h-6 w-6"
+					/>
 					Logout
 				</button>
 			</div>
