@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.41.0",
     "postgres": "^3.4.5",
