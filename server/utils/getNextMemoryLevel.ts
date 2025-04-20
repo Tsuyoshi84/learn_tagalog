@@ -4,7 +4,7 @@ import { clamp } from '#shared/utils/clamp'
 const MIN_MEMORY_LEVEL = 1 as const
 
 /** Maximum memory level */
-const MAX_MEMORY_LEVEL = 7 as const
+const MAX_MEMORY_LEVEL = 8 as const
 
 /** Maps memory levels to the number of days until the next review is due  */
 const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
@@ -15,6 +15,7 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 	5: 24, // 24 days
 	6: 52, // ~2 months
 	7: 114, // ~4 months
+	8: 230, // ~8 months
 } as const
 
 type GetNextMemoryLevelParams = {
