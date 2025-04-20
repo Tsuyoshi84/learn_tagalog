@@ -27,6 +27,8 @@
     "lefthook": "^1.11.10",
     "nuxt": "^3.16.2",
     "oxlint": "^0.16.6",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "5.8.2",
     "vitest": "^3.1.1",
     "vue-tsc": "^2.2.8"
@@ -39,6 +41,7 @@
     "dev": "nuxt dev",
     "format": "biome format --write .",
     "format:check": "biome format .",
+    "format:prettier": "prettier --write \"app/**/*.vue\"",
     "generate": "nuxt generate",
     "lint": "eslint . && oxlint",
     "lint:fix": "eslint . --fix",

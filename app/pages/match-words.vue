@@ -114,7 +114,10 @@ onMounted(async () => {
 		<h1 class="mb-4 text-center text-2xl font-bold">Match the words</h1>
 		<p class="text-md mb-4 text-center text-gray-600">Level {{ parsedQueryParams.level }}</p>
 
-		<div v-if="isCompleted" class="mb-8 text-center">
+		<div
+			v-if="isCompleted"
+			class="mb-8 text-center"
+		>
 			<button
 				type="button"
 				class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"

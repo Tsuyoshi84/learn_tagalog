@@ -17,16 +17,38 @@ async function submit(): Promise<void> {
 </script>
 
 <template>
-	<form type="form" class="flex flex-col gap-4" @submit.prevent="submit">
+	<form
+		type="form"
+		class="flex flex-col gap-4"
+		@submit.prevent="submit"
+	>
 		<label for="en">
 			English
-			<input id="en" v-model="en" type="text" label="English" name="en" class="w-full" />
+			<input
+				id="en"
+				v-model="en"
+				type="text"
+				label="English"
+				name="en"
+				class="w-full"
+			/>
 		</label>
 		<label for="tl">
 			Tagalog
-			<input id="tl" v-model="tl" type="text" label="Tagalog" name="tl" class="w-full" />
+			<input
+				id="tl"
+				v-model="tl"
+				type="text"
+				label="Tagalog"
+				name="tl"
+				class="w-full"
+			/>
 		</label>
 
-		<button type="submit" class="btn">Submit</button>
+		<button
+			type="submit"
+			class="btn"
+			>Submit</button
+		>
 	</form>
 </template>
