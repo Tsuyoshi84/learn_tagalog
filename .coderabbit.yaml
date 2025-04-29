@@ -15,6 +15,12 @@ reviews:
     drafts: false
     base_branches: ["main"]
   path_instructions:
+    - path: "**/*.spec.ts"
+      instructions: |
+        Review the following code. Ensure that:
+        - Use Vitest for unit testing.
+        - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
+        - Prefer `it` over `test` for naming test cases.
     - path: "**/*.ts"
       instructions: |
         Review the following code. Ensure that:
@@ -39,7 +45,6 @@ reviews:
         - Do not rely on Nuxt auto-import system. Import files explicitly.
         - Put .ts extension when importing TypeScript file
         - Prefer `shallowRef` over `ref` unless deep watching is needed.
-
     - path: "**/*.vue"
       instructions: |
         Review the following code. Ensure that:
@@ -61,12 +66,5 @@ reviews:
         - Specify `type` attribute for `<button>` elements.
         - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
         - Use TailwindCSS for styling.
-
-    - path: "**/*.spec.ts"
-      instructions: |
-        Review the following code. Ensure that:
-        - Use Vitest for unit testing.
-        - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
-        - Prefer `it` over `test` for naming test cases.
 chat:
   auto_reply: true
