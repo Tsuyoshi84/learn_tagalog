@@ -38,13 +38,13 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 	})
 
 	/** Whether the user has a quiz to answer */
-	const hasQuiz = computed<boolean>(() => currentResult.value?.hasQuiz ?? false)
+	const hasQuiz = computed(() => currentResult.value?.hasQuiz)
 	const fetchIndex = shallowRef(0)
 
 	const { data, refresh } = useFetch('/api/next-quiz', {
 		method: 'POST',
 		body: {
-			level: toValue(level),
+			level,
 			index: fetchIndex,
 		},
 	})

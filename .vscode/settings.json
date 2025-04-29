@@ -11,6 +11,9 @@
 	"[json]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	"[vue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},

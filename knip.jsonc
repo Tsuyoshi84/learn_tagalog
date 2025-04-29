@@ -18,6 +18,7 @@
 	"ignore": ["vitest.config.mjs"],
 	"ignoreDependencies": [
 		"h3",
+		"vue",
 		"vue-tsc",
 		"tailwindcss",
 		"vue-eslint-parser",
