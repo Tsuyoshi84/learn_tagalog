@@ -68,6 +68,5 @@ reviews:
         - Use Vitest for unit testing.
         - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
         - Prefer `it` over `test` for naming test cases.
-
 chat:
   auto_reply: true
