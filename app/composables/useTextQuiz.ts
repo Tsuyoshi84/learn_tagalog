@@ -1,4 +1,5 @@
-import { until } from '@vueuse/core'
+import { isDefined } from '@vueuse/core'
+import type { UnwrapRef } from 'vue'
 
 interface Quiz {
 	id: string
@@ -13,8 +14,6 @@ interface UseTextQuizReturnType {
 	text: ComputedRef<Quiz | undefined>
 	/** Whether the user has a quiz to answer. If not fetched yet, it will return undefined */
 	hasQuiz: ComputedRef<boolean | undefined>
-	/** Load the text to show the quiz */
-	loadText: () => Promise<void>
 	/** Send the answer result to the server asynchronously */
 	answer: (textId: string, remembered: boolean) => Promise<void>
 }
@@ -40,36 +39,23 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 
 	/** Whether the user has a quiz to answer */
 	const hasQuiz = computed<boolean>(() => currentResult.value?.hasQuiz ?? false)
+	const fetchIndex = shallowRef(0)
 
-	const currentResult = shallowRef<Awaited<ReturnType<typeof fetchText>>>()
-	const nextResult = shallowRef<Awaited<ReturnType<typeof fetchText>>>()
+	const { data, refresh } = useFetch('/api/next-quiz', {
+		method: 'POST',
+		body: {
+			level: toValue(level),
+			index: fetchIndex,
+		},
+	})
 
-	async function fetchText(index: number) {
-		return await $fetch('/api/next-quiz', {
-			method: 'POST',
-			body: {
-				level: toValue(level),
-				index,
-			},
-		})
-	}
-
-	async function loadText(): Promise<void> {
-		if (currentResult.value === undefined) {
-			// When the current text is undefined, it means that the user is starting the quiz,
-			// so we need to fetch the first text
-			currentResult.value = await fetchText(0)
-			// fetchNextText()
-		} else {
-			// When the current text is defined, it means that the user is answering the current text,
-			// so we use the next text to show the quiz
-			await until(nextResult).not.toBeUndefined()
-			currentResult.value = nextResult.value
-			nextResult.value = undefined
-		}
-	}
+	const currentResult = shallowRef<UnwrapRef<typeof data>>()
+	const nextResult = shallowRef<UnwrapRef<typeof data>>()
 
 	async function answer(textId: string, remembered: boolean): Promise<void> {
+		currentResult.value = nextResult.value
+		nextResult.value = undefined
+
 		await $fetch('/api/answer-text', {
 			method: 'POST',
 			body: {
@@ -77,20 +63,26 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 				remembered,
 			},
 		})
+
+		await refresh()
 	}
 
-	watch([currentResult, nextResult], async () => {
-		if (currentResult.value === undefined) return
-		if (nextResult.value !== undefined) return
-		if (!currentResult.value.hasQuiz) return
+	watch(data, async () => {
+		if (!isDefined(data)) return
 
-		const result = await fetchText(1)
-		nextResult.value = result
+		if (!isDefined(currentResult)) {
+			currentResult.value = data.value
+			fetchIndex.value = 1
+			return
+		}
+
+		if (!isDefined(nextResult)) {
+			nextResult.value = data.value
+		}
 	})
 
 	return {
 		text,
-		loadText,
 		answer,
 		hasQuiz,
 	}

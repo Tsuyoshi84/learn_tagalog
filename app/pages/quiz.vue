@@ -17,11 +17,7 @@ const queryParamsSchema = object({
 
 const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
-const { text, loadText, answer } = useTextQuiz(parsedQueryParams.value.level)
-
-onMounted(async () => {
-	await loadText()
-})
+const { text, answer } = useTextQuiz(parsedQueryParams.value.level)
 
 /** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
@@ -34,7 +30,6 @@ const buttonGradients = {
 async function answerText(textId: string, remembered: boolean) {
 	showsAnswer.value = false
 	answer(textId, remembered)
-	loadText()
 }
 </script>
 
