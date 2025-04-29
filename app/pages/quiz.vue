@@ -17,7 +17,7 @@ const queryParamsSchema = object({
 
 const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
-const { text, answer } = useTextQuiz(parsedQueryParams.value.level)
+const { text, answer, hasQuiz } = useTextQuiz(parsedQueryParams.value.level)
 
 /** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
@@ -36,6 +36,12 @@ async function answerText(textId: string, remembered: boolean) {
 <template>
 	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-8">
 		<p class="mb-4 text-center text-2xl text-gray-600"> Level {{ parsedQueryParams.level }} </p>
+
+		<div v-if="hasQuiz === false">
+			<p class="text-center text-xl text-gray-600">
+				You answered all the quizzes for this level today 🎉 Keep the good work!
+			</p>
+		</div>
 
 		<div
 			v-if="text !== undefined"
