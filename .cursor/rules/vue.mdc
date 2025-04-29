@@ -7,7 +7,6 @@ alwaysApply: false
 
 - In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
 - In SFC file, add JSDoc at the top of `<script>` section to explain the component.
-- Prefer `shallowRef` over `ref` unless deep watching is needed.
 - Use `defineModel` for v-model bindings.
 - Avoid using index for `key` attribute when using `v-for`.
 - Prefer `v-show` over `v-if` for conditional visibility.

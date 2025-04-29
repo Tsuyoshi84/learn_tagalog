@@ -1,3 +1,4 @@
+import { Temporal } from '@js-temporal/polyfill'
 import { and, asc, eq } from 'drizzle-orm'
 import { readValidatedBody } from 'h3'
 import { integer, maxValue, minValue, number, object, parse, pipe } from 'valibot'
@@ -12,10 +13,33 @@ const requestBodySchema = object({
 	index: pipe(number(), integer(), minValue(0)),
 })
 
+type Response =
+	| {
+			/** Indicates that the user has a quiz to answer */
+			hasQuiz: true
+			/** The quiz text to answer */
+			text: {
+				id: string
+				en: string
+				tl: string
+				level: number
+				nextDueDate: Date | null
+				memoryLevel: number
+				lastAnsweredAt: Date | null
+			}
+	  }
+	| {
+			/** Indicates that the user has no quiz to answer */
+			hasQuiz: false
+			/** The next due date of the quiz. If the user has no quiz to answer, it will return null */
+			nextDueDate: Date | null
+	  }
+
 /**
- * API endpoint to get the next quiz for a user
+ * API endpoint to get the next quiz for a user.
+ * If there is no quiz for the user to show, it will return undefined.
  */
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<Response> => {
 	const user = await getUser(event)
 	const { level, index } = await readValidatedBody(event, (responseBody) =>
 		parse(requestBodySchema, responseBody),
@@ -37,14 +61,35 @@ export default defineEventHandler(async (event) => {
 		.where(and(eq(userProgress.userId, user.id), eq(texts.level, level)))
 		.offset(index)
 		.limit(1)
-	const text = result[0]
 
-	if (!text) {
-		throw createError({
-			statusCode: 404,
-			statusMessage: 'No text found',
-		})
+	const text = result.at(0)
+
+	if (text === undefined) {
+		return {
+			hasQuiz: false,
+			nextDueDate: null,
+		}
 	}
 
-	return text
+	const now = Temporal.Now.instant()
+	if (
+		text.nextDueDate !== null &&
+		Temporal.Instant.compare(Temporal.Instant.from(text.nextDueDate.toISOString()), now) > 0
+	) {
+		// If the next due date is in the future, we don't have a quiz for the user yet
+		return {
+			hasQuiz: false,
+			nextDueDate: text.nextDueDate,
+		}
+	}
+
+	const { memoryLevel, ...rest } = text
+
+	return {
+		hasQuiz: true,
+		text: {
+			...rest,
+			memoryLevel: memoryLevel ?? 0,
+		},
+	}
 })
