@@ -37,10 +37,6 @@ export default withNuxt([])
 			},
 		},
 		rules: {
-			'@typescript-eslint/explicit-function-return-type': [
-				'error',
-				{ allowExpressions: true, allowTypedFunctionExpressions: true },
-			],
 			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
 			'@typescript-eslint/strict-boolean-expressions': [
 				'error',
