@@ -25,7 +25,7 @@
     "happy-dom": "^17.4.4",
     "knip": "^5.50.5",
     "lefthook": "^1.11.11",
-    "nuxt": "^3.17.0",
+    "nuxt": "^3.17.1",
     "oxlint": "^0.16.7",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
