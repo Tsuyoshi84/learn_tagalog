@@ -31,10 +31,10 @@ const buttonGradients = {
 	remembered: 'from-green-300 to-green-500',
 } as const
 
-async function answerText(textId: string, remembered: boolean): Promise<void> {
+async function answerText(textId: string, remembered: boolean) {
 	showsAnswer.value = false
 	answer(textId, remembered)
-	await loadText()
+	loadText()
 }
 </script>
 

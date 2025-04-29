@@ -10,13 +10,13 @@ interface Quiz {
 
 interface UseTextQuizReturnType {
 	/** The text that the user is currently answering */
-	text: Ref<Quiz | undefined>
+	text: ComputedRef<Quiz | undefined>
+	/** Whether the user has a quiz to answer. If not fetched yet, it will return undefined */
+	hasQuiz: ComputedRef<boolean | undefined>
 	/** Load the text to show the quiz */
 	loadText: () => Promise<void>
 	/** Send the answer result to the server asynchronously */
-	answer: (textId: string, remembered: boolean) => void
-	/** Whether the user has a quiz to answer */
-	hasQuiz: Ref<boolean | undefined>
+	answer: (textId: string, remembered: boolean) => Promise<void>
 }
 
 /**
@@ -45,15 +45,13 @@ export function useTextQuiz(level: MaybeRefOrGetter<number>): UseTextQuizReturnT
 	const nextResult = shallowRef<Awaited<ReturnType<typeof fetchText>>>()
 
 	async function fetchText(index: number) {
-		const result = await $fetch('/api/next-quiz', {
+		return await $fetch('/api/next-quiz', {
 			method: 'POST',
 			body: {
 				level: toValue(level),
 				index,
 			},
 		})
-
-		return result
 	}
 
 	async function loadText(): Promise<void> {

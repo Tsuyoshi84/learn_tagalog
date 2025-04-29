@@ -15,7 +15,9 @@ const requestBodySchema = object({
 
 type Response =
 	| {
+			/** Indicates that the user has a quiz to answer */
 			hasQuiz: true
+			/** The quiz text to answer */
 			text: {
 				id: string
 				en: string
@@ -27,7 +29,9 @@ type Response =
 			}
 	  }
 	| {
+			/** Indicates that the user has no quiz to answer */
 			hasQuiz: false
+			/** The next due date of the quiz. If the user has no quiz to answer, it will return null */
 			nextDueDate: Date | null
 	  }
 
