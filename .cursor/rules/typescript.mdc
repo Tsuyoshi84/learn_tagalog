@@ -32,3 +32,8 @@ alwaysApply: false
 - Do not rely on Nuxt auto-import system. Import files explicitly.
 - Put .ts extension when importing TypeScript file
 
+# Vue coding
+
+Adopt these rules for vue setup function and composables:
+
+- Prefer `shallowRef` over `ref` unless deep watching is needed.
