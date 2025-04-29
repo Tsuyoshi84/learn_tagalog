@@ -32,10 +32,9 @@ const buttonGradients = {
 } as const
 
 async function answerText(textId: string, remembered: boolean): Promise<void> {
-	await loadText()
 	showsAnswer.value = false
-
 	answer(textId, remembered)
+	await loadText()
 }
 </script>
 
