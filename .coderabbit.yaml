@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+early_access: true
+tone_instructions: 'You are an expert code reviewer in Vue, VueUse, Nuxt, TypeScript, and NodeJS. You work in an enterprise software developer team, providing concise and clear code review advice.'
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  commit_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches: ["main"]
+  path_instructions:
+    - path: "**/*.spec.ts"
+      instructions: |
+        Review the following code. Ensure that:
+        - Use Vitest for unit testing.
+        - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
+        - Prefer `it` over `test` for naming test cases.
+    - path: "**/*.ts"
+      instructions: |
+        Review the following code. Ensure that:
+        - Use UPPER_CASE for constants.
+        - Use upper case for acronyms. For example, name `getURL` instead of `getUrl`.
+        - Utilize composables, naming them as use<MyComposable>.
+        - Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
+        - Use `Modal` prefix for modal components (e.g., `LevelSelectorModal.vue`).
+        - Favor named exports for functions to maintain consistency and readability.
+        - Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
+        - Define function return types for better readability and type safety.
+        - Use type over interface when possible.
+        - Use literal union types over enums.
+        - Use `unknown` over `any`.
+        - Use `undefined` over `null` when possible.
+        - Prefer `for...of` statement over `forEach`. However, allow use of `forEach` when chaining.
+        - Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`.
+        - Put `as const` on constant objects.
+        - Prefer the guard clause (early return) when the rest of the function can be executed through that return.
+        - Use `Set` postfix for Set object variables.
+        - Use `Map` postfix for Map object variables.
+        - Do not rely on Nuxt auto-import system. Import files explicitly.
+        - Put .ts extension when importing TypeScript file
+        - Prefer `shallowRef` over `ref` unless deep watching is needed.
+    - path: "**/*.vue"
+      instructions: |
+        Review the following code. Ensure that:
+        - Use Naive UI component to structure pages and layouts
+        - Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
+        - In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
+        - Prefer Composition API `<script setup>` style.
+        - Use TypeScript.
+        - Use `defineModel` for v-model bindings.
+        - Use `useTemplateRef` introduced in Vue 3.5 when you need a template reference.
+        - Define `computed` type for better type safety. For example, `const nextLevel = computed<number>(() => currentLevel.value + 1)`.
+        - Define prop types by specifying `defineProps` generic rather than `Props` type. For example, `defineProps<{ level: number }>()`.
+        - Define emit types by specifying `defineEmits` generic rather than `Emits` type. For example, `defineEmits<{ (e: 'close'): void }>()`.
+        - Prefer type-only emit declarations introduced in Vue 3.3. For example, `defineEmits<{ change: [id: number] }>()`.
+        - Always add JSDoc to component props and emits.
+        - For a reactive variable, use `undefined` over `null` if the default value is not known.
+        - Avoid using index for `key` attribute when using `v-for`.
+        - Prefer `v-show` over `v-if` for conditional visibility.
+        - Specify `type` attribute for `<button>` elements.
+        - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
+        - Use TailwindCSS for styling.
+chat:
+  auto_reply: true
