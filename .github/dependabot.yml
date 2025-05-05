@@ -17,6 +17,7 @@ updates:
         patterns:
           - "*eslint*"
           - "*biome*"
+          - "oxlint"
           - "lefthook"
           - "*prettier*"
           - "*vitest*"
@@ -29,6 +30,8 @@ updates:
           - "*nuxt*"
           - "*vue*"
           - "*pinia*"
+          - "drizzle-*"
+          - "valibot"
         exclude-patterns:
           - "nuxt"
           - "@testing-library/vue"
