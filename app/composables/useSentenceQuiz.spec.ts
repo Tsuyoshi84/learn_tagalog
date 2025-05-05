@@ -1,4 +1,5 @@
-import { useSentenceQuiz } from './useSentenceQuiz'
+import { describe, expect, it } from 'vitest'
+import { useSentenceQuiz } from './useSentenceQuiz.ts'
 
 describe('useSentenceQuiz', () => {
 	const text = {

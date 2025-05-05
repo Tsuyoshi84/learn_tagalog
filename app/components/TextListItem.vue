@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Text } from '~/database.types'
+import type { Text } from '~/database.types.ts'
 
 type FetchedText = Pick<Text, 'id' | 'en' | 'tl'>
 

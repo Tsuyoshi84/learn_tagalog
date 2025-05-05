@@ -1,5 +1,5 @@
-import type { Database } from '~/database-generated.types'
-import type { Text } from '~/database.types'
+import type { Database } from '~/database-generated.types.ts'
+import type { Text } from '~/database.types.ts'
 
 type FetchedText = Pick<Text, 'id' | 'en' | 'tl'>
 

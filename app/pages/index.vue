@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import LevelSelectorModal from '~/components/LevelSelectorModal.vue'
-import { useAuthStore } from '~/stores/auth'
+import { useAuthStore } from '~/stores/auth.ts'
 
 const authStore = useAuthStore()
 const { userName } = storeToRefs(authStore)

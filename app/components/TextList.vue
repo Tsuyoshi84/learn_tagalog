@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import TextListItem from '~/components/TextListItem.vue'
-import { useTextSearch } from '~/composables/useTextSearch'
+import { useTextSearch } from '~/composables/useTextSearch.ts'
 
 const props = defineProps<{
 	/** Text that is used as a search word */
