@@ -26,6 +26,17 @@
 				"useFlatMap": "error"
 			},
 			"correctness": {
+				"useImportExtensions": {
+					"level": "error",
+					"options": {
+						"suggestedExtensions": {
+							"ts": {
+								"module": "ts",
+								"component": "vue"
+							}
+						}
+					}
+				},
 				"noUnusedImports": "warn",
 				"noUnusedVariables": "warn"
 			},
