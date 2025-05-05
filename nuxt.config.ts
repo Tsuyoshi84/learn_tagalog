@@ -54,8 +54,10 @@ export default defineNuxtConfig({
 	typescript: {
 		tsConfig: {
 			compilerOptions: {
+				allowImportingTsExtensions: true,
 				allowUnreachableCode: false,
 				exactOptionalPropertyTypes: true,
+				erasableSyntaxOnly: true,
 				forceConsistentCasingInFileNames: true,
 				noErrorTruncation: true,
 				noFallthroughCasesInSwitch: true,
