@@ -5,13 +5,13 @@
 	"[html]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	"[json]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[vue]": {
@@ -69,14 +69,16 @@
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
 	"files.autoSaveWhenNoErrors": true,
-	"github.copilot.chat.experimental.codeGeneration.instructions": [
+	"github.copilot.chat.codeGeneration.instructions": [
 		{
 			"file": "coding-guidelines.md"
 		}
 	],
+	"javascript.preferences.importModuleSpecifierEnding": "js",
 	"tailwindCSS.emmetCompletions": true,
-	"typescript.preferGoToSourceDefinition": true,
+	"typescript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.preferTypeOnlyAutoImports": true,
+	"typescript.preferGoToSourceDefinition": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"vue.inlayHints.inlineHandlerLeading": true,
 	"vue.inlayHints.missingProps": true,
