@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/stores/auth'
+import { useAuthStore } from '~/stores/auth.ts'
 
 const showMenu = shallowRef(false)
 const { signOut } = useAuthStore()

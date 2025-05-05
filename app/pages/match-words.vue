@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
 import WordBlock from '~/components/WordBlock.vue'
-import { shuffle } from '~/utils/shuffle'
+import { shuffle } from '~/utils/shuffle.ts'
 
 const queryParamsSchema = object({
 	/** The level of quiz */

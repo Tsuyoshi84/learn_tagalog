@@ -1,4 +1,4 @@
-import { shuffle } from './shuffle'
+import { shuffle } from './shuffle.ts'
 
 describe('shuffle', () => {
 	it('has the same length as the input', () => {

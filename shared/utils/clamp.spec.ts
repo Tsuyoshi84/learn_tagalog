@@ -1,4 +1,4 @@
-import { clamp } from './clamp'
+import { clamp } from './clamp.ts'
 
 describe('clamp', () => {
 	it('clamps a value between a minimum and maximum value', () => {

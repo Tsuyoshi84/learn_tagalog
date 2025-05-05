@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
 import MemoryLevelMeter from '~/components/MemoryLevelMeter.vue'
-import { useQueryParamsWithSchema } from '~/composables/useQueryParamsWithSchema'
-import { useTextQuiz } from '~/composables/useTextQuiz'
+import { useQueryParamsWithSchema } from '~/composables/useQueryParamsWithSchema.ts'
+import { useTextQuiz } from '~/composables/useTextQuiz.ts'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
