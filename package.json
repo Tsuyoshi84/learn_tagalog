@@ -2,7 +2,7 @@
   "dependencies": {
     "@js-temporal/polyfill": "^0.5.1",
     "dotenv": "^16.5.0",
-    "drizzle-orm": "^0.41.0",
+    "drizzle-orm": "^0.43.1",
     "postgres": "^3.4.5",
     "valibot": "^1.0.0"
   },
