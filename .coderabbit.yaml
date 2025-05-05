@@ -42,7 +42,7 @@ reviews:
         - Prefer the guard clause (early return) when the rest of the function can be executed through that return.
         - Use `Set` postfix for Set object variables.
         - Use `Map` postfix for Map object variables.
-        - Do not rely on Nuxt auto-import system. Import files explicitly.
+        - Do not rely on Nuxt auto-import system. Import files explicitly except for Vue, Nuxt and Pinia APIs.
         - Put .ts extension when importing TypeScript file
         - Prefer `shallowRef` over `ref` unless deep watching is needed.
     - path: "**/*.vue"
