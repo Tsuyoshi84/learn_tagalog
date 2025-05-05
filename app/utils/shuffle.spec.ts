@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { shuffle } from './shuffle.ts'
 
 describe('shuffle', () => {
