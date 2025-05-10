@@ -3,5 +3,9 @@
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
 		"types": ["vitest/globals"]
+	},
+	"vueCompilerOptions": {
+		// "strictTemplates": true,
+		"dataAttributes": ["data-*"]
 	}
 }
