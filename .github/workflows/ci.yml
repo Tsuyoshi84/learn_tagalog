@@ -50,7 +50,7 @@ jobs:
         run: bun format
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
 
       - name: Build
         run: bun run build
