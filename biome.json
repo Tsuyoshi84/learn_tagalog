@@ -1,73 +1,59 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"ignore": [
-			"package.json",
-			"pnpm-lock.yaml",
-			".vscode/vue.code-snippets",
-			".output/*.*",
-			".nuxt/*.*"
+		"includes": [
+			"*.{ts,js,cjs,mjs,json,jsonc}",
+			"shared/**/*.*",
+			"app/**/*.*",
+			"server/**/*.*",
+			".vscode/**/*.*",
+			"!package.json"
 		]
 	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
 		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 100,
-		"ignore": []
+		"lineWidth": 100
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": false,
+			"recommended": true,
 			"complexity": {
-				"noForEach": "error",
-				"useFlatMap": "error"
+				"noForEach": "error"
 			},
 			"correctness": {
-				"useImportExtensions": {
-					"level": "error",
-					"options": {
-						"suggestedExtensions": {
-							"ts": {
-								"module": "ts",
-								"component": "vue"
-							}
-						}
-					}
-				},
 				"noUnusedImports": "warn",
 				"noUnusedVariables": "warn"
 			},
 			"nursery": {
-				"useCollapsedIf": "error"
+				"useConsistentObjectDefinition": "on",
+				"useIndexOf": "on"
 			},
 			"style": {
+				"noNestedTernary": "on",
 				"noParameterAssign": "error",
 				"useExplicitLengthCheck": "error",
 				"useImportType": "warn",
-				"useNumberNamespace": "error"
+				"useNumberNamespace": "error",
+				"useCollapsedIf": "error"
 			},
 			"suspicious": {
-				"noConsole": "warn",
-				"noRedeclare": "error"
+				"noConsole": "warn"
 			}
-		},
-		"ignore": [
-			"package.json",
-			"pnpm-lock.yaml",
-			"eslint.config.mjs",
-			"nuxt.config.ts",
-			"**/*.test.js"
-		]
+		}
 	},
 	"javascript": {
-		"formatter": { "semicolons": "asNeeded", "lineWidth": 100, "quoteStyle": "single" }
+		"formatter": {
+			"semicolons": "asNeeded",
+			"lineWidth": 100,
+			"quoteStyle": "single"
+		}
 	},
 	"overrides": [
 		{
-			"include": ["*.svelte", "*.astro", "*.vue"],
+			"includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
 			"linter": {
 				"rules": {
 					"correctness": {
@@ -75,6 +61,29 @@
 						"noUnusedImports": "off"
 					},
 					"style": { "useConst": "off", "useImportType": "off" }
+				}
+			}
+		},
+		{
+			"includes": [".vscode/settings.json"],
+			"assist": {
+				"actions": {
+					"source": {
+						"useSortedKeys": "on"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["**/*.spec.ts"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noNonNullAssertion": "off"
+					},
+					"suspicious": {
+						"noExplicitAny": "off"
+					}
 				}
 			}
 		}
