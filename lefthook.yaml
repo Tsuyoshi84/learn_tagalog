@@ -5,11 +5,7 @@
 pre-commit:
   parallel: true
   commands:
-    biome-format:
+    biome-check:
       glob: "*.{js,ts,jsx,tsx,vue,json}"
-      run: bun format --staged --no-errors-on-unmatched
-      stage_fixed: true
-    biome-lint:
-      glob: "*.{js,ts,jsx,tsx,vue}"
-      run: bun lint:biome:fix --staged --no-errors-on-unmatched
+      run: bun check --staged --no-errors-on-unmatched
       stage_fixed: true

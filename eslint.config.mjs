@@ -12,7 +12,6 @@ export default withNuxt([])
 		},
 		rules: {
 			'func-style': ['error', 'declaration'],
-			'no-irregular-whitespace': ['error', { skipRegExps: true }],
 
 			// jsdoc
 			'jsdoc/check-param-names': 'error',

@@ -7,6 +7,7 @@ export const useAuthStore = defineStore('auth', () => {
 	const userName = computed<string | undefined>(() => {
 		if (!isDefined(user)) return undefined
 
+		// biome-ignore lint/complexity/useLiteralKeys: user_metadata.name comes from index signature
 		return user.value.user_metadata['name']
 	})
 
