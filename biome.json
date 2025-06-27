@@ -14,9 +14,7 @@
 		"enabled": true,
 		"formatWithErrors": false,
 		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 100,
-		"includes": ["**"]
+		"lineWidth": 100
 	},
 	"linter": {
 		"enabled": true,
