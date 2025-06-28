@@ -25,7 +25,7 @@ describe('useMatchWords', () => {
 		match.setWords(sampleWords)
 		expect(match.shuffledEnWords.value).toHaveLength(3)
 		expect(match.shuffledTlWords.value).toHaveLength(3)
-		expect(match.matchedWordIdSet.value).toHaveLength(0)
+		expect(match.matchedWordIdSet.value.size).toBe(0)
 		// Should not be the same reference as input
 		expect(match.shuffledEnWords.value).not.toBe(sampleWords)
 		expect(match.shuffledTlWords.value).not.toBe(sampleWords)
