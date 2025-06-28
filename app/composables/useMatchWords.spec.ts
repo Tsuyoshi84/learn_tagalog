@@ -10,13 +10,15 @@ const sampleWords = [
 describe('useMatchWords', () => {
 	it('should initialize with empty state', () => {
 		const match = useMatchWords()
-		expect(match.matchedWordIdSet.value).toHaveLength(0)
+-		expect(match.matchedWordIdSet.value).toHaveLength(0)
++		expect(match.matchedWordIdSet.value.size).toBe(0)
 		expect(match.isCompleted.value).toBe(false)
 		expect(match.shuffledEnWords.value).toHaveLength(0)
 		expect(match.shuffledTlWords.value).toHaveLength(0)
 		expect(match.selectedEnWord.value).toBeUndefined()
 		expect(match.selectedTlWord.value).toBeUndefined()
 	})
+})
 
 	it('should set words and shuffle them', () => {
 		const match = useMatchWords()
