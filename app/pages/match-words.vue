@@ -2,7 +2,7 @@
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
 import AppButton from '~/components/AppButton.vue'
 import WordBlock from '~/components/WordBlock.vue'
-import { useMatchWords } from '~/composables/useMatchWords.ts'
+import { useMatchWords, type Word } from '~/composables/useMatchWords.ts'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
