@@ -8,6 +8,7 @@ alwaysApply: false
 - In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
 - In SFC file, add JSDoc at the top of `<script>` section to explain the component.
 - Use `defineModel` for v-model bindings.
+- Add JSDoc for `defineModel` variables to explain the purpose.
 - Avoid using index for `key` attribute when using `v-for`.
 - Prefer `v-show` over `v-if` for conditional visibility.
 - Use `useTemplateRef` introduced in Vue 3.5 when you need a template reference.

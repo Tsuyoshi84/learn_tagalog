@@ -6,6 +6,6 @@ alwaysApply: false
 # Unit Testing
 
 - Use Vitest for unit testing.
-- Vitest API are globally available, so you don't need to import them (e.g., `describe`, `it`, `expect`, and so on).
+- Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
 - Prefer `it` over `test` for naming test cases.
 

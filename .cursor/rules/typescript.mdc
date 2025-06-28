@@ -16,7 +16,7 @@ alwaysApply: false
 
 - Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
 - Define function return types for better readability and type safety.
-- Use type over interface when possible.
+- Use `interface` over `type` when defining an object type.
 - Use literal union types over enums.
 - Use `unknown` over `any`.
 - Use `undefined` over `null` when possible.
