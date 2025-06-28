@@ -2,7 +2,7 @@
 import { integer, maxValue, minValue, object, pipe, string, transform } from 'valibot'
 import AppButton from '~/components/AppButton.vue'
 import WordBlock from '~/components/WordBlock.vue'
-import { shuffle } from '~/utils/shuffle.ts'
+import { useMatchWords, type Word } from '~/composables/useMatchWords.ts'
 
 const queryParamsSchema = object({
 	/** The level of quiz */
@@ -17,28 +17,17 @@ const queryParamsSchema = object({
 
 const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
-/**
- * Word type for the matching game
- */
-type Word = {
-	id: string
-	en: string
-	tl: string
-	selected?: boolean
-}
+const words = ref<Word[]>([])
 
-/** Words to be matched */
-const words = shallowRef<Word[]>([])
-/** Set of matched word IDs */
-const matchedWordIdSet = shallowRef<Set<string>>(new Set())
-/** Whether the game is completed */
-const isCompleted = computed<boolean>(
-	() => words.value.length > 0 && matchedWordIdSet.value.size === words.value.length,
-)
-/** Shuffled English words */
-const shuffledEnWords = shallowRef<Word[]>([])
-/** Shuffled Tagalog words */
-const shuffledTlWords = shallowRef<Word[]>([])
+const {
+	matchedWordIdSet,
+	isCompleted,
+	shuffledEnWords,
+	shuffledTlWords,
+	selectedEnWord,
+	selectedTlWord,
+	selectWord,
+} = useMatchWords(words)
 
 /**
  * Fetch words from the API
@@ -51,50 +40,6 @@ async function fetchWords(): Promise<void> {
 	if (response === undefined) return
 
 	words.value = response
-	shuffledEnWords.value = shuffle(words.value)
-	shuffledTlWords.value = shuffle(words.value)
-	matchedWordIdSet.value = new Set()
-}
-
-/** Selected English word */
-const selectedEnWord = shallowRef<Word>()
-/** Selected Tagalog word */
-const selectedTlWord = shallowRef<Word>()
-
-/**
- * Handle word selection
- */
-function selectWord(word: Word, language: 'en' | 'tl'): void {
-	// Skip if word is already matched
-	if (matchedWordIdSet.value.has(word.id)) return
-
-	if (language === 'en') {
-		selectedEnWord.value = word
-	} else {
-		selectedTlWord.value = word
-	}
-
-	// Check if we have a pair selected
-	if (selectedEnWord.value !== undefined && selectedTlWord.value !== undefined) {
-		checkMatch()
-	}
-}
-
-/**
- * Check if selected words match
- */
-function checkMatch(): void {
-	if (!selectedEnWord.value || !selectedTlWord.value) return
-
-	if (selectedEnWord.value.id === selectedTlWord.value.id) {
-		// Match found
-		matchedWordIdSet.value.add(selectedEnWord.value.id)
-		triggerRef(matchedWordIdSet)
-	}
-
-	// Reset selections
-	selectedEnWord.value = undefined
-	selectedTlWord.value = undefined
 }
 
 /**
@@ -143,7 +88,7 @@ onMounted(async () => {
 		</div>
 
 		<AppButton
-			v-if="!isCompleted"
+			v-if="isCompleted"
 			@click="nextSession"
 			>Next</AppButton
 		>
