@@ -43,9 +43,9 @@ jobs:
       - name: Lint
         run: bun lint:fix
 
-      - name: Lint Biome
       - name: Biome Check
         run: bun check
+
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v6
 
