@@ -36,6 +36,9 @@ export default withNuxt([])
 			},
 		},
 		rules: {
+			// See: https://ts.dev/style/#interfaces-vs-type-aliases
+			// See: https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections
+			'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
 			'@typescript-eslint/strict-boolean-expressions': [
 				'error',

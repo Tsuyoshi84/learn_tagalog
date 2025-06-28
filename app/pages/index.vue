@@ -32,7 +32,7 @@ async function handleLevelSelect(level: number): Promise<void> {
 	})
 }
 
-type MenuItem = {
+interface MenuItem {
 	name: string
 	icon: string
 	description: string
