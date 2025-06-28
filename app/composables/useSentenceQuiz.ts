@@ -1,13 +1,13 @@
 import type { Text } from '~/database.types'
 
-type WordInfo = {
+interface WordInfo {
 	id: number
 	word: string
 }
 
 type QuizStatus = 'selecting' | 'correct' | 'incorrect'
 
-type ReturnType = {
+interface ReturnType {
 	english: string
 	words: ComputedRef<WordInfo[]>
 	selectedWords: ComputedRef<WordInfo[]>

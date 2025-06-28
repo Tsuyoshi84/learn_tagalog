@@ -18,14 +18,14 @@ const MEMORY_LEVEL_TO_NEXT_DUE_DATE = {
 	8: 230, // ~8 months
 } as const
 
-type GetNextMemoryLevelParams = {
+interface GetNextMemoryLevelParams {
 	/** The current memory level of the text */
 	currentMemoryLevel: number
 	/** Whether the user remembered the text or not */
 	remembered: boolean
 }
 
-type ReturnType = {
+interface ReturnType {
 	/** The next memory level */
 	nextMemoryLevel: keyof typeof MEMORY_LEVEL_TO_NEXT_DUE_DATE
 	/** The interval in hours */
