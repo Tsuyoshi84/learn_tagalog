@@ -3,16 +3,13 @@ import { shuffle } from '~/utils/shuffle.ts'
 /**
  * Word type for the matching game
  */
-type Word = {
+export interface Word {
 	id: string
 	en: string
 	tl: string
 	selected?: boolean
 }
 
-/**
- * A composable for the matching game.
- */
 interface UseMatchWordsReturn {
 	/** Set of matched word IDs */
 	matchedWordIdSet: Ref<Set<string>>
@@ -27,20 +24,17 @@ interface UseMatchWordsReturn {
 	/** Selected Tagalog word */
 	selectedTlWord: Ref<Word | undefined>
 	/**
-	 * Set list of words.
-	 * This will re-shuffle the words and reset the matched word set.
-	 */
-	setWords: (newWords: Word[]) => void
-	/**
 	 * Select word.
 	 * This will check if the selected words match and update the matched word set.
 	 */
 	selectWord: (word: Word, language: 'en' | 'tl') => void
 }
 
-export function useMatchWords(): UseMatchWordsReturn {
-	/** Words to be matched */
-	const words = shallowRef<Word[]>([])
+/**
+ * A composable for the matching game.
+ * @param words - The list of words to be matched.
+ */
+export function useMatchWords(words: Ref<Word[]>): UseMatchWordsReturn {
 	const matchedWordIdSet = shallowRef<Set<string>>(new Set())
 	const isCompleted = computed<boolean>(
 		() => words.value.length > 0 && matchedWordIdSet.value.size === words.value.length,
@@ -83,12 +77,15 @@ export function useMatchWords(): UseMatchWordsReturn {
 		selectedTlWord.value = undefined
 	}
 
-	function setWords(newWords: Word[]): void {
-		words.value = newWords
-		shuffledEnWords.value = shuffle(newWords)
-		shuffledTlWords.value = shuffle(newWords)
-		matchedWordIdSet.value = new Set()
-	}
+	watch(
+		words,
+		() => {
+			shuffledEnWords.value = shuffle(words.value)
+			shuffledTlWords.value = shuffle(words.value)
+			matchedWordIdSet.value = new Set()
+		},
+		{ immediate: true },
+	)
 
 	return {
 		matchedWordIdSet,
@@ -97,7 +94,6 @@ export function useMatchWords(): UseMatchWordsReturn {
 		shuffledTlWords,
 		selectedEnWord,
 		selectedTlWord,
-		setWords,
 		selectWord,
 	}
 }

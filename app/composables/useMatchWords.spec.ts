@@ -1,87 +1,107 @@
 import { nextTick } from 'vue'
 import { useMatchWords } from './useMatchWords.ts'
 
-const sampleWords = [
+const sampleWords = ref([
 	{ id: '1', en: 'dog', tl: 'aso' },
 	{ id: '2', en: 'cat', tl: 'pusa' },
 	{ id: '3', en: 'bird', tl: 'ibon' },
-]
+])
 
 describe('useMatchWords', () => {
 	it('should initialize with empty state', () => {
-		const match = useMatchWords()
--		expect(match.matchedWordIdSet.value).toHaveLength(0)
-+		expect(match.matchedWordIdSet.value.size).toBe(0)
-		expect(match.isCompleted.value).toBe(false)
-		expect(match.shuffledEnWords.value).toHaveLength(0)
-		expect(match.shuffledTlWords.value).toHaveLength(0)
-		expect(match.selectedEnWord.value).toBeUndefined()
-		expect(match.selectedTlWord.value).toBeUndefined()
+		const {
+			matchedWordIdSet,
+			isCompleted,
+			shuffledEnWords,
+			shuffledTlWords,
+			selectedEnWord,
+			selectedTlWord,
+		} = useMatchWords(sampleWords)
+
+		expect(matchedWordIdSet.value.size).toBe(0)
+		expect(isCompleted.value).toBe(false)
+		expect(shuffledEnWords.value).toHaveLength(3)
+		expect(shuffledTlWords.value).toHaveLength(3)
+		expect(selectedEnWord.value).toBeUndefined()
+		expect(selectedTlWord.value).toBeUndefined()
 	})
-})
 
 	it('should set words and shuffle them', () => {
-		const match = useMatchWords()
-		match.setWords(sampleWords)
-		expect(match.shuffledEnWords.value).toHaveLength(3)
-		expect(match.shuffledTlWords.value).toHaveLength(3)
-		expect(match.matchedWordIdSet.value.size).toBe(0)
+		const { shuffledEnWords, shuffledTlWords, matchedWordIdSet } = useMatchWords(sampleWords)
+
+		expect(shuffledEnWords.value).toHaveLength(3)
+		expect(shuffledTlWords.value).toHaveLength(3)
+		expect(matchedWordIdSet.value.size).toBe(0)
 		// Should not be the same reference as input
-		expect(match.shuffledEnWords.value).not.toBe(sampleWords)
-		expect(match.shuffledTlWords.value).not.toBe(sampleWords)
+		expect(shuffledEnWords.value).not.toBe(sampleWords)
+		expect(shuffledTlWords.value).not.toBe(sampleWords)
 	})
 
 	it('should select words and match correctly', async () => {
-		const match = useMatchWords()
-		match.setWords(sampleWords)
+		const {
+			shuffledEnWords,
+			shuffledTlWords,
+			matchedWordIdSet,
+			selectWord,
+			selectedEnWord,
+			selectedTlWord,
+		} = useMatchWords(sampleWords)
 		// Select matching pair (dog/aso)
-		const enDog = match.shuffledEnWords.value.find((w) => w.en === 'dog')!
-		const tlAso = match.shuffledTlWords.value.find((w) => w.tl === 'aso')!
-		match.selectWord(enDog, 'en')
-		match.selectWord(tlAso, 'tl')
+		const enDog = shuffledEnWords.value.find((w) => w.en === 'dog')!
+		const tlAso = shuffledTlWords.value.find((w) => w.tl === 'aso')!
+		selectWord(enDog, 'en')
+		selectWord(tlAso, 'tl')
 		await nextTick()
-		expect(match.matchedWordIdSet.value.has(enDog.id)).toBe(true)
-		expect(match.selectedEnWord.value).toBeUndefined()
-		expect(match.selectedTlWord.value).toBeUndefined()
+		expect(matchedWordIdSet.value.has(enDog.id)).toBe(true)
+		expect(selectedEnWord.value).toBeUndefined()
+		expect(selectedTlWord.value).toBeUndefined()
 	})
 
 	it('should not match if ids do not match', async () => {
-		const match = useMatchWords()
-		match.setWords(sampleWords)
-		const enDog = match.shuffledEnWords.value.find((w) => w.en === 'dog')!
-		const tlPusa = match.shuffledTlWords.value.find((w) => w.tl === 'pusa')!
-		match.selectWord(enDog, 'en')
-		match.selectWord(tlPusa, 'tl')
+		const {
+			shuffledEnWords,
+			shuffledTlWords,
+			matchedWordIdSet,
+			selectWord,
+			selectedEnWord,
+			selectedTlWord,
+		} = useMatchWords(sampleWords)
+
+		const enDog = shuffledEnWords.value.find((w) => w.en === 'dog')!
+		const tlPusa = shuffledTlWords.value.find((w) => w.tl === 'pusa')!
+		selectWord(enDog, 'en')
+		selectWord(tlPusa, 'tl')
 		await nextTick()
-		expect(match.matchedWordIdSet.value.size).toBe(0)
-		expect(match.selectedEnWord.value).toBeUndefined()
-		expect(match.selectedTlWord.value).toBeUndefined()
+		expect(matchedWordIdSet.value.size).toBe(0)
+		expect(selectedEnWord.value).toBeUndefined()
+		expect(selectedTlWord.value).toBeUndefined()
 	})
 
 	it('should set isCompleted to true when all matched', async () => {
-		const match = useMatchWords()
-		match.setWords(sampleWords)
+		const { shuffledEnWords, shuffledTlWords, selectWord, isCompleted } = useMatchWords(sampleWords)
+
 		// Match all pairs
-		for (const word of sampleWords) {
-			const en = match.shuffledEnWords.value.find((w) => w.id === word.id)!
-			const tl = match.shuffledTlWords.value.find((w) => w.id === word.id)!
-			match.selectWord(en, 'en')
-			match.selectWord(tl, 'tl')
+		for (const word of sampleWords.value) {
+			const en = shuffledEnWords.value.find((w) => w.id === word.id)!
+			const tl = shuffledTlWords.value.find((w) => w.id === word.id)!
+			selectWord(en, 'en')
+			selectWord(tl, 'tl')
 			await nextTick()
 		}
-		expect(match.isCompleted.value).toBe(true)
+		expect(isCompleted.value).toBe(true)
 	})
 
 	it('should not allow selecting already matched words', async () => {
-		const match = useMatchWords()
-		match.setWords(sampleWords)
-		const enDog = match.shuffledEnWords.value.find((w) => w.en === 'dog')!
-		const tlAso = match.shuffledTlWords.value.find((w) => w.tl === 'aso')!
-		match.selectWord(enDog, 'en')
-		match.selectWord(tlAso, 'tl')
+		const { shuffledEnWords, shuffledTlWords, selectWord, selectedEnWord } =
+			useMatchWords(sampleWords)
+
+		const enDog = shuffledEnWords.value.find((w) => w.en === 'dog')!
+		const tlAso = shuffledTlWords.value.find((w) => w.tl === 'aso')!
+		selectWord(enDog, 'en')
+		selectWord(tlAso, 'tl')
 		await nextTick()
 		// Try to select again
-		match.selectWord(enDog, 'en')
-		expect(match.selectedEnWord.value).toBeUndefined()
+		selectWord(enDog, 'en')
+		expect(selectedEnWord.value).toBeUndefined()
 	})
 })

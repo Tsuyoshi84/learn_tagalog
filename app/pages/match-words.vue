@@ -17,6 +17,8 @@ const queryParamsSchema = object({
 
 const parsedQueryParams = useQueryParamsWithSchema(queryParamsSchema)
 
+const words = ref<Word[]>([])
+
 const {
 	matchedWordIdSet,
 	isCompleted,
@@ -24,9 +26,8 @@ const {
 	shuffledTlWords,
 	selectedEnWord,
 	selectedTlWord,
-	setWords,
 	selectWord,
-} = useMatchWords()
+} = useMatchWords(words)
 
 /**
  * Fetch words from the API
@@ -38,7 +39,7 @@ async function fetchWords(): Promise<void> {
 
 	if (response === undefined) return
 
-	setWords(response)
+	words.value = response
 }
 
 /**
