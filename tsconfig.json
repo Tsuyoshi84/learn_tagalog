@@ -5,7 +5,7 @@
 		"types": ["vitest/globals"]
 	},
 	"vueCompilerOptions": {
-		// "strictTemplates": true,
+		"strictTemplates": true,
 		"dataAttributes": ["data-*"]
 	}
 }

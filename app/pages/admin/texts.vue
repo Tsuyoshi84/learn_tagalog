@@ -18,7 +18,6 @@ async function submit(): Promise<void> {
 
 <template>
 	<form
-		type="form"
 		class="flex flex-col gap-4"
 		@submit.prevent="submit"
 	>
@@ -28,7 +27,6 @@ async function submit(): Promise<void> {
 				id="en"
 				v-model="en"
 				type="text"
-				label="English"
 				name="en"
 				class="w-full"
 			/>
@@ -39,7 +37,6 @@ async function submit(): Promise<void> {
 				id="tl"
 				v-model="tl"
 				type="text"
-				label="Tagalog"
 				name="tl"
 				class="w-full"
 			/>

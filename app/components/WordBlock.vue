@@ -13,11 +13,6 @@ defineProps<{
 	/** Whether the button is disabled */
 	disabled: boolean
 }>()
-
-defineEmits<{
-	/** Emitted when the word is clicked */
-	click: []
-}>()
 </script>
 
 <template>
@@ -32,7 +27,6 @@ defineEmits<{
 			'cursor-not-allowed opacity-50': disabled,
 		}"
 		:disabled="disabled"
-		@click="$emit('click')"
 	>
 		<span
 			class="font-medium"
