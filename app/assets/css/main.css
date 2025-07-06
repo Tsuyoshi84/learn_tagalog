@@ -27,6 +27,15 @@ dialog,
 	opacity: 0;
 }
 
+/* Disable transitions for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	[popover],
+	dialog,
+	::backdrop {
+		transition: none;
+	}
+}
+
 /* On Stage */
 :popover-open,
 :popover-open::backdrop,
