@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
 		},
 	},
-	css: [],
+	css: ['~/assets/css/main.css'],
 	runtimeConfig: {
 		public: {
 			baseUrl: '',
