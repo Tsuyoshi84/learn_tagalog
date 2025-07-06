@@ -26,11 +26,13 @@ alwaysApply: false
 - Pass an object to `navigateTo` for better type safety. For example, `navigateTo({ name: 'about' })` instead of `navigateTo('/about')`.
 - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
 
-# Tailwind CSS
-
-- Use colors from the `colors` object in `app/tailwind.config.ts`.
-
 # HTML
 
 - Specify `type` attribute for `<button>` elements.
 
+# CSS
+
+- Use modern CSS features as much as possible, assuming users always use the latest browser versions.
+- Use logical properties—for example, `inline-size` instead of `width`.
+- Use OKLCH for colors—no need for RGB / HSL fallback.
+- Prefer individual transform properties (`translate`, `rotate`, `scale`) over the `transform` shorthand.

@@ -35,6 +35,7 @@ interface UseMatchWordsReturn {
  * @param words - The list of words to be matched.
  */
 export function useMatchWords(words: Ref<Word[]>): UseMatchWordsReturn {
+	/** Set of word IDs that a user correctly matched */
 	const matchedWordIdSet = shallowRef<Set<string>>(new Set())
 	const isCompleted = computed<boolean>(
 		() => words.value.length > 0 && matchedWordIdSet.value.size === words.value.length,

@@ -65,6 +65,9 @@ reviews:
         - Prefer `v-show` over `v-if` for conditional visibility.
         - Specify `type` attribute for `<button>` elements.
         - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
-        - Use TailwindCSS for styling.
+        - Use modern CSS features as much as possible, assuming users always use the latest browser versions.
+        - Use logical properties—for example, `inline-size` instead of `width`.
+        - Use OKLCH for colors—no need for RGB / HSL fallback.
+        - Prefer individual transform properties (`translate`, `rotate`, `scale`) over the `transform` shorthand.
 chat:
   auto_reply: true
