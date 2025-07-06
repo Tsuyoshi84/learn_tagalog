@@ -1,3 +1,6 @@
+// biome-ignore lint/complexity/useLiteralKeys: Don't check for NODE_ENV
+const isProduction = process.env['NODE_ENV'] === 'production'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
@@ -5,11 +8,10 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
 		'@nuxtjs/tailwindcss',
-		'@nuxt/eslint',
-		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'@nuxt/icon',
+		...(!isProduction ? ['@nuxt/test-utils/module', '@nuxt/eslint'] : []),
 	],
 	devtools: { enabled: true },
 	app: {
