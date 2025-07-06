@@ -22,11 +22,6 @@ const { text, answer, hasQuiz } = useTextQuiz(parsedQueryParams.value.level)
 /** Whether the answer is shown or not */
 const showsAnswer = shallowRef(false)
 
-const buttonGradients = {
-	forgot: 'from-red-300 to-red-500',
-	remembered: 'from-green-300 to-green-500',
-} as const
-
 async function answerText(textId: string, remembered: boolean) {
 	showsAnswer.value = false
 	answer(textId, remembered)
@@ -34,34 +29,34 @@ async function answerText(textId: string, remembered: boolean) {
 </script>
 
 <template>
-	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-8">
-		<p class="mb-4 text-center text-2xl text-gray-600"> Level {{ parsedQueryParams.level }} </p>
+	<div class="quiz-root">
+		<p class="quiz-level"> Level {{ parsedQueryParams.level }} </p>
 
 		<div v-if="hasQuiz === false">
-			<p class="text-center text-xl text-gray-600">
+			<p class="quiz-complete-message">
 				You answered all the quizzes for this level today 🎉 Keep the good work!
 			</p>
 		</div>
 
 		<div
 			v-if="text !== undefined"
-			class="animate-fade-in w-full max-w-3xl"
+			class="quiz-content"
 		>
-			<article class="rounded-xl border bg-white p-8 shadow-lg">
-				<div class="mb-8 space-y-6">
+			<article class="quiz-article">
+				<div class="quiz-article-content">
 					<MemoryLevelMeter :memory-level="text.memoryLevel" />
-					<p class="text-pretty text-center text-xl text-gray-800 sm:text-2xl md:text-3xl">
+					<p class="quiz-question">
 						{{ text.en }}
 					</p>
 					<div
-						class="group cursor-pointer rounded-lg border-2 border-dashed border-indigo-200 p-4 transition-all duration-300 hover:border-indigo-400 sm:p-6"
+						class="quiz-answer-group"
 						@click="showsAnswer = true"
 					>
 						<p
-							class="text-pretty rounded-lg p-4 text-center text-xl font-bold transition-all duration-300 sm:text-2xl md:text-3xl"
+							class="quiz-answer"
 							:class="{
-								'animate-fade-in bg-indigo-50 text-gray-800': showsAnswer,
-								'text-gray-400': !showsAnswer,
+								'shows-answer': showsAnswer,
+								'hides-answer': !showsAnswer,
 							}"
 						>
 							{{ showsAnswer ? text.tl : 'See the answer' }}
@@ -69,18 +64,15 @@ async function answerText(textId: string, remembered: boolean) {
 					</div>
 				</div>
 
-				<div class="flex h-16 justify-center gap-6">
+				<div class="quiz-actions">
 					<button
 						aria-label="Forgot"
 						type="button"
-						class="grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-						:class="[
-							buttonGradients.forgot,
-							{
-								'animate-slide-in opacity-100': showsAnswer,
-								'pointer-events-none opacity-0': !showsAnswer,
-							},
-						]"
+						class="quiz-action-btn forgot"
+						:class="{
+							'shows-action': showsAnswer,
+							'hides-action': !showsAnswer,
+						}"
 						@click="answerText(text.id, false)"
 					>
 						<Icon
@@ -92,14 +84,12 @@ async function answerText(textId: string, remembered: boolean) {
 					<button
 						aria-label="Remembered"
 						type="button"
-						class="grid h-16 w-16 transform place-items-center rounded-full bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-						:class="[
-							buttonGradients.remembered,
-							{
-								'animate-slide-in animation-delay-200 opacity-100': showsAnswer,
-								'pointer-events-none opacity-0': !showsAnswer,
-							},
-						]"
+						class="quiz-action-btn remembered"
+						:class="{
+							'shows-action': showsAnswer,
+							'hides-action': !showsAnswer,
+							'delayed-action': showsAnswer,
+						}"
 						@click="answerText(text.id, true)"
 					>
 						<Icon
@@ -114,15 +104,151 @@ async function answerText(textId: string, remembered: boolean) {
 </template>
 
 <style scoped>
-.animate-fade-in {
+.quiz-root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-block-size: calc(100vh - 4rem);
+	padding-block: 2rem 8rem;
+	padding-inline: 1rem;
+}
+
+.quiz-level {
+	margin-block-end: 1rem;
+	text-align: center;
+	font-size: 2rem;
+	color: oklch(60% 0.02 270);
+}
+
+.quiz-complete-message {
+	text-align: center;
+	font-size: 1.25rem;
+	color: oklch(60% 0.02 270);
+}
+
+.quiz-content {
 	animation: fadeIn 0.8s ease-out;
+	inline-size: 100%;
+	max-inline-size: 48rem;
 }
 
-.animate-slide-in {
+.quiz-article {
+	border-radius: 1rem;
+	border: 1px solid oklch(90% 0.02 270);
+	background: oklch(100% 0 0);
+	padding: 2rem;
+	box-shadow: 0 2px 16px 0 oklch(80% 0.02 270 / 0.15);
+}
+
+.quiz-article-content {
+	margin-block-end: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.quiz-question {
+	text-align: center;
+	font-size: 1.25rem;
+	color: oklch(30% 0.02 270);
+	word-break: break-word;
+}
+
+@media (min-width: 640px) {
+	.quiz-question {
+		font-size: 2rem;
+	}
+	.quiz-answer {
+		font-size: 2rem;
+	}
+}
+@media (min-width: 768px) {
+	.quiz-question {
+		font-size: 2.5rem;
+	}
+	.quiz-answer {
+		font-size: 2.5rem;
+	}
+}
+
+.quiz-answer-group {
+	cursor: pointer;
+	border-radius: 0.75rem;
+	border: 2px dashed oklch(85% 0.1 270);
+	padding: 1rem;
+	transition: border-color 0.2s;
+}
+.quiz-answer-group:hover {
+	border-color: oklch(70% 0.2 270);
+}
+
+.quiz-answer {
+	border-radius: 0.75rem;
+	padding: 1rem;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.25rem;
+	transition:
+		background 0.2s,
+		color 0.2s;
+}
+
+.shows-answer {
+	animation: fadeIn 0.8s ease-out;
+	background: oklch(97% 0.05 270);
+	color: oklch(30% 0.02 270);
+}
+.hides-answer {
+	color: oklch(80% 0.01 270);
+}
+
+.quiz-actions {
+	display: flex;
+	inline-size: 100%;
+	justify-content: center;
+	gap: 1.5rem;
+	block-size: 4rem;
+}
+
+.quiz-action-btn {
+	display: grid;
+	place-items: center;
+	inline-size: 4rem;
+	block-size: 4rem;
+	border-radius: 50%;
+	color: oklch(100% 0 0);
+	box-shadow: 0 2px 8px 0 oklch(80% 0.02 270 / 0.15);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+}
+.quiz-action-btn:active,
+.quiz-action-btn:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 16px 0 oklch(80% 0.02 270 / 0.25);
+}
+
+.quiz-action-btn.forgot {
+	background: linear-gradient(135deg, oklch(80% 0.18 30), oklch(60% 0.18 30));
+}
+.quiz-action-btn.remembered {
+	background: linear-gradient(135deg, oklch(80% 0.18 140), oklch(60% 0.18 140));
+}
+
+.shows-action {
 	animation: slideIn 0.8s ease-out both;
+	opacity: 1;
+	pointer-events: auto;
 }
-
-.animation-delay-200 {
+.hides-action {
+	opacity: 0;
+	pointer-events: none;
+}
+.delayed-action {
 	animation-delay: 0.2s;
 }
 

@@ -65,42 +65,38 @@ const menuItems = [
 </script>
 
 <template>
-	<div class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-8">
-		<div class="mb-12 space-y-2 text-center">
-			<h1 class="animate-fade-in text-4xl font-bold text-indigo-600 md:text-5xl">
-				Hey {{ userName }}! 👋
-			</h1>
-			<p class="animate-fade-in-delay text-xl text-gray-600">Let's make learning Tagalog fun! 🎉</p>
+	<div class="main-container">
+		<div class="greeting-container">
+			<h1 class="greeting-title"> Hey {{ userName }}! 👋 </h1>
+			<p class="greeting-subtitle">Let's make learning Tagalog fun! 🎉</p>
 		</div>
 
-		<nav class="w-full max-w-2xl">
-			<ul class="grid gap-6 px-4 sm:grid-cols-2">
+		<nav class="menu-nav">
+			<ul class="menu-list">
 				<li
 					v-for="(item, index) in menuItems"
 					:key="item.name"
-					class="transform transition-all duration-300 hover:scale-105"
-					:class="{ 'animate-slide-in': true, 'animation-delay-200': index === 1 }"
+					class="menu-item"
+					:class="{ 'animation-delay-200': index === 1 }"
 				>
 					<button
 						type="button"
-						class="group flex h-full w-full flex-col items-center justify-center rounded-xl bg-gradient-to-br p-6 text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+						class="menu-button"
 						:class="item.gradient"
 						@click.prevent="handleQuizClick(item.pageName, item.maxLevel)"
 					>
-						<span class="mb-2 text-3xl">{{ item.icon }}</span>
-						<span
-							class="text-2xl font-bold text-white transition-transform duration-300 group-hover:scale-105"
-						>
+						<span class="menu-icon">{{ item.icon }}</span>
+						<span class="menu-title">
 							{{ item.name }}
 						</span>
-						<span class="mt-2 text-sm text-white/90">{{ item.description }}</span>
+						<span class="menu-description">{{ item.description }}</span>
 					</button>
 				</li>
 			</ul>
 		</nav>
 
 		<LevelSelectorModal
-			:is-open="showLevelSelector"
+			:open="showLevelSelector"
 			:max-level="maxLevel"
 			@close="showLevelSelector = false"
 			@select="handleLevelSelect"
@@ -109,22 +105,103 @@ const menuItems = [
 </template>
 
 <style scoped>
-.animate-fade-in {
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-block-size: calc(100vh - 4rem);
+	padding-block: 2rem;
+}
+.greeting-container {
+	margin-block-end: 3rem;
+	text-align: center;
+}
+.greeting-title {
+	font-size: 2.25rem;
+	font-weight: bold;
+	color: oklch(54.5% 0.2 276);
 	animation: fadeIn 0.8s ease-out;
 }
-
-.animate-fade-in-delay {
+.greeting-subtitle {
+	font-size: 1.25rem;
+	color: oklch(80% 0.05 270 / 1);
 	animation: fadeIn 0.8s ease-out 0.2s both;
 }
-
-.animate-slide-in {
+.menu-nav {
+	inline-size: 100%;
+	max-inline-size: 40rem;
+}
+.menu-list {
+	display: grid;
+	gap: 1.5rem;
+	padding-inline: 1rem;
+	grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+	.menu-list {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.menu-item {
+	transition: transform 0.3s;
 	animation: slideIn 0.8s ease-out both;
 }
-
+.menu-item:hover {
+	transform: scale(1.05);
+}
 .animation-delay-200 {
 	animation-delay: 0.2s;
 }
-
+.menu-button {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	inline-size: 100%;
+	block-size: 100%;
+	padding: 1.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 4px 16px oklch(0% 0 0 / 0.15);
+	transition: box-shadow 0.3s;
+	border: none;
+	cursor: pointer;
+	background: var(--menu-gradient, oklch(60% 0.15 30));
+	color: #fff;
+}
+.menu-button:hover {
+	box-shadow: 0 8px 24px oklch(0% 0 0 / 0.18);
+}
+.menu-button.from-red-300 {
+	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 30) 0%, oklch(60% 0.18 30) 100%);
+}
+.menu-button.to-red-500 {
+	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 30) 0%, oklch(54% 0.22 30) 100%);
+}
+.menu-button.from-blue-300 {
+	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 250) 0%, oklch(60% 0.18 250) 100%);
+}
+.menu-button.to-blue-500 {
+	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 250) 0%, oklch(54% 0.22 250) 100%);
+}
+.menu-icon {
+	margin-block-end: 0.5rem;
+	font-size: 1.875rem;
+}
+.menu-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #fff;
+	transition: transform 0.3s;
+}
+.menu-button:hover .menu-title {
+	transform: scale(1.05);
+}
+.menu-description {
+	margin-block-start: 0.5rem;
+	font-size: 0.875rem;
+	color: oklch(100% 0 0 / 0.9);
+}
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -135,7 +212,6 @@ const menuItems = [
 		transform: translateY(0);
 	}
 }
-
 @keyframes slideIn {
 	from {
 		opacity: 0;

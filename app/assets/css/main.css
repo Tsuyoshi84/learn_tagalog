@@ -1,3 +1,33 @@
 button:hover {
 	cursor: pointer;
 }
+
+/* enable transitions */
+[popover],
+dialog,
+::backdrop {
+	transition:
+		display 0.2s allow-discrete,
+		overlay 0.2s allow-discrete,
+		opacity 0.2s,
+		translate 0.2s;
+	opacity: 0;
+}
+
+/* On Stage */
+:popover-open,
+:popover-open::backdrop,
+[open],
+[open]::backdrop {
+	opacity: 1;
+}
+
+/* Off Stage */
+@starting-style {
+	:popover-open,
+	:popover-open::backdrop,
+	[open],
+	[open]::backdrop {
+		opacity: 0;
+	}
+}

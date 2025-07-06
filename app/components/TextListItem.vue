@@ -42,11 +42,45 @@ const styledText = computed<string>(() => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center justify-center gap-4">
+	<div class="text-list-item-root">
 		<div
-			class="font-main text-primary text-balance text-center text-4xl font-medium"
+			class="text-list-item-tl"
 			v-html="styledText"
 		/>
-		<div class="text-accent text-balance text-center font-sans text-2xl italic">{{ text.en }}</div>
+		<div class="text-list-item-en">{{ text.en }}</div>
 	</div>
 </template>
+
+<style scoped>
+.text-list-item-root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+}
+.text-list-item-tl {
+	font-family: var(--font-main, sans-serif);
+	color: var(--color-primary, #222);
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 500;
+	line-height: 1.2;
+	text-wrap: balance;
+}
+.text-list-item-en {
+	color: var(--color-accent, #888);
+	text-align: center;
+	font-family: var(--font-sans, sans-serif);
+	font-size: 1.5rem;
+	font-style: italic;
+	line-height: 1.2;
+	text-wrap: balance;
+}
+.font-bold {
+	font-weight: bold;
+}
+.text-accent-2 {
+	color: var(--color-accent-2, #e57373);
+}
+</style>
