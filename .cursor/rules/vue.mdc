@@ -34,5 +34,5 @@ alwaysApply: false
 
 - Use modern CSS features as much as possible.
 - Use logical properties. For example, Use `inline-size` over `width`.
-- Use oklch when defining colors.
+- Use OKLCH when defining colors.
 - Use `translate`, `rotate`, `scale` ((Individual transform properties)) individually over `transform`.
