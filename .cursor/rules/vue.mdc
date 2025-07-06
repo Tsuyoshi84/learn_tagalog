@@ -33,6 +33,6 @@ alwaysApply: false
 # CSS
 
 - Use modern CSS features as much as possible, assuming users always use the latest browser versions.
-- Use logical properties. For example, Use `inline-size` over `width`.
-- Use OKLCH when defining colors.
-- Use `translate`, `rotate`, `scale` ((Individual transform properties)) individually over `transform` shorthand.
+- Use logical properties—for example, `inline-size` instead of `width`.
+- Use OKLCH for colors—no need for RGB / HSL fallback.
+- Prefer individual transform properties (`translate`, `rotate`, `scale`) over the `transform` shorthand.
