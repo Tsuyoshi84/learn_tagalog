@@ -5,11 +5,11 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
 		'@nuxtjs/tailwindcss',
-		'@nuxt/eslint',
-		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'@nuxt/icon',
+		'@nuxt/test-utils/module',
+		'@nuxt/eslint',
 	],
 	devtools: { enabled: true },
 	app: {
