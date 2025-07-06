@@ -2,6 +2,19 @@ button:hover {
 	cursor: pointer;
 }
 
+html {
+	block-size: 100%;
+	font-family: "Comfortaa", sans-serif;
+}
+
+body {
+	block-size: 100%;
+}
+
+#__nuxt {
+	block-size: 100%;
+}
+
 /* enable transitions */
 [popover],
 dialog,

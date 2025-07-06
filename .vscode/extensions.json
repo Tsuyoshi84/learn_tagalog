@@ -2,7 +2,6 @@
 	"recommendations": [
 		"antfu.iconify",
 		"biomejs.biome",
-		"bradlc.vscode-tailwindcss",
 		"christian-kohler.path-intellisense",
 		"dbaeumer.vscode-eslint",
 		"formulahendry.auto-rename-tag",

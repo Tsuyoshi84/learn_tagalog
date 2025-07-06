@@ -39,7 +39,6 @@
 		"pinia",
 		"stylelint",
 		"supabase",
-		"tailwindcss",
 		"typecheck",
 		"Vali",
 		"Valibot",
@@ -63,9 +62,6 @@
 		"*.tsx": "$(capture).ts, $(capture).*.tsx, $(capture)_*.ts, $(capture)_*.tsx",
 		"*.vue": "$(capture).*.ts, $(capture).*.js, $(capture).story.vue"
 	},
-	"files.associations": {
-		"*.css": "tailwindcss"
-	},
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 1000,
 	"files.autoSaveWhenNoErrors": true,
@@ -75,7 +71,6 @@
 		}
 	],
 	"javascript.preferences.importModuleSpecifierEnding": "js",
-	"tailwindCSS.emmetCompletions": true,
 	"typescript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.preferGoToSourceDefinition": true,

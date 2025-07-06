@@ -4,7 +4,6 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
-		'@nuxtjs/tailwindcss',
 		'@nuxt/eslint',
 		'@nuxt/test-utils/module',
 		'@pinia/nuxt',
@@ -92,9 +91,6 @@ export default defineNuxtConfig({
 	},
 	supabase: {
 		redirect: true,
-	},
-	tailwindcss: {
-		configPath: '~/tailwind.config.ts',
 	},
 	testUtils: {},
 })
