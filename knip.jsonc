@@ -1,7 +1,6 @@
 {
 	"entry": [
 		"nuxt.config.ts",
-		"app/tailwind.config.ts",
 		"app/app.vue",
 		"app/error.vue",
 		"app/pages/**/*.vue",
@@ -20,7 +19,6 @@
 		"h3",
 		"vue",
 		"vue-tsc",
-		"tailwindcss",
 		"vue-eslint-parser",
 		"@pinia/nuxt",
 		"@nuxt/devtools",
@@ -28,7 +26,6 @@
 		"@nuxt/icon",
 		"@nuxtjs/google-fonts",
 		"@nuxtjs/supabase",
-		"@nuxtjs/tailwindcss",
 		"@supabase/supabase-js",
 		"@typescript-eslint/parser",
 		"@vueuse/nuxt",

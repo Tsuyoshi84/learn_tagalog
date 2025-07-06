@@ -17,14 +17,14 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div class="flex h-full flex-col items-center justify-center">
-		<h2 class="u-text-white my-6 text-center text-3xl font-bold">Sign in to your account</h2>
+	<div class="login-container">
+		<h2 class="login-title">Sign in to your account</h2>
 		<button
-			class="flex h-10 max-w-[272px] items-center gap-2.5 rounded-full border px-3"
+			class="login-btn"
 			type="button"
 			@click="signIn('google')"
 		>
-			<div class="size-5">
+			<div class="icon">
 				<svg
 					version="1.1"
 					xmlns="http://www.w3.org/2000/svg"
@@ -57,3 +57,43 @@ watchEffect(() => {
 		>
 	</div>
 </template>
+
+<style scoped>
+.login-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	block-size: 100%;
+}
+.login-title {
+	color: white;
+	margin-block: 1.5rem;
+	text-align: center;
+	font-size: 1.875rem;
+	font-weight: bold;
+}
+.login-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	border-radius: 9999px;
+	border: 1px solid #e5e7eb;
+	padding-inline: 0.75rem;
+	block-size: 2.5rem;
+	max-inline-size: 272px;
+	background: white;
+	cursor: pointer;
+	transition: background 0.2s;
+
+	&:hover {
+		background: #f3f4f6;
+	}
+
+	.icon {
+		inline-size: 1.25rem;
+		block-size: 1.25rem;
+		display: block;
+	}
+}
+</style>

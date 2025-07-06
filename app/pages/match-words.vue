@@ -56,12 +56,12 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="container mx-auto py-8 text-center">
-		<p class="text-md mb-4 text-center text-gray-600">Level {{ parsedQueryParams.level }}</p>
+	<div class="container">
+		<p class="level-label">Level {{ parsedQueryParams.level }}</p>
 
-		<div class="mx-auto grid max-w-2xl grid-cols-2 gap-6">
+		<div class="word-grid">
 			<!-- English words -->
-			<div class="space-y-4">
+			<div class="word-list">
 				<WordBlock
 					v-for="word in shuffledEnWords"
 					:key="`en-${word.id}`"
@@ -74,7 +74,7 @@ onMounted(async () => {
 			</div>
 
 			<!-- Tagalog words -->
-			<div class="space-y-4">
+			<div class="word-list">
 				<WordBlock
 					v-for="word in shuffledTlWords"
 					:key="`tl-${word.id}`"
@@ -98,5 +98,32 @@ onMounted(async () => {
 <style scoped>
 .container {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-block: 2rem;
+	box-sizing: border-box;
+}
+
+.level-label {
+	font-size: 1.125rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	color: oklch(60% 0 0 / 1); /* gray-600 equivalent */
+}
+
+.word-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
+	max-inline-size: 40rem;
+	margin-inline: auto;
+	width: 100%;
+}
+
+.word-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 </style>

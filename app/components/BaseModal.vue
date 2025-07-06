@@ -17,7 +17,7 @@
 
 const props = defineProps<{
 	/** Controls whether the modal is shown or hidden */
-	isOpen: boolean
+	open: boolean
 }>()
 
 const emit = defineEmits<{
@@ -27,18 +27,14 @@ const emit = defineEmits<{
 
 const dialogRef = useTemplateRef<HTMLDialogElement>('dialog')
 
-function handleClose(): void {
-	emit('close')
-}
-
 function handleBackdropClick(event: MouseEvent): void {
 	if (event.target === dialogRef.value) {
-		handleClose()
+		emit('close')
 	}
 }
 
 onMounted(() => {
-	if (props.isOpen && dialogRef.value && !dialogRef.value.open) {
+	if (props.open && dialogRef.value && !dialogRef.value.open) {
 		dialogRef.value.showModal()
 	}
 })
@@ -50,7 +46,7 @@ onUnmounted(() => {
 })
 
 watch(
-	() => props.isOpen,
+	() => props.open,
 	(isOpen) => {
 		if (!dialogRef.value) return
 
@@ -66,58 +62,26 @@ watch(
 <template>
 	<dialog
 		ref="dialog"
-		class="modal rounded-lg p-0 backdrop:bg-gray-900/50 backdrop:backdrop-blur-sm"
 		@click="handleBackdropClick"
 	>
-		<div class="animate-modal-enter">
+		<div class="content">
 			<slot />
 		</div>
 	</dialog>
 </template>
 
 <style scoped>
-.modal {
+dialog {
+	border-radius: 0.5rem;
+	padding: 0;
+
 	&::backdrop {
-		animation: backdrop-fade-in 0.3s ease-out;
+		background-color: oklch(20% 0 264 / 0.5);
+		backdrop-filter: blur(4px);
 	}
 
-	&[open] {
-		animation: modal-fade-in 0.3s ease-out;
-	}
-
-	&[closing] {
-		animation: modal-fade-out 0.3s ease-out;
-	}
-}
-
-@keyframes backdrop-fade-in {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes modal-fade-in {
-	from {
-		opacity: 0;
-		transform: translateY(-10%);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes modal-fade-out {
-	from {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	to {
-		opacity: 0;
-		transform: translateY(-10%);
+	.content {
+		box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.15);
 	}
 }
 </style>
