@@ -72,6 +72,7 @@ watch(
 
 <style scoped>
 dialog {
+	margin: auto;
 	border-radius: 0.5rem;
 	padding: 0;
 
