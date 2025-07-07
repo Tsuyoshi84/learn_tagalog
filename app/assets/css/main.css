@@ -75,6 +75,9 @@
 @layer base {
 	button {
 		cursor: pointer;
+		border: 0;
+		background: none;
+		color: inherit;
 	}
 
 	html {
