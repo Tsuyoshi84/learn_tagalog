@@ -36,7 +36,7 @@
 	canvas,
 	svg {
 		display: block;
-		max-width: 100%;
+		max-inline-size: 100%;
 	}
 
 	/* 7. Inherit fonts for form controls */
