@@ -1,7 +1,9 @@
 ---
-description: 
+description: Rules for files in the shared directory
 globs: shared/**/*.ts
 alwaysApply: false
 ---
+# Shared directory
+
 - The files stored in `shared` can be used both the Vue application and the server (Nitro)
-- The code stored in the `shared` directory must not rely on either Nitro or Vue reactive system
+- The code stored in the `shared` directory must not rely on either Nitro or Vue reactive system.

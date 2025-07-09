@@ -1,0 +1,16 @@
+---
+description: Rules for CSS
+globs: **/*.css,app/**/*.vue
+alwaysApply: false
+---
+# CSS rules
+
+These rules should be applied to CSS files and Vue component `<style>` section.
+
+- Use modern CSS features as much as possible, assuming users always use the latest browser versions.
+- Use logical properties—for example, `inline-size` instead of `width`.
+- Use OKLCH for colors—no need for RGB / HSL fallback.
+- Prefer individual transform properties (`translate`, `rotate`, `scale`) over the `transform` shorthand.
+- Animation duration should be 0.2s.
+- Don't use BEM naming convention for CSS classes.
+- Use CSS nesting to change styles based on the state.
