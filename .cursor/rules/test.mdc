@@ -9,4 +9,4 @@ alwaysApply: false
 - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).
 - Prefer `it` over `test` for naming test cases.
 - Write test names and conditions in English inside `describe` and `it`
-- Run `pnpm test path/to/xxx.spec.ts run` to run tests without watch mode.
+- Run `bun test path/to/xxx.spec.ts --run` to run tests without watch mode.
