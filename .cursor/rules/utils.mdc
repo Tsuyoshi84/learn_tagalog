@@ -1,0 +1,9 @@
+---
+description: Rules for utility functions
+globs: app/utils/**/*.ts
+alwaysApply: false
+---
+# Rules for utils functions
+
+- Utility functions **must not** import from `app/composables` or `app/stores`.
+- Provide unit tests **for** every utility function.

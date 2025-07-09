@@ -1,41 +1,40 @@
 ---
-description: Coding rules about Vue
+description: Rules for Vue components
 globs: app/**/*.vue
 alwaysApply: false
 ---
-# Vue 3 Specifics
+# Vue component rules
 
-- In SFC file, define each section in order: `<script>`, `<template>`, `<style>`.
+This rule provides standards for Vue components.
+
+## File
+
+- Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
+
+## SFC structure
+
+- In SFC file, define each section in order: `<script setup lang="ts">`, `<template>`, `<style>`.
+- Prefer Composition API `<script setup>` style.
+
+## About `<script setup>`
+
+- Use TypeScript.
 - In SFC file, add JSDoc at the top of `<script>` section to explain the component.
 - Use `defineModel` for v-model bindings.
-- Add JSDoc for `defineModel` variables to explain the purpose.
-- Avoid using index for `key` attribute when using `v-for`.
-- Prefer `v-show` over `v-if` for conditional visibility.
 - Use `useTemplateRef` introduced in Vue 3.5 when you need a template reference.
+- Define `computed` type for better type safety. For example, `const nextLevel = computed<number>(() => currentLevel.value + 1)`.
 - Define prop types by specifying `defineProps` generic rather than `Props` type. For example, `defineProps<{ level: number }>()`.
 - Define emit types by specifying `defineEmits` generic rather than `Emits` type. For example, `defineEmits<{ (e: 'close'): void }>()`.
 - Prefer type-only emit declarations introduced in Vue 3.3. For example, `defineEmits<{ change: [id: number] }>()`.
 - Always add JSDoc to component props and emits.
+- Always add JSDoc to model variables defined by `defineModel`
 - For a reactive variable, use `undefined` over `null` if the default value is not known.
+- Import components explicitly when using them in the `<template>` section. Don't rely on auto-import feature provided by Nuxt.
 
-# Nuxt 3 Specifics
+## About `<template>`
 
-- Use explicit imports. Don't rely on Nuxt auto imports.
-- Take advantage of VueUse functions to enhance reactivity and performance.
-- Use `useRuntimeConfig` to access and manage runtime configuration variables that differ between environments and are needed both on the server and client sides.
-- Pass an object to `navigateTo` for better type safety. For example, `navigateTo({ name: 'about' })` instead of `navigateTo('/about')`.
-- Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
-
-# HTML
-
+- Avoid using index for `key` attribute when using `v-for`.
+- Prefer v-show when toggling visibility frequently, otherwise use v-if.
 - Specify `type` attribute for `<button>` elements.
-
-# CSS
-
-- Use modern CSS features as much as possible, assuming users always use the latest browser versions.
-- Use logical properties—for example, `inline-size` instead of `width`.
-- Use OKLCH for colors—no need for RGB / HSL fallback.
-- Prefer individual transform properties (`translate`, `rotate`, `scale`) over the `transform` shorthand.
-- Animation duration should be 0.2s.
-- Don't use BEM naming convention for CSS classes.
-- Use CSS nesting to change styles based on the state.
+- Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
+- Use TailwindCSS for styling.
