@@ -5,5 +5,5 @@ alwaysApply: false
 ---
 # Rules for utils functions
 
-- The utility function must not rely on the code stored in `app/composables` or `app/stores`.
-- Write unit tests of utility functions.
+- Utility functions **must not** import from `app/composables` or `app/stores`.
+- Provide unit tests **for** every utility function.
