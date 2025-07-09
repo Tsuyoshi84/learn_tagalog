@@ -19,9 +19,8 @@ Apply these rules when writing TypeScript files or Vue component setup functions
 - Prefer `for...of` statement over `forEach`. However, allow use of `forEach` when chaining.
 - Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`.
 - Put `as const` on constant objects.
-- Prefer the guard clause (early return) when the rest of the function can be skipped after the return.
+- Prefer guard clauses (early returns) when the remainder of the function can be skipped.
 - Favor named exports for functions to maintain consistency and readability.
-
 ## Code Style
 
 - Use tabs for indentation.
