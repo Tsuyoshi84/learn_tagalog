@@ -12,7 +12,7 @@ Apply these rules when writing TypeScript files or Vue component setup functions
 
 - Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
 - Define function return types for better readability and type safety.
-- Prefer type over interface when possible.
+- Use `interface` over `type` when defining an object type.
 - Use literal union types over enums.
 - Use `unknown` over `any`.
 - Prefer `undefined` over `null` unless `null` has to be used.

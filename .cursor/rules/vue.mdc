@@ -7,10 +7,6 @@ alwaysApply: false
 
 This rule provides standards for Vue components.
 
-## General
-
-- Use Naive UI component to structure pages and layouts
-
 ## File
 
 - Use **PascalCase** for component file names (e.g., `components/MyComponent.vue`).
@@ -42,4 +38,3 @@ This rule provides standards for Vue components.
 - Specify `type` attribute for `<button>` elements.
 - Pass an object to `<NuxtLink :to>` for better type safety. For example, `<NuxtLink :to="{ name: 'about' }">`.
 - Use TailwindCSS for styling.
-
