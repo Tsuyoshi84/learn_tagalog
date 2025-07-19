@@ -1,14 +1,13 @@
-import stylisticJs from '@stylistic/eslint-plugin-js'
 import * as parserTs from '@typescript-eslint/parser'
+import { globalIgnores } from 'eslint/config'
 import jsdoc from 'eslint-plugin-jsdoc'
 import * as parserVue from 'vue-eslint-parser'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default withNuxt([])
+export default withNuxt([globalIgnores(['drizzle.config.ts', 'server/@types/env.d.ts'])])
 	.override('nuxt/javascript', {
 		plugins: {
 			jsdoc,
-			'@stylistic/js': stylisticJs,
 		},
 		rules: {
 			'func-style': ['error', 'declaration'],
@@ -19,13 +18,6 @@ export default withNuxt([])
 			'jsdoc/check-tag-names': 'error',
 			'jsdoc/check-types': 'error',
 			'jsdoc/check-values': 'error',
-
-			// stylistic/js
-			'@stylistic/js/padding-line-between-statements': [
-				'warn',
-				{ blankLine: 'always', prev: 'import', next: '*' },
-				{ blankLine: 'any', prev: 'import', next: 'import' },
-			],
 		},
 	})
 	.override('nuxt/typescript/rules', {

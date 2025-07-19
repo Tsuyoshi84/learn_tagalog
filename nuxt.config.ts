@@ -35,9 +35,6 @@ export default defineNuxtConfig({
 		},
 	},
 	srcDir: 'app/',
-	future: {
-		compatibilityVersion: 4,
-	},
 	experimental: {
 		typedPages: true,
 	},
