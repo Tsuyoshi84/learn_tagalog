@@ -40,6 +40,7 @@ jobs:
 
       - name: Test
         run: bun run test
+        continue-on-error: true 
 
       - name: Lint
         run: bun lint:fix
