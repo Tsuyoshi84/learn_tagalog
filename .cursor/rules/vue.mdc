@@ -33,6 +33,10 @@ This rule provides standards for Vue components.
 
 ## About `<template>`
 
+- Use HTML5 semantic elements (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<search>`, etc.).
+- Include appropriate ARIA attributes for accessibility.
+- Ensure valid markup that passes W3C validation.
+- Include `loading="lazy"` on images where applicable.
 - Avoid using index for `key` attribute when using `v-for`.
 - Prefer v-show when toggling visibility frequently, otherwise use v-if.
 - Specify `type` attribute for `<button>` elements.
