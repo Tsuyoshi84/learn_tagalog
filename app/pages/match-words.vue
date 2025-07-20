@@ -97,28 +97,28 @@ onMounted(async () => {
 
 <style scoped>
 .container {
-	min-height: 100vh;
 	display: flex;
+	box-sizing: border-box;
+	min-block-size: 100vh;
+	padding-block: 2rem;
 	flex-direction: column;
 	align-items: center;
-	padding-block: 2rem;
-	box-sizing: border-box;
 }
 
 .level-label {
+	margin-block-end: 1rem;
 	font-size: 1.125rem;
-	margin-bottom: 1rem;
 	text-align: center;
 	color: oklch(60% 0 0 / 1); /* gray-600 equivalent */
 }
 
 .word-grid {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 1.5rem;
+	inline-size: 100%;
 	max-inline-size: 40rem;
 	margin-inline: auto;
-	width: 100%;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
 }
 
 .word-list {

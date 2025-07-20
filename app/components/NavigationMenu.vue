@@ -108,27 +108,27 @@ function closeMenu(): void {
 <style scoped>
 .desktop-menu {
 	display: none;
-	height: 3.5rem;
-	justify-content: space-between;
-	background: #fff;
+	block-size: 3.5rem;
 	padding-inline: 1rem;
 	padding-block: 0.5rem;
+	justify-content: space-between;
+	background: #fff;
 	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 
 	.menu-link {
 		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-		border-radius: 0.5rem;
 		padding-inline: 0.75rem;
 		padding-block: 0.5rem;
+		border: none;
+		border-radius: 0.5rem;
+		align-items: center;
+		gap: 0.25rem;
+		font: inherit;
 		color: #4b5563;
+		background: none;
 		transition:
 			background 0.2s,
 			color 0.2s;
-		background: none;
-		border: none;
-		font: inherit;
 		cursor: pointer;
 
 		&:hover {
@@ -149,23 +149,23 @@ function closeMenu(): void {
 
 .mobile-menu-btn {
 	position: fixed;
-	right: 1rem;
-	top: 1rem;
 	z-index: 50;
+	inset-inline-end: 1rem;
+	inset-block-start: 1rem;
 	display: block;
 
 	.mobile-btn {
 		display: flex;
-		height: 3rem;
-		width: 3rem;
+		inline-size: 3rem;
+		block-size: 3rem;
+		border: none;
+		border-radius: 9999px;
 		align-items: center;
 		justify-content: center;
-		border-radius: 9999px;
-		background: #fff;
 		color: #4b5563;
+		background: #fff;
 		box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 		transition: transform 0.2s;
-		border: none;
 		cursor: pointer;
 
 		&:hover {
@@ -177,60 +177,60 @@ function closeMenu(): void {
 
 		.hamburger {
 			display: flex;
-			height: 1rem;
-			width: 1.25rem;
+			inline-size: 1.25rem;
+			block-size: 1rem;
 			flex-direction: column;
 			justify-content: space-between;
 
 			.bar {
-				height: 2px;
-				width: 100%;
-				background: currentColor;
+				inline-size: 100%;
+				block-size: 2px;
 				border-radius: 1px;
+				background: currentColor;
 			}
 		}
 
 		.icon-close {
-			height: 1.5rem;
-			width: 1.5rem;
+			inline-size: 1.5rem;
+			block-size: 1.5rem;
 		}
 	}
 }
 
 .mobile-menu-dropdown {
-	animation: fadeIn 0.2s ease-out;
 	position: fixed;
-	inset: 0;
 	z-index: 40;
+	inset: 0;
 	display: flex;
 	flex-direction: column;
 	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(4px);
+	animation: fadeIn 0.2s ease-out;
 
 	.mobile-menu-list {
-		margin-top: 5rem;
 		display: flex;
+		margin-block-start: 5rem;
+		padding: 2rem;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		padding: 2rem;
 
 		.mobile-menu-link {
 			display: flex;
-			align-items: center;
-			gap: 0.5rem;
-			border-radius: 0.5rem;
 			padding-inline: 1.5rem;
 			padding-block: 0.75rem;
+			border: none;
+			border-radius: 0.5rem;
+			align-items: center;
+			gap: 0.5rem;
+			font: inherit;
 			font-size: 1.25rem;
 			color: #4b5563;
+			background: none;
 			transition:
 				background 0.2s,
 				color 0.2s;
-			background: none;
-			border: none;
-			font: inherit;
 			cursor: pointer;
 
 			&:hover {
@@ -238,8 +238,8 @@ function closeMenu(): void {
 			}
 
 			.icon-mobile {
-				height: 1.5rem;
-				width: 1.5rem;
+				inline-size: 1.5rem;
+				block-size: 1.5rem;
 			}
 		}
 	}

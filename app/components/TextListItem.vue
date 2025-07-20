@@ -61,20 +61,20 @@ const styledText = computed<string>(() => {
 }
 .text-list-item-tl {
 	font-family: var(--font-main, sans-serif);
-	color: var(--color-primary, #222);
-	text-align: center;
 	font-size: 2.5rem;
 	font-weight: 500;
 	line-height: 1.2;
+	text-align: center;
+	color: var(--color-primary, #222);
 	text-wrap: balance;
 }
 .text-list-item-en {
-	color: var(--color-accent, #888);
-	text-align: center;
 	font-family: var(--font-sans, sans-serif);
 	font-size: 1.5rem;
 	font-style: italic;
 	line-height: 1.2;
+	text-align: center;
+	color: var(--color-accent, #888);
 	text-wrap: balance;
 }
 .font-bold {

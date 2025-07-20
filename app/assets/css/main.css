@@ -74,10 +74,10 @@
 
 @layer base {
 	button {
-		cursor: pointer;
 		border: 0;
-		background: none;
 		color: inherit;
+		background: none;
+		cursor: pointer;
 	}
 
 	html {
@@ -98,12 +98,12 @@
 [popover],
 dialog,
 ::backdrop {
+	opacity: 0;
 	transition:
 		display 0.2s allow-discrete,
 		overlay 0.2s allow-discrete,
 		opacity 0.2s,
 		translate 0.2s;
-	opacity: 0;
 }
 
 /* Disable transitions for reduced motion */

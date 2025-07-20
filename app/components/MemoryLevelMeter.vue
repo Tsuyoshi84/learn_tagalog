@@ -31,8 +31,8 @@ defineProps<{
 	gap: 1rem;
 
 	.bar {
-		block-size: 1rem;
 		inline-size: 100%;
+		block-size: 1rem;
 		border-radius: 9999px;
 		transition: background-color 0.2s;
 

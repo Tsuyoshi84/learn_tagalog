@@ -107,11 +107,11 @@ const menuItems = [
 <style scoped>
 .main-container {
 	display: flex;
+	min-block-size: calc(100vh - 4rem);
+	padding-block: 2rem;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-block-size: calc(100vh - 4rem);
-	padding-block: 2rem;
 }
 .greeting-container {
 	margin-block-end: 3rem;
@@ -134,9 +134,9 @@ const menuItems = [
 }
 .menu-list {
 	display: grid;
-	gap: 1.5rem;
 	padding-inline: 1rem;
 	grid-template-columns: 1fr;
+	gap: 1.5rem;
 }
 @media (min-width: 640px) {
 	.menu-list {
@@ -144,8 +144,8 @@ const menuItems = [
 	}
 }
 .menu-item {
-	transition: transform 0.3s;
 	animation: slideIn 0.8s ease-out both;
+	transition: transform 0.3s;
 }
 .menu-item:hover {
 	transform: scale(1.05);
@@ -155,19 +155,19 @@ const menuItems = [
 }
 .menu-button {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	inline-size: 100%;
 	block-size: 100%;
 	padding: 1.5rem;
+	border: none;
 	border-radius: 1rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	background: var(--menu-gradient, oklch(60% 0.15 30));
 	box-shadow: 0 4px 16px oklch(0% 0 0 / 0.15);
 	transition: box-shadow 0.3s;
-	border: none;
 	cursor: pointer;
-	background: var(--menu-gradient, oklch(60% 0.15 30));
-	color: #fff;
 }
 .menu-button:hover {
 	box-shadow: 0 8px 24px oklch(0% 0 0 / 0.18);

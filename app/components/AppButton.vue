@@ -12,12 +12,13 @@
 <style scoped>
 button {
 	--color: oklch(0.24 0.0563 233.47);
-	background-color: oklch(0.9 0.035 233.47);
+	inline-size: fit-content;
+	margin-block-start: 1rem;
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
 	border: 2px solid var(--color);
 	border-radius: 2rem;
 	color: var(--color);
-	padding: 0.5rem 1rem;
-	inline-size: fit-content;
-	margin-block-start: 1rem;
+	background-color: oklch(0.9 0.035 233.47);
 }
 </style>
