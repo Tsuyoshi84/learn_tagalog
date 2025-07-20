@@ -48,7 +48,7 @@
     "lint:fix": "eslint . --fix",
     "lint:inspect": "eslint --inspect-config",
     "lint:css": "stylelint \"**/*.{css,vue}\" --ignore-path .gitignore",
-		"lint:css:fix": "stylelint \"**/*.{css,vue}\" --fix --ignore-path .gitignore",
+    "lint:css:fix": "stylelint \"**/*.{css,vue}\" --fix --ignore-path .gitignore",
     "postinstall": "nuxt prepare && lefthook install",
     "preview": "nuxt preview",
     "test": "vitest",
