@@ -73,8 +73,8 @@ watch(
 <style scoped>
 dialog {
 	margin: auto;
-	border-radius: 0.5rem;
 	padding: 0;
+	border-radius: 0.5rem;
 
 	&::backdrop {
 		background-color: oklch(20% 0 264 / 0.5);

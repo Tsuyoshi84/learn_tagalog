@@ -45,6 +45,9 @@ jobs:
       - name: Lint
         run: bun lint:fix
 
+      - name: Lint CSS
+        run: bun lint:css:fix
+
       - name: Biome Check
         run: bun check
 

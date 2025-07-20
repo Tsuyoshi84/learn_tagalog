@@ -106,53 +106,53 @@ async function answerText(textId: string, remembered: boolean) {
 <style scoped>
 .quiz-root {
 	display: flex;
+	min-block-size: calc(100vh - 4rem);
+	padding-inline: 1rem;
+	padding-block: 2rem 8rem;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-block-size: calc(100vh - 4rem);
-	padding-block: 2rem 8rem;
-	padding-inline: 1rem;
 }
 
 .quiz-level {
 	margin-block-end: 1rem;
-	text-align: center;
 	font-size: 2rem;
+	text-align: center;
 	color: oklch(60% 0.02 270);
 }
 
 .quiz-complete-message {
-	text-align: center;
 	font-size: 1.25rem;
+	text-align: center;
 	color: oklch(60% 0.02 270);
 }
 
 .quiz-content {
-	animation: fadeIn 0.8s ease-out;
 	inline-size: 100%;
 	max-inline-size: 48rem;
+	animation: fadeIn 0.8s ease-out;
 }
 
 .quiz-article {
-	border-radius: 1rem;
-	border: 1px solid oklch(90% 0.02 270);
-	background: oklch(100% 0 0);
 	padding: 2rem;
+	border: 1px solid oklch(90% 0.02 270);
+	border-radius: 1rem;
+	background: oklch(100% 0 0);
 	box-shadow: 0 2px 16px 0 oklch(80% 0.02 270 / 0.15);
 }
 
 .quiz-article-content {
-	margin-block-end: 2rem;
 	display: flex;
+	margin-block-end: 2rem;
 	flex-direction: column;
 	gap: 1.5rem;
 }
 
 .quiz-question {
-	text-align: center;
 	font-size: 1.25rem;
-	color: oklch(30% 0.02 270);
+	text-align: center;
 	word-break: break-word;
+	color: oklch(30% 0.02 270);
 }
 
 @media (min-width: 640px) {
@@ -173,31 +173,31 @@ async function answerText(textId: string, remembered: boolean) {
 }
 
 .quiz-answer-group {
-	cursor: pointer;
-	border-radius: 0.75rem;
-	border: 2px dashed oklch(85% 0.1 270);
 	padding: 1rem;
+	border: 2px dashed oklch(85% 0.1 270);
+	border-radius: 0.75rem;
 	transition: border-color 0.2s;
+	cursor: pointer;
 }
 .quiz-answer-group:hover {
 	border-color: oklch(70% 0.2 270);
 }
 
 .quiz-answer {
-	border-radius: 0.75rem;
 	padding: 1rem;
-	text-align: center;
-	font-weight: bold;
+	border-radius: 0.75rem;
 	font-size: 1.25rem;
+	font-weight: bold;
+	text-align: center;
 	transition:
 		background 0.2s,
 		color 0.2s;
 }
 
 .shows-answer {
-	animation: fadeIn 0.8s ease-out;
-	background: oklch(97% 0.05 270);
 	color: oklch(30% 0.02 270);
+	background: oklch(97% 0.05 270);
+	animation: fadeIn 0.8s ease-out;
 }
 .hides-answer {
 	color: oklch(80% 0.01 270);
@@ -206,30 +206,30 @@ async function answerText(textId: string, remembered: boolean) {
 .quiz-actions {
 	display: flex;
 	inline-size: 100%;
+	block-size: 4rem;
 	justify-content: center;
 	gap: 1.5rem;
-	block-size: 4rem;
 }
 
 .quiz-action-btn {
 	display: grid;
-	place-items: center;
 	inline-size: 4rem;
 	block-size: 4rem;
+	border: none;
 	border-radius: 50%;
+	place-items: center;
+	font: inherit;
 	color: oklch(100% 0 0);
 	box-shadow: 0 2px 8px 0 oklch(80% 0.02 270 / 0.15);
 	transition:
 		transform 0.2s,
 		box-shadow 0.2s;
-	border: none;
-	font: inherit;
 	cursor: pointer;
 }
 .quiz-action-btn:active,
 .quiz-action-btn:hover {
-	transform: scale(1.05);
 	box-shadow: 0 4px 16px 0 oklch(80% 0.02 270 / 0.25);
+	transform: scale(1.05);
 }
 
 .quiz-action-btn.forgot {
@@ -240,8 +240,8 @@ async function answerText(textId: string, remembered: boolean) {
 }
 
 .shows-action {
-	animation: slideIn 0.8s ease-out both;
 	opacity: 1;
+	animation: slideIn 0.8s ease-out both;
 	pointer-events: auto;
 }
 .hides-action {

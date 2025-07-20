@@ -61,39 +61,39 @@ watchEffect(() => {
 <style scoped>
 .login-container {
 	display: flex;
+	block-size: 100%;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	block-size: 100%;
 }
 .login-title {
-	color: white;
 	margin-block: 1.5rem;
-	text-align: center;
 	font-size: 1.875rem;
 	font-weight: bold;
+	text-align: center;
+	color: white;
 }
 .login-btn {
 	display: flex;
+	max-inline-size: 272px;
+	block-size: 2.5rem;
+	padding-inline: 0.75rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 9999px;
 	align-items: center;
 	gap: 0.625rem;
-	border-radius: 9999px;
-	border: 1px solid #e5e7eb;
-	padding-inline: 0.75rem;
-	block-size: 2.5rem;
-	max-inline-size: 272px;
 	background: white;
-	cursor: pointer;
 	transition: background 0.2s;
+	cursor: pointer;
 
 	&:hover {
 		background: #f3f4f6;
 	}
 
 	.icon {
+		display: block;
 		inline-size: 1.25rem;
 		block-size: 1.25rem;
-		display: block;
 	}
 }
 </style>

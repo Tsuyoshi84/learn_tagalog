@@ -43,39 +43,39 @@ defineProps<{
 <style scoped>
 .word-button {
 	inline-size: 100%;
-	border-radius: 0.5rem;
-	border-width: 2px;
 	padding: 1rem;
+	border-width: 2px;
+	border-color: oklch(0.92 0 0);
+	border-radius: 0.5rem;
 	text-align: center;
-	transition: all 0.3s;
-	scale: 1;
+	background: oklch(1 0 0);
+	box-shadow: none;
 	translate: 0 0;
 	rotate: 0deg;
-	background: oklch(1 0 0);
-	border-color: oklch(0.92 0 0);
-	box-shadow: none;
+	scale: 1;
+	transition: all 0.3s;
 
 	&.default:hover {
-		scale: 1.05;
 		border-color: oklch(0.68 0.19 264);
 		box-shadow: 0 4px 12px oklch(0.68 0.19 264 / 0.15);
+		scale: 1.05;
 	}
 	&.selected {
-		scale: 1.05;
-		animation: word-button-pulse 1s infinite;
 		border-color: oklch(0.68 0.19 264);
 		background: oklch(0.97 0.03 264);
 		box-shadow: 0 4px 12px oklch(0.68 0.19 264 / 0.15);
+		scale: 1.05;
+		animation: word-button-pulse 1s infinite;
 	}
 	&.matched {
-		scale: 1;
 		border-color: oklch(0.78 0.17 142);
 		background: oklch(0.98 0.03 142);
 		box-shadow: 0 2px 6px oklch(0.78 0.17 142 / 0.1);
+		scale: 1;
 	}
 	&.disabled {
-		cursor: not-allowed;
 		opacity: 0.5;
+		cursor: not-allowed;
 	}
 }
 @keyframes word-button-pulse {

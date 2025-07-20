@@ -58,9 +58,9 @@ function handleLevelSelect(level: number): void {
 
 	.modal-title {
 		margin-block-end: 1.5rem;
-		text-align: center;
 		font-size: 2rem;
 		font-weight: bold;
+		text-align: center;
 		color: oklch(20% 0 264);
 	}
 
@@ -72,14 +72,14 @@ function handleLevelSelect(level: number): void {
 		.level-btn {
 			display: flex;
 			block-size: 3.5rem;
+			border-radius: 0.5rem;
 			align-items: center;
 			justify-content: center;
-			border-radius: 0.5rem;
-			background: linear-gradient(135deg, oklch(80% 0.18 264) 0%, oklch(60% 0.18 264) 100%);
+			font-size: 1rem;
 			font-weight: bold;
 			color: #fff;
+			background: linear-gradient(135deg, oklch(80% 0.18 264) 0%, oklch(60% 0.18 264) 100%);
 			transition: scale 0.2s;
-			font-size: 1rem;
 
 			&:hover {
 				scale: 1.05;
