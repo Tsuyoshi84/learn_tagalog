@@ -89,6 +89,7 @@ onMounted(async () => {
 
 		<AppButton
 			v-if="isCompleted"
+			class="next-button"
 			@click="nextSession"
 			>Next</AppButton
 		>
@@ -99,31 +100,56 @@ onMounted(async () => {
 .container {
 	display: flex;
 	box-sizing: border-box;
+	max-inline-size: 45rem;
 	min-block-size: 100vh;
+	margin-inline: auto;
+	padding-inline: 1rem;
 	padding-block: 2rem;
 	flex-direction: column;
 	align-items: center;
 }
 
 .level-label {
-	margin-block-end: 1rem;
-	font-size: 1.125rem;
+	position: relative;
+	margin-block-end: 2rem;
+	font-size: 1.5rem;
+	font-weight: 700;
 	text-align: center;
-	color: oklch(60% 0 0 / 1); /* gray-600 equivalent */
+	text-shadow: 0 2px 4px oklch(0.25 0.1 240 / 0.1);
+	color: oklch(0.25 0.1 240);
+
+	&::after {
+		position: absolute;
+		inset-inline-start: 50%;
+		inset-block-end: -0.5rem;
+		inline-size: 3rem;
+		block-size: 3px;
+		border-radius: 2px;
+		background: linear-gradient(90deg, oklch(0.7 0.2 264), oklch(0.75 0.2 142));
+		transform: translateX(-50%);
+		content: '';
+	}
 }
 
 .word-grid {
 	display: grid;
 	inline-size: 100%;
-	max-inline-size: 40rem;
+	max-inline-size: 45rem;
 	margin-inline: auto;
+	margin-block-end: 2rem;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 1.5rem;
+	gap: 2rem;
 }
 
 .word-list {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.25rem;
+}
+
+.next-button {
+	inline-size: 100%;
+	margin-inline: auto;
+	margin-block-start: 2rem;
 }
 </style>
