@@ -88,7 +88,7 @@ onMounted(async () => {
 		</div>
 
 		<AppButton
-			v-if="true"
+			v-if="isCompleted"
 			class="next-button"
 			@click="nextSession"
 			>Next</AppButton
