@@ -6,6 +6,6 @@ pre-commit:
   parallel: true
   commands:
     biome-check:
-      glob: "*.{js,ts,jsx,tsx,vue,json,css}"
+      glob: "*.{js,ts,cjs,cts,mjs,mts,jsx,tsx,vue,json,css}"
       run: bun check --staged --no-errors-on-unmatched
       stage_fixed: true
