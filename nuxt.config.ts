@@ -43,6 +43,10 @@ export default defineNuxtConfig({
 
 	srcDir: 'app/',
 
+	sourcemap: {
+		client: 'hidden',
+	},
+
 	experimental: {
 		typedPages: true,
 	},
@@ -134,12 +138,6 @@ export default defineNuxtConfig({
 		},
 	},
 
-	supabase: {
-		redirect: true,
-	},
-
-	testUtils: {},
-
 	sentry: {
 		sourceMapsUploadOptions: {
 			org: 'tsuyoshi',
@@ -149,7 +147,9 @@ export default defineNuxtConfig({
 		autoInjectServerSentry: 'top-level-import',
 	},
 
-	sourcemap: {
-		client: 'hidden',
+	supabase: {
+		redirect: true,
 	},
+
+	testUtils: {},
 })
