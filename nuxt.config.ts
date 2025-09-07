@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
+
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
@@ -9,8 +10,11 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'@nuxt/icon',
+		'@sentry/nuxt/module',
 	],
+
 	devtools: { enabled: true },
+
 	app: {
 		head: {
 			htmlAttrs: {
@@ -28,17 +32,34 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
 		},
 	},
+
 	css: ['~/assets/css/main.css'],
+
 	runtimeConfig: {
 		public: {
 			baseUrl: '',
+
+			sentry: {
+				// biome-ignore lint/complexity/useLiteralKeys: Avoid TypeScript error
+				dsn: process.env['SENTRY_DSN'],
+				// biome-ignore lint/complexity/useLiteralKeys: Avoid TypeScript error
+				release: process.env['VERCEL_GIT_COMMIT_SHA'],
+			},
 		},
 	},
+
 	srcDir: 'app/',
+
+	sourcemap: {
+		client: 'hidden',
+	},
+
 	experimental: {
 		typedPages: true,
 	},
+
 	compatibilityDate: '2024-04-03',
+
 	vite: {
 		vue: {
 			script: {
@@ -47,6 +68,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	typescript: {
 		tsConfig: {
 			compilerOptions: {
@@ -100,6 +122,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	eslint: {
 		config: {
 			nuxt: {
@@ -107,6 +130,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	googleFonts: {
 		families: {
 			Comfortaa: {
@@ -120,8 +144,19 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
+	sentry: {
+		sourceMapsUploadOptions: {
+			org: 'tsuyoshi',
+			project: 'learn_tagalog',
+		},
+
+		autoInjectServerSentry: 'top-level-import',
+	},
+
 	supabase: {
 		redirect: true,
 	},
+
 	testUtils: {},
 })
