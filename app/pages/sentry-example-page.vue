@@ -121,13 +121,13 @@ async function getSentryData() {
 
 main {
 	display: flex;
-	min-height: 100vh;
 	box-sizing: border-box;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 16px;
+	min-block-size: 100vh;
 	padding: 16px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
 	font-family:
 		system-ui,
 		-apple-system,
@@ -139,13 +139,14 @@ main {
 }
 
 h1 {
-	padding: 0px 4px;
 	margin: 0;
+	padding-inline: 4px;
+	padding-block: 0px;
 	border-radius: 4px;
-	background-color: rgba(24, 20, 35, 0.03);
 	font-family: monospace;
 	font-size: 20px;
 	line-height: 1.2;
+	background-color: rgba(24, 20, 35, 0.03);
 }
 
 p {
@@ -154,8 +155,8 @@ p {
 }
 
 a {
-	color: #6341f0;
 	text-decoration: underline;
+	color: #6341f0;
 	cursor: pointer;
 
 	@media (prefers-color-scheme: dark) {
@@ -164,23 +165,24 @@ a {
 }
 
 button {
+	margin-block-start: 4px;
+	padding: 0;
+	border: none;
 	border-radius: 8px;
 	color: white;
-	cursor: pointer;
 	background-color: #553db8;
-	border: none;
-	padding: 0;
-	margin-top: 4px;
+	cursor: pointer;
 
 	& > span {
 		display: inline-block;
-		padding: 12px 16px;
+		padding-inline: 16px;
+		padding-block: 12px;
+		border: 1px solid #553db8;
 		border-radius: inherit;
 		font-size: 20px;
 		font-weight: bold;
 		line-height: 1;
 		background-color: #7553ff;
-		border: 1px solid #553db8;
 		transform: translateY(-4px);
 	}
 
@@ -193,22 +195,22 @@ button {
 	}
 
 	&:disabled {
-		cursor: not-allowed;
 		opacity: 0.6;
+		cursor: not-allowed;
 
 		& > span {
-			transform: translateY(0);
 			border: none;
+			transform: translateY(0);
 		}
 	}
 }
 
 .description {
+	max-inline-size: 500px;
+	font-size: 20px;
+	line-height: 1.5;
 	text-align: center;
 	color: #6e6c75;
-	max-width: 500px;
-	line-height: 1.5;
-	font-size: 20px;
 
 	@media (prefers-color-scheme: dark) {
 		color: #a49fb5;
@@ -220,32 +222,34 @@ button {
 }
 
 .success {
-	padding: 12px 16px;
+	padding-inline: 16px;
+	padding-block: 12px;
+	border: 1px solid #00bf4d;
 	border-radius: 8px;
 	font-size: 20px;
 	line-height: 1;
-	background-color: #00f261;
-	border: 1px solid #00bf4d;
 	color: #181423;
+	background-color: #00f261;
 }
 
 .success_placeholder {
-	height: 46px;
+	block-size: 46px;
 }
 
 .connectivity-error {
-	padding: 12px 16px;
-	background-color: #e50045;
-	border-radius: 8px;
-	width: 500px;
-	color: #ffffff;
-	border: 1px solid #a80033;
-	text-align: center;
+	inline-size: 500px;
 	margin: 0;
+	padding-inline: 16px;
+	padding-block: 12px;
+	border: 1px solid #a80033;
+	border-radius: 8px;
+	text-align: center;
+	color: #ffffff;
+	background-color: #e50045;
 }
 
 .connectivity-error a {
-	color: #ffffff;
 	text-decoration: underline;
+	color: #ffffff;
 }
 </style>
