@@ -38,6 +38,13 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			baseUrl: '',
+
+			sentry: {
+				// biome-ignore lint/complexity/useLiteralKeys: Avoid TypeScript error
+				dsn: process.env['SENTRY_DSN'],
+				// biome-ignore lint/complexity/useLiteralKeys: Avoid TypeScript error
+				release: process.env['VERCEL_GIT_COMMIT_SHA'],
+			},
 		},
 	},
 
