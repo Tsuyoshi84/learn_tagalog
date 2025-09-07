@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"antfu.iconify",
 		"biomejs.biome",
 		"christian-kohler.path-intellisense",
 		"dbaeumer.vscode-eslint",

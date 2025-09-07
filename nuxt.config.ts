@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
+
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
@@ -9,8 +10,11 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'@nuxt/icon',
+		'@sentry/nuxt/module',
 	],
+
 	devtools: { enabled: true },
+
 	app: {
 		head: {
 			htmlAttrs: {
@@ -28,17 +32,23 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
 		},
 	},
+
 	css: ['~/assets/css/main.css'],
+
 	runtimeConfig: {
 		public: {
 			baseUrl: '',
 		},
 	},
+
 	srcDir: 'app/',
+
 	experimental: {
 		typedPages: true,
 	},
+
 	compatibilityDate: '2024-04-03',
+
 	vite: {
 		vue: {
 			script: {
@@ -47,6 +57,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	typescript: {
 		tsConfig: {
 			compilerOptions: {
@@ -66,6 +77,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	eslint: {
 		config: {
 			nuxt: {
@@ -73,6 +85,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	googleFonts: {
 		families: {
 			Comfortaa: {
@@ -86,8 +99,23 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	supabase: {
 		redirect: true,
 	},
+
 	testUtils: {},
+
+	sentry: {
+		sourceMapsUploadOptions: {
+			org: 'tsuyoshi',
+			project: 'learn_tagalog',
+		},
+
+		autoInjectServerSentry: 'top-level-import',
+	},
+
+	sourcemap: {
+		client: 'hidden',
+	},
 })
