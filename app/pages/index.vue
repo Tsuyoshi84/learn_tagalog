@@ -66,34 +66,48 @@ const menuItems = [
 
 <template>
 	<div class="main-container">
-		<div class="greeting-container">
-			<h1 class="greeting-title"> Hey {{ userName }}! 👋 </h1>
-			<p class="greeting-subtitle">Let's make learning Tagalog fun! 🎉</p>
-		</div>
+		<!-- Learning Activities Section -->
+		<section class="activities-section">
+			<div class="section-header">
+				<h1 class="section-title">Hey {{ userName }}! 👋</h1>
+				<p class="section-subtitle">Choose your learning activity to get started</p>
+			</div>
 
-		<nav class="menu-nav">
-			<ul class="menu-list">
-				<li
+			<div class="activities-grid">
+				<article
 					v-for="(item, index) in menuItems"
 					:key="item.name"
-					class="menu-item"
+					class="activity-card"
 					:class="{ 'animation-delay-200': index === 1 }"
+					@click="handleQuizClick(item.pageName, item.maxLevel)"
 				>
-					<button
-						type="button"
-						class="menu-button"
-						:class="item.gradient"
-						@click.prevent="handleQuizClick(item.pageName, item.maxLevel)"
-					>
-						<span class="menu-icon">{{ item.icon }}</span>
-						<span class="menu-title">
-							{{ item.name }}
-						</span>
-						<span class="menu-description">{{ item.description }}</span>
-					</button>
-				</li>
-			</ul>
-		</nav>
+					<div class="card-content">
+						<h2 class="card-title">{{ item.name }}</h2>
+						<p class="card-description">{{ item.description }}</p>
+					</div>
+
+					<div class="card-action">
+						<button
+							type="button"
+							class="action-button"
+						>
+							<span>Start Learning</span>
+							<svg
+								class="arrow-icon"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</button>
+					</div>
+				</article>
+			</div>
+		</section>
 
 		<LevelSelectorModal
 			:open="showLevelSelector"
@@ -105,121 +119,196 @@ const menuItems = [
 </template>
 
 <style scoped>
+/* Main Layout */
 .main-container {
-	display: flex;
-	min-block-size: calc(100vh - 4rem);
-	padding-block: 2rem;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	min-block-size: 100vh;
+	padding-inline: 0.5rem;
+	padding-block: 1rem;
+	background: linear-gradient(135deg, oklch(98% 0.02 120) 0%, oklch(96% 0.03 140) 100%);
 }
-.greeting-container {
-	margin-block-end: 3rem;
+
+/* Activities Section */
+.activities-section {
+	padding-inline: 0.5rem;
+	padding-block-start: 2rem;
+}
+
+.section-header {
+	margin-block-end: 1.5rem;
 	text-align: center;
+	animation: fadeInUp 0.8s ease-out 0.2s both;
 }
-.greeting-title {
-	font-size: 2.25rem;
-	font-weight: bold;
-	color: oklch(54.5% 0.2 276);
-	animation: fadeIn 0.8s ease-out;
+
+.section-title {
+	margin-block-end: 0.5rem;
+	font-size: 1.875rem;
+	font-weight: 700;
+	color: oklch(20% 0.02 120);
 }
-.greeting-subtitle {
-	font-size: 1.25rem;
-	color: oklch(80% 0.05 270 / 1);
-	animation: fadeIn 0.8s ease-out 0.2s both;
-}
-.menu-nav {
-	inline-size: 100%;
+
+.section-subtitle {
 	max-inline-size: 40rem;
+	margin-inline: auto;
+	font-size: 1rem;
+	color: oklch(45% 0.02 120);
 }
-.menu-list {
+
+.activities-grid {
 	display: grid;
-	padding-inline: 1rem;
+	max-inline-size: 80rem;
+	margin-inline: auto;
 	grid-template-columns: 1fr;
-	gap: 1.5rem;
+	gap: 1rem;
 }
-@media (min-width: 640px) {
-	.menu-list {
-		grid-template-columns: 1fr 1fr;
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+	.hero-title {
+		font-size: 2rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1rem;
+	}
+
+	.section-title {
+		font-size: 1.5rem;
+	}
+
+	.section-subtitle {
+		font-size: 0.875rem;
+	}
+
+	.progress-ring {
+		inline-size: 3.5rem;
+		block-size: 3.5rem;
+	}
+
+	.progress-number {
+		font-size: 1rem;
+	}
+
+	.progress-label {
+		font-size: 0.625rem;
 	}
 }
-.menu-item {
-	animation: slideIn 0.8s ease-out both;
-	transition: transform 0.3s;
+
+@media (min-width: 640px) {
+	.activities-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
 }
-.menu-item:hover {
-	transform: scale(1.05);
+
+/* Activity Cards */
+.activity-card {
+	position: relative;
+	padding: 1.25rem;
+	border-radius: 1rem;
+	overflow: hidden;
+	background: oklch(100% 0 0);
+	box-shadow:
+		0 4px 6px -1px oklch(0% 0 0 / 0.1),
+		0 2px 4px -1px oklch(0% 0 0 / 0.06);
+	animation: slideInUp 0.8s ease-out both;
+	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
 }
+
+.activity-card:hover {
+	box-shadow:
+		0 10px 15px -3px oklch(0% 0 0 / 0.1),
+		0 4px 6px -2px oklch(0% 0 0 / 0.05);
+	transform: translateY(-4px);
+}
+
+.activity-card:active {
+	transform: translateY(-2px) scale(0.98);
+}
+
 .animation-delay-200 {
 	animation-delay: 0.2s;
 }
-.menu-button {
+
+.card-content {
+	margin-block-end: 1rem;
+}
+
+.card-title {
+	margin-block-end: 0.5rem;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: oklch(20% 0.02 120);
+}
+
+.card-description {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: oklch(45% 0.02 120);
+}
+
+.card-action {
 	display: flex;
-	inline-size: 100%;
-	block-size: 100%;
-	padding: 1.5rem;
+	justify-content: flex-end;
+}
+
+.action-button {
+	display: flex;
+	padding-inline: 1.5rem;
+	padding-block: 0.75rem;
 	border: none;
-	border-radius: 1rem;
-	flex-direction: column;
+	border-radius: 0.75rem;
 	align-items: center;
-	justify-content: center;
-	color: #fff;
-	background: var(--menu-gradient, oklch(60% 0.15 30));
-	box-shadow: 0 4px 16px oklch(0% 0 0 / 0.15);
-	transition: box-shadow 0.3s;
+	gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: oklch(100% 0 0);
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
+	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.1);
+	transition: all 0.2s ease-out;
 	cursor: pointer;
 }
-.menu-button:hover {
-	box-shadow: 0 8px 24px oklch(0% 0 0 / 0.18);
+
+.action-button:hover {
+	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.15);
+	transform: translateY(-1px);
 }
-.menu-button.from-red-300 {
-	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 30) 0%, oklch(60% 0.18 30) 100%);
+
+.action-button:active {
+	box-shadow: 0 1px 2px oklch(0% 0 0 / 0.1);
+	transform: translateY(0);
 }
-.menu-button.to-red-500 {
-	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 30) 0%, oklch(54% 0.22 30) 100%);
+
+.arrow-icon {
+	inline-size: 1rem;
+	block-size: 1rem;
+	transition: transform 0.2s ease-out;
 }
-.menu-button.from-blue-300 {
-	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 250) 0%, oklch(60% 0.18 250) 100%);
+
+.action-button:hover .arrow-icon {
+	transform: translateX(2px);
 }
-.menu-button.to-blue-500 {
-	--menu-gradient: linear-gradient(135deg, oklch(80% 0.18 250) 0%, oklch(54% 0.22 250) 100%);
-}
-.menu-icon {
-	margin-block-end: 0.5rem;
-	font-size: 1.875rem;
-}
-.menu-title {
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: #fff;
-	transition: transform 0.3s;
-}
-.menu-button:hover .menu-title {
-	transform: scale(1.05);
-}
-.menu-description {
-	margin-block-start: 0.5rem;
-	font-size: 0.875rem;
-	color: oklch(100% 0 0 / 0.9);
-}
-@keyframes fadeIn {
+
+/* Animations */
+@keyframes fadeInUp {
 	from {
 		opacity: 0;
-		transform: translateY(-10px);
+		transform: translateY(20px);
 	}
 	to {
 		opacity: 1;
 		transform: translateY(0);
 	}
 }
-@keyframes slideIn {
+
+@keyframes slideInUp {
 	from {
 		opacity: 0;
-		transform: translateX(-20px);
+		transform: translateY(30px);
 	}
 	to {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateY(0);
 	}
 }
 </style>
