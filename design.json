@@ -1,0 +1,246 @@
+{
+	"designSystem": {
+		"name": "Health & Fitness Mobile App Design System",
+		"version": "1.0.0",
+		"description": "A comprehensive design system for health and wellness mobile applications with modern card-based layouts and nature-inspired aesthetics"
+	},
+	"colorPalette": {
+		"primary": {
+			"emeraldGreen": "#10B981",
+			"darkGreen": "#065F46",
+			"lightGreen": "#6EE7B7"
+		},
+		"secondary": {
+			"warmOrange": "#F59E0B",
+			"coral": "#F97316",
+			"yellow": "#EAB308"
+		},
+		"neutrals": {
+			"charcoal": "#1F2937",
+			"darkGray": "#374151",
+			"mediumGray": "#6B7280",
+			"lightGray": "#F3F4F6",
+			"offWhite": "#FEFEFE",
+			"cardBackground": "#FFFFFF"
+		},
+		"accent": {
+			"purple": "#8B5CF6",
+			"lightPurple": "#C4B5FD",
+			"teal": "#14B8A6"
+		},
+		"semantic": {
+			"success": "#10B981",
+			"warning": "#F59E0B",
+			"error": "#EF4444",
+			"info": "#3B82F6"
+		}
+	},
+	"typography": {
+		"fontFamilies": {
+			"primary": "SF Pro Display, -apple-system, system-ui, sans-serif",
+			"secondary": "SF Pro Text, -apple-system, system-ui, sans-serif"
+		},
+		"fontSizes": {
+			"xs": "12px",
+			"sm": "14px",
+			"base": "16px",
+			"lg": "18px",
+			"xl": "20px",
+			"2xl": "24px",
+			"3xl": "30px",
+			"4xl": "36px",
+			"5xl": "48px"
+		},
+		"fontWeights": {
+			"light": 300,
+			"regular": 400,
+			"medium": 500,
+			"semibold": 600,
+			"bold": 700,
+			"black": 900
+		},
+		"lineHeights": {
+			"tight": 1.2,
+			"normal": 1.5,
+			"relaxed": 1.75
+		}
+	},
+	"spacing": {
+		"xs": "4px",
+		"sm": "8px",
+		"md": "16px",
+		"lg": "24px",
+		"xl": "32px",
+		"2xl": "48px",
+		"3xl": "64px"
+	},
+	"borderRadius": {
+		"none": "0px",
+		"sm": "8px",
+		"md": "12px",
+		"lg": "16px",
+		"xl": "20px",
+		"2xl": "24px",
+		"full": "9999px"
+	},
+	"shadows": {
+		"card": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+		"cardHover": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+		"floating": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+	},
+	"componentPatterns": {
+		"cards": {
+			"healthMetricCard": {
+				"structure": "Large metric number + label + small icon + progress indicator",
+				"styling": "White background, rounded corners (16px), subtle shadow, padding 20px",
+				"layout": "Flex column, center-aligned content",
+				"variants": ["primary", "secondary", "compact"]
+			},
+			"goalCard": {
+				"structure": "Icon + progress ring + label + status indicator",
+				"styling": "Dark background with gradient overlay, rounded corners (20px)",
+				"layout": "Horizontal flex with icon on left, content on right",
+				"interactiveElements": ["progress rings", "completion states"]
+			},
+			"summaryCard": {
+				"structure": "Header with avatar + metric + body content + action buttons",
+				"styling": "Large rounded card (24px), gradient background, botanical imagery",
+				"layout": "Vertical stack with clear content hierarchy",
+				"specialFeatures": ["hero image background", "gradient overlays", "floating elements"]
+			},
+			"activityCard": {
+				"structure": "Activity type + duration/count + visual chart + time period selector",
+				"styling": "Clean white background, minimal borders, data visualization elements",
+				"layout": "Grid-based with chart prominence"
+			}
+		},
+		"dataVisualization": {
+			"progressRings": {
+				"style": "Circular progress with gradient strokes",
+				"thickness": "6-8px stroke width",
+				"colors": "Primary green with lighter background ring",
+				"animation": "Smooth fill animation on load"
+			},
+			"barCharts": {
+				"style": "Rounded bars with gradient fills",
+				"spacing": "8px between bars",
+				"colors": "Multi-color system based on data categories",
+				"interactivity": "Hover states and selection"
+			},
+			"sleepChart": {
+				"style": "Horizontal timeline with color-coded sleep stages",
+				"timeAxis": "Bottom-aligned with hour markers",
+				"stageColors": "Distinct colors for REM, Deep, Light sleep phases"
+			}
+		},
+		"navigation": {
+			"tabBar": {
+				"position": "Bottom-fixed",
+				"style": "Rounded pill shape with dark background",
+				"indicators": "Active state with filled circles, inactive with outline circles",
+				"spacing": "Evenly distributed with adequate touch targets"
+			},
+			"segmentedControl": {
+				"style": "Pill-shaped container with sliding active indicator",
+				"background": "Light gray container with dark green active state",
+				"animation": "Smooth sliding transition between segments"
+			}
+		},
+		"buttons": {
+			"primary": {
+				"background": "Gradient (emerald to dark green)",
+				"text": "White, semibold",
+				"padding": "12px 24px",
+				"borderRadius": "16px",
+				"shadow": "Subtle elevation"
+			},
+			"secondary": {
+				"background": "White with border",
+				"text": "Dark gray, medium weight",
+				"border": "1px solid light gray",
+				"hoverState": "Light gray background"
+			},
+			"icon": {
+				"shape": "Circular",
+				"size": "40px diameter",
+				"background": "White with shadow",
+				"iconColor": "Primary green or contextual color"
+			}
+		}
+	},
+	"layoutPatterns": {
+		"dashboardGrid": {
+			"structure": "Mixed-size card grid with varying heights",
+			"spacing": "16px gaps between cards",
+			"responsive": "2-column on mobile, adaptive sizing based on content",
+			"scrolling": "Vertical scroll with momentum"
+		},
+		"detailView": {
+			"structure": "Header section + tabbed content + data visualization",
+			"navigation": "Segmented control for Day/Week views",
+			"spacing": "24px vertical spacing between major sections"
+		},
+		"listView": {
+			"structure": "Grouped items with section headers",
+			"itemSpacing": "8px between list items",
+			"sectionSpacing": "24px between sections",
+			"interaction": "Swipe gestures and tap states"
+		}
+	},
+	"iconography": {
+		"style": "Outlined with rounded stroke caps",
+		"strokeWidth": "1.5-2px",
+		"sizes": {
+			"sm": "16px",
+			"md": "20px",
+			"lg": "24px",
+			"xl": "32px"
+		},
+		"categories": {
+			"health": ["heart", "activity", "sleep", "nutrition"],
+			"actions": ["add", "settings", "play", "pause"],
+			"navigation": ["chevron-left", "chevron-right", "menu"]
+		}
+	},
+	"animations": {
+		"transitions": {
+			"duration": "200-300ms",
+			"easing": "ease-out cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+		},
+		"microInteractions": {
+			"buttonPress": "Scale down to 0.95 on tap",
+			"cardHover": "Lift with increased shadow",
+			"progressFill": "Smooth fill animation over 1-2 seconds"
+		},
+		"pageTransitions": {
+			"slideIn": "Horizontal slide with fade",
+			"fadeIn": "Opacity and slight scale transition"
+		}
+	},
+	"contentStrategy": {
+		"dataHierarchy": {
+			"primary": "Large metric numbers (48px+)",
+			"secondary": "Supporting labels and descriptions (14-16px)",
+			"tertiary": "Contextual information and timestamps (12px)"
+		},
+		"messaging": {
+			"tone": "Encouraging and personal",
+			"greeting": "Personalized welcome messages",
+			"progress": "Positive reinforcement for achievements"
+		}
+	},
+	"accessibilityGuidelines": {
+		"colorContrast": "WCAG AA compliance (4.5:1 ratio minimum)",
+		"touchTargets": "Minimum 44px tap targets",
+		"focusStates": "Clear visual indicators for keyboard navigation",
+		"semanticMarkup": "Proper heading hierarchy and ARIA labels"
+	},
+	"responsiveDesign": {
+		"breakpoints": {
+			"mobile": "375px-414px",
+			"tablet": "768px-1024px"
+		},
+		"adaptiveCards": "Cards scale and reflow based on screen size",
+		"typography": "Fluid scaling between breakpoints"
+	}
+}
