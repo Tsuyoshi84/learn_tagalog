@@ -6,9 +6,9 @@
 	},
 	"colorPalette": {
 		"primary": {
-			"emeraldGreen": "#10B981",
-			"darkGreen": "#065F46",
-			"lightGreen": "#6EE7B7"
+			"emeraldGreen": "oklch(60% 0.15 140)",
+			"darkGreen": "oklch(40% 0.08 140)",
+			"lightGreen": "oklch(78% 0.12 145)"
 		},
 		"secondary": {
 			"warmOrange": "#F59E0B",
