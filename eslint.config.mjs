@@ -1,7 +1,5 @@
-import * as parserTs from '@typescript-eslint/parser'
 import { globalIgnores } from 'eslint/config'
 import jsdoc from 'eslint-plugin-jsdoc'
-import * as parserVue from 'vue-eslint-parser'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt([globalIgnores(['drizzle.config.ts', 'server/@types/env.d.ts'])])
@@ -21,40 +19,15 @@ export default withNuxt([globalIgnores(['drizzle.config.ts', 'server/@types/env.
 		},
 	})
 	.override('nuxt/typescript/rules', {
-		languageOptions: {
-			parser: parserTs,
-			parserOptions: {
-				project: ['tsconfig.json'],
-			},
-		},
 		rules: {
 			// See: https://ts.dev/style/#interfaces-vs-type-aliases
 			// See: https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections
 			'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-			'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-			'@typescript-eslint/strict-boolean-expressions': [
-				'error',
-				{
-					allowNullableBoolean: true,
-				},
-			],
 		},
 	})
 	.override('nuxt/vue/rules', {
 		plugins: {
 			jsdoc,
-		},
-		languageOptions: {
-			parser: parserVue,
-			parserOptions: {
-				parserOptions: {
-					ecmaFeatures: { jsx: true },
-					extraFileExtensions: ['.vue'],
-					parser: parserTs,
-					sourceType: 'module',
-				},
-				project: ['tsconfig.json'],
-			},
 		},
 		rules: {
 			// vue plugin
