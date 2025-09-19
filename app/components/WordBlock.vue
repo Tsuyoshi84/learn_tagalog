@@ -56,25 +56,25 @@ defineProps<{
 	block-size: 3.5rem;
 	border: 2px solid oklch(90% 0.02 120);
 	border-radius: 1rem;
-	background: oklch(100% 0 0);
 	overflow: hidden;
+	background: oklch(100% 0 0);
+	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.05);
 	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
-	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.05);
 }
 
 .word-card::before {
-	content: '';
 	position: absolute;
 	inset: 0;
+	opacity: 0;
 	background: linear-gradient(
 		135deg,
 		oklch(70% 0.15 140 / 0.02) 0%,
 		oklch(60% 0.2 160 / 0.01) 100%
 	);
-	opacity: 0;
 	transition: opacity 0.3s ease;
 	pointer-events: none;
+	content: '';
 }
 
 .word-card--default:hover {
@@ -112,9 +112,9 @@ defineProps<{
 }
 
 .word-card--disabled {
+	border-color: oklch(85% 0.02 120);
 	opacity: 0.5;
 	background: oklch(95% 0.02 120);
-	border-color: oklch(85% 0.02 120);
 	box-shadow: 0 1px 2px oklch(0% 0 0 / 0.05);
 	transform: scale(0.98);
 	cursor: not-allowed;
@@ -124,10 +124,10 @@ defineProps<{
 	position: relative;
 	z-index: 1;
 	display: flex;
+	block-size: 100%;
+	padding-inline: 1rem;
 	align-items: center;
 	justify-content: center;
-	padding-inline: 1rem;
-	block-size: 100%;
 }
 
 .word-text {
@@ -150,13 +150,13 @@ defineProps<{
 }
 
 .success-indicator {
+	display: flex;
 	inline-size: 1.25rem;
 	block-size: 1.25rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	border-radius: 50%;
-	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.1);
 	animation: success-bounce 0.6s ease-out;
 }
@@ -179,16 +179,16 @@ defineProps<{
 
 @keyframes success-bounce {
 	0% {
-		transform: scale(0);
 		opacity: 0;
+		transform: scale(0);
 	}
 	50% {
-		transform: scale(1.2);
 		opacity: 1;
+		transform: scale(1.2);
 	}
 	100% {
-		transform: scale(1);
 		opacity: 1;
+		transform: scale(1);
 	}
 }
 

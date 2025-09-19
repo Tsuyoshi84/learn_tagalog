@@ -156,37 +156,37 @@ onMounted(async () => {
 
 /* Level Label */
 .level-label {
+	margin-block-end: 1rem;
 	font-size: 0.875rem;
 	font-weight: 600;
-	color: oklch(60% 0.15 140);
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	margin-block-end: 1rem;
 	text-align: center;
+	text-transform: uppercase;
+	color: oklch(60% 0.15 140);
 }
 
 /* Game Info */
 .game-info {
-	text-align: center;
 	margin-block-end: 2rem;
+	text-align: center;
 }
 
 .game-title {
-	font-size: 1.75rem;
-	font-weight: 700;
-	color: oklch(20% 0.02 120);
 	margin-block-end: 0.5rem;
 	font-family:
 		'SF Pro Display',
 		-apple-system,
 		system-ui,
 		sans-serif;
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: oklch(20% 0.02 120);
 }
 
 .game-subtitle {
 	font-size: 1rem;
-	color: oklch(45% 0.02 120);
 	line-height: 1.5;
+	color: oklch(45% 0.02 120);
 }
 
 /* Two Column Word Grid */
@@ -208,26 +208,25 @@ onMounted(async () => {
 
 /* Completion Section */
 .completion-section {
-	padding-inline: 1rem;
 	display: flex;
+	padding-inline: 1rem;
 	justify-content: center;
 }
 
 .completion-card {
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
-	border-radius: 1.5rem;
+	position: relative;
+	max-inline-size: 24rem;
 	padding: 2rem;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	text-align: center;
+	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	box-shadow:
 		0 10px 15px -3px oklch(0% 0 0 / 0.1),
 		0 4px 6px -2px oklch(0% 0 0 / 0.05);
-	text-align: center;
-	max-inline-size: 24rem;
-	position: relative;
-	overflow: hidden;
 }
 
 .completion-card::before {
-	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
@@ -236,21 +235,22 @@ onMounted(async () => {
 		oklch(60% 0.2 160 / 0.03) 100%
 	);
 	pointer-events: none;
+	content: '';
 }
 
 .celebration-icon {
-	inline-size: 3rem;
-	block-size: 3rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	border-radius: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-inline: auto;
-	margin-block-end: 1rem;
-	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
 	position: relative;
 	z-index: 1;
+	display: flex;
+	inline-size: 3rem;
+	block-size: 3rem;
+	margin-inline: auto;
+	margin-block-end: 1rem;
+	border-radius: 1rem;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
+	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
 }
 
 .celebration-icon .icon {
@@ -260,27 +260,27 @@ onMounted(async () => {
 }
 
 .completion-title {
+	position: relative;
+	z-index: 1;
+	margin-block-end: 0.5rem;
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: oklch(20% 0.02 120);
-	margin-block-end: 0.5rem;
-	position: relative;
-	z-index: 1;
 }
 
 .completion-subtitle {
-	font-size: 0.875rem;
-	color: oklch(45% 0.02 120);
-	line-height: 1.5;
-	margin-block-end: 1.5rem;
 	position: relative;
 	z-index: 1;
+	margin-block-end: 1.5rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: oklch(45% 0.02 120);
 }
 
 .next-button {
-	inline-size: 100%;
 	position: relative;
 	z-index: 1;
+	inline-size: 100%;
 }
 
 .arrow-icon {
@@ -297,8 +297,8 @@ onMounted(async () => {
 	}
 
 	.level-label {
-		font-size: 0.75rem;
 		margin-block-end: 0.75rem;
+		font-size: 0.75rem;
 	}
 
 	.game-title {

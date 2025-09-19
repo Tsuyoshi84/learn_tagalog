@@ -149,8 +149,8 @@ function closeMenu(): void {
 		cursor: pointer;
 
 		&:hover {
-			background: linear-gradient(135deg, oklch(98% 0.05 140) 0%, oklch(96% 0.08 160) 100%);
 			color: oklch(30% 0.15 140);
+			background: linear-gradient(135deg, oklch(98% 0.05 140) 0%, oklch(96% 0.08 160) 100%);
 			transform: translateY(-1px);
 		}
 	}
@@ -175,6 +175,7 @@ function closeMenu(): void {
 	display: block;
 
 	.mobile-btn {
+		position: relative;
 		display: flex;
 		inline-size: 3.5rem;
 		block-size: 3.5rem;
@@ -182,28 +183,27 @@ function closeMenu(): void {
 		border-radius: 1rem;
 		align-items: center;
 		justify-content: center;
+		overflow: hidden;
 		color: oklch(30% 0.15 140);
 		background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 		box-shadow: 0 4px 12px oklch(0% 0 0 / 0.15), 0 2px 4px oklch(0% 0 0 / 0.1);
 		transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		cursor: pointer;
-		position: relative;
-		overflow: hidden;
 
 		&::before {
-			content: '';
 			position: absolute;
 			inset: 0;
-			background: linear-gradient(135deg, oklch(70% 0.15 140 / 0.05) 0%, oklch(60% 0.2 160 / 0.03) 100%);
 			opacity: 0;
+			background: linear-gradient(135deg, oklch(70% 0.15 140 / 0.05) 0%, oklch(60% 0.2 160 / 0.03) 100%);
 			transition: opacity 0.3s ease;
 			pointer-events: none;
+			content: '';
 		}
 
 		&:hover {
-			transform: translateY(-2px) scale(1.05);
-			box-shadow: 0 8px 20px oklch(0% 0 0 / 0.2), 0 4px 8px oklch(0% 0 0 / 0.15);
 			color: oklch(25% 0.2 140);
+			box-shadow: 0 8px 20px oklch(0% 0 0 / 0.2), 0 4px 8px oklch(0% 0 0 / 0.15);
+			transform: translateY(-2px) scale(1.05);
 
 			&::before {
 				opacity: 1;
@@ -215,13 +215,13 @@ function closeMenu(): void {
 		}
 
 		.hamburger {
+			position: relative;
+			z-index: 1;
 			display: flex;
 			inline-size: 1.5rem;
 			block-size: 1.25rem;
 			flex-direction: column;
 			justify-content: space-between;
-			position: relative;
-			z-index: 1;
 
 			.bar {
 				inline-size: 100%;
@@ -233,10 +233,10 @@ function closeMenu(): void {
 		}
 
 		.icon-close {
-			inline-size: 1.5rem;
-			block-size: 1.5rem;
 			position: relative;
 			z-index: 1;
+			inline-size: 1.5rem;
+			block-size: 1.5rem;
 		}
 	}
 }
@@ -254,42 +254,42 @@ function closeMenu(): void {
 }
 
 .mobile-menu-content {
+	position: relative;
 	display: flex;
-	flex-direction: column;
 	inline-size: 100%;
 	max-inline-size: 24rem;
 	margin-inline: auto;
 	margin-block-start: 2rem;
 	padding: 2rem;
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	border-radius: 1.5rem;
-	box-shadow: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 10px 10px -5px oklch(0% 0 0 / 0.04);
-	position: relative;
+	flex-direction: column;
 	overflow: hidden;
+	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
+	box-shadow: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 10px 10px -5px oklch(0% 0 0 / 0.04);
 }
 
 .mobile-menu-content::before {
-	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(135deg, oklch(70% 0.15 140 / 0.03) 0%, oklch(60% 0.2 160 / 0.02) 100%);
 	pointer-events: none;
+	content: '';
 }
 
 .menu-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	margin-block-end: 2rem;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .menu-title {
+	font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif;
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: oklch(20% 0.02 120);
-	font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif;
 }
 
 .close-btn {
@@ -306,8 +306,8 @@ function closeMenu(): void {
 	cursor: pointer;
 
 	&:hover {
-		background: linear-gradient(135deg, oklch(90% 0.05 120) 0%, oklch(88% 0.08 120) 100%);
 		color: oklch(30% 0.15 140);
+		background: linear-gradient(135deg, oklch(90% 0.05 120) 0%, oklch(88% 0.08 120) 100%);
 		transform: scale(1.05);
 	}
 }
@@ -318,11 +318,11 @@ function closeMenu(): void {
 }
 
 .menu-list {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
-	position: relative;
-	z-index: 1;
 }
 
 .mobile-menu-link {
@@ -330,25 +330,26 @@ function closeMenu(): void {
 	padding: 0;
 	border: none;
 	border-radius: 1rem;
+	text-decoration: none;
+	color: inherit;
 	background: none;
 	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
-	text-decoration: none;
-	color: inherit;
 
 	&:hover {
 		background: linear-gradient(135deg, oklch(98% 0.05 140) 0%, oklch(96% 0.08 160) 100%);
-		transform: translateY(-1px);
 		box-shadow: 0 4px 12px oklch(0% 0 0 / 0.1);
+		transform: translateY(-1px);
 	}
 }
 
 .menu-item-content {
 	display: flex;
 	inline-size: 100%;
+	padding-inline: 1.25rem;
+	padding-block: 1rem;
 	align-items: center;
 	gap: 1rem;
-	padding: 1rem 1.25rem;
 }
 
 .menu-icon {
@@ -415,7 +416,8 @@ function closeMenu(): void {
 	}
 
 	.menu-item-content {
-		padding: 0.875rem 1rem;
+		padding-inline: 1rem;
+		padding-block: 0.875rem;
 	}
 
 	.menu-text {

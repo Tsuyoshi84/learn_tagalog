@@ -167,37 +167,36 @@ async function answerText(textId: string, remembered: boolean) {
 
 /* Level Label */
 .level-label {
+	margin-block-end: 1rem;
 	font-size: 0.875rem;
 	font-weight: 600;
-	color: oklch(60% 0.15 140);
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	margin-block-end: 1rem;
 	text-align: center;
+	text-transform: uppercase;
+	color: oklch(60% 0.15 140);
 }
 
 /* Completion Section */
 .completion-section {
 	display: flex;
+	inline-size: 100%;
 	justify-content: center;
-	width: 100%;
 }
 
 .completion-card {
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
-	border-radius: 1.5rem;
+	position: relative;
+	max-inline-size: 24rem;
 	padding: 2rem;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	text-align: center;
+	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	box-shadow:
 		0 10px 15px -3px oklch(0% 0 0 / 0.1),
 		0 4px 6px -2px oklch(0% 0 0 / 0.05);
-	text-align: center;
-	max-inline-size: 24rem;
-	position: relative;
-	overflow: hidden;
 }
 
 .completion-card::before {
-	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
@@ -206,21 +205,22 @@ async function answerText(textId: string, remembered: boolean) {
 		oklch(60% 0.2 160 / 0.03) 100%
 	);
 	pointer-events: none;
+	content: '';
 }
 
 .celebration-icon {
-	inline-size: 3rem;
-	block-size: 3rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	border-radius: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-inline: auto;
-	margin-block-end: 1rem;
-	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
 	position: relative;
 	z-index: 1;
+	display: flex;
+	inline-size: 3rem;
+	block-size: 3rem;
+	margin-inline: auto;
+	margin-block-end: 1rem;
+	border-radius: 1rem;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
+	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
 }
 
 .celebration-icon .icon {
@@ -230,20 +230,20 @@ async function answerText(textId: string, remembered: boolean) {
 }
 
 .completion-title {
+	position: relative;
+	z-index: 1;
+	margin-block-end: 0.5rem;
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: oklch(20% 0.02 120);
-	margin-block-end: 0.5rem;
-	position: relative;
-	z-index: 1;
 }
 
 .completion-subtitle {
-	font-size: 0.875rem;
-	color: oklch(45% 0.02 120);
-	line-height: 1.5;
 	position: relative;
 	z-index: 1;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: oklch(45% 0.02 120);
 }
 
 /* Quiz Content */
@@ -254,18 +254,17 @@ async function answerText(textId: string, remembered: boolean) {
 }
 
 .quiz-card {
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
-	border-radius: 1.5rem;
+	position: relative;
 	padding: 2rem;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	box-shadow:
 		0 10px 15px -3px oklch(0% 0 0 / 0.1),
 		0 4px 6px -2px oklch(0% 0 0 / 0.05);
-	position: relative;
-	overflow: hidden;
 }
 
 .quiz-card::before {
-	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
@@ -274,49 +273,50 @@ async function answerText(textId: string, remembered: boolean) {
 		oklch(60% 0.2 160 / 0.02) 100%
 	);
 	pointer-events: none;
+	content: '';
 }
 
 /* Memory Level Section */
 .memory-level-section {
-	display: flex;
-	justify-content: center;
-	margin-block-end: 1.5rem;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	margin-block-end: 1.5rem;
+	justify-content: center;
 }
 
 /* Question Section */
 .question-section {
-	text-align: center;
-	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
+	margin-block-end: 2rem;
+	text-align: center;
 }
 
 /* Answer Section */
 .answer-section {
-	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
+	margin-block-end: 2rem;
 }
 
 .answer-reveal-btn {
+	position: relative;
 	inline-size: 100%;
 	padding: 1.5rem;
 	border: 2px dashed oklch(70% 0.15 140);
 	border-radius: 1rem;
+	overflow: hidden;
 	background: linear-gradient(135deg, oklch(98% 0.05 140) 0%, oklch(96% 0.08 160) 100%);
 	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
-	position: relative;
-	overflow: hidden;
 }
 
 .answer-reveal-btn:hover {
 	border-color: oklch(60% 0.15 140);
 	background: linear-gradient(135deg, oklch(96% 0.08 140) 0%, oklch(94% 0.12 160) 100%);
-	transform: translateY(-2px);
 	box-shadow: 0 4px 12px oklch(60% 0.15 140 / 0.15);
+	transform: translateY(-2px);
 }
 
 .answer-reveal-btn.answer-revealed {
@@ -358,58 +358,59 @@ async function answerText(textId: string, remembered: boolean) {
 
 /* Action Buttons */
 .action-buttons {
-	display: flex;
-	gap: 1rem;
-	justify-content: center;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .action-btn {
 	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 1rem 1.5rem;
+	padding-inline: 1.5rem;
+	padding-block: 1rem;
 	border: none;
 	border-radius: 1rem;
+	align-items: center;
+	gap: 0.5rem;
 	font-size: 0.875rem;
 	font-weight: 600;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	cursor: pointer;
 	opacity: 0;
 	transform: translateY(20px);
+	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
 	pointer-events: none;
 }
 
 .action-btn--visible {
 	opacity: 1;
 	transform: translateY(0);
-	pointer-events: auto;
 	animation: slideInUp 0.4s ease-out;
+	pointer-events: auto;
 }
 
 .action-btn--forgot {
-	background: linear-gradient(135deg, oklch(80% 0.15 30) 0%, oklch(70% 0.18 30) 100%);
 	color: oklch(100% 0 0);
+	background: linear-gradient(135deg, oklch(80% 0.15 30) 0%, oklch(70% 0.18 30) 100%);
 	box-shadow: 0 2px 8px oklch(80% 0.15 30 / 0.2);
 }
 
 .action-btn--forgot:hover {
 	background: linear-gradient(135deg, oklch(75% 0.18 30) 0%, oklch(65% 0.2 30) 100%);
-	transform: translateY(-2px);
 	box-shadow: 0 4px 12px oklch(80% 0.15 30 / 0.3);
+	transform: translateY(-2px);
 }
 
 .action-btn--remembered {
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	color: oklch(100% 0 0);
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	box-shadow: 0 2px 8px oklch(60% 0.15 140 / 0.2);
 }
 
 .action-btn--remembered:hover {
 	background: linear-gradient(135deg, oklch(55% 0.18 140) 0%, oklch(45% 0.22 160) 100%);
-	transform: translateY(-2px);
 	box-shadow: 0 4px 12px oklch(60% 0.15 140 / 0.3);
+	transform: translateY(-2px);
 }
 
 .action-icon {
@@ -452,8 +453,8 @@ async function answerText(textId: string, remembered: boolean) {
 	}
 
 	.level-label {
-		font-size: 0.75rem;
 		margin-block-end: 0.75rem;
+		font-size: 0.75rem;
 	}
 
 	.quiz-card {
@@ -461,8 +462,8 @@ async function answerText(textId: string, remembered: boolean) {
 	}
 
 	.question-text {
-		font-size: 1.25rem;
 		padding: 1.25rem;
+		font-size: 1.25rem;
 	}
 
 	.answer-reveal-btn {
@@ -479,8 +480,9 @@ async function answerText(textId: string, remembered: boolean) {
 	}
 
 	.action-btn {
+		padding-inline: 1.25rem;
+		padding-block: 0.875rem;
 		justify-content: center;
-		padding: 0.875rem 1.25rem;
 	}
 
 	.completion-card {

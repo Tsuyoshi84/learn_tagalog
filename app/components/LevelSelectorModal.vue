@@ -98,20 +98,19 @@ function handleLevelSelect(level: number): void {
 
 <style scoped>
 .modal-container {
+	position: relative;
 	min-inline-size: 20rem;
 	max-inline-size: 28rem;
 	padding: 2rem;
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	border-radius: 1.5rem;
+	overflow: hidden;
+	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
 	box-shadow:
 		0 20px 25px -5px oklch(0% 0 0 / 0.1),
 		0 10px 10px -5px oklch(0% 0 0 / 0.04);
-	position: relative;
-	overflow: hidden;
 }
 
 .modal-container::before {
-	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
@@ -120,25 +119,26 @@ function handleLevelSelect(level: number): void {
 		oklch(60% 0.2 160 / 0.02) 100%
 	);
 	pointer-events: none;
+	content: '';
 }
 
 .modal-header {
-	text-align: center;
-	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
+	margin-block-end: 2rem;
+	text-align: center;
 }
 
 .header-icon {
+	display: flex;
 	inline-size: 3rem;
 	block-size: 3rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	border-radius: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	margin-inline: auto;
 	margin-block-end: 1rem;
+	border-radius: 1rem;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
 }
 
@@ -149,47 +149,47 @@ function handleLevelSelect(level: number): void {
 }
 
 .modal-title {
-	font-size: 1.75rem;
-	font-weight: 700;
-	color: oklch(20% 0.02 120);
 	margin-block-end: 0.5rem;
 	font-family:
 		'SF Pro Display',
 		-apple-system,
 		system-ui,
 		sans-serif;
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: oklch(20% 0.02 120);
 }
 
 .modal-subtitle {
 	font-size: 0.875rem;
-	color: oklch(45% 0.02 120);
 	line-height: 1.5;
+	color: oklch(45% 0.02 120);
 }
 
 .levels-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 0.75rem;
-	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
+	display: grid;
+	margin-block-end: 2rem;
+	grid-template-columns: 1fr;
+	gap: 0.75rem;
 }
 
 .level-card {
-	background: oklch(100% 0 0);
+	position: relative;
+	padding: 1rem;
 	border: 2px solid oklch(90% 0.02 120);
 	border-radius: 1rem;
-	padding: 1rem;
+	overflow: hidden;
+	background: oklch(100% 0 0);
 	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
-	position: relative;
-	overflow: hidden;
 }
 
 .level-card:hover {
 	border-color: oklch(60% 0.15 140);
-	transform: translateY(-2px);
 	box-shadow: 0 8px 16px oklch(0% 0 0 / 0.1);
+	transform: translateY(-2px);
 }
 
 .level-card--active {
@@ -209,17 +209,17 @@ function handleLevelSelect(level: number): void {
 }
 
 .level-number {
+	display: flex;
 	inline-size: 2.5rem;
 	block-size: 2.5rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	color: oklch(100% 0 0);
 	border-radius: 0.75rem;
-	display: flex;
+	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
 	font-size: 1.125rem;
 	font-weight: 700;
-	flex-shrink: 0;
+	color: oklch(100% 0 0);
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.1);
 }
 
@@ -229,8 +229,8 @@ function handleLevelSelect(level: number): void {
 }
 
 .level-info {
-	flex: 1;
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	gap: 0.25rem;
 }
@@ -243,56 +243,57 @@ function handleLevelSelect(level: number): void {
 
 .level-description {
 	font-size: 0.75rem;
-	color: oklch(50% 0.02 120);
 	line-height: 1.4;
+	color: oklch(50% 0.02 120);
 }
 
 .level-indicator {
+	display: flex;
 	inline-size: 1rem;
 	block-size: 1rem;
-	display: flex;
+	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
-	flex-shrink: 0;
 }
 
 .indicator-dot {
 	inline-size: 0.5rem;
 	block-size: 0.5rem;
-	background: oklch(80% 0.02 120);
 	border-radius: 50%;
+	background: oklch(80% 0.02 120);
 	transition: all 0.3s ease;
 }
 
 .level-card--active .indicator-dot {
-	background: oklch(60% 0.15 140);
 	inline-size: 0.75rem;
 	block-size: 0.75rem;
+	background: oklch(60% 0.15 140);
 	box-shadow: 0 0 8px oklch(60% 0.15 140 / 0.4);
 }
 
 .modal-footer {
-	display: flex;
-	justify-content: center;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	justify-content: center;
 }
 
 .cancel-btn {
-	background: oklch(90% 0.02 120);
-	color: oklch(45% 0.02 120);
+	padding-inline: 1.5rem;
+	padding-block: 0.75rem;
 	border: none;
-	padding: 0.75rem 1.5rem;
 	border-radius: 0.75rem;
 	font-size: 0.875rem;
 	font-weight: 500;
-	cursor: pointer;
+	color: oklch(45% 0.02 120);
+	background: oklch(90% 0.02 120);
 	transition: all 0.2s ease;
+	cursor: pointer;
 }
 
 .cancel-btn:hover {
-	background: oklch(85% 0.02 120);
 	color: oklch(30% 0.02 120);
+	background: oklch(85% 0.02 120);
 }
 
 .cancel-btn:active {

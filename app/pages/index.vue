@@ -122,9 +122,9 @@ const menuItems = [
 /* Main Layout */
 .main-container {
 	min-block-size: 100vh;
-	background: linear-gradient(135deg, oklch(98% 0.02 120) 0%, oklch(96% 0.03 140) 100%);
-	padding-block: 1rem;
 	padding-inline: 0.5rem;
+	padding-block: 1rem;
+	background: linear-gradient(135deg, oklch(98% 0.02 120) 0%, oklch(96% 0.03 140) 100%);
 }
 
 /* Activities Section */
@@ -134,31 +134,31 @@ const menuItems = [
 }
 
 .section-header {
-	text-align: center;
 	margin-block-end: 1.5rem;
+	text-align: center;
 	animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .section-title {
+	margin-block-end: 0.5rem;
 	font-size: 1.875rem;
 	font-weight: 700;
 	color: oklch(20% 0.02 120);
-	margin-block-end: 0.5rem;
 }
 
 .section-subtitle {
-	font-size: 1rem;
-	color: oklch(45% 0.02 120);
 	max-inline-size: 40rem;
 	margin-inline: auto;
+	font-size: 1rem;
+	color: oklch(45% 0.02 120);
 }
 
 .activities-grid {
 	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1rem;
 	max-inline-size: 80rem;
 	margin-inline: auto;
+	grid-template-columns: 1fr;
+	gap: 1rem;
 }
 
 /* Mobile optimizations */
@@ -202,24 +202,24 @@ const menuItems = [
 
 /* Activity Cards */
 .activity-card {
-	background: oklch(100% 0 0);
-	border-radius: 1rem;
+	position: relative;
 	padding: 1.25rem;
+	border-radius: 1rem;
+	overflow: hidden;
+	background: oklch(100% 0 0);
 	box-shadow:
 		0 4px 6px -1px oklch(0% 0 0 / 0.1),
 		0 2px 4px -1px oklch(0% 0 0 / 0.06);
+	animation: slideInUp 0.8s ease-out both;
 	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
-	position: relative;
-	overflow: hidden;
-	animation: slideInUp 0.8s ease-out both;
 }
 
 .activity-card:hover {
-	transform: translateY(-4px);
 	box-shadow:
 		0 10px 15px -3px oklch(0% 0 0 / 0.1),
 		0 4px 6px -2px oklch(0% 0 0 / 0.05);
+	transform: translateY(-4px);
 }
 
 .activity-card:active {
@@ -235,16 +235,16 @@ const menuItems = [
 }
 
 .card-title {
+	margin-block-end: 0.5rem;
 	font-size: 1.25rem;
 	font-weight: 700;
 	color: oklch(20% 0.02 120);
-	margin-block-end: 0.5rem;
 }
 
 .card-description {
 	font-size: 0.875rem;
-	color: oklch(45% 0.02 120);
 	line-height: 1.5;
+	color: oklch(45% 0.02 120);
 }
 
 .card-action {
@@ -254,28 +254,29 @@ const menuItems = [
 
 .action-button {
 	display: flex;
+	padding-inline: 1.5rem;
+	padding-block: 0.75rem;
+	border: none;
+	border-radius: 0.75rem;
 	align-items: center;
 	gap: 0.5rem;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	color: oklch(100% 0 0);
-	border: none;
-	padding: 0.75rem 1.5rem;
-	border-radius: 0.75rem;
 	font-size: 0.875rem;
 	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.2s ease-out;
+	color: oklch(100% 0 0);
+	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
 	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.1);
+	transition: all 0.2s ease-out;
+	cursor: pointer;
 }
 
 .action-button:hover {
-	transform: translateY(-1px);
 	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.15);
+	transform: translateY(-1px);
 }
 
 .action-button:active {
-	transform: translateY(0);
 	box-shadow: 0 1px 2px oklch(0% 0 0 / 0.1);
+	transform: translateY(0);
 }
 
 .arrow-icon {
