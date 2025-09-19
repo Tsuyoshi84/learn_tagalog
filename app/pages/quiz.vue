@@ -71,14 +71,13 @@ async function answerText(textId: string, remembered: boolean) {
 
 				<!-- Question Section -->
 				<div class="question-section">
-					<div class="question-text">
-						{{ text.en }}
-					</div>
+					{{ text.en }}
 				</div>
 
 				<!-- Answer Section -->
 				<div class="answer-section">
 					<button
+						type="button"
 						class="answer-reveal-btn"
 						:class="{ 'answer-revealed': showsAnswer }"
 						@click="showsAnswer = true"
@@ -110,6 +109,7 @@ async function answerText(textId: string, remembered: boolean) {
 				<!-- Action Buttons -->
 				<div class="action-buttons">
 					<button
+						type="button"
 						class="action-btn action-btn--forgot"
 						:class="{ 'action-btn--visible': showsAnswer }"
 						@click="answerText(text.id, false)"
@@ -291,18 +291,6 @@ async function answerText(textId: string, remembered: boolean) {
 	margin-block-end: 2rem;
 	position: relative;
 	z-index: 1;
-}
-
-.question-text {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: oklch(20% 0.02 120);
-	line-height: 1.4;
-	padding: 1.5rem;
-	background: linear-gradient(135deg, oklch(98% 0.05 140) 0%, oklch(96% 0.08 160) 100%);
-	border-radius: 1rem;
-	border: 2px solid oklch(90% 0.02 120);
-	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.05);
 }
 
 /* Answer Section */
