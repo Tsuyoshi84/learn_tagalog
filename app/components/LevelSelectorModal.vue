@@ -1,4 +1,20 @@
 <script lang="ts" setup>
+/**
+ * A modal component for selecting quiz difficulty levels.
+ * Displays a grid of level cards with descriptions and handles level selection.
+ *
+ * @example
+ * ```vue
+ * <LevelSelectorModal
+ *   :open="isOpen"
+ *   :max-level="5"
+ *   :selected-level="currentLevel"
+ *   @select="handleLevelSelect"
+ *   @close="closeModal"
+ * />
+ * ```
+ */
+
 import BaseModal from '~/components/BaseModal.vue'
 
 const props = defineProps<{
@@ -6,6 +22,8 @@ const props = defineProps<{
 	open: boolean
 	/** The maximum level of the quiz */
 	maxLevel: number
+	/** The currently selected level (optional) */
+	selectedLevel?: number
 }>()
 
 const emit = defineEmits<{
@@ -13,24 +31,25 @@ const emit = defineEmits<{
 	close: []
 	/**
 	 * Emitted when a level is selected
-	 * @param level - The selected quiz level (1-3)
+	 * @param level - The selected quiz level (1-5)
 	 */
 	select: [level: number]
 }>()
+
+const LEVEL_DESCRIPTIONS = {
+	1: 'Beginner - Basic words and phrases',
+	2: 'Elementary - Simple sentences',
+	3: 'Intermediate - Common conversations',
+	4: 'Advanced - Complex expressions',
+	5: 'Expert - Native-level content',
+} as const
 
 const levels = computed<readonly number[]>(() => {
 	return Array.from({ length: props.maxLevel }, (_, index) => index + 1)
 })
 
 function getLevelDescription(level: number): string {
-	const descriptions = {
-		1: 'Beginner - Basic words and phrases',
-		2: 'Elementary - Simple sentences',
-		3: 'Intermediate - Common conversations',
-		4: 'Advanced - Complex expressions',
-		5: 'Expert - Native-level content',
-	}
-	return descriptions[level as keyof typeof descriptions] || 'Custom level'
+	return LEVEL_DESCRIPTIONS[level as keyof typeof LEVEL_DESCRIPTIONS] || 'Custom level'
 }
 
 function handleLevelSelect(level: number): void {
@@ -67,16 +86,25 @@ function handleLevelSelect(level: number): void {
 					:key="level"
 					type="button"
 					class="level-card"
-					:class="{ 'level-card--active': level === 1 }"
+					:class="{ 'level-card--active': level === selectedLevel }"
+					:aria-label="`Select level ${level}: ${getLevelDescription(level)}`"
+					:aria-pressed="level === selectedLevel"
 					@click="handleLevelSelect(level)"
 				>
 					<div class="level-content">
 						<div class="level-number">{{ level }}</div>
 						<div class="level-info">
 							<span class="level-label">Level {{ level }}</span>
-							<span class="level-description">{{ getLevelDescription(level) }}</span>
+							<span
+								class="level-description"
+								:aria-describedby="`level-${level}-description`"
+								>{{ getLevelDescription(level) }}</span
+							>
 						</div>
-						<div class="level-indicator">
+						<div
+							class="level-indicator"
+							:aria-hidden="true"
+						>
 							<div class="indicator-dot"></div>
 						</div>
 					</div>
@@ -87,6 +115,7 @@ function handleLevelSelect(level: number): void {
 				<button
 					type="button"
 					class="cancel-btn"
+					aria-label="Cancel level selection"
 					@click="emit('close')"
 				>
 					Cancel
@@ -182,7 +211,7 @@ function handleLevelSelect(level: number): void {
 	border-radius: 1rem;
 	overflow: hidden;
 	background: oklch(100% 0 0);
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	cursor: pointer;
 }
 
@@ -261,7 +290,7 @@ function handleLevelSelect(level: number): void {
 	block-size: 0.5rem;
 	border-radius: 50%;
 	background: oklch(80% 0.02 120);
-	transition: all 0.3s ease;
+	transition: all 0.2s ease;
 }
 
 .level-card--active .indicator-dot {
