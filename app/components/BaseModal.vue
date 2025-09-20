@@ -9,7 +9,7 @@
  *
  * @example
  * ```vue
- * <BaseModal :is-open="isModalOpen" @close="closeModal">
+ * <BaseModal :open="isModalOpen" @close="closeModal">
  *   <div>Modal content goes here</div>
  * </BaseModal>
  * ```
@@ -25,7 +25,7 @@ const emit = defineEmits<{
 	close: []
 }>()
 
-const dialogRef = useTemplateRef<HTMLDialogElement>('dialog')
+const dialogRef = useTemplateRef('dialog')
 
 function handleBackdropClick(event: MouseEvent): void {
 	if (event.target === dialogRef.value) {
