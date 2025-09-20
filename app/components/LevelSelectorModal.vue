@@ -92,7 +92,6 @@ function handleLevelSelect(level: number): void {
 					@click="handleLevelSelect(level)"
 				>
 					<div class="level-content">
-						<div class="level-number">{{ level }}</div>
 						<div class="level-info">
 							<span class="level-label">Level {{ level }}</span>
 							<span
@@ -100,12 +99,6 @@ function handleLevelSelect(level: number): void {
 								:aria-describedby="`level-${level}-description`"
 								>{{ getLevelDescription(level) }}</span
 							>
-						</div>
-						<div
-							class="level-indicator"
-							:aria-hidden="true"
-						>
-							<div class="indicator-dot"></div>
 						</div>
 					</div>
 				</button>
@@ -232,29 +225,7 @@ function handleLevelSelect(level: number): void {
 }
 
 .level-content {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-}
-
-.level-number {
-	display: flex;
-	inline-size: 2.5rem;
-	block-size: 2.5rem;
-	border-radius: 0.75rem;
-	flex-shrink: 0;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.125rem;
-	font-weight: 700;
-	color: oklch(100% 0 0);
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	box-shadow: 0 2px 4px oklch(0% 0 0 / 0.1);
-}
-
-.level-card--active .level-number {
-	background: linear-gradient(135deg, oklch(50% 0.2 160) 0%, oklch(40% 0.25 180) 100%);
-	box-shadow: 0 4px 8px oklch(50% 0.2 160 / 0.3);
+	display: block;
 }
 
 .level-info {
@@ -274,30 +245,6 @@ function handleLevelSelect(level: number): void {
 	font-size: 0.75rem;
 	line-height: 1.4;
 	color: oklch(50% 0.02 120);
-}
-
-.level-indicator {
-	display: flex;
-	inline-size: 1rem;
-	block-size: 1rem;
-	flex-shrink: 0;
-	align-items: center;
-	justify-content: center;
-}
-
-.indicator-dot {
-	inline-size: 0.5rem;
-	block-size: 0.5rem;
-	border-radius: 50%;
-	background: oklch(80% 0.02 120);
-	transition: all 0.2s ease;
-}
-
-.level-card--active .indicator-dot {
-	inline-size: 0.75rem;
-	block-size: 0.75rem;
-	background: oklch(60% 0.15 140);
-	box-shadow: 0 0 8px oklch(60% 0.15 140 / 0.4);
 }
 
 .modal-footer {
@@ -347,12 +294,6 @@ function handleLevelSelect(level: number): void {
 
 	.level-card {
 		padding: 0.875rem;
-	}
-
-	.level-number {
-		inline-size: 2rem;
-		block-size: 2rem;
-		font-size: 1rem;
 	}
 
 	.level-label {
