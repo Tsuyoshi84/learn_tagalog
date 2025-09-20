@@ -3,7 +3,14 @@ description: Rules for test files
 globs: **/*.spec.ts
 alwaysApply: false
 ---
-# Test rules
+# Test files
+
+## Files and directories
+
+- Unit test files should be colocated in the same directory that includes the test target file.
+- Test file name should end with `spec.ts`.
+
+## Test rules
 
 - Use Vitest for unit testing.
 - Explicitly import Vitest APIs (e.g., `import { describe, it } from 'vitest'`).

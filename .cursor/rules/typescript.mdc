@@ -8,44 +8,93 @@ alwaysApply: false
 This rule provides standards for TypeScript.
 Apply these rules when writing TypeScript files or Vue component setup functions.
 
-## General
+## TypeScript
 
 - Prefer function declarations over function expressions. However, when passing a function to a parameter, prefer using a function expression.
 - Define function return types for better readability and type safety.
-- Use `interface` over `type` when defining an object type.
+- Prefer `interface` over `type` when defining object types.
 - Use literal union types over enums.
 - Use `unknown` over `any`.
-- Prefer `undefined` over `null` unless `null` has to be used.
+- Prefer `undefined` over `null` unless `null` has to be used. (e.g. when GraphQL schema gives `null` distinct meaning)
 - Prefer `for...of` statement over `forEach`. However, allow use of `forEach` when chaining.
-- Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`.
+- Avoid non-null assertion operator (`!`) unless absolutely sure the value cannot be `null` or `undefined`. (Prefer type guards / `assert()` / early return)
 - Put `as const` on constant objects.
-- Prefer guard clauses (early returns) when the remainder of the function can be skipped.
+- Prefer the guard clause (early return) when the rest of the function can be skipped after the return.
+- If you need to keep the original array unchanged, prefer using the new immutable Array APIs such as `toSorted`, `toReversed`, and `toSpliced`.
+- Do not rely on Nuxt auto-import system. Import files explicitly.
+- Put .ts extension when importing TypeScript file defined in this codebase.
 - Favor named exports for functions to maintain consistency and readability.
-## Code Style
+- When using Vue Apollo Client composables, use aliases by combining the original variable name with the query/mutation/subscription name. Queries: `loadXxx`, Mutations: `mutateXxx`, Subscriptions: `resultXxxSub`. For example:
 
-- Use tabs for indentation.
+```ts
+const { load: loadEvents, loading: loadingEvents, result: resultEvents } = useListEventsQuery()
+```
 
-## JSDoc
+## Code Style and Structure
 
-- Write JSDoc comments for all exported functions, variables, and types for better readability and understanding.
-- In JSDoc, `@return` annotation can be omitted since it's self-explanatory in most cases.
+- Write clean, maintainable, and technically accurate TypeScript code.
+- Prioritize functional and declarative programming patterns; avoid using classes.
+- Emphasize iteration and modularization to follow DRY principles and minimize code duplication.
+- Use guard clauses (early returns) to improve code readability and reduce nesting.
+  - Return early when specific conditions are not met, avoiding deep nesting.
+  - Use guard clauses when processing after a certain point is only executed if specific conditions are met.
+  - This pattern helps flatten code structure and makes it easier to read and maintain.
 
-## Naming Conventions
+## Naming
 
 - Use UPPER_CASE for constants.
-- Use upper case for acronyms. For example, name `getURL` instead of `getUrl`.
-- Use Map as a suffix for all variables, parameters, and properties whose value is a Map instance. For example, `const userMap = new Map<string, User>()`. This rule must be applied to ref objects too.
-- Use Set as a suffix for all variables, parameters, and properties whose value is a Set instance. For example, `const userIdSet = new Set<string>()`. This rule must be applied to ref objects too.
+- Use upper case for well‑known acronyms (ID, URL, API, HTTP, CSV, DOM, JSON). For example, `getURL` instead of `getUrl`.
+- Prefer `is`, `has`, `can`, `should`, `needs`, `will` prefix for functions that return a boolean value.
+- Use 'Map' as a suffix for all variables, parameters, and properties whose value is a Map instance. For example, `const userMap = new Map<string, User>()`. This rule must be applied to ref objects too (e.g. `const userMap = shallowRef(new Map<string, User>())`).
+- Use 'Set' as a suffix for all variables, parameters, and properties whose value is a Set instance. For example, `const userIdSet = new Set<string>()`. This rule must be applied to ref objects too.
+- Be descriptive but concise: Choose names that clearly describe the purpose without being overly verbose.
+- Avoid abbreviations: Use full words instead of abbreviations (e.g., `userProfile` instead of `usrProf`).
+- Use domain terminology: Use terms that are familiar to the business domain and stakeholders.
+- Be consistent: Use the same naming patterns throughout the codebase.
+- Consider context: Names should make sense in the context where they're used.
+- Temporary names: Don't use placeholder names like `temp`, `foo`, `bar` in production code.
 
 ## Nuxt
 
-Follow these instructions when writing composables or component's setup functions.
+Follow these instructions when writing composables or component setup functions.
 
+- Always place related variables, computed values, watchers, lifecycle hooks, and functions side by side in one block, instead of scattering them across the file.
+- Use `shallowRef` for better performance unless you need deep reactivity.
 - Take advantage of VueUse functions to enhance reactivity and performance.
 - Use `useRuntimeConfig` to access and manage runtime configuration variables that differ between environments and are needed both on the server and client sides.
 - Pass an object to `navigateTo` for better type safety. For example, `navigateTo({ name: 'about' })` instead of `navigateTo('/about')`.
+- Use `import.meta.client` or `import.meta.server` to check if the current context is client-side or server-side.
 
-## Import
+## Error handling
 
-- Do not rely on Nuxt auto-import system. Import files explicitly.
-- Put .ts extension when importing TypeScript file.
+- Implement error boundaries for component error handling
+- Use try-catch blocks for async operations
+- Log errors appropriately for debugging
+- When catching an error and throwing a new Error, set the original error to the `cause` property
+
+## Documents
+
+- Write JSDoc comments for all exported functions, variables, and types for better readability and understanding.
+- Document complex functions with clear examples.
+- JSDoc must explain the purpose and behavior of the code clearly and correctly.
+- Terms must be consistent throughout the codebase.
+
+## Code Quality
+
+- Remove all spelling and grammatical errors in:
+  - Variable names, function names, and type names
+  - Comments and JSDoc documentation
+  - String literals and user-facing text
+  - Import statements and file paths
+
+## Advanced Type Safety
+
+- Readonly intent: Mark collections and DTO-like structures `readonly` (properties, arrays, tuples) unless mutation is explicitly part of the API contract.
+- Minimal exposure from composables: Return the narrowest surface—prefer `readonly(ref)` or computed derivatives—so consumers cannot mutate internal state accidentally.
+- GraphQL type fidelity: Consume generated GraphQL types (queries, fragments, mutation vars) directly—never hand-roll duplicates even if shapes seem simple.
+- Avoid chained utility type noise: Replace stacked `Omit<Pick<...>>` constructs with a named type alias or a mapped type builder for clarity.
+- Single source literal unions: For shared literal sets, export a `const` array + derived union (`as const`) rather than duplicating union members across modules.
+- Domain validation boundary: Introduce a clear parsing/validation layer (schema or custom guards) to transform raw external input into a trusted domain type; never let unvalidated shapes propagate.
+- Assertion helper: Use a shared `assert(condition, message): asserts condition` to standardize runtime invariant checks and improve narrowing.
+- Intentional mutability documentation: If an exported object is mutable by design (e.g., registry), document the concurrency / ordering expectations in JSDoc.
+- Type regression tests: For critical domain types, add `*.test-d.ts` or `expectTypeOf` tests to lock public shapes and prevent accidental widening / structural drift.

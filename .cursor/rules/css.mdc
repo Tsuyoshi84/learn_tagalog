@@ -14,3 +14,14 @@ These rules should be applied to CSS files and Vue component `<style>` section.
 - Animation duration should be 0.2s.
 - Don't use BEM naming convention for CSS classes.
 - Use CSS nesting to change styles based on the state.
+- Use CSS custom properties (variables) for consistent theming and maintainability.
+- Prefer `clamp()` for responsive typography and spacing.
+- Use `aspect-ratio` for maintaining consistent proportions.
+- Prefer `gap` over margins for spacing in flexbox and grid layouts.
+- Use `:where()` for lower specificity when possible.
+- Prefer `rem` units for typography and `em` for component-relative sizing.
+- Use `@container` queries for component-based responsive design.
+- Prefer `:is()` and `:where()` pseudo-classes for cleaner selectors.
+- Consider RTL support when using logical properties for potential future language expansion.
+- Use `font-variant-ligatures` appropriately for text rendering.
+- Consider `text-rendering: optimizeLegibility` for better text clarity in learning contexts.
