@@ -9,3 +9,7 @@ pre-commit:
       glob: "*.{js,ts,cjs,cts,mjs,mts,jsx,tsx,vue,json,css}"
       run: bun check --staged --no-errors-on-unmatched
       stage_fixed: true
+    css-lint-fix:
+      glob: "*.{css,vue}"
+      run: bun lint:css:fix
+      stage_fixed: true
