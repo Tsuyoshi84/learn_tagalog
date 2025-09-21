@@ -100,40 +100,12 @@ onMounted(async () => {
 			v-if="isCompleted"
 			class="completion-section"
 		>
-			<div class="completion-card">
-				<div class="celebration-icon">
-					<svg
-						class="icon"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-						/>
-					</svg>
-				</div>
-				<h2 class="completion-title">Excellent Work! 🎉</h2>
-				<p class="completion-subtitle"
-					>You've successfully matched all the words. Ready for the next challenge?</p
-				>
-				<AppButton
-					class="next-button"
-					@click="nextSession"
-				>
-					<span>Continue Learning</span>
-					<svg
-						class="arrow-icon"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</AppButton>
-			</div>
+			<AppButton
+				class="next-button"
+				@click="nextSession"
+			>
+				<span>Continue Learning</span>
+			</AppButton>
 		</section>
 	</div>
 </template>
@@ -213,80 +185,10 @@ onMounted(async () => {
 	justify-content: center;
 }
 
-.completion-card {
-	position: relative;
-	max-inline-size: 24rem;
-	padding: 2rem;
-	border-radius: 1.5rem;
-	overflow: hidden;
-	text-align: center;
-	background: linear-gradient(135deg, oklch(100% 0 0) 0%, oklch(99% 0.01 120) 100%);
-	box-shadow:
-		0 10px 15px -3px oklch(0% 0 0 / 0.1),
-		0 4px 6px -2px oklch(0% 0 0 / 0.05);
-}
-
-.completion-card::before {
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		135deg,
-		oklch(70% 0.15 140 / 0.05) 0%,
-		oklch(60% 0.2 160 / 0.03) 100%
-	);
-	pointer-events: none;
-	content: '';
-}
-
-.celebration-icon {
-	position: relative;
-	z-index: 1;
-	display: flex;
-	inline-size: 3rem;
-	block-size: 3rem;
-	margin-inline: auto;
-	margin-block-end: 1rem;
-	border-radius: 1rem;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(135deg, oklch(60% 0.15 140) 0%, oklch(50% 0.2 160) 100%);
-	box-shadow: 0 4px 8px oklch(0% 0 0 / 0.1);
-}
-
-.celebration-icon .icon {
-	inline-size: 1.5rem;
-	block-size: 1.5rem;
-	color: oklch(100% 0 0);
-}
-
-.completion-title {
-	position: relative;
-	z-index: 1;
-	margin-block-end: 0.5rem;
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: oklch(20% 0.02 120);
-}
-
-.completion-subtitle {
-	position: relative;
-	z-index: 1;
-	margin-block-end: 1.5rem;
-	font-size: 0.875rem;
-	line-height: 1.5;
-	color: oklch(45% 0.02 120);
-}
-
 .next-button {
 	position: relative;
 	z-index: 1;
 	inline-size: 100%;
-}
-
-.arrow-icon {
-	inline-size: 1rem;
-	block-size: 1rem;
-	margin-inline-start: 0.5rem;
 }
 
 /* Mobile optimizations */
@@ -316,23 +218,11 @@ onMounted(async () => {
 	.word-column {
 		gap: 0.5rem;
 	}
-
-	.completion-card {
-		padding: 1.5rem;
-	}
-
-	.completion-title {
-		font-size: 1.25rem;
-	}
 }
 
 @media (min-width: 768px) {
 	.container {
 		padding-inline: 1.5rem;
-	}
-
-	.completion-card {
-		padding: 2.5rem;
 	}
 }
 </style>
