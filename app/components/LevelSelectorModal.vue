@@ -94,11 +94,7 @@ function handleLevelSelect(level: number): void {
 					<div class="level-content">
 						<div class="level-info">
 							<span class="level-label">Level {{ level }}</span>
-							<span
-								class="level-description"
-								:aria-describedby="`level-${level}-description`"
-								>{{ getLevelDescription(level) }}</span
-							>
+							<span class="level-description">{{ getLevelDescription(level) }}</span>
 						</div>
 					</div>
 				</button>
