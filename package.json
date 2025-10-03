@@ -19,7 +19,7 @@
     "drizzle-kit": "^0.31.4",
     "eslint": "^9.35.0",
     "eslint-plugin-jsdoc": "^60.4.0",
-    "happy-dom": "^18.0.1",
+    "happy-dom": "^19.0.2",
     "knip": "^5.63.1",
     "lefthook": "^1.12.3",
     "nuxt": "^4.1.1",
