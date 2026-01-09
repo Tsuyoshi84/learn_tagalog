@@ -18,7 +18,7 @@
     "@vueuse/nuxt": "^13.9.0",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9.35.0",
-    "eslint-plugin-jsdoc": "^61.1.0",
+    "eslint-plugin-jsdoc": "^62.0.0",
     "happy-dom": "^20.0.0",
     "knip": "^5.63.1",
     "lefthook": "^2.0.1",
