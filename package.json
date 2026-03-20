@@ -20,7 +20,7 @@
     "eslint": "^9.35.0",
     "eslint-plugin-jsdoc": "^62.0.0",
     "happy-dom": "^20.0.0",
-    "knip": "^5.63.1",
+    "knip": "^6.0.1",
     "lefthook": "^2.0.1",
     "nuxt": "^4.1.1",
     "oxlint": "^1.14.0",
