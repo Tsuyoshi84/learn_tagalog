@@ -5,16 +5,16 @@ export const useAuthStore = defineStore('auth', () => {
 	const loggedIn = computed<boolean>(() => isDefined(user.value))
 
 	const userName = computed<string | undefined>(() => {
-		if (!isDefined(user)) return undefined
+		if (!isDefined(user.value)) return undefined
 
 		// biome-ignore lint/complexity/useLiteralKeys: user_metadata.name comes from index signature
-		return user.value.user_metadata['name']
+		return user.value.user_metadata?.['name']
 	})
 
 	const userId = computed<string | undefined>(() => {
-		if (!isDefined(user)) return undefined
+		if (!isDefined(user.value)) return undefined
 
-		return user.value.id
+		return user.value.sub
 	})
 
 	const { auth } = useSupabaseClient()

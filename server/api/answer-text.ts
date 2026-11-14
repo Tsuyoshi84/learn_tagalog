@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
 	const currentProgressResult = await db
 		.select()
 		.from(userProgress)
-		.where(and(eq(userProgress.textId, textId), eq(userProgress.userId, user.id)))
+		.where(and(eq(userProgress.textId, textId), eq(userProgress.userId, user.sub)))
 
 	const currentMemoryLevel = currentProgressResult[0]?.memoryLevel ?? 1
 
@@ -46,7 +46,7 @@ export default defineEventHandler(async (event) => {
 		.values({
 			textId,
 			createdAt: now,
-			userId: user.id,
+			userId: user.sub,
 			memoryLevel: nextMemoryLevel,
 			lastAnsweredAt: now,
 			nextDueDate,
