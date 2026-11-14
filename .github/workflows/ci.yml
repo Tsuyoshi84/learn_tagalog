@@ -15,18 +15,30 @@ on:
       - "!.github/copilot-instructions.md"
       - "!.github/PULL_REQUEST_TEMPLATE/**"
 
+# Deny all permissions by default; grant per job as needed.
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Write only needed for auto-commit of lint/format fixes on same-repo PRs.
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Avoid exposing the token to install/test scripts via .git/config.
+          persist-credentials: false
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          bun-version: latest
+          bun-version: "1.4.4"
 
       - name: Install dependencies
         run: bun install --no-save
@@ -40,7 +52,6 @@ jobs:
 
       - name: Test
         run: bun run test
-        continue-on-error: true
 
       - name: Lint
         run: bun lint:fix
@@ -52,28 +63,38 @@ jobs:
         run: bun check
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
+        with:
+          # Token only for this step; not persisted during install/test.
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: bun run build
 
   auto-merge:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
+      checks: read
       contents: write
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+      pull-requests: write
+    if: >
+      github.actor == 'dependabot[bot]' &&
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
       - name: Wait for checks to pass
-        uses: fountainhead/action-wait-for-check@v1.2.0
+        uses: fountainhead/action-wait-for-check@5a908a24814494009c4bb27c242ea38c93c593be # v1.2.0
         id: wait-for-checks
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: 'test' 
+          checkName: 'test'
           ref: ${{ github.event.pull_request.head.sha }}
+
       - name: Merge PR
-        if: ${{ steps.wait-for-checks.outputs.conclusion == 'success' }}
-        run: gh pr merge --auto --squash ${{ github.event.pull_request.html_url }}
+        if: steps.wait-for-checks.outputs.conclusion == 'success'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --squash "$PR_URL"
