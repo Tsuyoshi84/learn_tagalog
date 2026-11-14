@@ -58,7 +58,7 @@ export default defineEventHandler(async (event): Promise<Response> => {
 		.from(texts)
 		.leftJoin(userProgress, eq(userProgress.textId, texts.id))
 		.orderBy(asc(userProgress.nextDueDate))
-		.where(and(eq(userProgress.userId, user.id), eq(texts.level, level)))
+		.where(and(eq(userProgress.userId, user.sub), eq(texts.level, level)))
 		.offset(index)
 		.limit(1)
 
