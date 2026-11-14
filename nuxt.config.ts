@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	extends: ['github:Tsuyoshi84/nuxt-layer-core'],
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@nuxtjs/supabase',
